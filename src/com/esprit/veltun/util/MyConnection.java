@@ -12,37 +12,33 @@ import java.sql.*;
  * @author Asus
  */
 public class MyConnection {
-    
-    private static Connection instance;
-    private String url = "jdbc:mysql://localhost:3306/esprit";
 
-    private String user = "root";
+	private static Connection instance;
+	private String url = "jdbc:mysql://localhost:3306/véltun";
 
-    private String pwd = "";
-    
-    private MyConnection()
-    {
-        try{
-        	instance=DriverManager.getConnection(url,user,pwd);
-            System.out.println("Connection etablie");
-        }
-        catch(SQLException e){
-            System.out.println("Connection non etablie: "+e);
-        }
-    }
-    
-    /**
-     * synchronized protection contre l'acces simultané de +1 thread
-     * @return
-     */
-    public static synchronized Connection getInstance()
-    {
-        if(instance==null)
-        {
-            new MyConnection();
-        }
-        return MyConnection.instance;
-    }
-    
+	private String user = "root";
+
+	private String pwd = "";
+
+	private MyConnection() {
+		try {
+			instance = DriverManager.getConnection(url, user, pwd);
+			System.out.println("Connection etablie");
+		} catch (SQLException e) {
+			System.out.println("Connection non etablie: " + e);
+		}
+	}
+
+	/**
+	 * synchronized protection contre l'acces simultané de +1 thread
+	 * 
+	 * @return
+	 */
+	public static synchronized Connection getInstance() {
+		if (instance == null) {
+			new MyConnection();
+		}
+		return MyConnection.instance;
+	}
+
 }
-
