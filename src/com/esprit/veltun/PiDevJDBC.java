@@ -8,23 +8,31 @@ package com.esprit.veltun;
 import java.sql.Connection;
 
 import com.esprit.veltun.model.Station;
-import com.esprit.veltun.services.stationCRUD;
+import com.esprit.veltun.services.StationService;
 import com.esprit.veltun.util.MyConnection;
+import com.esprit.veltun.services.impl.StationServiceImpl;
+import com.esprit.veltun.model.base.BaseEntity;
 
-/**
- *
- * @author Asus
- */
+
+
+
 public class PiDevJDBC {
 
-	/**
-	 * @param args the command line arguments
-	 */
+	
 	public static void main(String[] args) {
 		Connection conn = MyConnection.getInstance();
-		System.out.print("started");
-		Station s8 = new Station("ARIANA", 8.5, 8.6);
-		stationCRUD stas = new stationCRUD();
+	    //	System.out.print("started");
+		//Station s8 = new Station("ARIANA", 8.5, 8.6);  //ajout
+		//Station s1 = new Station("Station 1" , 8.5 , 8.6 ); //ajout
+		//StationServiceImpl sta =  new StationServiceImpl() ; //ajout 
+		
+		 //sta.remove(5); //delete 
+		
+		
+		
+		
+	
+		
 
 	}
 

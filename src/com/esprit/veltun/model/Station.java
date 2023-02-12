@@ -7,10 +7,7 @@ package com.esprit.veltun.model;
 
 import com.esprit.veltun.model.base.BaseEntity;
 
-/**
- *
- * @author Asus
- */
+
 public class Station extends BaseEntity {
 	private int id_station;
 	private String nom_station;
@@ -72,5 +69,7 @@ public class Station extends BaseEntity {
 		return "Id_station:" + this.id_station + "Nom_station: " + this.nom_station + "Longitude :" + this.longitude
 				+ "Latitude:" + this.latitude;
 	}
+
+	 
 
 }
