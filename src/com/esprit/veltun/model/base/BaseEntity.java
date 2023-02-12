@@ -1,4 +1,4 @@
-package com.esprit.veltun.model;
+package com.esprit.veltun.model.base;
 
 public abstract class BaseEntity {
 	private Integer id;
