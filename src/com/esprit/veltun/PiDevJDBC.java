@@ -24,11 +24,11 @@ public class PiDevJDBC {
 	    //	System.out.print("started");
 		//Station s8 = new Station("ARIANA", 8.5, 8.6);  //ajout
 		//Station s1 = new Station("Station 1" , 8.5 , 8.6 ); //ajout
-		//StationServiceImpl sta =  new StationServiceImpl() ; //ajout 
+		StationServiceImpl sta =  new StationServiceImpl() ; //ajout 
 		//sta.save(s1); 
 		 //sta.remove(5); //delete 
 		
-	//	sta.update(6,"Station 2" , 8.5 , 8.6);  //update 
+		//sta.update();  //update 
 		
 		
 	
