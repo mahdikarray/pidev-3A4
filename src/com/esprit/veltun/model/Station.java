@@ -5,11 +5,13 @@
  */
 package com.esprit.veltun.model;
 
+import com.esprit.veltun.model.base.BaseEntity;
+
 /**
  *
  * @author Asus
  */
-public class Station {
+public class Station extends BaseEntity {
 	private int id_station;
 	private String nom_station;
 	private double longitude;
