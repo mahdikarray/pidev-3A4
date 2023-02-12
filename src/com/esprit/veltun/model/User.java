@@ -9,12 +9,26 @@ public class User extends BaseEntity {
 	private String nom;
 	private String prenom;
 	private Date dateNaiss;
+
+	public User() {
+	}
+
 	private String type;
 	private int codePos;
 	private String email;
 
 	public String getCIN() {
 		return CIN;
+	}
+
+	public User(String CIN, String nom, String prenom, Date dateNaiss, String type, int codePos, String email) {
+		this.CIN = CIN;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaiss = dateNaiss;
+		this.type = type;
+		this.codePos = codePos;
+		this.email = email;
 	}
 
 	public void setCIN(String cIN) {
@@ -59,6 +73,19 @@ public class User extends BaseEntity {
 
 	public void setCodePos(int codePos) {
 		this.codePos = codePos;
+	}
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"CIN='" + CIN + '\'' +
+				", nom='" + nom + '\'' +
+				", prenom='" + prenom + '\'' +
+				", dateNaiss=" + dateNaiss +
+				", type='" + type + '\'' +
+				", codePos=" + codePos +
+				", email='" + email + '\'' +
+				'}';
 	}
 
 	public String getEmail() {

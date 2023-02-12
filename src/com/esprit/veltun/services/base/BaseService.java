@@ -9,5 +9,5 @@ public interface BaseService<T extends BaseEntity> {
 	Collection<T> list();
 	T save(T entity);
 	T update(T entity);
-	boolean remove(Integer id);
+	boolean remove(String id);
 }

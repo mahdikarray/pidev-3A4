@@ -58,10 +58,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean remove(Integer id) {
+	public boolean remove(String id) {
 		try {
 		    Connection conn = MyConnection.getInstance();
-			String req = "DELETE FROM `user` WHERE id = " + id;
+			String req = "DELETE FROM `user` WHERE CIN  LIKE " + id;
 			Statement st = conn.createStatement();
 			st.executeUpdate(req);
 			System.out.println("Personne deleted !");
