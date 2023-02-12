@@ -6,10 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import com.esprit.veltun.model.User;
 import com.esprit.veltun.services.UserService;
+import com.esprit.veltun.search.base.dto.SearchCriteria;
+import com.esprit.veltun.search.dto.UserSearchCriteria;
 import com.esprit.veltun.util.MyConnection;
 
 public class UserServiceImpl implements UserService {
@@ -106,5 +109,49 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Collection<User> search(SearchCriteria<User> searchCriteria) {
+		List<User> list = new ArrayList<>();
+		try {
+			UserSearchCriteria userSearchCriteria = (UserSearchCriteria) searchCriteria;
+		    Connection conn = MyConnection.getInstance();
+		    Statement ste;
+			String req = "Select * from user";
+			StringBuilder builder = new StringBuilder("Select * from user");
+			StringBuilder whereBuilder = new StringBuilder();
+			
+			if (userSearchCriteria.getCin() != null && !userSearchCriteria.getCin().isEmpty()) {
+				if (!whereBuilder.toString().isEmpty()) {
+					whereBuilder.append(" AND cin=?");
+
+				} else {
+					whereBuilder.append(" WHERE cin=?");
+				}
+			}
+			
+			builder.append(whereBuilder);
+			PreparedStatement st = conn.prepareStatement(builder.toString());
+			st.setString(1, userSearchCriteria.getCin());
+			ResultSet RS = st.executeQuery(req);
+			while (RS.next()) {
+				User u = new User();
+				u.setCIN(RS.getString(1));
+				u.setNom(RS.getString(2));
+				u.setPrenom(RS.getString(3));
+				u.setDateNaiss(RS.getDate(4));
+				u.setType(RS.getString(5));
+				u.setCodePos(RS.getInt(6));
+				u.setEmail(RS.getString(7));
+				list.add(u);
+			}
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+
+		return list;
+	}
+
+
 
 }
