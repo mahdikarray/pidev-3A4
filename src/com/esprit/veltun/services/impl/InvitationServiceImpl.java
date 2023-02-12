@@ -21,7 +21,29 @@ public class InvitationServiceImpl implements InvitationService {
 
 	@Override
 	public Invitation findById(Integer id) {
-		// TODO Auto-generated method stub
+		try {
+			Connection conn = MyConnection.getInstance();
+			String req = "SELECT FROM `invitation` WHERE id = " + id;
+			Statement st = conn.createStatement();
+			ResultSet RS = st.executeQuery(req);
+			while (RS.next()) {
+				Invitation invi = new Invitation();
+				invi.setId(RS.getInt(1));
+				invi.setReponse(Response.valueOf(RS.getString(2)));
+				invi.setDateInvitation(RS.getDate(3));
+				invi.setDateExpiration(RS.getDate(4));
+				User invitant = new User();
+				invitant.setId(RS.getInt(5));
+				invi.setInvitant(invitant);
+				User invite = new User();
+				invite.setId(RS.getInt(6));
+				invi.setInvité(invite);
+				System.out.println("Invitation founded");
+				return invi;
+			}
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
 		return null;
 	}
 
@@ -55,33 +77,39 @@ public class InvitationServiceImpl implements InvitationService {
 	}
 
 	@Override
-	public Invitation save(Invitation entity) {
+	public Invitation save(Invitation invi) {
 
 		try {
 			Connection conn = MyConnection.getInstance();
-			String req = "INSERT INTO `invitation`( `id` ) VALUES (?)";
-			PreparedStatement ps = conn.prepareStatement(req);
-
-			ps.setInt(1, entity.getId());
-			Integer id = ps.executeUpdate();
-			entity.setId(id);
+			String req = "INSERT INTO `invitation`( `reponse`, `dateInvitation`, `dateExpiration`, \"\r\n"
+					+ "	+ \"`invitant`, `invite` ) VALUES (?,?,?,?,?))";
+			PreparedStatement pst = conn.prepareStatement(req);
+			pst.setString(1, invi.getReponse().name());
+			pst.setDate(2, invi.getDateInvitation());
+			pst.setDate(3, invi.getDateExpiration());
+			pst.setInt(4, invi.getInvitant().getId());
+			pst.setInt(5, invi.getInvite().getId());
 			System.out.println("invitation ajouté!!!");
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
-		return entity;
+		return invi;
 	}
 
 	@Override
 	public Invitation update(Invitation invi) {
 		try {
 			Connection conn = MyConnection.getInstance();
-			String req = "UPDATE `invitation` SET `id` = '" + invi.getId() + "', `reponse` = '" + invi.getReponse().name()
-					+ "', `dateInvitation` = '" + invi.getDateInvitation() + "'" + ", `dateExpiration` = '"
-					+ invi.getDateExpiration() + "'" + ", `invitant` = '" + invi.getInvitant() + "'" + ", `invité` = '"
-					+ invi.getInvité() + "'" + " WHERE `invitation`.`id` LIKE " + invi.getId();
-			Statement st = conn.createStatement();
-			st.executeUpdate(req);
+			String req1 = "UPDATE `invitation` set `reponse` =?, `dateInvitation``=?,`dateExpiration`=?,`invitant`=?,`invite`=?";
+
+			PreparedStatement pst = conn.prepareStatement(req1);
+			pst.setString(1, invi.getReponse().name());
+			pst.setDate(2, invi.getDateInvitation());
+			pst.setDate(3, invi.getDateExpiration());
+			pst.setInt(4, invi.getInvitant().getId());
+			pst.setInt(5, invi.getInvite().getId());
+
+			pst.executeUpdate(req1);
 			System.out.println("invitation updated !");
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
@@ -152,9 +180,9 @@ public class InvitationServiceImpl implements InvitationService {
 //			}
 //			if (invitationSearchCriteria.getInvité() != null) {
 //				if (!whereBuilder.toString().isEmpty()) {
-//					whereBuilder.append(" AND Invité=?");
+//					whereBuilder.append(" AND Invite=?");
 //				} else {
-//					whereBuilder.append(" WHERE Invité=?");
+//					whereBuilder.append(" WHERE Invite=?");
 //				}
 //			}
 			builder.append(whereBuilder);
@@ -193,11 +221,11 @@ public class InvitationServiceImpl implements InvitationService {
 				invi.setReponse(Response.valueOf(RS.getString(2)));
 				invi.setDateInvitation(RS.getDate(3));
 				invi.setDateExpiration(RS.getDate(4));
-				
+
 				User invitant = new User();
 				invitant.setId(RS.getInt(5));
 				invi.setInvitant(invitant);
-				
+
 				User invite = new User();
 				invite.setId(RS.getInt(6));
 				invi.setInvité(invite);
