@@ -116,9 +116,8 @@ public class UserServiceImpl implements UserService {
 		try {
 			UserSearchCriteria userSearchCriteria = (UserSearchCriteria) searchCriteria;
 		    Connection conn = MyConnection.getInstance();
-		    Statement ste;
-			String req = "Select * from user";
-			StringBuilder builder = new StringBuilder("Select * from user");
+
+		    StringBuilder builder = new StringBuilder("Select * from user");
 			StringBuilder whereBuilder = new StringBuilder();
 			
 			if (userSearchCriteria.getCin() != null && !userSearchCriteria.getCin().isEmpty()) {
@@ -130,10 +129,34 @@ public class UserServiceImpl implements UserService {
 				}
 			}
 			
+			if (userSearchCriteria.getId() != null) {
+				if (!whereBuilder.toString().isEmpty()) {
+					whereBuilder.append(" AND id=?");
+
+				} else {
+					whereBuilder.append(" WHERE id=?");
+				}
+			}
+			
 			builder.append(whereBuilder);
+			
+			
+			
 			PreparedStatement st = conn.prepareStatement(builder.toString());
-			st.setString(1, userSearchCriteria.getCin());
-			ResultSet RS = st.executeQuery(req);
+			int counter = 1;
+			if (userSearchCriteria.getCin() != null && !userSearchCriteria.getCin().isEmpty()) {
+				st.setString(counter, userSearchCriteria.getCin());
+				counter++;
+			}
+
+			
+			if (userSearchCriteria.getId() != null) {
+				st.setInt(counter, userSearchCriteria.getId());
+				counter++;
+			}
+
+			
+			ResultSet RS = st.executeQuery();
 			while (RS.next()) {
 				User u = new User();
 				u.setCIN(RS.getString(1));
