@@ -1,76 +1,61 @@
-package com.esprit.veltun.model;
+package com.esprit.veltun.search.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 import com.esprit.veltun.enums.Response;
-import com.esprit.veltun.model.base.BaseEntity;
+import com.esprit.veltun.model.Invitation;
+import com.esprit.veltun.search.base.dto.SearchCriteria;
 
-public class Invitation extends BaseEntity {
+public class InvitationSearchCriteria extends SearchCriteria<Invitation> {
+	private Integer id;
 	private Response reponse;
 	private Date dateInvitation;
 	private Date dateExpiration;
-	private User invitant;
-	private User invité;
-
-	public Invitation() {
-
+	private String invitant;
+	private String invité;
+	
+	public Integer getId() {
+		return id;
 	}
-
-	public Invitation(Integer id, Response reponse, Date dateInvitation, Date dateExpiration, User invitant,
-			User invité) {
-		this.setId(id);
-		this.reponse = reponse;
-		this.dateInvitation = dateInvitation;
-		this.dateExpiration = dateExpiration;
-		this.invitant = invitant;
-		this.invité = invité;
-
+	public void setId(Integer id) {
+		this.id = id;
 	}
-
 	public Response getReponse() {
 		return reponse;
 	}
-
 	public void setReponse(Response reponse) {
 		this.reponse = reponse;
 	}
-
 	public Date getDateInvitation() {
 		return dateInvitation;
 	}
-
 	public void setDateInvitation(Date dateInvitation) {
 		this.dateInvitation = dateInvitation;
 	}
-
 	public Date getDateExpiration() {
 		return dateExpiration;
 	}
-
 	public void setDateExpiration(Date dateExpiration) {
 		this.dateExpiration = dateExpiration;
 	}
-
-	public User getInvitant() {
+	public String getInvitant() {
 		return invitant;
 	}
-
-	public void setInvitant(User invitant) {
+	public void setInvitant(String invitant) {
 		this.invitant = invitant;
 	}
-
-	public User getInvité() {
+	public String getInvité() {
 		return invité;
 	}
-
-	public void setInvité(User invité) {
+	public void setInvité(String invité) {
 		this.invité = invité;
 	}
-
 	@Override
 	public String toString() {
-		return "Invitation [id=" + getId() + ", reponse=" + reponse + ", dateInvitation=" + dateInvitation
+		return "Invitation [id=" + id + ", reponse=" + reponse + ", dateInvitation=" + dateInvitation
 				+ ", dateExpiration=" + dateExpiration + ", invitant=" + invitant + ", invité=" + invité + "]";
 	}
-
+	
+	
+	
 }
