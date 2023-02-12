@@ -6,7 +6,6 @@
 package com.esprit.veltun;
 import java.sql.Connection;
 
-import com.esprit.veltun.model.Personne;
 import com.esprit.veltun.util.MyConnection;
 /**
  *
