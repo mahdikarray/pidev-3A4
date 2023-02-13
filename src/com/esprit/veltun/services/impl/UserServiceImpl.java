@@ -45,7 +45,6 @@ public class UserServiceImpl implements UserService {
 	public User update(User u) {
 		try {
 		    Connection conn = MyConnection.getInstance();
-		    Statement ste;
 		    
 			String req = "UPDATE `user` SET `nom` = '" + u.getNom() + "', `prenom` = '" + u.getPrenom() + "'"
 					+ ", `date_naiss` = '" + u.getDateNaiss() + "'" + ", `type` = '" + u.getType() + "'"
@@ -80,7 +79,6 @@ public class UserServiceImpl implements UserService {
 		List<User> list = new ArrayList<>();
 		try {
 		    Connection conn = MyConnection.getInstance();
-		    Statement ste;
 			String req = "Select * from user";
 			Statement st = conn.createStatement();
 
