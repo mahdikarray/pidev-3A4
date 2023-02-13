@@ -2,12 +2,17 @@ package com.esprit.veltun.services.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+
 import com.esprit.veltun.model.base.BaseEntity;
 
 import com.esprit.veltun.model.Station;
+import com.esprit.veltun.model.User;
 import com.esprit.veltun.services.StationService;
 import com.esprit.veltun.util.MyConnection;
 import com.esprit.veltun.services.impl.StationServiceImpl;
@@ -22,8 +27,31 @@ public class StationServiceImpl implements StationService {
 
 	@Override
 	public Collection<Station> list() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Station> list = new ArrayList<>();
+		try {
+		    Connection conn = MyConnection.getInstance();
+		    Statement ste;
+			String req = "Select * from station";
+			Statement st = conn.createStatement();
+
+			ResultSet RS = st.executeQuery(req);
+			while (RS.next()) {
+				Station s = new Station();
+
+				s.setid_station(RS.getInt(1));
+				s.setnom_station(RS.getString(2));
+				s.setlongitude(RS.getDouble(3));
+				s.setlatitude(RS.getDouble(4));
+			
+				list.add(s);
+			}
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+
+		return list;
+				
 	}
 
 	@Override
@@ -50,7 +78,7 @@ public class StationServiceImpl implements StationService {
 	public Station update(Station s) {
 		 try {
 			    Connection conn = MyConnection.getInstance();
-	            String req = "UPDATE `station` SET `longitude` ='" + s.getlongitude() +"', `nom_station` = '" + s.getnom_station() + "', `latitude=` = '" + s.getlatitude() + "' WHERE 'station'.'id_station'= " + s.getid_station() ; 
+	            String req = "UPDATE `station` SET `Longitude` ='" + s.getlongitude() +"', `Nom_station` = '" + s.getnom_station() + "', `Latitude`=  '" + s.getlatitude() + "' WHERE `station`.`Id_station`= " + s.getid_station() ; 
 	            Statement st = conn.createStatement();
 	            st.executeUpdate(req);
 	            System.out.println("Station updated !");
@@ -75,5 +103,8 @@ public class StationServiceImpl implements StationService {
 	        }
 
 	}
+	
+	
+	
 
 }
