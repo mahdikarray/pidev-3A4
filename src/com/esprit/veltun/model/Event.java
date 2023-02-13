@@ -9,7 +9,7 @@ import com.esprit.veltun.model.base.BaseEntity;
 public class Event extends BaseEntity {
 	private String titre;
 	private String description;
-	private Date dateDébut;
+	private Date dateDebut;
 	private Date dateFin;
 	private Adresse adresse;
 	private List<Adresse> adresses = new ArrayList<>();
@@ -23,7 +23,7 @@ public class Event extends BaseEntity {
 		;
 		this.titre = Titre;
 		this.description = description;
-		this.dateDébut = dateDébut;
+		this.dateDebut = dateDébut;
 		this.dateFin = dateFin;
 		this.adresse = adresse;
 	}
@@ -44,12 +44,12 @@ public class Event extends BaseEntity {
 		this.description = description;
 	}
 
-	public Date getDateDébut() {
-		return dateDébut;
+	public Date getDateDebut() {
+		return dateDebut;
 	}
 
-	public void setDateDébut(Date dateDébut) {
-		this.dateDébut = dateDébut;
+	public void setDateDébut(Date dateDebut) {
+		this.dateDebut = dateDebut;
 	}
 
 	public Date getDateFin() {
@@ -86,7 +86,7 @@ public class Event extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Event [id=" + getId() + ", Titre=" + this.titre + ", description=" + description + ", dateDébut=" + dateDébut
+		return "Event [id=" + getId() + ", Titre=" + this.titre + ", description=" + description + ", dateDebut=" + dateDebut
 				+ ", dateFin=" + dateFin + ", adresse=" + adresse + "]";
 	}
 
