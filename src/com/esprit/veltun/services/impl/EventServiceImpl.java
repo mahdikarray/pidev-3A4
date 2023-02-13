@@ -73,8 +73,8 @@ public class EventServiceImpl implements EventService {
 
 		try {
 			Connection conn = MyConnection.getInstance();
-			String req = "INSERT INTO `event`( `titre`,`description`, `dateDebut`, `dateFin`, \"\r\n"
-					+ "	+ \"`adresse` ) VALUES (?,?,?,?,?))";
+			String req = "INSERT INTO `event`( `titre`,`description`, `dateDebut`, `dateFin`,"
+					+ "	`adresse` ) VALUES (?,?,?,?,?))";
 			PreparedStatement pst = conn.prepareStatement(req);
 			pst.setString(1, event.getTitre());
 			pst.setString(2, event.getDescription());
@@ -92,7 +92,8 @@ public class EventServiceImpl implements EventService {
 	public Event update(Event event) {
 		try {
 			Connection conn = MyConnection.getInstance();
-			String req1 = "UPDATE `event` set `titre` =?, `description``=?,`dateDebut`=?,`dateFin`=?,`adresse`=?";
+			String req1 = "UPDATE `event` set `titre` =?, `description``=?,`dateDebut`=?,`dateFin`=?,`adresse`=?"
+					+ " WHERE id = ?";
 
 			PreparedStatement pst = conn.prepareStatement(req1);
 			pst.setString(1, event.getTitre());
@@ -100,6 +101,7 @@ public class EventServiceImpl implements EventService {
 			pst.setDate(3, event.getDateDebut());
 			pst.setDate(4, event.getDateFin());
 			pst.setInt(5, event.getAdresse().getId());
+			pst.setInt(6, event.getId());
 
 			pst.executeUpdate(req1);
 			System.out.println("Event updated !");
@@ -170,13 +172,13 @@ public class EventServiceImpl implements EventService {
 					whereBuilder.append(" WHERE dateFin=?");
 				}
 			}
-			if (eventSearchCriteria.getAdresse() != null) {
-				if (!whereBuilder.toString().isEmpty()) {
-					whereBuilder.append(" AND adresse=?");
-				} else {
-					whereBuilder.append(" WHERE adresse=?");
-				}
-			}
+//			if (eventSearchCriteria.getAdresse() != null) {
+//				if (!whereBuilder.toString().isEmpty()) {
+//					whereBuilder.append(" AND adresse=?");
+//				} else {
+//					whereBuilder.append(" WHERE adresse=?");
+//				}
+//			}
 			
 
 			builder.append(whereBuilder);
