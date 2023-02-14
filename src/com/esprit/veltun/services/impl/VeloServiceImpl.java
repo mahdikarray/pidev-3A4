@@ -1,6 +1,7 @@
 package com.esprit.veltun.services.impl;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +17,8 @@ import com.esprit.veltun.services.VeloService;
 import com.esprit.veltun.util.MyConnection;
 
 public class VeloServiceImpl implements VeloService{
-	//@Override
+	
+	@Override
 		public Velo save(Velo v) {
 
 			 try {
@@ -98,7 +100,7 @@ public class VeloServiceImpl implements VeloService{
 			
 			try {
 				Connection conn = MyConnection.getInstance();
-				String req = "SELECT FROM `fournisseur` WHERE id = " + id;
+				String req = "SELECT * FROM `velo` WHERE id = " + id;
 				Statement st = conn.createStatement();
 				ResultSet RS = st.executeQuery(req);
 				while (RS.next()) {
@@ -134,10 +136,10 @@ public class VeloServiceImpl implements VeloService{
 				
 				if (veloSearchCriteria.getLibelle() != null && !veloSearchCriteria.getLibelle().isEmpty()) {
 					if (!whereBuilder.toString().isEmpty()) {
-						whereBuilder.append(" AND nomf=?");
+						whereBuilder.append(" AND libellev=?");
 
 					} else {
-						whereBuilder.append(" WHERE nomf=?");
+						whereBuilder.append(" WHERE libellev=?");
 					}
 				}
 				

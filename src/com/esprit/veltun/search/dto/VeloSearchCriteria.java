@@ -1,6 +1,7 @@
 package com.esprit.veltun.search.dto;
 
 import com.esprit.veltun.model.Velo;
+
 import com.esprit.veltun.search.base.dto.SearchCriteria;
 
 public class VeloSearchCriteria extends SearchCriteria<Velo> {
@@ -8,6 +9,7 @@ public class VeloSearchCriteria extends SearchCriteria<Velo> {
 
 
 	
+
 	public String getLibelle() {
 	    return libellev;
 	}
