@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.esprit.veltun.model.Abonnement;
 import com.esprit.veltun.model.Offre;
 import com.esprit.veltun.services.OffreService;
 import com.esprit.veltun.util.MyConnection;
@@ -17,7 +18,22 @@ public class OffreServiceImpl implements OffreService {
 
 	@Override
 	public Offre findById(Integer id) {
-		// TODO Auto-generated method stub
+		try {
+			Connection conn = MyConnection.getInstance();
+			String req = "SELECT * FROM `offre` WHERE Id_offre = " + id;
+			Statement st = conn.createStatement();
+			ResultSet RS = st.executeQuery(req);
+			while (RS.next()) {
+				Offre s = new Offre();
+				s.setPrix(RS.getFloat("Prix"));
+				s.setId_offre(RS.getInt(1));
+
+				System.out.println("offre founded");
+				return s;
+			}
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
 		return null;
 	}
 

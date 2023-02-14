@@ -17,7 +17,25 @@ public class AbonnementServiceImpl implements AbonnementService {
 
     @Override
     public Abonnement findById(Integer id) {
-        // TODO Auto-generated method stub
+        try {
+            Connection conn = MyConnection.getInstance();
+            String req = "SELECT * FROM `Abonnement` WHERE Id_ab = " + id;
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                Abonnement ab = new Abonnement();
+                ab.setType_ab(RS.getString("Type_ab"));
+                ab.setDuree(RS.getInt("Duree"));
+                ab.setPrix_ab(RS.getFloat("Prix_ab"));
+                ab.setId_offre(RS.getInt(1));
+                ab.setId_ab(RS.getInt(1));
+
+                System.out.println("abonnement founded");
+                return ab;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         return null;
     }
 

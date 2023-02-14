@@ -26,6 +26,7 @@ public class PiDevJDBC {
 		//off.save(p1);
 		//off.remove(19);
 //off.update(p1);
+		//off.findById(12);
 		System.out.println( off.list());
 		//////////////////////////////////////////////////
 		//CRUD ABONNEMENT
@@ -36,7 +37,8 @@ public class PiDevJDBC {
 		//abb.save(b1);
 		//abb.update(b1);
 		//abb.remove(10);
-		//System.out.println( abb.list());
+		//abb.findById(7);
+		System.out.println( abb.list());
 	    /////////////////////////////////////////////////////////
 		//	System.out.print("started");
 		//CRUD STATION
