@@ -27,7 +27,7 @@ public class PiDevJDBC {
         String date="2001-08-07";
         Date dn= Date.valueOf(LocalDate.parse(date));
         // MyConnection conn = MyConnection.getInstance();
-       // User u1 = new User("88","Rezigui","Alaa",dn, "Admin",1000,"alaa.rezigui@esprit.tn");
+        User u1 = new User("88","Rezigui","Alaa",dn, "Admin",1000,"alaa.rezigui@esprit.tn");
         UserServiceImpl us = new UserServiceImpl();
 
         //us.save(u1);
