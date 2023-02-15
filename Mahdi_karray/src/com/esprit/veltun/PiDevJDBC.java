@@ -37,7 +37,7 @@ public class PiDevJDBC {
 		//abb.save(b1);
 		//abb.update(b1);
 		//abb.remove(10);
-		//abb.findById(7);
+		//System.out.println(abb.findById(7));
 		System.out.println( abb.list());
 	    /////////////////////////////////////////////////////////
 		//	System.out.print("started");
