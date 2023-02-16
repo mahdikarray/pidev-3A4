@@ -146,10 +146,10 @@ public class VeloServiceImpl implements VeloService{
 				
 				if (veloSearchCriteria.getId() != null) {
 					if (!whereBuilder.toString().isEmpty()) {
-						whereBuilder.append(" AND id=?");
+						whereBuilder.append(" AND idv=?");
 
 					} else {
-						whereBuilder.append(" WHERE id=?");
+						whereBuilder.append(" WHERE idv=?");
 					}
 				}
 				

@@ -11,8 +11,8 @@ public Fournisseur() {
 
 //constructur parametre 
 
-public Fournisseur(Integer id, String nomf, String regionf) {
-	this.setId(id);
+public Fournisseur(Integer idf, String nomf, String regionf) {
+	this.setId(idf);
     this.nomf = nomf;
     this.regionf = regionf;
 }
@@ -41,7 +41,7 @@ public void setRegion(String regionf) {
 
 @Override
 public String toString() {
-    return "Fournisseur{" + "id=" + getId() + ", nom=" + nomf + ", regionf=" + regionf + '}';
+    return "Fournisseur{" + "idf=" + getId() + ", nomf=" + nomf + ", regionf=" + regionf + '}';
 }
 
 

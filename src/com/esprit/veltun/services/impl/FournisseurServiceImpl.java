@@ -28,7 +28,8 @@ public class FournisseurServiceImpl implements FournisseurService {
           
             ps.setString(1, f.getNom());
             ps.setString(2, f.getRegion());
-             ps.executeUpdate();
+            Integer idf = ps.executeUpdate();
+			f.setId(idf);
             System.out.println("fournisseur ajouté!!!");
         } catch (SQLException ex) {
 			ex.printStackTrace();
@@ -52,10 +53,10 @@ public class FournisseurServiceImpl implements FournisseurService {
 	}
 
 	@Override
-	public boolean remove(Integer id) {
+	public boolean remove(Integer idf) {
 		try {
 			Connection conn = MyConnection.getInstance();
-			String req = "DELETE FROM `fournisseur` WHERE idf = " + id;
+			String req = "DELETE FROM `fournisseur` WHERE idf = " + idf;
 			Statement st = conn.createStatement();
 			st.executeUpdate(req);
 			System.out.println("fournisseur deleted !");
@@ -92,11 +93,11 @@ public class FournisseurServiceImpl implements FournisseurService {
 
 
 	@Override
-	public Fournisseur findById(Integer id) {
+	public Fournisseur findById(Integer idf) {
 		
 		try {
 			Connection conn = MyConnection.getInstance();
-			String req = "SELECT FROM `fournisseur` WHERE id = " + id;
+			String req = "SELECT * FROM fournisseur WHERE idf = " + idf;
 			Statement st = conn.createStatement();
 			ResultSet RS = st.executeQuery(req);
 			while (RS.next()) {
@@ -143,6 +144,14 @@ public class FournisseurServiceImpl implements FournisseurService {
 
 				} else {
 					whereBuilder.append(" WHERE idf=?");
+				}
+			}
+			if (fournisseurSearchCriteria.getRegion() != null) {
+				if (!whereBuilder.toString().isEmpty()) {
+					whereBuilder.append(" AND regionf=?");
+
+				} else {
+					whereBuilder.append(" WHERE regionf=?");
 				}
 			}
 			
