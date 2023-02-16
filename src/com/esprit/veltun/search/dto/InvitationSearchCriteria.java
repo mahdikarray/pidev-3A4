@@ -8,8 +8,20 @@ import com.esprit.veltun.model.Invitation;
 import com.esprit.veltun.search.base.dto.SearchCriteria;
 
 public class InvitationSearchCriteria extends SearchCriteria<Invitation> {
+	private Integer id;
 	private Response reponse;
 	private Date dateInvitation;
+	
+	
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	private Date dateExpiration;
 	private String invitant;
 	private String invité;

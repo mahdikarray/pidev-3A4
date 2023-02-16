@@ -129,8 +129,10 @@ public class InvitationServiceImpl implements InvitationService {
 
 		try {
 			Connection conn = MyConnection.getInstance();
-			String req = "INSERT INTO `invitation`(`reponse`, `date_invitation`, `date_expiration`, `invitant_id`, `invite_id`,`evenement_id`) VALUES (?,?,?,?,?,?)";
-			PreparedStatement pst = conn.prepareStatement(req);
+			
+		    String req = "INSERT INTO `invitation`(`reponse`, `date_invitation`, `date_expiration`, `invitant_id`, `invite_id`,`evenement_id`) VALUES (?,?,?,?,?,?)";
+			
+		PreparedStatement pst = conn.prepareStatement(req,Statement.RETURN_GENERATED_KEYS);
 			pst.setString(1, invi.getReponse().name());
 			pst.setDate(2, invi.getDateInvitation());
 			pst.setDate(3, invi.getDateExpiration());
@@ -151,6 +153,10 @@ public class InvitationServiceImpl implements InvitationService {
 			}
 			
 			pst.execute();
+			ResultSet generatedKeys = pst.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                invi.setId(generatedKeys.getInt(1));
+            }
 			System.out.println("invitation ajouté!!!");
 		} catch (SQLException ex) {
 			ex.printStackTrace();

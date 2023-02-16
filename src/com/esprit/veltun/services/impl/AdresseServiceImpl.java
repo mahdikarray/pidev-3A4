@@ -70,13 +70,19 @@ public class AdresseServiceImpl implements AdresseService {
 		try {
 			Connection conn = MyConnection.getInstance();
 			String req = "INSERT INTO `adresse`( `rue`, `region`, `longitude`,`latitude` ) VALUES (?,?,?,?);";
-			PreparedStatement pst = conn.prepareStatement(req);
+			
+			PreparedStatement pst = conn.prepareStatement(req,Statement.RETURN_GENERATED_KEYS);
+			
 			pst.setString(1, adresse.getRue());
 			pst.setString(2, adresse.getRegion());
 			pst.setDouble(3, adresse.getLongitude());
 			pst.setDouble(4, adresse.getLatitude());
 
 			pst.execute();
+			ResultSet generatedKeys = pst.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                adresse.setId(generatedKeys.getInt(1));
+            }
 			System.out.println("Adresse ajouté!!!");
 		} catch (SQLException ex) {
 			ex.printStackTrace();
