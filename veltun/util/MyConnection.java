@@ -7,19 +7,13 @@ package com.esprit.veltun.util;
 
 import java.sql.*;
 
-/**
- *
- * @author Asus
- */
+
 public class MyConnection {
 
-	private static Connection instance;
-	private String url = "jdbc:mysql://localhost:3306/véltun";
-
+    private static Connection instance;
+    private String url = "jdbc:mysql://localhost:3306/veltun";
 	private String user = "root";
-
 	private String pwd = "";
-
 	private MyConnection() {
 		try {
 			instance = DriverManager.getConnection(url, user, pwd);
@@ -29,11 +23,9 @@ public class MyConnection {
 		}
 	}
 
-	/**
-	 * synchronized protection contre l'acces simultané de +1 thread
-	 * 
-	 * @return
-	 */
+	
+	 // synchronized protection contre l'acces simultané de +1 thread
+	 
 	public static synchronized Connection getInstance() {
 		if (instance == null) {
 			new MyConnection();
