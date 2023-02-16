@@ -5,7 +5,7 @@
  */
 package com.esprit.veltun;
 
-import com.esprit.veltun.model.User;
+//import com.esprit.veltun.model.User;
 import com.esprit.veltun.model.Velo;
 import com.esprit.veltun.util.MyConnection;
 import com.esprit.veltun.services.VeloService;
@@ -16,6 +16,7 @@ import com.esprit.veltun.search.dto.VeloSearchCriteria;
 import java.sql.Connection;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Collection;
 /**
  *
  * @author Asus
@@ -44,19 +45,27 @@ public class PiDevJDBC {
        // System.out.println(us.list().toString());
 
 ///////////////////////////////////////////////////////////////////////////////
-    	  //MyConnection conn = MyConnection.getInstance();
-    	// Velo v9= new Velo(3,"tata","90cm","noir","tla");
+    	//  MyConnection conn = MyConnection.getInstance();
     	//VeloServiceImpl vel = new VeloServiceImpl();
+    	// Velo v9= new Velo("mms","1m","vert","tla");
     	
-    	//VeloSearchCriteria velo = new VeloSearchCriteria();
+    	
+    	//VeloSearchCriteria searchCriteria = new VeloSearchCriteria();
+    	
  
       
-        //System.out.println( vel.findById(2).toString()); /*find by id*/
-       // System.out.println( vel.list().toString()); /*afficher*/
+       //System.out.println( vel.findById(2).toString()); /*find by id*/
         //vel.update(v9); /*modifier*/
     	//vel.save(v9); /*ajouter*/
     	//vel.remove(3);
-      
+       // System.out.println( vel.list().toString()); /*afficher*/
+       // searchCriteria.setCouleur("noir");
+        
+                    
+          //  Collection<Velo> result = vel.search(searchCriteria);
+           // result.forEach(taille->System.out.println(taille));
+
+
        // System.out.println(vel.search(velo).toString());    /*search*/
         
        /* BaseService<Velo> veloService = null;

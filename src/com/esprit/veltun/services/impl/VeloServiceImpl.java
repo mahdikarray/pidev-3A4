@@ -23,7 +23,7 @@ public class VeloServiceImpl implements VeloService{
 
 			 try {
 				 Connection conn = MyConnection.getInstance();
-		            String req = "INSERT INTO `velo` (`libellev`, `taillev`, `couleurv`, `fournisseur`) VALUES (?,?,?,?)";
+		            String req = "INSERT INTO velo (libellev, taillev, couleurv, fournisseur) VALUES (?,?,?,?)";
 		            PreparedStatement ps=conn.prepareStatement(req);
 		          
 		            ps.setString(1, v.getLibelle());
@@ -43,7 +43,7 @@ public class VeloServiceImpl implements VeloService{
 		public Velo update(Velo v) {
 			  try {
 					 Connection conn = MyConnection.getInstance();
-		            String req = "UPDATE `velo` SET `libellev` = '" + v.getLibelle() + "', `taillev` = '" + v.getTaille() + "', `couleurv` = '" + v.getCouleur() + "', `fournisseur` = '" + v.getFournisseur() + "' WHERE `velo`.`idv` = " + v.getId();
+		            String req = "UPDATE velo SET libellev = '" + v.getLibelle() + ", taillev = " + v.getTaille() + ", couleurv = " + v.getCouleur() + ", fournisseur = " + v.getFournisseur() + "' WHERE velo.id = " + v.getId();
 		            Statement st = conn.createStatement();
 		            st.executeUpdate(req);
 		            System.out.println("velo updated !");
@@ -57,7 +57,7 @@ public class VeloServiceImpl implements VeloService{
 		public boolean remove(Integer id) {
 			try {
 				Connection conn = MyConnection.getInstance();
-				String req = "DELETE FROM `velo` WHERE id = " + id;
+				String req = "DELETE FROM velo WHERE id = " + id;
 				Statement st = conn.createStatement();
 				st.executeUpdate(req);
 				System.out.println("velo deleted !");
@@ -100,7 +100,7 @@ public class VeloServiceImpl implements VeloService{
 			
 			try {
 				Connection conn = MyConnection.getInstance();
-				String req = "SELECT * FROM `velo` WHERE id = " + id;
+				String req = "SELECT * FROM velo WHERE id = " + id;
 				Statement st = conn.createStatement();
 				ResultSet RS = st.executeQuery(req);
 				while (RS.next()) {
@@ -152,6 +152,24 @@ public class VeloServiceImpl implements VeloService{
 					}
 				}
 				
+				if (veloSearchCriteria.getTaille() != null) {
+					if (!whereBuilder.toString().isEmpty()) {
+						whereBuilder.append(" AND taillev=?");
+
+					} else {
+						whereBuilder.append(" WHERE taillev=?");
+					}
+				}
+				
+				
+				if (veloSearchCriteria.getCouleur() != null) {
+					if (!whereBuilder.toString().isEmpty()) {
+						whereBuilder.append(" AND couleurv=?");
+
+					} else {
+						whereBuilder.append(" WHERE couleurv=?");
+					}
+				}
 				builder.append(whereBuilder);
 				
 				
