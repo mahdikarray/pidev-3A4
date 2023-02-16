@@ -10,7 +10,9 @@ import java.util.Collection;
 import java.util.List;
 
 import com.esprit.veltun.model.base.BaseEntity;
-
+import com.esprit.veltun.search.base.dto.SearchCriteria;
+import com.esprit.veltun.search.dto.StationSearchCriteria;
+import com.esprit.veltun.search.dto.UserSearchCriteria;
 import com.esprit.veltun.model.Station;
 import com.esprit.veltun.model.User;
 import com.esprit.veltun.services.StationService;
@@ -103,6 +105,92 @@ public class StationServiceImpl implements StationService {
 	        }
 
 	}
+
+	
+	 @Override
+	
+	public Collection<Station> search(SearchCriteria<Station> searchCriteria) {
+		List<Station> list = new ArrayList<>();
+		try {
+			StationSearchCriteria stationSearchCriteria = (StationSearchCriteria) searchCriteria;
+		    Connection conn = MyConnection.getInstance();
+		    StringBuilder builder = new StringBuilder("Select * from station");
+			StringBuilder whereBuilder = new StringBuilder();
+			
+			//Recherche par ID
+			if (stationSearchCriteria.getId_station() != 0 ) {
+				if (!whereBuilder.toString().isEmpty()) {
+					whereBuilder.append(" AND Id_station=?");
+
+				} else {
+					whereBuilder.append(" WHERE Id_station=?");
+				}
+			}
+			
+			if (stationSearchCriteria.getId() != null) {
+				if (!whereBuilder.toString().isEmpty()) {
+					whereBuilder.append(" AND id=?");
+
+				} else {
+					whereBuilder.append(" WHERE id=?");
+				}
+			}
+			
+		/*	if (stationSearchCriteria.get_station() != 0 ) {
+				if (!whereBuilder.toString().isEmpty()) {
+					whereBuilder.append(" AND Id_station=?");
+
+				} else {
+					whereBuilder.append(" WHERE Id_station=?");
+				}
+			}
+			 */
+			if (stationSearchCriteria.getId() != null) {
+				if (!whereBuilder.toString().isEmpty()) {
+					whereBuilder.append(" AND id=?");
+
+				} else {
+					whereBuilder.append(" WHERE id=?");
+				}
+			}
+			
+			builder.append(whereBuilder);
+			
+			
+			
+			PreparedStatement st = conn.prepareStatement(builder.toString());
+			int counter = 1;
+			if (stationSearchCriteria.getId_station() != 0 ) {
+				st.setInt(counter, stationSearchCriteria.getId_station());
+				counter++;
+			}
+
+			
+			if (stationSearchCriteria.getId() != null) {
+				st.setInt(counter, stationSearchCriteria.getId());
+				counter++;
+			}
+
+			
+			ResultSet RS = st.executeQuery();
+			while (RS.next()) {
+				Station s = new Station();
+				s.setid_station(RS.getInt(1)) ; 
+				s.setnom_station(RS.getString(2));
+				s.setlatitude(RS.getDouble(3));
+				s.setlongitude(RS.getDouble(4));
+				
+				
+				list.add(s);
+			}
+			
+			//Recherche par Nom
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+
+		return list;
+	} 
 	
 	
 	

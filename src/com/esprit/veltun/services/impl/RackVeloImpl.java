@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.List;
 
 import com.esprit.veltun.model.RackVelo;
-import com.esprit.veltun.model.Station;
+import com.esprit.veltun.search.base.dto.SearchCriteria;
 import com.esprit.veltun.services.RackVeloService;
 import com.esprit.veltun.util.MyConnection;
 
@@ -96,5 +96,11 @@ public class RackVeloImpl implements RackVeloService{
 	            System.out.println(ex.getMessage());
 	            return false;
 	        }	}
+
+	@Override
+	public Collection<RackVelo> search(SearchCriteria<RackVelo> searchCriteria) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
