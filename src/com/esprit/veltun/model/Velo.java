@@ -3,7 +3,8 @@ package com.esprit.veltun.model;
 import com.esprit.veltun.model.base.BaseEntity;
 
 public class Velo extends BaseEntity {
-	 private String libellev,taillev,couleurv,fournisseur;
+	private int idf;
+	 private String libellev,taillev,couleurv;
 
 
 public Velo() {
@@ -15,22 +16,22 @@ public Velo() {
  * @param libellev
  * @param taillev
  * @param couleurv
- * @param fournisseur
+ * @param idf
  */
-public Velo(Integer id, String libellev, String taillev, String couleurv, String fournisseur) {
+public Velo(Integer id, String libellev, String taillev, String couleurv, Integer idf) {
 	this.setId(id);
     this.libellev = libellev;
     this.taillev = taillev;
     this.couleurv = couleurv;
-    this.fournisseur = fournisseur;
+    this.idf = idf;
 
 }
 
-public Velo(String libellev, String taillev, String couleurv, String fournisseur) {
+public Velo(String libellev, String taillev, String couleurv, Integer idf) {
     this.libellev = libellev;
     this.taillev = taillev;
     this.couleurv = couleurv;
-    this.fournisseur = fournisseur;
+    this.idf = idf;
 
 }
 
@@ -58,17 +59,17 @@ public void setTaille(String taillev) {
 public void setCouleur(String couleurv) {
     this.couleurv = couleurv;
 }
- public String getFournisseur() {
-    return fournisseur;
+ public Integer getIdf() {
+    return idf;
 }
 
-public void setFournisseur(String fournisseur) {
-    this.fournisseur = fournisseur;
+public void setIdf(Integer idf) {
+    this.idf = idf;
 }
 
 @Override
 public String toString() {
-    return "Velo{" + "**id=" + getId() + ", **ibelle=" + libellev + ", **taille=" + taillev + ", **couleur=" + couleurv + ", **fournisseur=" + fournisseur + '}';
+    return "Velo{" + "**id=" + getId() + ", **ibelle=" + libellev + ", **taille=" + taillev + ", **couleur=" + couleurv + ", **idf=" + idf + '}';
 }
 
 

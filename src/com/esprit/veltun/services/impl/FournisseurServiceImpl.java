@@ -55,7 +55,7 @@ public class FournisseurServiceImpl implements FournisseurService {
 	public boolean remove(Integer id) {
 		try {
 			Connection conn = MyConnection.getInstance();
-			String req = "DELETE FROM `fournisseur` WHERE id = " + id;
+			String req = "DELETE FROM `fournisseur` WHERE idf = " + id;
 			Statement st = conn.createStatement();
 			st.executeUpdate(req);
 			System.out.println("fournisseur deleted !");
@@ -139,10 +139,10 @@ public class FournisseurServiceImpl implements FournisseurService {
 			
 			if (fournisseurSearchCriteria.getId() != null) {
 				if (!whereBuilder.toString().isEmpty()) {
-					whereBuilder.append(" AND id=?");
+					whereBuilder.append(" AND idf=?");
 
 				} else {
-					whereBuilder.append(" WHERE id=?");
+					whereBuilder.append(" WHERE idf=?");
 				}
 			}
 			

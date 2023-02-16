@@ -47,14 +47,14 @@ public class PiDevJDBC {
 ///////////////////////////////////////////////////////////////////////////////
     	//  MyConnection conn = MyConnection.getInstance();
     	//VeloServiceImpl vel = new VeloServiceImpl();
-    	// Velo v9= new Velo("mms","1m","vert","tla");
+    	 //Velo v9= new Velo("mms","1m","vert",2);
     	
     	
     	//VeloSearchCriteria searchCriteria = new VeloSearchCriteria();
     	
  
       
-       //System.out.println( vel.findById(2).toString()); /*find by id*/
+       //System.out.println( vel.findById(1).toString()); /*find by id*/
         //vel.update(v9); /*modifier*/
     	//vel.save(v9); /*ajouter*/
     	//vel.remove(3);

@@ -23,15 +23,16 @@ public class VeloServiceImpl implements VeloService{
 
 			 try {
 				 Connection conn = MyConnection.getInstance();
-		            String req = "INSERT INTO velo (libellev, taillev, couleurv, fournisseur) VALUES (?,?,?,?)";
+		            String req = "INSERT INTO velo (libellev, taillev, couleurv, idf) VALUES (?,?,?,?)";
 		            PreparedStatement ps=conn.prepareStatement(req);
 		          
 		            ps.setString(1, v.getLibelle());
 		            ps.setString(2, v.getTaille());
 		            ps.setString(3, v.getCouleur());
-		            ps.setString(4, v.getFournisseur());
+		            ps.setInt (4, v.getIdf());
 
-		             ps.executeUpdate();
+		            Integer id = ps.executeUpdate();
+					v.setId(id);
 		            System.out.println("velo ajouté!!!");
 		        }catch (SQLException ex) {
 					ex.printStackTrace();
@@ -43,7 +44,7 @@ public class VeloServiceImpl implements VeloService{
 		public Velo update(Velo v) {
 			  try {
 					 Connection conn = MyConnection.getInstance();
-		            String req = "UPDATE velo SET libellev = '" + v.getLibelle() + ", taillev = " + v.getTaille() + ", couleurv = " + v.getCouleur() + ", fournisseur = " + v.getFournisseur() + "' WHERE velo.id = " + v.getId();
+		            String req = "UPDATE velo SET libellev = '" + v.getLibelle() + ", taillev = " + v.getTaille() + ", couleurv = " + v.getCouleur() + ", idf = " + v.getIdf() + "' WHERE velo.id = " + v.getId();
 		            Statement st = conn.createStatement();
 		            st.executeUpdate(req);
 		            System.out.println("velo updated !");
@@ -84,7 +85,7 @@ public class VeloServiceImpl implements VeloService{
 		             v.setId(RS.getInt(1));
 		             v.setTaille(RS.getString(3));
 		             v.setCouleur(RS.getString(4));
-		             v.setFournisseur(RS.getString(5));
+		             v.setIdf(RS.getInt(5));
 		             list.add(v);
 				}
 			} catch (SQLException ex) {
@@ -109,7 +110,7 @@ public class VeloServiceImpl implements VeloService{
 		             v.setId(RS.getInt(1));
 		             v.setTaille(RS.getString(3));
 		             v.setCouleur(RS.getString(4));
-		             v.setFournisseur(RS.getString(5));
+		             v.setIdf(RS.getInt(5));
 					
 					System.out.println("velo founded");
 					return v;
@@ -197,10 +198,7 @@ public class VeloServiceImpl implements VeloService{
 					counter++;
 				}
 				
-				if (veloSearchCriteria.getFournisseur() != null) {
-					st.setString(counter, veloSearchCriteria.getFournisseur());
-					counter++;
-				}
+				
 
 				
 				ResultSet RS = st.executeQuery();
@@ -212,7 +210,7 @@ public class VeloServiceImpl implements VeloService{
 		             v.setId(RS.getInt(1));
 		             v.setTaille(RS.getString(3));
 		             v.setCouleur(RS.getString(4));
-		             v.setFournisseur(RS.getString(5));
+		             v.setIdf(RS.getInt(5));
 		             list.add(v);
 				}
 			} catch (SQLException ex) {
