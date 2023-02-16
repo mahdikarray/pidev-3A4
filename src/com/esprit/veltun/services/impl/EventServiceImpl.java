@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -22,17 +23,32 @@ public class EventServiceImpl implements EventService {
 	public Event findById(Integer id) {
 		try {
 			Connection conn = MyConnection.getInstance();
-			String req = "SELECT FROM `event` WHERE id = " + id;
+			String req = "SELECT `event`.`id`, `event`.`titre`, "
+					+ "`event`.`description`, `event`.`dateDebut`, "
+					+ "`event`.`heure_debut`, `event`.`dateFin`, "
+					+ "`event`.`heure_fin`, `event`.`adresse_id`, "
+					+ "`adresse`.`rue`, `adresse`.`region`, "
+					+ "`adresse`.`longitude`, `adresse`.`latitude` "
+					+ "FROM `event` "
+					+ "LEFT JOIN `adresse` ON `adresse`.`id`= `event`.`adresse_id`"
+					+ "WHERE `event`.`id` = " + id;
 			Statement st = conn.createStatement();
 			ResultSet RS = st.executeQuery(req);
 			while (RS.next()) {
 				Event event = new Event();
 				event.setId(RS.getInt(1));
 				event.setTitre(RS.getString(2));
-				event.setDateDebut(RS.getDate(3));
-				event.setDateFin(RS.getDate(4));
+				event.setDescription(RS.getString(3));
+				event.setDateDebut(RS.getDate(4));
+				event.setHeureDebut(RS.getTime(5));
+				event.setDateFin(RS.getDate(6));
 				Adresse adresse = new Adresse();
-				adresse.setId(RS.getInt(5));
+				adresse.setId(RS.getInt(8));
+				adresse.setRue(RS.getString(9));
+				adresse.setRegion(RS.getString(10));
+				adresse.setLongitude(RS.getDouble(11));
+				adresse.setLatitude(RS.getDouble(12));
+				event.setAdresse(adresse);
 		
 				System.out.println("Event founded");
 				return event;
@@ -48,7 +64,8 @@ public class EventServiceImpl implements EventService {
 		List<Event> list = new ArrayList<>();
 		try {
 			Connection conn = MyConnection.getInstance();
-			String req = "Select * from event";
+			String req = "SELECT `event`.`id`, `event`.`titre`, `event`.`description`, `event`.`dateDebut`, `event`.`heure_debut`, `event`.`dateFin`, `event`.`heure_fin`, `event`.`adresse_id`, `adresse`.`rue`, `adresse`.`region`, `adresse`.`longitude`, `adresse`.`latitude` FROM `event` \r\n"
+					+ "LEFT JOIN `adresse` ON `adresse`.`id`= `event`.`adresse_id`";
 			Statement st = conn.createStatement();
 
 			ResultSet RS = st.executeQuery(req);
@@ -56,10 +73,18 @@ public class EventServiceImpl implements EventService {
 				Event event = new Event();
 				event.setId(RS.getInt(1));
 				event.setTitre(RS.getString(2));
-				event.setDateDebut(RS.getDate(3));
-				event.setDateFin(RS.getDate(4));
+				event.setDescription(RS.getString(3));
+				event.setDateDebut(RS.getDate(4));
+				event.setHeureDebut(RS.getTime(5));
+				event.setDateFin(RS.getDate(6));
+				event.setHeureFin(RS.getTime(7));
 				Adresse adresse = new Adresse();
-				adresse.setId(RS.getInt(5));
+				adresse.setId(RS.getInt(8));
+				adresse.setRue(RS.getString(9));
+				adresse.setRegion(RS.getString(10));
+				adresse.setLongitude(RS.getDouble(11));
+				adresse.setLatitude(RS.getDouble(12));
+				event.setAdresse(adresse);
 				list.add(event);
 			}
 		} catch (SQLException ex) {
@@ -73,14 +98,22 @@ public class EventServiceImpl implements EventService {
 
 		try {
 			Connection conn = MyConnection.getInstance();
-			String req = "INSERT INTO `event`( `titre`,`description`, `dateDebut`, `dateFin`,"
-					+ "	`adresse` ) VALUES (?,?,?,?,?))";
+			String req = "INSERT INTO `event`(`titre`, `description`, `dateDebut`, "
+					+ "`heure_debut`, `dateFin`, `heure_fin`, `adresse_id`)"
+					+ " VALUES (?,?,?,?,?,?,?)";
 			PreparedStatement pst = conn.prepareStatement(req);
 			pst.setString(1, event.getTitre());
 			pst.setString(2, event.getDescription());
 			pst.setDate(3, event.getDateDebut());
-			pst.setDate(4, event.getDateFin());
-			pst.setInt(5, event.getAdresse().getId());
+			pst.setTime(4, event.getHeureDebut());
+			pst.setDate(5, event.getDateFin());
+			pst.setTime(6, event.getHeureFin());
+			if (event.getAdresse() != null && event.getAdresse().getId() != null) {
+				pst.setInt(7, event.getAdresse().getId());
+			} else {
+				pst.setNull(7, Types.INTEGER);
+			}
+			pst.execute();
 			System.out.println("Event ajouté!!!");
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -92,18 +125,24 @@ public class EventServiceImpl implements EventService {
 	public Event update(Event event) {
 		try {
 			Connection conn = MyConnection.getInstance();
-			String req1 = "UPDATE `event` set `titre` =?, `description``=?,`dateDebut`=?,`dateFin`=?,`adresse`=?"
-					+ " WHERE id = ?";
+			String req1 = "UPDATE `event` SET `titre`=?,`description`=?,`dateDebut`=?,`heure_debut`=?,`dateFin`=?,`heure_fin`=?,`adresse_id`=? WHERE `id`=?";
 
 			PreparedStatement pst = conn.prepareStatement(req1);
 			pst.setString(1, event.getTitre());
 			pst.setString(2, event.getDescription());
 			pst.setDate(3, event.getDateDebut());
-			pst.setDate(4, event.getDateFin());
-			pst.setInt(5, event.getAdresse().getId());
-			pst.setInt(6, event.getId());
+			pst.setTime(4, event.getHeureDebut());
+			pst.setDate(5, event.getDateFin());
+			pst.setTime(6, event.getHeureFin());
+			if (event.getAdresse() != null && event.getAdresse().getId() != null) {
+				pst.setInt(7, event.getAdresse().getId());
+			} else {
+				pst.setNull(7, Types.INTEGER);
+			}
 
-			pst.executeUpdate(req1);
+			pst.setInt(8, event.getId());
+
+			pst.executeUpdate();
 			System.out.println("Event updated !");
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
@@ -133,7 +172,7 @@ public class EventServiceImpl implements EventService {
 			EventSearchCriteria eventSearchCriteria = (EventSearchCriteria) searchCriteria;
 			Connection conn = MyConnection.getInstance();
 
-			StringBuilder builder = new StringBuilder("Select * from event");
+			StringBuilder builder = new StringBuilder("SELECT * FROM `event`");
 			StringBuilder whereBuilder = new StringBuilder();
 
 			if (eventSearchCriteria.getId() != null) {
@@ -212,11 +251,14 @@ public class EventServiceImpl implements EventService {
 				Event event = new Event();
 				event.setId(RS.getInt(1));
 				event.setTitre(RS.getString(2));
-				event.setDateDebut(RS.getDate(3));
-				event.setDateFin(RS.getDate(4));
+				event.setDescription(RS.getString(3));
+				event.setDateDebut(RS.getDate(4));
+				event.setHeureDebut(RS.getTime(5));
+				event.setDateFin(RS.getDate(6));
+				event.setHeureFin(RS.getTime(7));
 
 				Adresse adresse = new Adresse();
-				adresse.setId(RS.getInt(5));
+				adresse.setId(RS.getInt(8));
 				event.setAdresse(adresse);
 
 				list.add(event);

@@ -1,6 +1,7 @@
 package com.esprit.veltun.model;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,9 @@ public class Event extends BaseEntity {
 	private String titre;
 	private String description;
 	private Date dateDebut;
+	private Time heureDebut;
 	private Date dateFin;
+	private Time heureFin;
 	private Adresse adresse;
 	private List<Adresse> adresses = new ArrayList<>();
 	private List<Invitation> invitations = new ArrayList<>();
@@ -18,14 +21,74 @@ public class Event extends BaseEntity {
 	public Event() {
 	}
 
-	public Event(Integer id, String Titre, String description, Date dateDébut, Date dateFin, Adresse adresse) {
-		this.setId(id);
-		;
-		this.titre = Titre;
+	public Event(String titre, String description, Date dateDebut, Time heureDebut, Date dateFin, Time heureFin,
+			Adresse adresse, List<Adresse> adresses) {
+		super();
+		this.titre = titre;
 		this.description = description;
 		this.dateDebut = dateDebut;
+		this.heureDebut = heureDebut;
 		this.dateFin = dateFin;
+		this.heureFin = heureFin;
 		this.adresse = adresse;
+		this.adresses = adresses;
+	}
+
+	public Event(String titre, String description, Date dateDebut, Time heureDebut, Date dateFin, Time heureFin,
+			Adresse adresse, List<Adresse> adresses, List<Invitation> invitations) {
+		super();
+		this.titre = titre;
+		this.description = description;
+		this.dateDebut = dateDebut;
+		this.heureDebut = heureDebut;
+		this.dateFin = dateFin;
+		this.heureFin = heureFin;
+		this.adresse = adresse;
+		this.adresses = adresses;
+		this.invitations = invitations;
+	}
+
+	public Event(Integer id, String titre, String description, Date dateDebut, Time heureDebut, Date dateFin,
+			Time heureFin, Adresse adresse, List<Adresse> adresses) {
+		super(id);
+		this.titre = titre;
+		this.description = description;
+		this.dateDebut = dateDebut;
+		this.heureDebut = heureDebut;
+		this.dateFin = dateFin;
+		this.heureFin = heureFin;
+		this.adresse = adresse;
+		this.adresses = adresses;
+	}
+
+	public Event(Integer id, String titre, String description, Date dateDebut, Time heureDebut, Date dateFin,
+			Time heureFin, Adresse adresse, List<Adresse> adresses, List<Invitation> invitations) {
+		super(id);
+		this.titre = titre;
+		this.description = description;
+		this.dateDebut = dateDebut;
+		this.heureDebut = heureDebut;
+		this.dateFin = dateFin;
+		this.heureFin = heureFin;
+		this.adresse = adresse;
+		this.adresses = adresses;
+		this.invitations = invitations;
+	}
+
+	public Time getHeureDebut() {
+		return heureDebut;
+	}
+
+	public void setHeureDebut(Time heureDebut) {
+		this.heureDebut = heureDebut;
+	}
+
+	public Time getHeureFin() {
+		return heureFin;
+	}
+
+	public void setHeureFin(Time heureFin) {
+		this.heureFin = heureFin;
 	}
 
 	public String getTitre() {
@@ -33,7 +96,7 @@ public class Event extends BaseEntity {
 	}
 
 	public void setTitre(String titre) {
-		this.titre  = titre;
+		this.titre = titre;
 	}
 
 	public String getDescription() {
@@ -86,8 +149,8 @@ public class Event extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Event [id=" + getId() + ", Titre=" + this.titre + ", description=" + description + ", dateDebut=" + dateDebut
-				+ ", dateFin=" + dateFin + ", adresse=" + adresse + "]";
+		return "Event [id=" + getId() + ", Titre=" + this.titre + ", description=" + description + ", dateDebut="
+				+ dateDebut + ", dateFin=" + dateFin + ", adresse=" + adresse + "]";
 	}
 
 }

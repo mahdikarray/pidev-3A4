@@ -21,7 +21,7 @@ public class AdresseServiceImpl implements AdresseService {
 	public Adresse findById(Integer id) {
 		try {
 			Connection conn = MyConnection.getInstance();
-			String req = "SELECT FROM `adresse` WHERE id = " + id;
+			String req = "SELECT * FROM `adresse` WHERE id = " + id;
 			Statement st = conn.createStatement();
 			ResultSet RS = st.executeQuery(req);
 			while (RS.next()) {
@@ -30,8 +30,9 @@ public class AdresseServiceImpl implements AdresseService {
 				adresse.setRue(RS.getString(2));
 				adresse.setRegion(RS.getString(3));
 				adresse.setLongitude(RS.getDouble(4));
-				adresse.setLatitude(RS.getDouble(4));
+				adresse.setLatitude(RS.getDouble(5));
 				System.out.println("Adresse founded");
+		
 				return adresse;
 			}
 		} catch (SQLException ex) {
@@ -54,7 +55,7 @@ public class AdresseServiceImpl implements AdresseService {
 				adresse.setRue(RS.getString(2));
 				adresse.setRegion(RS.getString(3));
 				adresse.setLongitude(RS.getDouble(4));
-				adresse.setLatitude(RS.getDouble(4));
+				adresse.setLatitude(RS.getDouble(5));
 				list.add(adresse);
 			}
 		} catch (SQLException ex) {
@@ -68,13 +69,14 @@ public class AdresseServiceImpl implements AdresseService {
 
 		try {
 			Connection conn = MyConnection.getInstance();
-			String req = "INSERT INTO `adresse`( `rue`, `region`, `longitude`, " + "`latitude` ) VALUES (?,?,?,?))";
+			String req = "INSERT INTO `adresse`( `rue`, `region`, `longitude`,`latitude` ) VALUES (?,?,?,?);";
 			PreparedStatement pst = conn.prepareStatement(req);
 			pst.setString(1, adresse.getRue());
 			pst.setString(2, adresse.getRegion());
 			pst.setDouble(3, adresse.getLongitude());
 			pst.setDouble(4, adresse.getLatitude());
 
+			pst.execute();
 			System.out.println("Adresse ajouté!!!");
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -125,36 +127,43 @@ public class AdresseServiceImpl implements AdresseService {
 			AdresseSearchCriteria adresseSearchCriteria = (AdresseSearchCriteria) searchCriteria;
 			Connection conn = MyConnection.getInstance();
 
-			StringBuilder builder = new StringBuilder("Select * from adresse");
+			StringBuilder builder = new StringBuilder("SELECT * FROM `adresse`");
 			StringBuilder whereBuilder = new StringBuilder();
 
 			if (adresseSearchCriteria.getId() != null) {
 				if (!whereBuilder.toString().isEmpty()) {
-					whereBuilder.append(" AND id=?");
+					whereBuilder.append(" AND `id`=?");
 				} else {
-					whereBuilder.append(" WHERE id=?");
+					whereBuilder.append(" WHERE `id`=?");
 				}
 			}
 
 			if (adresseSearchCriteria.getRue() != null) {
 				if (!whereBuilder.toString().isEmpty()) {
-					whereBuilder.append(" AND rue=?");
+					whereBuilder.append(" AND `rue`=?");
 				} else {
-					whereBuilder.append(" WHERE rue=?");
+					whereBuilder.append(" WHERE `rue`=?");
 				}
 			}
 			if (adresseSearchCriteria.getRegion() != null) {
 				if (!whereBuilder.toString().isEmpty()) {
-					whereBuilder.append(" AND region=?");
+					whereBuilder.append(" AND `region`=?");
 				} else {
-					whereBuilder.append(" WHERE region=?");
+					whereBuilder.append(" WHERE `region`=?");
 				}
 			}
 			if (adresseSearchCriteria.getLongitude() != null) {
 				if (!whereBuilder.toString().isEmpty()) {
-					whereBuilder.append(" AND longitude=?");
+					whereBuilder.append(" AND `longitude`=?");
 				} else {
-					whereBuilder.append(" WHERE longitude=?");
+					whereBuilder.append(" WHERE `longitude`=?");
+				}
+			}
+			if (adresseSearchCriteria.getLatitude() != null) {
+				if (!whereBuilder.toString().isEmpty()) {
+					whereBuilder.append(" AND `latitude`=?");
+				} else {
+					whereBuilder.append(" WHERE `latitude`=?");
 				}
 			}
 			builder.append(whereBuilder);
