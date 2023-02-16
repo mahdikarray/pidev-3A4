@@ -75,6 +75,23 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+
+	@Override
+	public boolean remove(String cin) {
+		try {
+			Connection conn = MyConnection.getInstance();
+			String req = "DELETE FROM `user` WHERE cin LIKE " + cin;
+			Statement st = conn.createStatement();
+			st.executeUpdate(req);
+			System.out.println("User deleted !");
+			return true;
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			return false;
+		}
+	}
+
+
 	@Override
 	public List<User> list() {
 		List<User> list = new ArrayList<>();
@@ -115,27 +132,78 @@ public class UserServiceImpl implements UserService {
 		List<User> list = new ArrayList<>();
 		try {
 			UserSearchCriteria userSearchCriteria = (UserSearchCriteria) searchCriteria;
-		    Connection conn = MyConnection.getInstance();
-		    Statement ste;
-			String req = "Select * from user";
+			Connection conn = MyConnection.getInstance();
+
 			StringBuilder builder = new StringBuilder("Select * from user");
 			StringBuilder whereBuilder = new StringBuilder();
-			
+
 			if (userSearchCriteria.getCin() != null && !userSearchCriteria.getCin().isEmpty()) {
 				if (!whereBuilder.toString().isEmpty()) {
-					whereBuilder.append(" AND cin=?");
+					whereBuilder.append(" AND cin = ?");
 
 				} else {
-					whereBuilder.append(" WHERE cin=?");
+					whereBuilder.append(" WHERE cin = ?");
 				}
 			}
-			
+
+			/*if (userSearchCriteria.getId() != null) {
+				if (!whereBuilder.toString().isEmpty()) {
+					whereBuilder.append(" AND id=?");
+
+				} else {
+					whereBuilder.append(" WHERE id=?");
+				}
+			}*/
+
+			if (userSearchCriteria.getNom() != null) {
+				if (!whereBuilder.toString().isEmpty()) {
+					whereBuilder.append(" AND nom = ?");
+
+				} else {
+					whereBuilder.append(" WHERE nom = ?");
+				}
+			}
+
+
+			if (userSearchCriteria.getPrenom() != null) {
+				if (!whereBuilder.toString().isEmpty()) {
+					whereBuilder.append(" AND prenom = ?");
+
+				} else {
+					whereBuilder.append(" WHERE prenom = ?");
+				}
+			}
 			builder.append(whereBuilder);
+
+
+
 			PreparedStatement st = conn.prepareStatement(builder.toString());
-			st.setString(1, userSearchCriteria.getCin());
-			ResultSet RS = st.executeQuery(req);
+			int counter = 1;
+			if (userSearchCriteria.getCin() != null && !userSearchCriteria.getCin().isEmpty()) {
+					st.setString(counter, userSearchCriteria.getCin());
+				counter++;
+			}
+
+/*
+			if (userSearchCriteria.getId() != null) {
+				st.setInt(counter,userSearchCriteria.getId());
+				counter++;
+			}
+*/
+			if (userSearchCriteria.getNom() != null) {
+				st.setString(counter, userSearchCriteria.getNom());
+				counter++;
+			}
+
+			if (userSearchCriteria.getPrenom() != null) {
+				st.setString(counter, userSearchCriteria.getPrenom());
+			}
+
+			ResultSet RS = st.executeQuery();
 			while (RS.next()) {
 				User u = new User();
+
+
 				u.setCIN(RS.getString(1));
 				u.setNom(RS.getString(2));
 				u.setPrenom(RS.getString(3));
@@ -143,6 +211,7 @@ public class UserServiceImpl implements UserService {
 				u.setType(RS.getString(5));
 				u.setCodePos(RS.getInt(6));
 				u.setEmail(RS.getString(7));
+
 				list.add(u);
 			}
 		} catch (SQLException ex) {
