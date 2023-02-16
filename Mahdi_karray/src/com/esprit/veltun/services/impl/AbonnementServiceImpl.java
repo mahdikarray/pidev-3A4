@@ -12,6 +12,8 @@ import java.util.List;
 import com.esprit.veltun.model.Abonnement;
 import com.esprit.veltun.services.AbonnementService;
 import com.esprit.veltun.util.MyConnection;
+import com.esprit.veltun.search.Base.SearchCriteria;
+import com.esprit.veltun.search.dto.AbonnementSearchCriteria;
 
 public class AbonnementServiceImpl implements AbonnementService {
 
@@ -38,7 +40,6 @@ public class AbonnementServiceImpl implements AbonnementService {
         }
         return null;
     }
-
     @Override
     public Collection<Abonnement> list() {
 
@@ -71,7 +72,7 @@ public class AbonnementServiceImpl implements AbonnementService {
     public Abonnement save(Abonnement a) {
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "INSERT INTO `abonnement` ( `Type_ab`,`Duree`,`Prix_ab`,`Id_offre`) VALUES (?,?,?,?)";
+            String req = "INSERT INTO `abonnement` ( Type_ab,Duree,Prix_ab,Id_offre) VALUES (?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setInt(1, a.getId_ab());
             ps.setString(1, a.getType_ab());
@@ -95,7 +96,7 @@ public class AbonnementServiceImpl implements AbonnementService {
     public Abonnement update(Abonnement a) {
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "UPDATE `abonnement` SET `Type_ab` = '" + a.getType_ab() +"', `Duree` = '" + a.getDuree() +"', `Prix_ab` = '" + a.getPrix_ab() + "', `Id_offre` = '" + a.getId_offre() +"' WHERE `abonnement`.`Id_ab` = " + a.getId_ab();
+            String req = "UPDATE abonnement SET Type_ab = '" + a.getType_ab() +"', Duree = '" + a.getDuree() +"', Prix_ab = '" + a.getPrix_ab() + "', Id_offre = '" + a.getId_offre() +"' WHERE abonnement.Id_ab = " + a.getId_ab();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("abonnement updated !");
@@ -109,7 +110,7 @@ public class AbonnementServiceImpl implements AbonnementService {
     public boolean remove(Integer id) {
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "DELETE FROM `abonnement` WHERE Id_ab = " + id;
+            String req = "DELETE FROM abonnement WHERE Id_ab = " + id;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("abonnement deleted !");
@@ -120,5 +121,64 @@ public class AbonnementServiceImpl implements AbonnementService {
         }
 
     }
+    public Collection<Abonnement> search(SearchCriteria<Abonnement> searchCriteria) {
+        List<Abonnement> list = new ArrayList<>();
+        try {
+            AbonnementSearchCriteria abonnementSearchCriteria =  (AbonnementSearchCriteria) searchCriteria;
+            Connection conn = MyConnection.getInstance();
 
-}
+            StringBuilder builder = new StringBuilder("Select * from Abonnement");
+            StringBuilder whereBuilder = new StringBuilder();
+
+            if (abonnementSearchCriteria.getType_ab() != null && !abonnementSearchCriteria.getType_ab().isEmpty()) {
+                if (!whereBuilder.toString().isEmpty()) {
+                    whereBuilder.append(" AND Type_ab=?");
+
+                } else {
+                    whereBuilder.append(" WHERE Type_ab=?");
+                }
+            }
+
+            if (abonnementSearchCriteria.getId() != null) {
+                if (!whereBuilder.toString().isEmpty()) {
+                    whereBuilder.append(" AND id_ab=?");
+
+                } else {
+                    whereBuilder.append(" WHERE Id_ab=?");
+                }
+            }
+            builder.append(whereBuilder);
+
+
+
+            PreparedStatement st = conn.prepareStatement(builder.toString());
+            int counter = 1;
+            if (abonnementSearchCriteria.getType_ab() != null && !abonnementSearchCriteria.getType_ab().isEmpty()) {
+                st.setString(counter, abonnementSearchCriteria.getType_ab());
+                counter++;
+            }
+
+
+            if (abonnementSearchCriteria.getId() != null) {
+                st.setInt(counter,abonnementSearchCriteria.getId());
+                counter++;
+            }
+            ResultSet RS = st.executeQuery();
+            while (RS.next()) {
+                Abonnement v = new Abonnement();
+
+
+                v.setType_ab(RS.getString(2));
+                v.setId_ab(RS.getInt(1));
+                v.setDuree(RS.getInt(3));
+                v.setPrix_ab(RS.getFloat(4));
+                v.setId_offre(RS.getInt(5));
+                list.add(v);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+        }

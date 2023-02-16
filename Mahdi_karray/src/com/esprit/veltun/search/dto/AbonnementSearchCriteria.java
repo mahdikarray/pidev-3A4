@@ -6,8 +6,9 @@ import java.util.List;
 
 import com.esprit.veltun.model.Abonnement;
 import com.esprit.veltun.model.Offre;
+import com.esprit.veltun.search.Base.SearchCriteria;
 
-public class AbonnementSearchCriteria {
+public class AbonnementSearchCriteria extends SearchCriteria<Abonnement> {
     private int Id_ab;
     private float Prix_ab;
     private String Type_ab;

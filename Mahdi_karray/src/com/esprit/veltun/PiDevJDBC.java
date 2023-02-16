@@ -6,13 +6,16 @@
 package com.esprit.veltun;
 
 import java.sql.Connection;
+import java.util.Collection;
 
 //import com.esprit.veltun.model.RackVelo;
+import com.esprit.veltun.search.dto.AbonnementSearchCriteria;
 import com.esprit.veltun.services.impl.OffreServiceImpl;
 import com.esprit.veltun.services.impl.AbonnementServiceImpl;
 import com.esprit.veltun.util.MyConnection;
 import com.esprit.veltun.model.Offre;
 import com.esprit.veltun.model.Abonnement;
+
 
 
 public class PiDevJDBC {
@@ -27,10 +30,10 @@ public class PiDevJDBC {
 		//off.remove(19);
 //off.update(p1);
 		//System.out.println(off.findById(18));
-		System.out.println( off.list());
+		//System.out.println( off.list());
 		//////////////////////////////////////////////////
 		//CRUD ABONNEMENT
-		Abonnement b1=new Abonnement(11,"Premium",1,114.12f,19);
+		Abonnement b1=new Abonnement(11,"Standard",1,114.12f,18);
 		Abonnement b2=new Abonnement(8,"Premium",6,14.300f,18);
 		Abonnement b3=new Abonnement(8,"Premium",6,14.300f,18);
 		AbonnementServiceImpl abb =new AbonnementServiceImpl();
@@ -38,7 +41,11 @@ public class PiDevJDBC {
 		//abb.update(b1);
 		//abb.remove(10);
 		//System.out.println(abb.findById(7));
-		System.out.println( abb.list());
+		//System.out.println( abb.list());
+		AbonnementSearchCriteria searchCriteria = new AbonnementSearchCriteria();
+		searchCriteria.setType_ab("Standard");
+		Collection<Abonnement> result = abb.search(searchCriteria);
+		result.forEach(type->System.out.println(type));
 	    /////////////////////////////////////////////////////////
 		//	System.out.print("started");
 		//CRUD STATION

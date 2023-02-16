@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.esprit.veltun.model.Abonnement;
 import com.esprit.veltun.model.Offre;
+import com.esprit.veltun.search.Base.SearchCriteria;
 import com.esprit.veltun.services.OffreService;
 import com.esprit.veltun.util.MyConnection;
 
@@ -112,8 +113,11 @@ public class OffreServiceImpl implements OffreService {
 	        }
 
 	}
-	
-	
-	
+
+	@Override
+	public Collection<Offre> search(SearchCriteria<Offre> searchCriteria) {
+		return null;
+	}
+
 
 }

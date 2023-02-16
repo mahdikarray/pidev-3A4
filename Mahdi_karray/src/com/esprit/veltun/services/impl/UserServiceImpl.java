@@ -6,9 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import com.esprit.veltun.model.User;
+import com.esprit.veltun.search.Base.SearchCriteria;
 import com.esprit.veltun.services.UserService;
 import com.esprit.veltun.util.MyConnection;
 
@@ -70,6 +72,11 @@ public class UserServiceImpl implements UserService {
 			System.out.println(ex.getMessage());
 			return false;
 		}
+	}
+
+	@Override
+	public Collection<User> search(SearchCriteria<User> searchCriteria) {
+		return null;
 	}
 
 	@Override
