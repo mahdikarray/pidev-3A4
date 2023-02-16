@@ -65,7 +65,7 @@ public class InvitationSearchCriteria extends SearchCriteria<Invitation> {
 
 	@Override
 	public String toString() {
-		return "Invitation [id=" + id + ", reponse=" + reponse + ", dateInvitation=" + dateInvitation
+		return "Invitation [id=" + getId() + ", reponse=" + reponse + ", dateInvitation=" + dateInvitation
 				+ ", dateExpiration=" + dateExpiration + ", invitant=" + invitant + ", invité=" + invité + "]";
 	}
 
