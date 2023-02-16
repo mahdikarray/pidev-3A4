@@ -5,20 +5,6 @@
  */
 package com.esprit.veltun;
 
-//import com.esprit.veltun.model.User;
-import com.esprit.veltun.model.Velo;
-import com.esprit.veltun.util.MyConnection;
-import com.esprit.veltun.services.VeloService;
-import com.esprit.veltun.services.base.BaseService;
-import com.esprit.veltun.services.impl.FournisseurServiceImpl;
-import com.esprit.veltun.services.impl.VeloServiceImpl;
-import com.esprit.veltun.model.Fournisseur;
-import com.esprit.veltun.search.dto.FournisseurSearchCriteria;
-import com.esprit.veltun.search.dto.VeloSearchCriteria;
-import java.sql.Connection;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.Collection;
 /**
  *
  * @author Asus
@@ -47,25 +33,6 @@ public class PiDevJDBC {
     	//searchCriteria.setId(4);
         //Collection<Velo> result = vel.search(searchCriteria);
         //result.forEach(v->System.out.println(v));
+    }
 
-
-    	
-/////////////////////////////////////VELO//////////////////////////////////////////
-        //MyConnection conn = MyConnection.getInstance();
-    	//FournisseurServiceImpl four = new FournisseurServiceImpl();
-        //FournisseurSearchCriteria searchCriteria = new FournisseurSearchCriteria();
-    	
-        //Fournisseur f9= new Fournisseur("rym","jerjis");
-      
-        //System.out.println( four.findById(4).toString()); /*find by id*/
-        //four.update(f9); /*modifier*/
-    	//four.save(f9); /*ajouter*/
-    	//four.remove(3); /*supp*/
-        //System.out.println( four.list().toString()); /*afficher*/
-       
-    	//searchCriteria.setRegion("jerjis");
-        //Collection<Fournisseur> result = four.search(searchCriteria);
-        //result.forEach(f->System.out.println(f));
-       
-}
 }
