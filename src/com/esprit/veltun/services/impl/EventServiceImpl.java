@@ -101,7 +101,7 @@ public class EventServiceImpl implements EventService {
 			String req = "INSERT INTO `event`(`titre`, `description`, `dateDebut`, "
 					+ "`heure_debut`, `dateFin`, `heure_fin`, `adresse_id`)"
 					+ " VALUES (?,?,?,?,?,?,?)";
-			PreparedStatement pst = conn.prepareStatement(req);
+			PreparedStatement pst = conn.prepareStatement(req,Statement.RETURN_GENERATED_KEYS);
 			pst.setString(1, event.getTitre());
 			pst.setString(2, event.getDescription());
 			pst.setDate(3, event.getDateDebut());
@@ -114,6 +114,11 @@ public class EventServiceImpl implements EventService {
 				pst.setNull(7, Types.INTEGER);
 			}
 			pst.execute();
+			
+			ResultSet generatedKeys = pst.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                event.setId(generatedKeys.getInt(1));
+            }
 			System.out.println("Event ajouté!!!");
 		} catch (SQLException ex) {
 			ex.printStackTrace();

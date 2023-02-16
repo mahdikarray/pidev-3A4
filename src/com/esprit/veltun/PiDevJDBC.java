@@ -37,146 +37,133 @@ import java.util.Collection;
  */
 public class PiDevJDBC {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        Connection conn= MyConnection.getInstance();
-        String date="2001-08-07";
-        Date dn= Date.valueOf(LocalDate.parse(date));
-        // MyConnection conn = MyConnection.getInstance();
-       // User u1 = new User("88","Rezigui","Alaa",dn, "Admin",1000,"alaa.rezigui@esprit.tn");
-        UserServiceImpl us = new UserServiceImpl();
+	/**
+	 * @param args the command line arguments
+	 */
+	public static void main(String[] args) {
+		Connection conn = MyConnection.getInstance();
+		String date = "2001-08-07";
+		Date dn = Date.valueOf(LocalDate.parse(date));
+		// MyConnection conn = MyConnection.getInstance();
+		// User u1 = new User("88","Rezigui","Alaa",dn,
+		// "Admin",1000,"alaa.rezigui@esprit.tn");
+		UserServiceImpl us = new UserServiceImpl();
 
-        //us.save(u1);
+		// us.save(u1);
 
+		System.out.println(us.list().toString());
+		User u2 = new User("800", "Rezigui", "Alaa", dn, "Admin", 30, "alaa.rezigui@esprit.tn");
+		us.update(u2);
+		// System.out.println(us.list().toString());
+		// us.remove(u1.getCIN());
+		// System.out.println(us.list().toString());
 
-        System.out.println( us.list().toString());
-        User u2 = new User("800","Rezigui","Alaa",dn,"Admin",30,"alaa.rezigui@esprit.tn");
-        us.update(u2);
-        //System.out.println(us.list().toString());
-        //us.remove(u1.getCIN());
-        //System.out.println(us.list().toString());
+		testEvent();
+		// testInvitation();
 
-        //testEvent();
-        testInvitation();
-        
-        
-        
-        
-        
-        
-        
-    }
-    
-    
-    
-    
-    public static void testEvent() {
-    	EventService eventService = new EventServiceImpl();
-    	
-    	Collection<Event> events1 = eventService.list();
-    	Event event1 = eventService.findById(29);
-    	Event event = new Event();
-    	event.setTitre("tour de sud");
-    	event.setDescription("la sud de tunisie est djghhhhh");
-    	event.setDateDebut(Date.valueOf("2022-12-01"));
-    	event.setHeureDebut(Time.valueOf("16:00:00"));
-    	
-    	event.setDateFin(Date.valueOf("2022-12-01"));
-    	event.setHeureFin(Time.valueOf("17:15:00"));
-    	Adresse adresse = new Adresse();
-    	adresse.setId(3);
-    	event.setAdresse(adresse);
-    	eventService.save(event);
-    	Collection<Event> events = new ArrayList();
-    	EventSearchCriteria eventSearchCriteria = new EventSearchCriteria();
-    	//eventSearchCriteria.setTitre("ok");
-    	//eventSearchCriteria.setDescription("ok");
+	}
 
-    	eventSearchCriteria.setId(4);
-    	events = eventService.search(eventSearchCriteria);
-    	System.out.println(events);
-    	
-//    	eventService.remove(3);
+	public static void testEvent() {
+		EventService eventService = new EventServiceImpl();
+
+		Collection<Event> events2 = eventService.list();
+		Event event2 = eventService.findById(29);
+		Event event1 = new Event();
+		event1.setId(45);
+		event1.setTitre("tour de hoa nnn");
+		event1.setDescription("la dd est ...");
+		event1.setDateDebut(Date.valueOf("2001-12-01"));
+		event1.setHeureDebut(Time.valueOf("17:00:00"));
+
+		event1.setDateFin(Date.valueOf("2026-12-01"));
+		event1.setHeureFin(Time.valueOf("18:15:00"));
+		// Adresse adresse = new Adresse();
+		//adresse.setId(1);
+		// event.setAdresse(adresse);
+		// eventService.save(event1);
+		 //eventService.update(event1);
+		 //Event a = eventService.findById(44);
+	    // eventService.remove(45);
+
+		 
+		//Collection<Event> events = new ArrayList();
+		//EventSearchCriteria eventSearchCriteria = new EventSearchCriteria();
+		// eventSearchCriteria.setTitre("tour de hoa");
+		
+    	//eventService.remove(45);
 //
-//    	events = eventService.search(eventSearchCriteria);
-//    	System.out.println(events);
-    }
-    
-    public static void testAdresse() {
-    	//AdresseService adresseService = new AdresseServiceImpl();
-    	
-    	//Adresse adresse = new Adresse();
-    	//adresse.setId(2);
-    	//adresse.setLatitude(557425d);
-    	//adresse.setLongitude(582552d);
-    	//adresse.setRegion("tunis");
-    	//adresse.setRue("taieb mhiri");
-    	//adresseService.save(adresse);
-    	//adresseService.update(adresse);    	
-    	
-    	//adresseService.remove(2);
-    	//Adresse a = adresseService.findById(3);
+        //  events = eventService.search(eventSearchCriteria);
+    	//System.out.println(events);
+	}
 
-    	//System.out.println(a);
-    	//AdresseSearchCriteria searchCriteria = new AdresseSearchCriteria(); 
-    	//searchCriteria.setLatitude(557425d);
-    	
-    //	searchCriteria.setRue("taieb mhiri");
-    	
-    	//Collection<Adresse> result = adresseService.search(searchCriteria);
-    //	result.forEach(adr->System.out.println(adr));
+	// public static void testAdresse() {
+	// AdresseService adresseService = new AdresseServiceImpl();
 
+	// Adresse adresse = new Adresse();
+	// adresse.setId(2);
+	// adresse.setLatitude(557425d);
+	// adresse.setLongitude(582552d);
+	// adresse.setRegion("tunis");
+	// adresse.setRue("taieb mhiri");
+	// adresseService.save(adresse);
+	// adresseService.update(adresse);
 
-    	//adresseService.update(adresse);    	
-    	
-    	//adresseService.remove(2);
-    	//Adresse a = adresseService.findById(3);
+	// adresseService.remove(2);
+	// Adresse a = adresseService.findById(3);
 
-    	//System.out.println(a);
-    	//AdresseSearchCriteria searchCriteria = new AdresseSearchCriteria(); 
-    	//searchCriteria.setLatitude(557425d);
-    	
-    	//searchCriteria.setRue("taieb mhiri");
-    	
-    	//Collection<Adresse> result = adresseService.search(searchCriteria);
-    //	result.forEach(adr->System.out.println(adr));
-    	
-    }
-    
-    
-    
-    public static void testInvitation() {
-    	InvitationService inviService = new InvitationServiceImpl();
-    	
-    	Invitation i = inviService.findById(6);
-    	Collection<Invitation> is = inviService.list();
-    	
-    	Invitation invi = new Invitation();
-    	invi.setId(4);
-    	invi.setReponse(Response.OUI);
-    	invi.setDateInvitation(Date.valueOf("2025-12-01"));
-    	invi.setDateExpiration(Date.valueOf("2023-12-01"));
-    	
-    	//User invite = new User();
-    //	invite.setId(3);
-    	//User invitant = new User();
-    	//invitant.setId(4);
-      
-    	//inviService.save(invi);
+	// System.out.println(a);
+	// AdresseSearchCriteria searchCriteria = new AdresseSearchCriteria();
+	// searchCriteria.setLatitude(557425d);
 
-        inviService.update(invi); 
-    	Collection<Invitation> invitations = new ArrayList();
-    	InvitationSearchCriteria invitationSearchCriteria = new InvitationSearchCriteria();
-    	//invitationSearchCriteria.setDateInvitation(Date.valueOf("2028-12-31"));
-    	invitationSearchCriteria.setReponse(Response.OUI);
-    	System.out.println(invitations);
-    	
-    	invitations= inviService.search(invitationSearchCriteria);
-    	System.out.println(invitations);
-    }
-    //    inviService.update(invi); 
-    
-    
+	// searchCriteria.setRue("taieb mhiri");
+
+	// Collection<Adresse> result = adresseService.search(searchCriteria);
+	// result.forEach(adr->System.out.println(adr));
+
+	// adresseService.update(adresse);
+
+	// adresseService.remove(2);
+	// Adresse a = adresseService.findById(3);
+
+	// System.out.println(a);
+	// AdresseSearchCriteria searchCriteria = new AdresseSearchCriteria();
+	// searchCriteria.setLatitude(557425d);
+
+	// searchCriteria.setRue("taieb mhiri");
+
+	// Collection<Adresse> result = adresseService.search(searchCriteria);
+	// result.forEach(adr->System.out.println(adr));
+
+	// }
+
+	// public static void testInvitation() {
+	// InvitationService inviService = new InvitationServiceImpl();
+
+	// Invitation i = inviService.findById(6);
+	// Collection<Invitation> is = inviService.list();
+
+	// Invitation invi = new Invitation();
+	// invi.setId(4);
+	// invi.setReponse(Response.OUI);
+	// invi.setDateInvitation(Date.valueOf("2025-12-01"));
+	// invi.setDateExpiration(Date.valueOf("2023-12-01"));
+
+	// User invite = new User();
+	// invite.setId(3);
+	// User invitant = new User();
+	// invitant.setId(4);
+
+	// inviService.save(invi);
+
+	// inviService.update(invi);
+	// Collection<Invitation> invitations = new ArrayList();
+	// InvitationSearchCriteria invitationSearchCriteria = new
+	// InvitationSearchCriteria();
+	// invitationSearchCriteria.setDateInvitation(Date.valueOf("2028-12-31"));
+	// invitationSearchCriteria.setReponse(Response.OUI);
+	// System.out.println(invitations);
+
+	/// invitations= inviService.search(invitationSearchCriteria);
+	// System.out.println(invitations);
 }
+// inviService.update(invi);
