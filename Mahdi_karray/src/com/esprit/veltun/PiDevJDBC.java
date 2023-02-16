@@ -26,7 +26,7 @@ public class PiDevJDBC {
 		//off.save(p1);
 		//off.remove(19);
 //off.update(p1);
-		//off.findById(12);
+		//System.out.println(off.findById(18));
 		System.out.println( off.list());
 		//////////////////////////////////////////////////
 		//CRUD ABONNEMENT
