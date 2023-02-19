@@ -127,32 +127,17 @@ public class StationServiceImpl implements StationService {
 				}
 			}
 			
-			if (stationSearchCriteria.getId() != null) {
+			//Recherche par Nom_station 
+			if (stationSearchCriteria.getNom_station() != null) {
 				if (!whereBuilder.toString().isEmpty()) {
-					whereBuilder.append(" AND id=?");
+					whereBuilder.append(" AND nom_station=?");
 
 				} else {
-					whereBuilder.append(" WHERE id=?");
+					whereBuilder.append(" WHERE nom_station=?");
 				}
 			}
 			
-		/*	if (stationSearchCriteria.get_station() != 0 ) {
-				if (!whereBuilder.toString().isEmpty()) {
-					whereBuilder.append(" AND Id_station=?");
-
-				} else {
-					whereBuilder.append(" WHERE Id_station=?");
-				}
-			}
-			 */
-			if (stationSearchCriteria.getId() != null) {
-				if (!whereBuilder.toString().isEmpty()) {
-					whereBuilder.append(" AND id=?");
-
-				} else {
-					whereBuilder.append(" WHERE id=?");
-				}
-			}
+		
 			
 			builder.append(whereBuilder);
 			
@@ -166,8 +151,8 @@ public class StationServiceImpl implements StationService {
 			}
 
 			
-			if (stationSearchCriteria.getId() != null) {
-				st.setInt(counter, stationSearchCriteria.getId());
+			if (stationSearchCriteria.getNom_station() != null) {
+				st.setString(counter, stationSearchCriteria.getNom_station());
 				counter++;
 			}
 
@@ -184,7 +169,7 @@ public class StationServiceImpl implements StationService {
 				list.add(s);
 			}
 			
-			//Recherche par Nom
+		
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 		}

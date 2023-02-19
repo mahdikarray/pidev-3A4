@@ -27,7 +27,7 @@ public class RackVeloImpl implements RackVeloService{
 		try {
 		    Connection conn = MyConnection.getInstance();
 		    Statement ste;
-			String req = "Select * from rackvélo";
+			String req = "Select * from rackvelo";
 			Statement st = conn.createStatement();
 
 			ResultSet RS = st.executeQuery(req);
@@ -54,7 +54,7 @@ public class RackVeloImpl implements RackVeloService{
 	public RackVelo save(RackVelo rv) {
 		try {
 		    Connection conn = MyConnection.getInstance();
-			String req = "INSERT INTO `rackvélo`( `Réf_rack`,`Capacité`, `id_station`) VALUES (?,?,?)" ;
+			String req = "INSERT INTO `rackvelo`( `Ref_rack`,`Capacitee`, `id_station`) VALUES (?,?,?)" ;
 			PreparedStatement ps = conn.prepareStatement(req);
 			ps.setInt(1, rv.getRefRack());
 			ps.setInt(2, rv.getCapacite());
@@ -73,7 +73,7 @@ public class RackVeloImpl implements RackVeloService{
 	public RackVelo update(RackVelo rv) {
 		try {
 		    Connection conn = MyConnection.getInstance();
-            String req = "UPDATE `rackvélo` SET `Réf_rack` ='" + rv.getRefRack() +"', `Capacité` = '" + rv.getCapacite() + "', `Id_station`=  '" + rv.getId_station() + "' WHERE `rackvélo`.`Réf_rack`= " + rv.getRefRack() ; 
+            String req = "UPDATE `rackvelo` SET `Ref_rack` ='" + rv.getRefRack() +"', `Capacitee` = '" + rv.getCapacite() + "', `Id_station`=  '" + rv.getId_station() + "' WHERE `rackvélo`.`Ref_rack`= " + rv.getRefRack() ; 
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Station updated !");
@@ -87,7 +87,7 @@ public class RackVeloImpl implements RackVeloService{
 	public boolean remove(Integer refRack) {
 		 try {
 			 Connection conn = MyConnection.getInstance();
-	            String req = "DELETE FROM `rackvélo` WHERE Réf_rack = " + refRack;
+	            String req = "DELETE FROM `rackvelo` WHERE Ref_rack = " + refRack;
 	            Statement st = conn.createStatement();
 	            st.executeUpdate(req);
 	            System.out.println("Station deleted !");
