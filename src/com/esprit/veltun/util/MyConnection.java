@@ -14,7 +14,7 @@ import java.sql.*;
 public class MyConnection {
 
 	private static Connection instance;
-	private String url = "jdbc:mysql://localhost:3306/véltun";
+	private String url = "jdbc:mysql://localhost:3306/veltun";
 
 	private String user = "root";
 
