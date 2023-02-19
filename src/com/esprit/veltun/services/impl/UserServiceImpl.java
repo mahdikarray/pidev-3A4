@@ -91,6 +91,32 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	@Override
+	public User findByCin(String cin) {
+		User u=new User();
+		try {
+			Connection conn=MyConnection.getInstance();
+			String req = "SELECT * FROM `user` WHERE cin LIKE " + cin;
+			Statement st= conn.createStatement();
+			ResultSet RS = st.executeQuery(req);
+			while (RS.next()) {
+				u.setCIN(RS.getString(1));
+				u.setNom(RS.getString(2));
+				u.setPrenom(RS.getString(3));
+				u.setDateNaiss(RS.getDate(4));
+				u.setType(RS.getString(5));
+				u.setCodePos(RS.getInt(6));
+				u.setEmail(RS.getString(7));
+			}
+
+			return u;
+		}
+		catch (SQLException ex){
+			System.out.println(ex.getMessage());
+		}
+		return null;
+	}
+
 
 	@Override
 	public List<User> list() {
@@ -146,14 +172,7 @@ public class UserServiceImpl implements UserService {
 				}
 			}
 
-			/*if (userSearchCriteria.getId() != null) {
-				if (!whereBuilder.toString().isEmpty()) {
-					whereBuilder.append(" AND id=?");
 
-				} else {
-					whereBuilder.append(" WHERE id=?");
-				}
-			}*/
 
 			if (userSearchCriteria.getNom() != null) {
 				if (!whereBuilder.toString().isEmpty()) {
@@ -184,12 +203,6 @@ public class UserServiceImpl implements UserService {
 				counter++;
 			}
 
-/*
-			if (userSearchCriteria.getId() != null) {
-				st.setInt(counter,userSearchCriteria.getId());
-				counter++;
-			}
-*/
 			if (userSearchCriteria.getNom() != null) {
 				st.setString(counter, userSearchCriteria.getNom());
 				counter++;
