@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.GUI.offreController">
+   <children>
+      <Button fx:id="fxajouterOff" layoutX="153.0" layoutY="309.0" mnemonicParsing="false" onAction="#addoffre" text="Ajouter" />
+      <Button fx:id="fxModifOff" layoutX="225.0" layoutY="309.0" mnemonicParsing="false" onAction="#updateOff" text="Modifer" />
+      <Button fx:id="fxDeleteOff" layoutX="300.0" layoutY="309.0" mnemonicParsing="false" onAction="#DelOff" text="Supprimer" />
+      <TextField fx:id="fxIdO" layoutX="180.0" layoutY="147.0" />
+      <TextField fx:id="fxPrixO" layoutX="180.0" layoutY="200.0" />
+      <Label layoutX="101.0" layoutY="151.0" text="Id offre" />
+      <Label layoutX="101.0" layoutY="204.0" text="Prix offre" />
+   </children>
+</AnchorPane>
