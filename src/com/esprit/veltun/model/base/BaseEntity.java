@@ -1,3 +1,8 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
 package com.esprit.veltun.model.base;
 
 public abstract class BaseEntity {
@@ -11,7 +16,7 @@ public abstract class BaseEntity {
 	}
 
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {

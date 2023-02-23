@@ -1,48 +1,55 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
 package com.esprit.veltun.search.dto;
 
 import com.esprit.veltun.model.Velo;
-
 import com.esprit.veltun.search.base.dto.SearchCriteria;
 
 public class VeloSearchCriteria extends SearchCriteria<Velo> {
-	private String libellev,taillev,couleurv;
-	private int idf;
+    private String libellev;
+    private String taillev;
+    private String couleurv;
+    private int idf;
 
+    public VeloSearchCriteria() {
+    }
 
-	
+    public String getLibelle() {
+        return this.libellev;
+    }
 
-	public String getLibelle() {
-	    return libellev;
-	}
+    public void setLibelle(String libellev) {
+        this.libellev = libellev;
+    }
 
-	public void setLibelle(String libellev) {
-	    this.libellev = libellev;
-	}
+    public String getTaille() {
+        return this.taillev;
+    }
 
-	public String getTaille() {
-	    return taillev;
-	}
+    public void setTaille(String taillev) {
+        this.taillev = taillev;
+    }
 
-	public void setTaille(String taillev) {
-	    this.taillev = taillev;
-	}
-	 public String getCouleur() {
-	    return couleurv;
-	}
+    public String getCouleur() {
+        return this.couleurv;
+    }
 
-	public void setCouleur(String couleurv) {
-	    this.couleurv = couleurv;
-	}
-	 public Integer getIdf() {
-	    return idf;
-	}
+    public void setCouleur(String couleurv) {
+        this.couleurv = couleurv;
+    }
 
-	public void setIdf(Integer idf) {
-	    this.idf = idf;
-	}
+    public Integer getIdf() {
+        return this.idf;
+    }
 
-	@Override
-	public String toString() {
-	    return "Velo{" + "**id=" + getId() + ", **ibelle=" + libellev + ", **taille=" + taillev + ", **couleur=" + couleurv + ", **idf=" + idf + '}';
-	}
+    public void setIdf(Integer idf) {
+        this.idf = idf;
+    }
+
+    public String toString() {
+        return "Velo{**id=" + this.getId() + ", **ibelle=" + this.libellev + ", **taille=" + this.taillev + ", **couleur=" + this.couleurv + ", **idf=" + this.idf + '}';
+    }
 }
