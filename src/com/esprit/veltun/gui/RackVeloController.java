@@ -1,18 +1,15 @@
 package com.esprit.veltun.gui;
 
-import com.esprit.veltun.model.RackVelo;
 import com.esprit.veltun.services.impl.RackVeloImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,31 +34,17 @@ public class RackVeloController implements Initializable {
     int capacite ;
     @FXML
     private void addrackvelo(ActionEvent event) {
-        String refer= RVrefrackFX.getText();
-        String idS= RVcapaciteFX.getText();
-        String cap= RVidstationFX.getText();
 
-        if (refer.isEmpty() || idS.isEmpty() || cap.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Please fill all the form .");
-            alert.showAndWait();
-            return;
+       // int reference = Integer.parseInt( RVrefrackFX.getText());
+        try {
+           capacite = Integer.parseInt(RVcapaciteFX.getText());
         }
-
-        if(refer.matches("[a-zA-Z ]+") || cap.matches("[a-zA-Z ]+") || idS.matches("[a-zA-Z ]+")  ) {
-            // Si le nom contient autre chose que des lettres et des espaces, afficher un message d'erreur
-            Alert alert = new Alert(Alert.AlertType.ERROR,"Please enter numbers");
-            alert.showAndWait();
-            return;
+        catch(NumberFormatException e){
+           myLabel.setText("Please enter a number ! ");
         }
-
-
-
-
-
-
+        catch(Exception e){
+            System.out.print(e);
+        }
         int id_station  = Integer.parseInt(RVidstationFX.getText());
         int ref  = Integer.parseInt(RVrefrackFX.getText());
         int capacite  = Integer.parseInt(RVcapaciteFX.getText());

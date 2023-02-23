@@ -25,7 +25,7 @@ public class ControllerRackVelo extends Application {
             root= FXMLLoader.load(getClass().getResource("rackveloGUI.fxml"));
             Scene scene = new Scene(root);
 
-            primaryStage.setTitle("Manage your racks");
+            primaryStage.setTitle("Abonnement");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {

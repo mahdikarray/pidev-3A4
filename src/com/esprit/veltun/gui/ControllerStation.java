@@ -1,4 +1,4 @@
-package com.esprit.veltun.gui;
+package com.esprit.veltun.GUI;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +20,7 @@ public class ControllerStation extends Application {
             root= FXMLLoader.load(getClass().getResource("stationGUI.fxml"));
             Scene scene = new Scene(root);
 
-            primaryStage.setTitle("Manage your stations");
+            primaryStage.setTitle("Add a station");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {

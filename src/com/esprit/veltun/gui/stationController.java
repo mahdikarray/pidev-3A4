@@ -1,22 +1,17 @@
 package com.esprit.veltun.gui;
-import com.esprit.veltun.model.RackVelo;
 import com.esprit.veltun.model.Station;
-import com.esprit.veltun.services.impl.RackVeloImpl;
 import com.esprit.veltun.services.impl.StationServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import static java.lang.Double.parseDouble;
 
 public class stationController  implements Initializable {
     @FXML
@@ -73,33 +68,22 @@ public class stationController  implements Initializable {
     }
 
     @FXML
+
+    String nom_station ;
+    @FXML
      private void addstation(ActionEvent event) {
-        String idS= idstationFX.getText();
-        String lat= latitudeFX.getText();
-        String longi= longitudeFX.getText();
-        String nomS= nomstationFX.getText();
-
-        if (idS.isEmpty() || lat.isEmpty() || longi.isEmpty() || nomS.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Please fill all the form .");
-            alert.showAndWait();
-            return;
+        try {
+           nom_station =String.join(nomstationFX1.getText());
         }
-
-        if(nomS.equals("[a-zA-Z ]+") ) {
-            // Si le nom contient autre chose que des lettres et des espaces, afficher un message d'erreur
-            Alert alert = new Alert(Alert.AlertType.ERROR,"Please enter numbers");
-            alert.showAndWait();
-            return;
+        catch(NumberFormatException nfe){
+            myLabel.setText("Please enter a name !");
         }
-
-
-    String nom_station= String.valueOf(nomstationFX1.getText());
-    Double longitude= parseDouble(longitudeFX.getText());
-    Double latitude= parseDouble(latitudeFX.getText());
-
+        catch(Exception e){
+            myLabel.setText("Error");
+        }
+        String nom_station= String.valueOf(nomstationFX1.getText());
+        Double longitude  = Double.parseDouble(longitudeFX1.getText());
+        Double latitude  = Double.parseDouble(latitudeFX1.getText());
 
         Station s = new Station(nom_station,longitude,latitude);
         StationServiceImpl ss = new StationServiceImpl();
@@ -123,7 +107,7 @@ public class stationController  implements Initializable {
     @FXML
     private void updatestation(ActionEvent event) {
         try {
-            String nom_station =String.join(nomstationFX11.getText());
+            nom_station =String.join(nomstationFX11.getText());
         }
         catch(NumberFormatException nfe){
             myLabel.setText("Please enter a name !");
@@ -133,8 +117,8 @@ public class stationController  implements Initializable {
         }
         int idstation=Integer.parseInt(idstationFX11.getText());
         String nom_station = String.valueOf(nomstationFX11.getText());
-        Double longitude  = parseDouble(longitudeFX11.getText());
-        Double latitude  = parseDouble(latitudeFX11.getText());
+        Double longitude  = Double.parseDouble(longitudeFX11.getText());
+        Double latitude  = Double.parseDouble(latitudeFX11.getText());
 
         Station s = new Station(idstation,nom_station,longitude,latitude);
         StationServiceImpl ss = new StationServiceImpl();
@@ -157,9 +141,16 @@ public class stationController  implements Initializable {
     }
     @FXML
     private void deletstat(ActionEvent event) {
-
-            String nom_station =String.join(nomstationFX11.getText());
-            int idstation=Integer.parseInt(idstationFX12.getText());
+        try {
+            nom_station =String.join(nomstationFX11.getText());
+        }
+        catch(NumberFormatException nfe){
+            myLabel.setText("Please enter a name !");
+        }
+        catch(Exception e){
+            myLabel.setText("Error");
+        }
+        int idstation=Integer.parseInt(idstationFX12.getText());
        // String nom_station = String.valueOf(nomstationFX.getText());
        // Double longitude  = Double.parseDouble(longitudeFX.getText());
         //Double latitude  = Double.parseDouble(latitudeFX.getText());
@@ -183,5 +174,25 @@ public class stationController  implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
+    /*private void deletestation(ActionEvent event) {
 
+        int id_station = Integer.parseInt(idstationFX.getText());
+        StationServiceImpl ss = new StationServiceImpl();
+        ss.remove();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("stationGUI.fxml"));
+        try {
+            Parent root = loader.load();
+            stationController sc = loader.getController();
+            sc.setIdstationFX(sc.getIdstationFX());
+            sc.setNomstationFX(sc.getNomstationFX());
+            sc.setLatitudeFX(sc.getLatitudeFX());
+            sc.setLongitudeFX(sc.getLongitudeFX());
+
+            idstationFX.getScene().setRoot(root);
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }*/
 }
