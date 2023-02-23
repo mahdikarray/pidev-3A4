@@ -16,11 +16,22 @@ import com.esprit.veltun.model.Invitation;
 import com.esprit.veltun.model.User;
 import com.esprit.veltun.search.base.dto.SearchCriteria;
 import com.esprit.veltun.search.dto.InvitationSearchCriteria;
+import com.esprit.veltun.services.EventService;
 import com.esprit.veltun.services.InvitationService;
 import com.esprit.veltun.util.MyConnection;
 
 public class InvitationServiceImpl implements InvitationService {
 
+
+	private static InvitationService instance;
+
+	private InvitationServiceImpl() {}
+	public static synchronized InvitationService getInstance() {
+		if (instance == null) {
+			InvitationServiceImpl.instance = new InvitationServiceImpl();
+		}
+		return InvitationServiceImpl.instance;
+	}
 	@Override
 	public Invitation findById(Integer id) {
 		try {
@@ -47,11 +58,11 @@ public class InvitationServiceImpl implements InvitationService {
 				invi.setDateInvitation(RS.getDate(3));
 				invi.setDateExpiration(RS.getDate(4));
 				User invitant = new User();
-				invitant.setId(RS.getInt(5));
+				invitant.setCIN(RS.getString(5));
 				invi.setInvitant(invitant);
 				User invite = new User();
-				invite.setId(RS.getInt(6));
-				invi.setInvité(invite);
+				invite.setCIN(RS.getString(6));
+				invi.setInvite(invite);
 				if (RS.getInt(7) > 0) {
 					Event event = new Event();
 					event.setId(RS.getInt(7));
@@ -98,11 +109,11 @@ public class InvitationServiceImpl implements InvitationService {
 				invi.setDateInvitation(RS.getDate(3));
 				invi.setDateExpiration(RS.getDate(4));
 				User invitant = new User();
-				invitant.setId(RS.getInt(5));
+				invitant.setCIN(RS.getString(5));
 				invi.setInvitant(invitant);
 				User invite = new User();
-				invite.setId(RS.getInt(6));
-				invi.setInvité(invite);
+				invite.setCIN(RS.getString(6));
+				invi.setInvite(invite);
 				if (RS.getInt(7) > 0) {
 					Event event = new Event();
 					event.setId(RS.getInt(7));
@@ -133,16 +144,20 @@ public class InvitationServiceImpl implements InvitationService {
 		    String req = "INSERT INTO `invitation`(`reponse`, `date_invitation`, `date_expiration`, `invitant_id`, `invite_id`,`evenement_id`) VALUES (?,?,?,?,?,?)";
 			
 		PreparedStatement pst = conn.prepareStatement(req,Statement.RETURN_GENERATED_KEYS);
-			pst.setString(1, invi.getReponse().name());
+			if (invi.getReponse() != null) {
+				pst.setString(1, invi.getReponse().name());
+			} else {
+				pst.setNull(1, Types.VARCHAR);
+			}
 			pst.setDate(2, invi.getDateInvitation());
 			pst.setDate(3, invi.getDateExpiration());
-			if (invi.getInvitant() != null && invi.getInvitant().getId() != null) {
-				pst.setInt(4, invi.getInvitant().getId());
+			if (invi.getInvitant() != null && invi.getInvitant().getCIN() != null) {
+				pst.setString(4, invi.getInvitant().getCIN());
 			} else {
 				pst.setNull(4, Types.INTEGER);
 			}
-			if (invi.getInvite() != null && invi.getInvite().getId() != null) {
-				pst.setInt(5, invi.getInvite().getId());
+			if (invi.getInvite() != null && invi.getInvite().getCIN() != null) {
+				pst.setString(5, invi.getInvite().getCIN());
 			} else {
 				pst.setNull(5, Types.INTEGER);
 			}
@@ -174,13 +189,13 @@ public class InvitationServiceImpl implements InvitationService {
 			pst.setString(1, invi.getReponse().name());
 			pst.setDate(2, invi.getDateInvitation());
 			pst.setDate(3, invi.getDateExpiration());
-			if (invi.getInvitant() != null && invi.getInvitant().getId() != null) {
-				pst.setInt(4, invi.getInvitant().getId());
+			if (invi.getInvitant() != null && invi.getInvitant().getCIN() != null) {
+				pst.setString(4, invi.getInvitant().getCIN());
 			} else {
 				pst.setNull(4, Types.INTEGER);
 			}
-			if (invi.getInvite() != null && invi.getInvite().getId() != null) {
-				pst.setInt(5, invi.getInvite().getId());
+			if (invi.getInvite() != null && invi.getInvite().getCIN() != null) {
+				pst.setString(5, invi.getInvite().getCIN());
 			} else {
 				pst.setNull(5, Types.INTEGER);
 			}
@@ -319,12 +334,12 @@ public class InvitationServiceImpl implements InvitationService {
 				invi.setDateExpiration(RS.getDate(4));
 
 				User invitant = new User();
-				invitant.setId(RS.getInt(5));
+				invitant.setCIN(RS.getString(5));
 				invi.setInvitant(invitant);
 
 				User invite = new User();
-				invite.setId(RS.getInt(6));
-				invi.setInvité(invite);
+				invite.setCIN(RS.getString(6));
+				invi.setInvite(invite);
 
 				Event evenement = new Event();
 				evenement.setId(RS.getInt(6));

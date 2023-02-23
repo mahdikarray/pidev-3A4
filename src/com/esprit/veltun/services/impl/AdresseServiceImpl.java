@@ -75,8 +75,8 @@ public class AdresseServiceImpl implements AdresseService {
 			
 			pst.setString(1, adresse.getRue());
 			pst.setString(2, adresse.getRegion());
-			pst.setDouble(3, adresse.getLongitude());
-			pst.setDouble(4, adresse.getLatitude());
+			pst.setDouble(3, adresse.getLongitude() != null ? adresse.getLongitude() : -1);
+			pst.setDouble(4, adresse.getLatitude() != null ? adresse.getLatitude() : -1);
 
 			pst.execute();
 			ResultSet generatedKeys = pst.getGeneratedKeys();

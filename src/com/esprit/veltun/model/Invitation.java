@@ -73,7 +73,7 @@ public class Invitation extends BaseEntity {
 		return invite;
 	}
 
-	public void setInvité(User invite) {
+	public void setInvite(User invite) {
 		this.invite = invite;
 	}
 

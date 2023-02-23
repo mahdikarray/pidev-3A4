@@ -14,10 +14,23 @@ import com.esprit.veltun.model.Adresse;
 import com.esprit.veltun.model.Event;
 import com.esprit.veltun.search.base.dto.SearchCriteria;
 import com.esprit.veltun.search.dto.EventSearchCriteria;
+import com.esprit.veltun.services.AdresseService;
 import com.esprit.veltun.services.EventService;
 import com.esprit.veltun.util.MyConnection;
 
 public class EventServiceImpl implements EventService {
+
+	private static EventService instance;
+
+	private EventServiceImpl() {
+	}
+
+	public static synchronized EventService getInstance() {
+		if (instance == null) {
+			EventServiceImpl.instance = new EventServiceImpl();
+		}
+		return EventServiceImpl.instance;
+	}
 
 	@Override
 	public Event findById(Integer id) {
@@ -64,7 +77,7 @@ public class EventServiceImpl implements EventService {
 		List<Event> list = new ArrayList<>();
 		try {
 			Connection conn = MyConnection.getInstance();
-			String req = "SELECT `event`.`id`, `event`.`titre`, `event`.`description`, `event`.`dateDebut`, `event`.`heure_debut`, `event`.`dateFin`, `event`.`heure_fin`, `event`.`adresse_id`, `adresse`.`rue`, `adresse`.`region`, `adresse`.`longitude`, `adresse`.`latitude` FROM `event` \r\n"
+			String req = "SELECT `event`.`id`, `event`.`titre`, `event`.`description`, `event`.`dateDebut`, `event`.`heure_debut`, `event`.`dateFin`, `event`.`heure_fin`, `event`.`adresse_id`, `adresse`.`rue`, `adresse`.`region`, `adresse`.`longitude`, `adresse`.`latitude` FROM `event` "
 					+ "LEFT JOIN `adresse` ON `adresse`.`id`= `event`.`adresse_id`";
 			Statement st = conn.createStatement();
 
@@ -97,6 +110,8 @@ public class EventServiceImpl implements EventService {
 	public Event save(Event event) {
 
 		try {
+			AdresseService adresseService = new AdresseServiceImpl();
+			event.setAdresse(adresseService.save(event.getAdresse()));
 			Connection conn = MyConnection.getInstance();
 			String req = "INSERT INTO `event`(`titre`, `description`, `dateDebut`, "
 					+ "`heure_debut`, `dateFin`, `heure_fin`, `adresse_id`)"
@@ -177,7 +192,11 @@ public class EventServiceImpl implements EventService {
 			EventSearchCriteria eventSearchCriteria = (EventSearchCriteria) searchCriteria;
 			Connection conn = MyConnection.getInstance();
 
-			StringBuilder builder = new StringBuilder("SELECT * FROM `event`");
+			StringBuilder builder = new StringBuilder("SELECT `event`.`id`, `event`.`titre`, " +
+					"`event`.`description`, `event`.`dateDebut`, `event`.`heure_debut`, `event`.`dateFin`," +
+					" `event`.`heure_fin`, `event`.`adresse_id`, `adresse`.`rue`, `adresse`.`region`," +
+					" `adresse`.`longitude`, `adresse`.`latitude` FROM `event`"
+					+ "LEFT JOIN `adresse` ON `adresse`.`id`= `event`.`adresse_id`");
 			StringBuilder whereBuilder = new StringBuilder();
 
 			if (eventSearchCriteria.getId() != null) {
@@ -261,11 +280,16 @@ public class EventServiceImpl implements EventService {
 				event.setHeureDebut(RS.getTime(5));
 				event.setDateFin(RS.getDate(6));
 				event.setHeureFin(RS.getTime(7));
-
-				Adresse adresse = new Adresse();
-				adresse.setId(RS.getInt(8));
-				event.setAdresse(adresse);
-
+				Integer adresseId = RS.getInt(8);
+				if (adresseId != null && adresseId>0) {
+					Adresse adresse = new Adresse();
+					adresse.setId(adresseId);
+					adresse.setRue(RS.getString(9));
+					adresse.setRegion(RS.getString(10));
+					adresse.setLongitude(RS.getDouble(11));
+					adresse.setLatitude(RS.getDouble(12));
+					event.setAdresse(adresse);
+				}
 				list.add(event);
 			}
 		} catch (SQLException ex) {

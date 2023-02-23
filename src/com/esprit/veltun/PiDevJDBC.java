@@ -5,31 +5,14 @@
  */
 package com.esprit.veltun;
 
-import com.esprit.veltun.enums.Response;
-import com.esprit.veltun.model.Adresse;
-import com.esprit.veltun.model.Event;
-import com.esprit.veltun.model.Invitation;
-import com.esprit.veltun.model.User;
-import com.esprit.veltun.search.base.dto.SearchCriteria;
-import com.esprit.veltun.search.dto.AdresseSearchCriteria;
-import com.esprit.veltun.search.dto.EventSearchCriteria;
-import com.esprit.veltun.search.dto.InvitationSearchCriteria;
-import com.esprit.veltun.util.MyConnection;
-import com.esprit.veltun.services.AdresseService;
-import com.esprit.veltun.services.EventService;
-import com.esprit.veltun.services.InvitationService;
-import com.esprit.veltun.services.impl.AdresseServiceImpl;
-import com.esprit.veltun.services.impl.EventServiceImpl;
-import com.esprit.veltun.services.impl.InvitationServiceImpl;
-import com.esprit.veltun.services.impl.UserServiceImpl;
-
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
+
+import com.esprit.veltun.model.Event;
+import com.esprit.veltun.services.EventService;
+import com.esprit.veltun.services.impl.EventServiceImpl;
+import com.esprit.veltun.util.MyConnection;
 
 /**
  *
@@ -37,26 +20,9 @@ import java.util.Collection;
  */
 public class PiDevJDBC {
 
-	/**
-	 * @param args the command line arguments
-	 */
+	
 	public static void main(String[] args) {
 		Connection conn = MyConnection.getInstance();
-		String date = "2001-08-07";
-		Date dn = Date.valueOf(LocalDate.parse(date));
-		// MyConnection conn = MyConnection.getInstance();
-		// User u1 = new User("88","Rezigui","Alaa",dn,
-		// "Admin",1000,"alaa.rezigui@esprit.tn");
-		UserServiceImpl us = new UserServiceImpl();
-
-		// us.save(u1);
-
-		System.out.println(us.list().toString());
-		User u2 = new User("800", "Rezigui", "Alaa", dn, "Admin", 30, "alaa.rezigui@esprit.tn");
-		us.update(u2);
-		// System.out.println(us.list().toString());
-		// us.remove(u1.getCIN());
-		// System.out.println(us.list().toString());
 
 		testEvent();
 		// testInvitation();
@@ -64,12 +30,10 @@ public class PiDevJDBC {
 	}
 
 	public static void testEvent() {
-		EventService eventService = new EventServiceImpl();
+		EventService eventService = EventServiceImpl.getInstance();
 
-		Collection<Event> events2 = eventService.list();
-		Event event2 = eventService.findById(29);
 		Event event1 = new Event();
-		event1.setId(45);
+		//event1.setId(45);
 		event1.setTitre("tour de hoa nnn");
 		event1.setDescription("la dd est ...");
 		event1.setDateDebut(Date.valueOf("2001-12-01"));
@@ -80,10 +44,10 @@ public class PiDevJDBC {
 		// Adresse adresse = new Adresse();
 		//adresse.setId(1);
 		// event.setAdresse(adresse);
-		// eventService.save(event1);
+		 eventService.save(event1);
 		 //eventService.update(event1);
 		 //Event a = eventService.findById(44);
-	    // eventService.remove(45);
+	    //eventService.remove(45);
 
 		 
 		//Collection<Event> events = new ArrayList();
@@ -93,7 +57,7 @@ public class PiDevJDBC {
     	//eventService.remove(45);
 //
         //  events = eventService.search(eventSearchCriteria);
-    	//System.out.println(events);
+    	System.out.println(event1);
 	}
 
 	// public static void testAdresse() {

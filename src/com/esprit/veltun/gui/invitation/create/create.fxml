@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #424242; -fx-border-color: #6babd6; -fx-border-width: 7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.invitation.create.InvitationCreateController">
+   <children>
+      <Button fx:id="tfaddinvit" defaultButton="true" layoutX="381.0" layoutY="345.0" mnemonicParsing="false" onAction="#addinvit" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #6babd6;" text="Envoyer" />
+      <Label layoutX="89.0" layoutY="56.0" text="Date d'invitation" textFill="#4fb5f8" />
+      <Label layoutX="89.0" layoutY="96.0" text="Date d'expiration" textFill="#4fb5f8" />
+      <Label layoutX="89.0" layoutY="136.0" text="Utilisateur invitant" textFill="#4fb5f8" />
+      <Label layoutX="89.0" layoutY="176.0" text="Utilisateur invité" textFill="#4fb5f8" />
+      <Label layoutX="87.0" layoutY="216.0" text="Evennement" textFill="#4fb5f8" />
+      <DatePicker fx:id="invitstartdate" layoutX="242.0" layoutY="52.0" prefHeight="25.0" prefWidth="271.0" promptText="Date d'envoi de l'invitation" />
+      <DatePicker fx:id="invitexpirationdate" layoutX="242.0" layoutY="92.0" prefHeight="25.0" prefWidth="271.0" promptText="Date d'expiration de l'invitation" />
+      <Button fx:id="cancelbutton" cancelButton="true" layoutX="243.0" layoutY="345.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #6babd6;" text="Annuler" />
+      <ComboBox fx:id="selectedinvitant" layoutX="242.0" layoutY="132.0" prefHeight="25.0" prefWidth="271.0" promptText="L'utilisateur qui envoi l'invitation" />
+      <ComboBox fx:id="selectedinvite" layoutX="242.0" layoutY="172.0" prefHeight="25.0" prefWidth="271.0" promptText="L'utilisateur qui recoi l'invitation" />
+      <ComboBox fx:id="selectedevent" layoutX="242.0" layoutY="212.0" prefHeight="25.0" prefWidth="271.0" promptText="L'évennement" />
+      <ImageView fitHeight="150.0" fitWidth="174.0" layoutX="14.0" layoutY="237.0">
+         <image>
+            <Image url="http://localhost/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+
+   </children>
+</AnchorPane>
