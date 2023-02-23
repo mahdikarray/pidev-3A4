@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="pane2" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.GUI.offreController">
+   <children>
+      <TabPane layoutX="-1.0" layoutY="-1.0" prefHeight="469.0" prefWidth="638.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Ajouter">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="fxajouterOff" layoutX="272.0" layoutY="239.0" mnemonicParsing="false" onAction="#addoffre" text="Ajouter" />
+                        <TextField fx:id="fxPrixO1" layoutX="225.0" layoutY="131.0" />
+                        <Label layoutX="144.0" layoutY="126.0" />
+                        <Label layoutX="120.0" layoutY="135.0" text="Prix offre" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Modifier">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="118.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="fxIdO" layoutX="225.0" layoutY="103.0" />
+                        <Label layoutX="149.0" layoutY="177.0" text="Prix offre" />
+                        <TextField fx:id="fxPrixO" layoutX="225.0" layoutY="173.0" />
+                        <Label layoutX="153.0" layoutY="107.0" text="Id offre" />
+                        <Button fx:id="fxModifOff" layoutX="270.0" layoutY="248.0" mnemonicParsing="false" onAction="#updateOff" text="Modifer" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Supprimer et afficher">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="235.0" prefWidth="314.0">
+                     <children>
+                        <Button fx:id="fxDeleteOff" layoutX="350.0" layoutY="279.0" mnemonicParsing="false" onAction="#DelOff" text="Supprimer" />
+                        <ListView fx:id="list" layoutX="200.0" layoutY="27.0" prefHeight="200.0" prefWidth="200.0" />
+                        <TextField fx:id="fxIdO1" layoutX="137.0" layoutY="279.0" />
+                        <Label layoutX="30.0" layoutY="283.0" text="Id Offre" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
