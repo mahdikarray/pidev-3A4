@@ -1,84 +1,85 @@
-package com.esprit.veltun.search.dto;
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
 
-import java.sql.Date;
+package com.esprit.veltun.search.dto;
 
 import com.esprit.veltun.enums.Response;
 import com.esprit.veltun.model.Event;
 import com.esprit.veltun.model.Invitation;
 import com.esprit.veltun.search.base.dto.SearchCriteria;
+import java.sql.Date;
 
 public class InvitationSearchCriteria extends SearchCriteria<Invitation> {
-	private Integer id;
-	private Response reponse;
-	private Date dateInvitation;
-	
-	
-	
-	public Integer getId() {
-		return id;
-	}
+    private Integer id;
+    private Response reponse;
+    private Date dateInvitation;
+    private Date dateExpiration;
+    private String invitant;
+    private String invité;
+    private Event evenement;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public InvitationSearchCriteria() {
+    }
 
-	private Date dateExpiration;
-	private String invitant;
-	private String invité;
-	private Event evenement;
+    public Integer getId() {
+        return this.id;
+    }
 
-	public Event getEvenement() {
-		return evenement;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setEvenement(Event evenement) {
-		this.evenement = evenement;
-	}
+    public Event getEvenement() {
+        return this.evenement;
+    }
 
-	public Response getReponse() {
-		return reponse;
-	}
+    public void setEvenement(Event evenement) {
+        this.evenement = evenement;
+    }
 
-	public void setReponse(Response reponse) {
-		this.reponse = reponse;
-	}
+    public Response getReponse() {
+        return this.reponse;
+    }
 
-	public Date getDateInvitation() {
-		return dateInvitation;
-	}
+    public void setReponse(Response reponse) {
+        this.reponse = reponse;
+    }
 
-	public void setDateInvitation(Date dateInvitation) {
-		this.dateInvitation = dateInvitation;
-	}
+    public Date getDateInvitation() {
+        return this.dateInvitation;
+    }
 
-	public Date getDateExpiration() {
-		return dateExpiration;
-	}
+    public void setDateInvitation(Date dateInvitation) {
+        this.dateInvitation = dateInvitation;
+    }
 
-	public void setDateExpiration(Date dateExpiration) {
-		this.dateExpiration = dateExpiration;
-	}
+    public Date getDateExpiration() {
+        return this.dateExpiration;
+    }
 
-	public String getInvitant() {
-		return invitant;
-	}
+    public void setDateExpiration(Date dateExpiration) {
+        this.dateExpiration = dateExpiration;
+    }
 
-	public void setInvitant(String invitant) {
-		this.invitant = invitant;
-	}
+    public String getInvitant() {
+        return this.invitant;
+    }
 
-	public String getInvité() {
-		return invité;
-	}
+    public void setInvitant(String invitant) {
+        this.invitant = invitant;
+    }
 
-	public void setInvité(String invité) {
-		this.invité = invité;
-	}
+    public String getInvité() {
+        return this.invité;
+    }
 
-	@Override
-	public String toString() {
-		return "Invitation [id=" + getId() + ", reponse=" + reponse + ", dateInvitation=" + dateInvitation
-				+ ", dateExpiration=" + dateExpiration + ", invitant=" + invitant + ", invité=" + invité + "]";
-	}
+    public void setInvité(String invité) {
+        this.invité = invité;
+    }
 
+    public String toString() {
+        return "Invitation [id=" + this.getId() + ", reponse=" + this.reponse + ", dateInvitation=" + this.dateInvitation + ", dateExpiration=" + this.dateExpiration + ", invitant=" + this.invitant + ", invité=" + this.invité + "]";
+    }
 }

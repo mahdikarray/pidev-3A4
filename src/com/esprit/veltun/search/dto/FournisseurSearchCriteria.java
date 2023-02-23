@@ -1,30 +1,33 @@
-package com.esprit.veltun.search.dto;
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
 
+package com.esprit.veltun.search.dto;
 
 import com.esprit.veltun.model.Fournisseur;
 import com.esprit.veltun.search.base.dto.SearchCriteria;
 
-
-
 public class FournisseurSearchCriteria extends SearchCriteria<Fournisseur> {
-	private String nomf,regionf;
+    private String nomf;
+    private String regionf;
 
-	public String getNom() {
-		return nomf;
-	}
+    public FournisseurSearchCriteria() {
+    }
 
-	public void setNom(String nomf) {
-		this.nomf = nomf;
-	}
-	
-	
+    public String getNom() {
+        return this.nomf;
+    }
 
-	public String getRegion() {
-		return regionf;
-	}
+    public void setNom(String nomf) {
+        this.nomf = nomf;
+    }
 
-	public void setRegion(String regionf) {
-		this.regionf = regionf;
-	}
-	
+    public String getRegion() {
+        return this.regionf;
+    }
+
+    public void setRegion(String regionf) {
+        this.regionf = regionf;
+    }
 }

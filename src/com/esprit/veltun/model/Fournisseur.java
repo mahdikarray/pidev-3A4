@@ -1,50 +1,44 @@
 
+
 package com.esprit.veltun.model;
+
 import com.esprit.veltun.model.base.BaseEntity;
 
+public class Fournisseur extends BaseEntity {
+    private String nomf;
+    private String regionf;
 
-public class  Fournisseur extends BaseEntity{
-	private String nomf,regionf;
+    public Fournisseur() {
+    }
 
-public Fournisseur() {
-}
+    public Fournisseur(Integer idf, String nomf, String regionf) {
+        this.setId(idf);
+        this.nomf = nomf;
+        this.regionf = regionf;
+    }
 
-//constructur parametre 
+    public Fournisseur(String nomf, String regionf) {
+        this.nomf = nomf;
+        this.regionf = regionf;
+    }
 
-public Fournisseur(Integer idf, String nomf, String regionf) {
-	this.setId(idf);
-    this.nomf = nomf;
-    this.regionf = regionf;
-}
+    public String getNom() {
+        return this.nomf;
+    }
 
-public Fournisseur(String nomf, String regionf) {
-    this.nomf = nomf;
-    this.regionf = regionf;
-}
+    public void setNom(String nomf) {
+        this.nomf = nomf;
+    }
 
+    public String getRegion() {
+        return this.regionf;
+    }
 
-public String getNom() {
-    return nomf;
-}
+    public void setRegion(String regionf) {
+        this.regionf = regionf;
+    }
 
-public void setNom(String nomf) {
-    this.nomf = nomf;
-}
-
-public String getRegion() {
-    return regionf;
-}
-
-public void setRegion(String regionf) {
-    this.regionf = regionf;
-}
-
-@Override
-public String toString() {
-    return "Fournisseur{" + "idf=" + getId() + ", nomf=" + nomf + ", regionf=" + regionf + '}';
-}
-
-
-
-
+    public String toString() {
+        return "Fournisseur{idf=" + this.getId() + ", nomf=" + this.nomf + ", regionf=" + this.regionf + '}';
+    }
 }
