@@ -37,7 +37,7 @@ public class EventSearchController implements Initializable {
                     if (empty || event == null) {
                         setText(null);
                     } else {
-                        setText(event.getTitre() + "\t\t" + event.getDescription() + "\t\t" + event.getDateDebut() + "\t\t" + event.getDateFin());
+                        setText(event.getDateDebut() + "\t\t" + event.getDateFin() + "\t\t" + event.getTitre());
                     }
                 }
             };

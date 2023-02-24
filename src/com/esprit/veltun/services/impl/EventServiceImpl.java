@@ -209,9 +209,9 @@ public class EventServiceImpl implements EventService {
 
 			if (eventSearchCriteria.getTitre() != null) {
 				if (!whereBuilder.toString().isEmpty()) {
-					whereBuilder.append(" AND titre=?");
+					whereBuilder.append(" AND titre like ?");
 				} else {
-					whereBuilder.append(" WHERE titre=?");
+					whereBuilder.append(" WHERE titre like ?");
 				}
 			}
 			if (eventSearchCriteria.getDescription() != null) {
@@ -254,7 +254,7 @@ public class EventServiceImpl implements EventService {
 			}
 
 			if (eventSearchCriteria.getTitre() != null) {
-				st.setString(counter, eventSearchCriteria.getTitre());
+				st.setString(counter, "%" + eventSearchCriteria.getTitre() + "%");
 				counter++;
 			}
 			if (eventSearchCriteria.getDateDebut() != null) {

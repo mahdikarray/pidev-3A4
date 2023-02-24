@@ -63,7 +63,7 @@ public class EventCreateController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("veuillez saisir un date de fin valide!!");
+            alert.setContentText("veuillez saisir une date de fin valide!!");
             alert.showAndWait();
             return;
         }
