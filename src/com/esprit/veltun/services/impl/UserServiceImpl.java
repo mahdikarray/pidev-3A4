@@ -165,7 +165,7 @@ public class UserServiceImpl implements UserService {
 
 			if (userSearchCriteria.getCin() != null && !userSearchCriteria.getCin().isEmpty()) {
 				if (!whereBuilder.toString().isEmpty()) {
-					whereBuilder.append(" AND cin = ?");
+					whereBuilder.append(" OR cin = ?");
 
 				} else {
 					whereBuilder.append(" WHERE cin = ?");
@@ -176,7 +176,7 @@ public class UserServiceImpl implements UserService {
 
 			if (userSearchCriteria.getNom() != null) {
 				if (!whereBuilder.toString().isEmpty()) {
-					whereBuilder.append(" AND nom = ?");
+					whereBuilder.append(" OR nom = ?");
 
 				} else {
 					whereBuilder.append(" WHERE nom = ?");
@@ -186,7 +186,7 @@ public class UserServiceImpl implements UserService {
 
 			if (userSearchCriteria.getPrenom() != null) {
 				if (!whereBuilder.toString().isEmpty()) {
-					whereBuilder.append(" AND prenom = ?");
+					whereBuilder.append(" OR prenom = ?");
 
 				} else {
 					whereBuilder.append(" WHERE prenom = ?");

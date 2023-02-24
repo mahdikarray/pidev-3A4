@@ -5,14 +5,22 @@ import com.esprit.veltun.model.base.BaseEntity;
 public class Wallet extends BaseEntity {
     private int idWallet;
     private int account;
-    private String cin;
+    private User owner;
 
     public Wallet() {
     }
 
-    public Wallet(String cin,int account) {
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public Wallet(User owner, int account) {
         this.account = account;
-        this.cin = cin;
+        this.owner = owner;
     }
 
     public int getIdWallet() {
@@ -23,9 +31,7 @@ public class Wallet extends BaseEntity {
         return account;
     }
 
-    public String getCin() {
-        return cin;
-    }
+
 
     public void setIdWallet(int idWallet) {
         this.idWallet = idWallet;
@@ -36,7 +42,7 @@ public class Wallet extends BaseEntity {
         return "Wallet{" +
                 "idWallet=" + idWallet +
                 ", account=" + account +
-                ", cin='" + cin + '\'' +
+                ", owner ='" + owner + '\'' +
                 '}';
     }
 
@@ -44,7 +50,4 @@ public class Wallet extends BaseEntity {
         this.account = account;
     }
 
-    public void setCin(String cin) {
-        this.cin = cin;
-    }
 }

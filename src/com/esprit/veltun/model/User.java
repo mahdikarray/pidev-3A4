@@ -9,13 +9,17 @@ public class User extends BaseEntity {
 	private String nom;
 	private String prenom;
 	private Date dateNaiss;
-
-	public User() {
-	}
-
 	private String type;
 	private int codePos;
 	private String email;
+
+	public User() {
+	}
+	public User(String cin){
+		this.CIN=cin;
+	}
+
+
 
 	public String getCIN() {
 		return CIN;
@@ -73,6 +77,12 @@ public class User extends BaseEntity {
 
 	public void setCodePos(int codePos) {
 		this.codePos = codePos;
+	}
+
+	public User(String cin, String nom, String prenom){
+		this.CIN=cin;
+		this.nom=nom;
+		this.prenom=prenom;
 	}
 
 	@Override

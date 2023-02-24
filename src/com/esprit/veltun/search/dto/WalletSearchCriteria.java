@@ -7,7 +7,6 @@ import com.esprit.veltun.search.base.dto.SearchCriteria;
 
 public class WalletSearchCriteria extends SearchCriteria<Wallet>{
     private String cin;
-
     public String getCin() {
         return cin;
     }
@@ -15,9 +14,11 @@ public class WalletSearchCriteria extends SearchCriteria<Wallet>{
     public void setCin(String cin) {
         this.cin = cin;
     }
-    public WalletSearchCriteria(String cin)
-    {
-        this.cin=cin;
-    }
 
+    @Override
+    public String toString() {
+        return "WalletSearchCriteria{" +
+                "cin='" + cin + '\'' +
+                '}';
+    }
 }

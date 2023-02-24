@@ -18,7 +18,11 @@ public class EventServiceImpl implements EventService {
 	public EventServiceImpl() {
 	}
 
-	public Event findById(Integer id) {
+    public static EventService getInstance() {
+    return null;
+	}
+
+    public Event findById(Integer id) {
 		try {
 			Connection conn = MyConnection.getInstance();
 			String req = "SELECT `event`.`id`, `event`.`titre`, `event`.`description`, `event`.`dateDebut`, `event`.`heure_debut`, `event`.`dateFin`, `event`.`heure_fin`, `event`.`adresse_id`, `adresse`.`rue`, `adresse`.`region`, `adresse`.`longitude`, `adresse`.`latitude` FROM `event` LEFT JOIN `adresse` ON `adresse`.`id`= `event`.`adresse_id`WHERE `event`.`id` = " + id;

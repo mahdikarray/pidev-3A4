@@ -4,7 +4,7 @@ package com.esprit.veltun.model;
 import com.esprit.veltun.model.base.BaseEntity;
 
 public class Velo extends BaseEntity {
-    private int idf;
+    private Fournisseur fournisseur;
     private String libellev;
     private String taillev;
     private String couleurv;
@@ -12,19 +12,19 @@ public class Velo extends BaseEntity {
     public Velo() {
     }
 
-    public Velo(Integer id, String libellev, String taillev, String couleurv, Integer idf) {
+    public Velo(Integer id, String libellev, String taillev, String couleurv, Fournisseur f) {
         this.setId(id);
         this.libellev = libellev;
         this.taillev = taillev;
         this.couleurv = couleurv;
-        this.idf = idf;
+        this.fournisseur = f;
     }
 
-    public Velo(String libellev, String taillev, String couleurv, Integer idf) {
+    public Velo(String libellev, String taillev, String couleurv, Fournisseur f) {
         this.libellev = libellev;
         this.taillev = taillev;
         this.couleurv = couleurv;
-        this.idf = idf;
+        this.fournisseur = f;
     }
 
     public String getLibelle() {
@@ -51,15 +51,39 @@ public class Velo extends BaseEntity {
         this.couleurv = couleurv;
     }
 
-    public Integer getIdf() {
-        return this.idf;
+    public void setFournisseur(Fournisseur fournisseur) {
+        this.fournisseur = fournisseur;
     }
 
-    public void setIdf(Integer idf) {
-        this.idf = idf;
+    public void setLibellev(String libellev) {
+        this.libellev = libellev;
+    }
+
+    public void setTaillev(String taillev) {
+        this.taillev = taillev;
+    }
+
+    public void setCouleurv(String couleurv) {
+        this.couleurv = couleurv;
+    }
+
+    public Fournisseur getFournisseur() {
+        return fournisseur;
+    }
+
+    public String getLibellev() {
+        return libellev;
+    }
+
+    public String getTaillev() {
+        return taillev;
+    }
+
+    public String getCouleurv() {
+        return couleurv;
     }
 
     public String toString() {
-        return "Velo{**id=" + this.getId() + ", **ibelle=" + this.libellev + ", **taille=" + this.taillev + ", **couleur=" + this.couleurv + ", **idf=" + this.idf + '}';
+        return "Velo{**id=" + this.getId() + ", **ibelle=" + this.libellev + ", **taille=" + this.taillev + ", **couleur=" + this.couleurv + ", **Fournisseur: =" + this.fournisseur + '}';
     }
 }

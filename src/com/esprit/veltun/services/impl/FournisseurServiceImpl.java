@@ -101,7 +101,7 @@ public class FournisseurServiceImpl implements FournisseurService {
                 f.setId(RS.getInt(1));
                 f.setNom(RS.getString("nomf"));
                 f.setRegion(RS.getString(3));
-                System.out.println("fournisseur founded");
+              //  System.out.println("fournisseur founded");
                 return f;
             }
         } catch (SQLException var7) {

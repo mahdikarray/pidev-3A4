@@ -25,7 +25,11 @@ public class InvitationServiceImpl implements InvitationService {
 	public InvitationServiceImpl() {
 	}
 
-	public Invitation findById(Integer id) {
+    public static InvitationService getInstance() {
+    return null;
+	}
+
+    public Invitation findById(Integer id) {
 		try {
 			Connection conn = MyConnection.getInstance();
 			String req = "SELECT `invitation`.`id`, `invitation`.`reponse`, `invitation`.`date_invitation`,`invitation`.`date_expiration`, `invitation`.`invitant_id`,  `invitation`.`invite_id`, `event`.`id`, `event`.`titre`, `event`.`description`, `event`.`dateDebut`, `event`.`heure_debut`, `event`.`dateFin`, `event`.`heure_fin`, `event`.`adresse_id` FROM `invitation` LEFT JOIN `event` ON `event`.`id`= `invitation`.`evenement_id`WHERE `invitation`.`id` = " + id;

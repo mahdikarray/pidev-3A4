@@ -1,7 +1,9 @@
 package com.esprit.veltun.services.impl;
 
+import com.esprit.veltun.model.User;
 import com.esprit.veltun.model.Wallet;
 import com.esprit.veltun.search.base.dto.SearchCriteria;
+import com.esprit.veltun.search.dto.UserSearchCriteria;
 import com.esprit.veltun.search.dto.WalletSearchCriteria;
 import com.esprit.veltun.services.WalletService;
 import com.esprit.veltun.util.MyConnection;
@@ -23,6 +25,7 @@ public class WalletServiceImpl implements WalletService {
         try {
             Connection conn = MyConnection.getInstance();
             String req = "Select * from wallet";
+            UserServiceImpl usi = new UserServiceImpl();
             Statement st = conn.createStatement();
 
             ResultSet RS = st.executeQuery(req);
@@ -30,7 +33,7 @@ public class WalletServiceImpl implements WalletService {
                 Wallet w = new Wallet();
 
                 w.setIdWallet(RS.getInt(1));
-                w.setCin(RS.getString(2));
+                w.setOwner(usi.findByCin(RS.getString(2)));
                 w.setAccount(RS.getInt(3));
                 list.add(w);
             }
@@ -49,7 +52,7 @@ public class WalletServiceImpl implements WalletService {
             String req = "INSERT INTO `wallet`(`cin`, `account`)"
                     + "VALUES (?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
-            ps.setString(1, w.getCin());
+            ps.setString(1, w.getOwner().getCIN());
             ps.setInt(2, w.getAccount());
             Integer id = ps.executeUpdate();
             w.setId(id);
@@ -97,14 +100,14 @@ public class WalletServiceImpl implements WalletService {
         try {
             WalletSearchCriteria walletSearchCriteria = (WalletSearchCriteria) searchCriteria;
             Connection conn = MyConnection.getInstance();
-            Statement ste;
+            UserServiceImpl usi = new UserServiceImpl();
             String req = "select * from wallet where `cin` like "+ walletSearchCriteria.getCin();
             PreparedStatement st = conn.prepareStatement(req);
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
                 Wallet w = new Wallet();
                 w.setIdWallet(RS.getInt(1));
-                w.setCin(RS.getString(2));
+                w.setOwner(usi.findByCin(RS.getString(2)));
                 w.setAccount(RS.getInt(3));
                 list.add(w);
             }
@@ -129,4 +132,5 @@ public class WalletServiceImpl implements WalletService {
             System.out.println(ex.getMessage());
             return false;
         }    }
+
 }

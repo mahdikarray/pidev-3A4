@@ -39,11 +39,11 @@ public class PiDevJDBC {
 
    //     System.out.println(us.findByCin("1326").toString());
 
-          //us.save(u1);
+       //   us.save(u1);
 
 
-         System.out.println( us.list().toString());
-         User u2 = new User("14507464","Rezigui","Alaa",dn,"Admin",30,"alaa.rezigui@esprit.tn");
+         //System.out.println( us.list().toString());
+         //User u2 = new User("14507464","Rezigui","Alaa",dn,"Admin",30,"alaa.rezigui@esprit.tn");
        // us.update(u2);
         //System.out.println(us.list().toString());
       //  us.remove(u1.getCIN());
@@ -52,15 +52,15 @@ public class PiDevJDBC {
         /*UserSearchCriteria usc= new UserSearchCriteria();
         usc.setPrenom("alaa");
         System.out.println("search result");
-        System.out.println(us.search(usc).toString());
-        *///Wallet w1 = new Wallet("1326",88);
+        System.out.println(us.search(usc).toString());*/
+        Wallet w1 = new Wallet(u1,88);
         //ws.save(w1);
-        //ws.remove("88");
-        //System.out.println(ws.list().toString());
+        //ws.remove("1326");
+        //System.out.println(ws.list());
         //WalletSearchCriteria wsc= new WalletSearchCriteria("1326");
         //System.out.println(ws.search(wsc));
-//        WalletSearchCriteria wsc = new WalletSearchCriteria("88");
-//        System.out.println(us.search(usc).toString());;
+     //   WalletSearchCriteria wsc = new WalletSearchCriteria("1523");
+ //       System.out.println(ws.search(wsc).toString());;
 
 
         ///////////////////MAHDI  ///////////////////
@@ -320,36 +320,36 @@ public class PiDevJDBC {
 */
         /////////////////////////////////////VELO//////////////////////////////////////////
         //  MyConnection conn = MyConnection.getInstance();
+       // Fournisseur f9= new Fournisseur("test","ariana");
         //VeloServiceImpl vel = new VeloServiceImpl();
-       // VeloSearchCriteria searchCriteria = new VeloSearchCriteria();
-
-        //Velo v9= new Velo("mms","2m","noir",3);
+        //f9.setId(6);
+        //VeloSearchCriteria searchCriteria = new VeloSearchCriteria();
+        //Velo v9= new Velo("mms","2m","noir",f9);
 
         //System.out.println( vel.findById(1).toString()); /*find by id*/
         //vel.update(v9); /*modifier*/
         //vel.save(v9); /*ajouter*/
-        //vel.remove(3); /*supp*/
-        // System.out.println( vel.list().toString()); /*afficher*/
-
-        //searchCriteria.setCouleur("vert");
-       // Collection<Velo> result = vel.search(searchCriteria);
-       // result.forEach(v->System.out.println(v));
+        //vel.remove(6); /*supp*/
+         //System.out.println( vel.list().toString()); /*afficher*/
+       // System.out.println(vel.findById(9));
+      //  searchCriteria.setCouleur("noir");
+        //Collection<Velo> result = vel.search(searchCriteria);
+        //result.forEach(v->System.out.println(v));
 
 /////////////////////////////////////FOURNISSEUR//////////////////////////////////////////
 //MyConnection conn = MyConnection.getInstance();
     //FournisseurServiceImpl four = new FournisseurServiceImpl();
     //FournisseurSearchCriteria searchCriteria = new FournisseurSearchCriteria();
+    //Fournisseur f9= new Fournisseur("test","ariana");
 
-    //Fournisseur f9= new Fournisseur("rym","jerjis");
-
-    //System.out.println( four.findById(4).toString()); /*find by id*/
+  //  System.out.println( four.findById(3).toString()); /*find by id*/
     //four.update(f9); /*modifier*/
-    //four.save(f9); /*ajouter*/
+   // four.save(f9); /*ajouter*/
     //four.remove(3); /*supp*/
     //System.out.println( four.list().toString()); /*afficher*/
 
-    //searchCriteria.setRegion("jerjis");
-    //Collection<Fournisseur> result = four.search(searchCriteria);
+ //   searchCriteria.setRegion("ariana");
+   // Collection<Fournisseur> result = four.search(searchCriteria);
     //result.forEach(f->System.out.println(f));
 
         /////////////////////////////////////EVENT//////////////////////////////////////////

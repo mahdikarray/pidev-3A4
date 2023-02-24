@@ -77,4 +77,7 @@ public class Invitation extends BaseEntity {
     public String toString() {
         return "Invitation [reponse=" + this.reponse + ", dateInvitation=" + this.dateInvitation + ", dateExpiration=" + this.dateExpiration + ", invitant=" + this.invitant + ", invite=" + this.invite + ", evenement=" + this.evenement + "]";
     }
+
+    public void setInvite(User value) {
+    }
 }
