@@ -51,7 +51,7 @@ public class RackVeloImpl implements RackVeloService {
     public RackVelo save(RackVelo rv) {
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "INSERT INTO `rackvelo`( `Ref_rack`,`Capacitee`, `id_station`) VALUES (?,?,?)";
+            String req = "INSERT INTO `rackvelo`( `Ref_rack`,`Capacite`, `id_station`) VALUES (?,?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setInt(1, rv.getRefRack());
             ps.setInt(2, rv.getCapacite());
@@ -69,7 +69,7 @@ public class RackVeloImpl implements RackVeloService {
     public RackVelo update(RackVelo rv) {
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "UPDATE `rackvelo` SET `Ref_rack` ='" + rv.getRefRack() + "', `Capacitee` = '" + rv.getCapacite() + "', `Id_station`=  '" + rv.getId_station() + "' WHERE `rackvelo`.`Ref_rack`= " + rv.getRefRack();
+            String req = "UPDATE `rackvelo` SET `Ref_rack` ='" + rv.getRefRack() + "', `Capacite` = '" + rv.getCapacite() + "', `Id_station`=  '" + rv.getId_station() + "' WHERE `rackvelo`.`Ref_rack`= " + rv.getRefRack();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Station updated !");

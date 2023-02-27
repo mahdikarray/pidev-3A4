@@ -31,9 +31,10 @@ public class AbonnementServiceImpl implements AbonnementService {
             if (RS.next()) {
                 Abonnement ab = new Abonnement();
                 ab.setType_ab(RS.getString("Type_ab"));
-                ab.setDuree(RS.getInt("Duree"));
+                ab.setDuree(RS.getString("Duree"));
                 ab.setPrix_ab(RS.getFloat("Prix_ab"));
                 ab.setId_offre(RS.getInt(1));
+                ab.setCIN(RS.getString("CIN"));
                 ab.setId_ab(RS.getInt(1));
                 System.out.println("abonnement founded");
                 return ab;
@@ -57,9 +58,10 @@ public class AbonnementServiceImpl implements AbonnementService {
             while(RS.next()) {
                 Abonnement a = new Abonnement();
                 a.setType_ab(RS.getString("Type_ab"));
-                a.setDuree(RS.getInt("Duree"));
+                a.setDuree(RS.getString("Duree"));
                 a.setPrix_ab(RS.getFloat("Prix_ab"));
                 a.setId_offre(RS.getInt(1));
+                a.setCIN(RS.getString("CIN"));
                 a.setId_ab(RS.getInt(1));
                 list.add(a);
             }
@@ -73,13 +75,14 @@ public class AbonnementServiceImpl implements AbonnementService {
     public Abonnement save(Abonnement a) {
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "INSERT INTO `abonnement` ( Type_ab,Duree,Prix_ab,Id_offre) VALUES (?,?,?,?)";
+            String req = "INSERT INTO `abonnement` ( Type_ab,Duree,Prix_ab,Id_offre,CIN) VALUES (?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setInt(1, a.getId_ab());
             ps.setString(1, a.getType_ab());
-            ps.setInt(2, a.getDuree());
+            ps.setString(2, a.getDuree());
             ps.setFloat(3, a.getPrix_ab());
             ps.setInt(4, a.getId_offre());
+            ps.setString(5, a.getCIN());
             Integer id = ps.executeUpdate();
             a.setId(id);
             System.out.println("abonnement ajouté!!!");
@@ -92,8 +95,8 @@ public class AbonnementServiceImpl implements AbonnementService {
 
     public Abonnement update(Abonnement a) {
         try {
-            Connection conn = MyConnection.getInstance();
-            String req = "UPDATE abonnement SET Type_ab = '" + a.getType_ab() + "', Duree = '" + a.getDuree() + "', Prix_ab = '" + a.getPrix_ab() + "', Id_offre = '" + a.getId_offre() + "' WHERE abonnement.Id_ab = " + a.getId_ab();
+           Connection conn = MyConnection.getInstance();
+            String req = "UPDATE abonnement SET Type_ab = '" + a.getType_ab() + "', Duree = '" + a.getDuree() + "', Prix_ab = '" + a.getPrix_ab() + "', Id_offre = '" + a.getId_offre() + "', CIN = '" + a.getCIN() + "' WHERE abonnement.Id_ab = " + a.getId_ab();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("abonnement updated !");
@@ -101,7 +104,7 @@ public class AbonnementServiceImpl implements AbonnementService {
             System.out.println(var5.getMessage());
         }
 
-        return null;
+        return a;
     }
 
     public boolean remove(Integer id) {
@@ -161,9 +164,10 @@ public class AbonnementServiceImpl implements AbonnementService {
                 Abonnement v = new Abonnement();
                 v.setType_ab(RS.getString(2));
                 v.setId_ab(RS.getInt(1));
-                v.setDuree(RS.getInt(3));
+                v.setDuree(RS.getString(3));
                 v.setPrix_ab(RS.getFloat(4));
                 v.setId_offre(RS.getInt(5));
+                v.setCIN(RS.getString(6));
                 list.add(v);
             }
         } catch (SQLException var11) {

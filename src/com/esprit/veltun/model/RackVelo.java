@@ -45,7 +45,6 @@ public class RackVelo extends BaseEntity {
         this.refRack = refRack;
     }
 
-
     public String toString() {
         return "RackVelo [refRack=" + this.refRack + ", capacite=" + this.capacite + ", id_station=" + this.id_station + "]";
     }

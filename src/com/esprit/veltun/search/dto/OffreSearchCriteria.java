@@ -5,7 +5,11 @@
 
 package com.esprit.veltun.search.dto;
 
-public abstract class OffreSearchCriteria {
+import com.esprit.veltun.model.Abonnement;
+import com.esprit.veltun.model.Offre;
+import com.esprit.veltun.search.base.dto.SearchCriteria;
+
+public class OffreSearchCriteria extends SearchCriteria<Offre> {
     private int Id_offre;
     private float Prix;
 

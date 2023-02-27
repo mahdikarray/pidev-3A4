@@ -8,13 +8,23 @@ public class Abonnement extends BaseEntity {
     private float Prix_ab;
     private String Type_ab;
     private int Id_offre;
-    private int Duree;
+    private String Duree;
 
-    public int getDuree() {
+    public String getCIN() {
+        return CIN;
+    }
+
+    public void setCIN(String CIN) {
+        this.CIN = CIN;
+    }
+
+    private String CIN;
+
+    public String getDuree() {
         return this.Duree;
     }
 
-    public void setDuree(int Duree) {
+    public void setDuree(String Duree) {
         this.Duree = Duree;
     }
 
@@ -25,6 +35,7 @@ public class Abonnement extends BaseEntity {
     public void setType_ab(String Type_ab) {
         this.Type_ab = Type_ab;
     }
+
 
     public int getId_offre() {
         return this.Id_offre;
@@ -40,14 +51,23 @@ public class Abonnement extends BaseEntity {
 
     public Abonnement() {
     }
-
-    public Abonnement(int Id_ab, String Type_ab, int Duree, float Prix_ab, int Id_offre) {
+    public Abonnement( int Id_ab,String Type_ab, String Duree, float Prix_ab, int Id_offre,String CIN) {
         this.Id_ab = Id_ab;
         this.Type_ab = Type_ab;
         this.Duree = Duree;
         this.Prix_ab = Prix_ab;
         this.Id_offre = Id_offre;
+        this.CIN = CIN;
     }
+    public Abonnement( String Type_ab, String Duree, float Prix_ab, int Id_offre,String CIN) {
+        this.Type_ab = Type_ab;
+        this.Duree = Duree;
+        this.Prix_ab = Prix_ab;
+        this.Id_offre = Id_offre;
+        this.CIN = CIN;
+    }
+
+
 
     public int getId_ab() {
         return this.Id_ab;
@@ -66,6 +86,6 @@ public class Abonnement extends BaseEntity {
     }
 
     public String toString() {
-        return "abonnement{Id_ab=" + this.Id_ab + ", Type_ab=" + this.Type_ab + ", Duree=" + this.Duree + ", Prix_ab=" + this.Prix_ab + '}';
+        return "abonnement{Id_ab=" + this.Id_ab + ", Type_ab=" + this.Type_ab + ", Duree=" + this.Duree + ", Prix_ab=" + this.Prix_ab +"CIN="+this.CIN + '}';
     }
 }

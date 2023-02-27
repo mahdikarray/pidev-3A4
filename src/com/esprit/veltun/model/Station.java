@@ -50,15 +50,16 @@ public class Station extends BaseEntity {
         this.latitude = latitude;
         this.nom_station = nom_station;
     }
+    public Station(int id_station) {
+        this.id_station = id_station;
+    }
 
     public Station(String nom_station, double longitude, double latitude) {
         this.nom_station = nom_station;
         this.latitude = latitude;
         this.longitude = longitude;
     }
-    public Station(int id_station) {
-        this.id_station = id_station;
-    }
+
 
     public String toString() {
         return "Id_station:" + this.id_station + "Nom_station: " + this.nom_station + "Longitude :" + this.longitude + "Latitude:" + this.latitude;

@@ -111,6 +111,14 @@ public class StationServiceImpl implements StationService {
                     whereBuilder.append(" WHERE Id_station=?");
                 }
             }
+            if (stationSearchCriteria.getNom_station() != null) {
+                if (!whereBuilder.toString().isEmpty()) {
+                    whereBuilder.append(" AND nom_station = ?");
+
+                } else {
+                    whereBuilder.append(" WHERE nom_station = ?");
+                }
+            }
 
             if (stationSearchCriteria.getId() != null) {
                 if (!whereBuilder.toString().isEmpty()) {
@@ -135,7 +143,10 @@ public class StationServiceImpl implements StationService {
                 st.setInt(counter, stationSearchCriteria.getId_station());
                 ++counter;
             }
-
+            if (stationSearchCriteria.getNom_station() != null) {
+                st.setString(counter, stationSearchCriteria.getNom_station());
+                counter++;
+            }
             if (stationSearchCriteria.getId() != null) {
                 st.setInt(counter, stationSearchCriteria.getId());
                 ++counter;

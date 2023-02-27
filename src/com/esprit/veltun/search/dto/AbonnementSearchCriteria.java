@@ -10,16 +10,26 @@ public class AbonnementSearchCriteria extends SearchCriteria<Abonnement> {
     private float Prix_ab;
     private String Type_ab;
     private int Id_offre;
-    private int Duree;
+    private String Duree;
+
+
+
+    private String CIN;
 
     public AbonnementSearchCriteria() {
     }
+    public String getCIN() {
+        return CIN;
+    }
 
-    public int getDuree() {
+    public void setCIN(String CIN) {
+        this.CIN = CIN;
+    }
+    public String getDuree() {
         return this.Duree;
     }
 
-    public void setDuree(int Duree) {
+    public void setDuree(String Duree) {
         this.Duree = Duree;
     }
 
@@ -56,6 +66,6 @@ public class AbonnementSearchCriteria extends SearchCriteria<Abonnement> {
     }
 
     public String toString() {
-        return "abonnement{Id_ab=" + this.Id_ab + ", Type_ab=" + this.Type_ab + ", Duree=" + this.Duree + ", Prix_ab=" + this.Prix_ab + '}';
+        return "abonnement{Type_ab=" + this.Type_ab + ", Duree=" + this.Duree + ", Prix_ab=" + this.Prix_ab +", id_offre=" + this.getId_offre() +", CIN=" + this.CIN + '}';
     }
 }

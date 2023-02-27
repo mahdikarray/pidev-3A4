@@ -6,6 +6,18 @@ public class Offre extends BaseEntity {
     private int Id_offre;
     private float Prix;
 
+    public String getDescription_of(String descriptionOf) {
+        return description_of;
+    }
+    public String getDescription_of() {
+        return description_of;
+    }
+    public void setDescription_of(String description_of) {
+        this.description_of = description_of;
+    }
+
+    private String description_of;
+
     public Offre(int i) {
         this.Id_offre = this.Id_offre;
     }
@@ -17,6 +29,12 @@ public class Offre extends BaseEntity {
         this.Id_offre = Id_offre;
         this.Prix = Prix;
     }
+    public Offre(int Id_offre, float Prix,String description_of) {
+        this.Id_offre = Id_offre;
+        this.Prix = Prix;
+        this.description_of = description_of;
+    }
+
     public Offre(float prix)
     {
         this.Prix=prix;
@@ -39,6 +57,6 @@ public class Offre extends BaseEntity {
     }
 
     public String toString() {
-        return "offre{Id_offre=" + this.Id_offre + ", Prix=" + this.Prix + '}';
+        return "offre{Id_offre=" + this.Id_offre + ", Prix=" + this.Prix + ", description_of=" + this.description_of + '}';
     }
 }

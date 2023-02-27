@@ -11,6 +11,16 @@ import com.esprit.veltun.search.base.dto.SearchCriteria;
 public class StationSearchCriteria extends SearchCriteria<Station> {
     private int id_station;
 
+    public String getNom_station() {
+        return nom_station;
+    }
+
+    public void setNom_station(String nom_station) {
+        this.nom_station = nom_station;
+    }
+
+    private  String nom_station;
+
     public int getId_station() {
         return this.id_station;
     }

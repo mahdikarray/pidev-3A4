@@ -31,19 +31,19 @@ public class PiDevJDBC {
         //testEvent();
 
         Connection conn= MyConnection.getInstance();
-        String date="2004-09-25";
-        Date dn= Date.valueOf(LocalDate.parse(date));
-        User u1 = new User("14507464","Rezigui","alaa",dn, "User",6596,"alaa.rezigui@esprit.tn");
-        UserServiceImpl us = new UserServiceImpl();
-        WalletServiceImpl ws=new WalletServiceImpl();
+       // String date="2004-09-25";
+      //  Date dn= Date.valueOf(LocalDate.parse(date));
+      //  User u1 = new User("14507464","Rezigui","alaa",dn, "User",6596,"alaa.rezigui@esprit.tn");
+        //UserServiceImpl us = new UserServiceImpl();
+        //WalletServiceImpl ws=new WalletServiceImpl();
 
    //     System.out.println(us.findByCin("1326").toString());
 
           //us.save(u1);
 
 
-         System.out.println( us.list().toString());
-         User u2 = new User("14507464","Rezigui","Alaa",dn,"Admin",30,"alaa.rezigui@esprit.tn");
+     //    System.out.println( us.list().toString());
+       //  User u2 = new User("14507464","Rezigui","Alaa",dn,"Admin",30,"alaa.rezigui@esprit.tn");
        // us.update(u2);
         //System.out.println(us.list().toString());
       //  us.remove(u1.getCIN());
@@ -64,24 +64,24 @@ public class PiDevJDBC {
 
 
         ///////////////////MAHDI  ///////////////////
-        //   Offre p1 = new Offre(162.5776f);
-        //   OffreServiceImpl off= new OffreServiceImpl();
+         //Offre p1 = new Offre(18,162.5776f,"hah");
+        //OffreServiceImpl off= new OffreServiceImpl();
         //CRUD OFFRE
         //off.save(p1);
-        //off.remove(24);
+        //off.remove(21);
         //Offre p2= new Offre(24,(float)99.99);
         //off.update(p2);
         //System.out.println(off.findById(23));
         //   System.out.println( off.list());
         //////////////////////////////////////////////////
         //CRUD ABONNEMENT
-        //  Abonnement b1=new Abonnement(13,"Standard",12,114.12f,23);
-        //Abonnement b2=new Abonnement(8,"Premium",6,1423.300f,18);
-        //Abonnement b3=new Abonnement(8,"Premium",6,14.300f,18);
+        //Abonnement b1=new Abonnement(60,"Standard","6",1.6969f,23,"12345678");
+        //Abonnement b2=new Abonnement("Premium","6",1423.300f,18);
+        //Abonnement b3=new Abonnement("Premium","6",14.300f,18);
         //AbonnementServiceImpl abb =new AbonnementServiceImpl();
         //abb.save(b1);
         //abb.update(b1);
-        //abb.remove(10);
+        //abb.remove(5);
         //System.out.println(abb.findById(7));
         //System.out.println( abb.list());
         //AbonnementSearchCriteria searchCriteria = new AbonnementSearchCriteria();
@@ -434,179 +434,68 @@ public class PiDevJDBC {
 
             //adresse.setId(1);
 
-
-
-
-
-
-
-
-
-
         // public static void testAdresse() {
-
         // AdresseService adresseService = new AdresseServiceImpl();
-
-
-
-
         // Adresse adresse = new Adresse();
-
         // adresse.setId(2);
-
         // adresse.setLatitude(557425d);
-
         // adresse.setLongitude(582552d);
-
         // adresse.setRegion("tunis");
-
         // adresse.setRue("taieb mhiri");
-
         // adresseService.save(adresse);
-
         // adresseService.update(adresse);
-
-
-
-
         // adresseService.remove(2);
-
         // Adresse a = adresseService.findById(3);
-
-
-
-
         // System.out.println(a);
-
         // AdresseSearchCriteria searchCriteria = new AdresseSearchCriteria();
-
         // searchCriteria.setLatitude(557425d);
-
-
-
-
         // searchCriteria.setRue("taieb mhiri");
-
-
-
-
         // Collection<Adresse> result = adresseService.search(searchCriteria);
-
         // result.forEach(adr->System.out.println(adr));
-
-
-
-
         // adresseService.update(adresse);
-
-
-
-
         // adresseService.remove(2);
-
         // Adresse a = adresseService.findById(3);
-
-
-
-
         // System.out.println(a);
-
         // AdresseSearchCriteria searchCriteria = new AdresseSearchCriteria();
-
         // searchCriteria.setLatitude(557425d);
-
-
-
-
         // searchCriteria.setRue("taieb mhiri");
-
-
-
-
         // Collection<Adresse> result = adresseService.search(searchCriteria);
-
         // result.forEach(adr->System.out.println(adr));
-
-
-
-
         // }
 
 /////////////////////////////////////INVITATION//////////////////////////////////////////
-
-
         // public static void testInvitation() {
-
         // InvitationService inviService = new InvitationServiceImpl();
-
-
-
-
         // Invitation i = inviService.findById(6);
-
         // Collection<Invitation> is = inviService.list();
-
-
-
-
         // Invitation invi = new Invitation();
-
         // invi.setId(4);
-
         // invi.setReponse(Response.OUI);
-
         // invi.setDateInvitation(Date.valueOf("2025-12-01"));
-
         // invi.setDateExpiration(Date.valueOf("2023-12-01"));
-
-
-
-
         // User invite = new User();
-
         // invite.setId(3);
-
         // User invitant = new User();
-
         // invitant.setId(4);
-
-
-
-
         // inviService.save(invi);
-
-
-
-
         // inviService.update(invi);
-
         // Collection<Invitation> invitations = new ArrayList();
-
         // InvitationSearchCriteria invitationSearchCriteria = new
-
         // InvitationSearchCriteria();
-
         // invitationSearchCriteria.setDateInvitation(Date.valueOf("2028-12-31"));
-
         // invitationSearchCriteria.setReponse(Response.OUI);
-
         // System.out.println(invitations);
-
-
-
-
         /// invitations= inviService.search(invitationSearchCriteria);
-
         // System.out.println(invitations);
 
 
 
         //CRUD STATION//
         //CREATE
-        //Station s10 = new Station("GHAZELLA", 8.5, 8.6);
+        Station s5 = new Station("Ben Arous", 8.5, 8.6);
         //Station s3 = new Station(7,"TUNIS-BebAlioua" , 8.3 , 8.7 );
-        //StationServiceImpl sta =  new StationServiceImpl() ;
-        //sta.save(s10);
+        StationServiceImpl sta =  new StationServiceImpl() ;
+        sta.save(s5);
 
         //READ
         //System.out.println(sta.list())  ;
@@ -680,9 +569,9 @@ public class PiDevJDBC {
 
         //CRUD STATION//
         //CREATE
-        Station s10 = new Station("GHAZELLA", 8.5, 8.6);
-        Station s3 = new Station(7," TUNIS-BebAlioua " , 8.3 , 8.7 );
-        StationServiceImpl sta =  new StationServiceImpl() ;
+       // Station s10 = new Station("GHAZELLA", 8.5, 8.6);
+        //Station s3 = new Station(7," TUNIS-BebAlioua " , 8.3 , 8.7 );
+        //StationServiceImpl sta =  new StationServiceImpl() ;
      //   sta.save(s10);
 
         //READ
