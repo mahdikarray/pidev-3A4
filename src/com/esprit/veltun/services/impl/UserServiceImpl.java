@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 		try {
 		    Connection conn = MyConnection.getInstance();
 			String req = "INSERT INTO `user`( `CIN`,`nom`, `prenom`, `date_naiss`, "
-					+ "`type`, `code_postal`, `email` ) VALUES (?,?,?,?,?,?,?)";
+					+ "`type`, `code_postal`, `email`,`password` ) VALUES (?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(req);
 			ps.setString(1, u.getCIN());
 			ps.setString(2, u.getNom());
@@ -32,6 +32,7 @@ public class UserServiceImpl implements UserService {
 			ps.setString(5, u.getType());
 			ps.setInt(6, u.getCodePos());
 			ps.setString(7, u.getEmail());
+			ps.setString(8,u.getPassword());
 			Integer id = ps.executeUpdate();
 			u.setId(id);
 			System.out.println("user ajouté!!!");
@@ -50,7 +51,8 @@ public class UserServiceImpl implements UserService {
 			String req = "UPDATE `user` SET `nom` = '" + u.getNom() + "', `prenom` = '" + u.getPrenom() + "'"
 					+ ", `date_naiss` = '" + u.getDateNaiss() + "'" + ", `type` = '" + u.getType() + "'"
 					+ ", `code_postal` = '" + u.getCodePos() + "'" + ", `email` = '" + u.getEmail() + "'"
-					+ " WHERE `user`.`CIN` LIKE " + u.getCIN();
+					+ ", `password` = '" + u.getPassword() + "'" +
+					" WHERE `user`.`CIN` LIKE " + u.getCIN();
 			Statement st = conn.createStatement();
 			st.executeUpdate(req);
 			System.out.println("user updated !");
@@ -172,6 +174,16 @@ public class UserServiceImpl implements UserService {
 				}
 			}
 
+			if (userSearchCriteria.getEmail() != null && !userSearchCriteria.getEmail().isEmpty()) {
+				if (!whereBuilder.toString().isEmpty()) {
+					whereBuilder.append(" OR email = ?");
+
+				} else {
+					whereBuilder.append(" WHERE email = ?");
+				}
+			}
+
+
 
 
 			if (userSearchCriteria.getNom() != null) {
@@ -202,6 +214,11 @@ public class UserServiceImpl implements UserService {
 					st.setString(counter, userSearchCriteria.getCin());
 				counter++;
 			}
+			if (userSearchCriteria.getEmail() != null && !userSearchCriteria.getEmail().isEmpty()) {
+				st.setString(counter, userSearchCriteria.getEmail());
+				counter++;
+			}
+
 
 			if (userSearchCriteria.getNom() != null) {
 				st.setString(counter, userSearchCriteria.getNom());
@@ -234,6 +251,30 @@ public class UserServiceImpl implements UserService {
 		return list;
 	}
 
+	@Override
+	public User findByEmail(String email) {
+		User u=new User();
+		try {
+			Connection conn=MyConnection.getInstance();
+			String req = "SELECT * FROM `user` WHERE email =  " + "'"+email+"'";
+			Statement st= conn.createStatement();
+			ResultSet RS = st.executeQuery(req);
+			while (RS.next()) {
+				u.setCIN(RS.getString(1));
+				u.setNom(RS.getString(2));
+				u.setPrenom(RS.getString(3));
+				u.setDateNaiss(RS.getDate(4));
+				u.setType(RS.getString(5));
+				u.setCodePos(RS.getInt(6));
+				u.setEmail(RS.getString(7));
+				u.setPassword(RS.getString(8));
+			}
 
-
+			return u;
+		}
+		catch (SQLException ex){
+			System.out.println(ex.getMessage());
+		}
+		return null;
+	}
 }

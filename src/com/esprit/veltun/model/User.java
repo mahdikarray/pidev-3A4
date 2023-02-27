@@ -12,6 +12,7 @@ public class User extends BaseEntity {
 	private String type;
 	private int codePos;
 	private String email;
+	private String password;
 
 	public User() {
 	}
@@ -34,6 +35,18 @@ public class User extends BaseEntity {
 		this.codePos = codePos;
 		this.email = email;
 	}
+
+	public User(String CIN, String nom, String prenom, Date dateNaiss, String type, int codePos, String email, String password) {
+		this.CIN = CIN;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaiss = dateNaiss;
+		this.type = type;
+		this.codePos = codePos;
+		this.email = email;
+		this.password=password;
+	}
+
 
 	public void setCIN(String cIN) {
 		CIN = cIN;
@@ -83,6 +96,14 @@ public class User extends BaseEntity {
 		this.CIN=cin;
 		this.nom=nom;
 		this.prenom=prenom;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 
 	@Override

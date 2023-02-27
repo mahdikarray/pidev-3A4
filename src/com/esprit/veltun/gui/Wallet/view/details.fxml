@@ -9,7 +9,7 @@
 
 <AnchorPane opacity="0.99" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #424242; -fx-border-color: #6babd6; -fx-border-width: 7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.Wallet.view.WalletDetailsController">
    <children>
-      <Button fx:id="ftlistEvent" defaultButton="true" layoutX="381.0" layoutY="346.0" mnemonicParsing="false" onAction="#listEvent" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #6babd6;" text="Liste des evenement" />
+      <Button fx:id="ftlistEvent" defaultButton="true" layoutX="381.0" layoutY="346.0" mnemonicParsing="false" onAction="#listEvent" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #6babd6;" text="Liste des wallets" />
       <Label layoutX="92.0" layoutY="34.0" text="cin" textFill="#4fb5f8" />
       <Label layoutX="92.0" layoutY="74.0" text="Montant" textFill="#4fb5f8" />
       <TextField fx:id="cinTF" editable="false" layoutX="245.0" layoutY="30.0" prefHeight="25.0" prefWidth="271.0" />

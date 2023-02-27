@@ -8,6 +8,16 @@ public class UserSearchCriteria extends SearchCriteria<User> {
 	private String nom;
 	private String prenom;
 	private String role;
+	private String email;
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
 	public String getCin() {
 		return cin;
 	}

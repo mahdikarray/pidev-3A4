@@ -7,4 +7,6 @@ public interface UserService extends BaseService<User> {
 
     boolean remove(String cin);
     User findByCin(String id);
+
+    User findByEmail(String email);
 }

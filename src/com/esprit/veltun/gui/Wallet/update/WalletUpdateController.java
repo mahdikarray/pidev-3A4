@@ -94,7 +94,7 @@ public class WalletUpdateController implements Initializable {
     }
 
     public void cancel(ActionEvent actionEvent) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../search/search.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../Wallet/search/search.fxml"));
 
         try {
             Parent root = fxmlLoader.load();

@@ -29,8 +29,9 @@ import java.util.ResourceBundle;
 
 public class WalletSearchController implements Initializable {
     public TextField nameSearch;
-    public Button searchbutton;
+    public Button walletsearchbutton;
     public ListView<Wallet> walletListView;
+    public Button toUser;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -39,15 +40,16 @@ public class WalletSearchController implements Initializable {
                 public void updateItem(Wallet wallet, boolean empty) {
                     super.updateItem(wallet, empty);
                     if (empty || wallet == null) {
-                        setText("nothing to show here");
+                        setText(null);
                     } else {
-                        setText(wallet.getOwner().getCIN() + "\t\t\t" +  wallet.getAccount());
+                        setText(wallet.getOwner().getCIN() + "\t\t\t" +wallet.getOwner().getNom() + "\t\t\t" + wallet.getOwner().getPrenom()+ "\t\t\t" + wallet.getAccount() + "\t\t\t" );
                     }
                 }
             };
         });
         runSearch();
     }
+
 
     void runSearch() {
         String searchCriteria = nameSearch.getText();
@@ -78,7 +80,7 @@ public class WalletSearchController implements Initializable {
         try {
             Parent root = fxmlLoader.load();
 
-            Stage thisStage = (Stage) searchbutton.getScene().getWindow();
+            Stage thisStage = (Stage) walletsearchbutton.getScene().getWindow();
             thisStage.setTitle("Mise à jour wallet");
 
             WalletUpdateController cont = fxmlLoader.getController();
@@ -94,7 +96,7 @@ public class WalletSearchController implements Initializable {
     void addWallet(ActionEvent actionEvent) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../create/create.fxml"));
 
-        Stage thisStage = (Stage) searchbutton.getScene().getWindow();
+        Stage thisStage = (Stage) walletsearchbutton.getScene().getWindow();
         thisStage.setTitle("Ajout wallet");
 
         try {
@@ -109,4 +111,14 @@ public class WalletSearchController implements Initializable {
         runSearch();
     }
 
+    public void toUser(ActionEvent actionEvent) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../User/search/search.fxml"));
+        try {
+            Parent root = fxmlLoader.load();
+            toUser.getScene().setRoot(root);
+        } catch (IOException ex)
+        {
+            System.out.println(ex);
+        }
+    }
 }

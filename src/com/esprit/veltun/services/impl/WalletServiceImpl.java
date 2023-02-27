@@ -5,6 +5,7 @@ import com.esprit.veltun.model.Wallet;
 import com.esprit.veltun.search.base.dto.SearchCriteria;
 import com.esprit.veltun.search.dto.UserSearchCriteria;
 import com.esprit.veltun.search.dto.WalletSearchCriteria;
+import com.esprit.veltun.services.UserService;
 import com.esprit.veltun.services.WalletService;
 import com.esprit.veltun.util.MyConnection;
 
@@ -100,15 +101,38 @@ public class WalletServiceImpl implements WalletService {
         try {
             WalletSearchCriteria walletSearchCriteria = (WalletSearchCriteria) searchCriteria;
             Connection conn = MyConnection.getInstance();
-            UserServiceImpl usi = new UserServiceImpl();
-            String req = "select * from wallet where `cin` like "+ walletSearchCriteria.getCin();
-            PreparedStatement st = conn.prepareStatement(req);
-            ResultSet RS = st.executeQuery(req);
+
+            StringBuilder builder = new StringBuilder("Select * from wallet");
+            StringBuilder whereBuilder = new StringBuilder();
+
+            if (walletSearchCriteria.getCin() != null && !walletSearchCriteria.getCin().isEmpty()) {
+                if (!whereBuilder.toString().isEmpty()) {
+                    whereBuilder.append(" OR cin = ?");
+
+                } else {
+                    whereBuilder.append(" WHERE cin = ?");
+                }
+            }
+
+
+
+            PreparedStatement st = conn.prepareStatement(builder.toString());
+            int counter = 1;
+            if (walletSearchCriteria.getCin() != null && !walletSearchCriteria.getCin().isEmpty()) {
+                st.setString(counter, walletSearchCriteria.getCin());
+                counter++;
+            }
+
+
+
+            ResultSet RS = st.executeQuery();
             while (RS.next()) {
                 Wallet w = new Wallet();
-                w.setIdWallet(RS.getInt(1));
+                User u = new User();
+                UserServiceImpl usi= new UserServiceImpl();
                 w.setOwner(usi.findByCin(RS.getString(2)));
                 w.setAccount(RS.getInt(3));
+
                 list.add(w);
             }
         } catch (SQLException ex) {

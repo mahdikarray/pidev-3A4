@@ -54,16 +54,15 @@ public class WalletCreateController implements Initializable {
             alert.setContentText("Veuillez remplir tous les champs.");
             alert.showAndWait();
         }
-        else if (cin.length()!=8) {
+        /*else if (cin.length()!=8) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de saisie");
             alert.setHeaderText(null);
             alert.setContentText("CIN invalide");
             alert.showAndWait();
-        }
+        }*/
 
         else {
-
             UserServiceImpl usi= new UserServiceImpl();
             User u = usi.findByCin(cin);
             Wallet w = new Wallet(u,account);

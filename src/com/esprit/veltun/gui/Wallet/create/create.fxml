@@ -7,9 +7,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="AnchorUser" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #424242; -fx-border-color: #6babd6; -fx-border-width: 7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.User.create.UserCreateController">
+<AnchorPane fx:id="AnchorUser" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #424242; -fx-border-color: #6babd6; -fx-border-width: 7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.Wallet.create.WalletCreateController">
    <children>
-      <Button fx:id="AddUser" defaultButton="true" layoutX="381.0" layoutY="345.0" mnemonicParsing="false" onAction="#saveUser" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #6babd6;" text="Enregistrer" />
+      <Button fx:id="AddUser" defaultButton="true" layoutX="381.0" layoutY="345.0" mnemonicParsing="false" onAction="#saveWallet" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #6babd6;" text="Enregistrer" />
       <Label layoutX="89.0" layoutY="35.0" text="CIN" textFill="#4fb5f8" />
       <Label layoutX="89.0" layoutY="136.0" text="Montant" textFill="#4fb5f8" />
       <TextField fx:id="cinTF" layoutX="242.0" layoutY="31.0" prefHeight="25.0" prefWidth="271.0" promptText="cin" />
