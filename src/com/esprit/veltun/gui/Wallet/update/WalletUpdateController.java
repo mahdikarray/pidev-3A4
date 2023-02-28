@@ -11,14 +11,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.Date;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -94,7 +92,7 @@ public class WalletUpdateController implements Initializable {
     }
 
     public void cancel(ActionEvent actionEvent) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../Wallet/search/search.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../search/search.fxml"));
 
         try {
             Parent root = fxmlLoader.load();

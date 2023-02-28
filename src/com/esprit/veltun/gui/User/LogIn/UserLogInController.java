@@ -95,3 +95,4 @@ public class UserLogInController {
     public void forgotPwd(ActionEvent actionEvent) {
     }
 }
+

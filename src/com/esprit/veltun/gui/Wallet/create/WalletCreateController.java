@@ -1,6 +1,5 @@
 package com.esprit.veltun.gui.Wallet.create;
 
-import com.esprit.veltun.gui.User.view.UserDetailsController;
 import com.esprit.veltun.gui.Wallet.view.WalletDetailsController;
 import com.esprit.veltun.model.User;
 import com.esprit.veltun.model.Wallet;
