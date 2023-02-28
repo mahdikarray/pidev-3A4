@@ -5,10 +5,12 @@ import com.esprit.veltun.services.StationService;
 import com.esprit.veltun.services.impl.StationServiceImpl;
 import com.esprit.veltun.model.Station;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import java.io.IOException;
@@ -20,10 +22,16 @@ public class StationCreateController implements Initializable {
     public Button cancelbutton;
     private StationService StationService = new StationServiceImpl();
 
+    @FXML
     public TextField fxidStation;
-    public TextField fxnomStation;
-    public TextField fxLongitude;
-    public TextField fxLatitude;
+
+    @FXML public TextField fxnomStation;
+    @FXML  public TextField fxLongitude;
+    @FXML  public TextField fxLatitude;
+
+    @FXML  public ChoiceBox<String> gouv  ;
+    private String[] gouvernorat = {"Ariana Ville","Ettadhamen","Kalâat el-Andalous","La Soukra","Mnihla","Raoued","Sidi Thabet"} ;
+
 
     public void saveStation(ActionEvent actionEvent) {
 
@@ -31,11 +39,13 @@ public class StationCreateController implements Initializable {
         String longi=this.fxLongitude.getText();
         String lati=this.fxLatitude.getText();
 
+
         Station s = new Station();
 
         s.setnom_station(nomS);
         s.setlongitude(Double.parseDouble(longi));
         s.setlatitude(Double.parseDouble(lati));
+        s.setGouvernorat(gouv.getValue());
 
         s = StationService.save(s);
 
@@ -65,6 +75,10 @@ public class StationCreateController implements Initializable {
         }
     }
 
+    private void getChoice(ChoiceBox<String> choiceBox) {
+        String gouvernorat = choiceBox.getValue() ;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         final Pattern pattern = Pattern.compile("\\d{2}\\:\\d{2}\\:\\d{2}");
@@ -77,6 +91,7 @@ public class StationCreateController implements Initializable {
                 return null; // prevent change
             }
         });
+        gouv.getItems().addAll(gouvernorat);
         //tfheurefin.setTextFormatter(formatter);
 
     }

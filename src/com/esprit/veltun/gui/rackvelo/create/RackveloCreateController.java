@@ -87,5 +87,4 @@ public class RackveloCreateController implements Initializable {
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
-    }
-}
+    } }

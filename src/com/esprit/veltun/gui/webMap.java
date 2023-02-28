@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class stationUi extends Application {
+public class webMap extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -15,8 +15,8 @@ public class stationUi extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("station/create/create.fxml"));
-        primaryStage.setTitle("Gestion des stations");
+        Parent root = FXMLLoader.load(getClass().getResource("map.fxml"));
+        primaryStage.setTitle("Find you localisation !");
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         primaryStage.setScene(scene);
