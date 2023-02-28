@@ -1,4 +1,4 @@
-package com.esprit.veltun.services.impl;
+/*package com.esprit.veltun.services.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -58,6 +58,11 @@ public class UserServiceImpl implements UserService {
 			System.out.println(ex.getMessage());
 		}
 		return u;
+	}
+
+	@Override
+	public boolean remove(String type) {
+		return false;
 	}
 
 	@Override
@@ -155,3 +160,4 @@ public class UserServiceImpl implements UserService {
 
 
 }
+*/

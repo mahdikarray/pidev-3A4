@@ -9,17 +9,22 @@ public class Maintenance extends BaseEntity {
     private String etat;
     private Date date_soumission;
 
-
+    private int id_reclamation;
 
     public Maintenance() {
     }
+    public Maintenance(String description, String etat,Date date_soumission) {
+        this.description = description;
+        this.etat = etat;
+        this.date_soumission = date_soumission;
+    }
 
-    public Maintenance(Integer id,int id_demande ,String description, String etat,Date date_soumission) {
-        this.setId(id);
+    public Maintenance(int id_demande ,String description, String etat,Date date_soumission,int id_reclamation) {
         this.id_demande = id_demande;
         this.description = description;
         this.etat = etat;
         this.date_soumission = date_soumission;
+        this.id_reclamation= id_reclamation;
     }
 
     public int getId_demande() {
@@ -52,10 +57,19 @@ public class Maintenance extends BaseEntity {
         this.date_soumission = date_soumission;
     }
 
+    public int getId_reclamation() {
+        return id_reclamation;
+    }
+
+    public void setId_reclamation(int id_reclamation) {
+        this.id_reclamation = id_reclamation;
+    }
+
     @Override
     public String toString() {
-        return "Event [id=" + getId() + ",  id_demande=" + id_demande + ", description=" + description
-                + ", etat=" + etat + ", date_soumission=" + date_soumission + "]";
+        return "maintenance [ id_demande=" + id_demande + ", description=" + description
+                + ", etat=" + etat + ", date_soumission=" + date_soumission + ",  id_reclamation=" + id_reclamation + "]";
     }
+
 
 }

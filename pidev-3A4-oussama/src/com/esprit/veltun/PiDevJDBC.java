@@ -15,6 +15,7 @@ import com.esprit.veltun.search.dto.MaintenanceSearchCriteria;
 import java.sql.Connection;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Collection;
 
 /**
  *
@@ -28,45 +29,38 @@ public class PiDevJDBC {
     public static void main(String[] args) {
         Connection conn= MyConnection.getInstance();
         String date="2001-08-07";
+        String date1="2009-09-09";
+        Date dn1= Date.valueOf(LocalDate.parse(date1));
         Date dn= Date.valueOf(LocalDate.parse(date));
-        //MyConnection conn = MyConnection.getInstance();
-       Reclamation r1 = new Reclamation( 1,"reclamation","uuuuuuuuuu","en cours",dn);
-        ReclamationServiceImpl us = new ReclamationServiceImpl();
 
-        us.save(r1);
-
-
-        System.out.println( us.list().toString());
-        Reclamation r2 = new Reclamation( 1,"iluluiu","khukhkuhh","en cours",dn);
+   // Reclamation r1 = new Reclamation( 3,"reclamation1","reclamation probleme1","non declare",dn);
+       ReclamationServiceImpl us = new ReclamationServiceImpl();
+        //us.save(r1);
+        Reclamation r2 = new Reclamation( 3,"reclamation2","reclamation probleme2","declare",dn1);
+       System.out.println( us.list().toString());
         us.update(r2);
         System.out.println(us.list().toString());
-        //us.remove(2);
-        System.out.println(us.list().toString());
-        ReclamationSearchCriteria rsc=new ReclamationSearchCriteria();
-        rsc.setId_reclamation(3);
-        System.out.println("******************************* Search: *******************************");
-        System.out.println(us.search(rsc).toString());
-
-/*
-        Maintenance m1 = new Maintenance( 1,10,"uuuuuuuuuu","en cours",dn);
-        MaintenanceServiceImpl us = new MaintenanceServiceImpl();
-
-        us.save(m1);
-
-        System.out.println( us.list().toString());
-        Maintenance m2 = new Maintenance( 1,9,"uuuuuuuuuu","en cours",dn);
-        us.update(m2);
-        System.out.println(us.list().toString());
-        us.remove(2);
-        System.out.println(us.list().toString());
-        MaintenanceSearchCriteria rsc=new MaintenanceSearchCriteria();
-        rsc.setId_demande(3);
-        System.out.println("******************************* Search: *******************************");
-         System.out.println(us.search(rsc).toString());
+        us.remove(3);
+        //System.out.println(us.findById(43));
 
 
 
-*/
+
+        Maintenance m1 = new Maintenance( 1,"maintenance1","en cours",dn,44);
+        MaintenanceServiceImpl us1 = new MaintenanceServiceImpl();
+       us1.save(m1);
+        Maintenance m2 = new Maintenance( 2,"maintenance2","resolu",dn1,45);
+        System.out.println(us1.list().toString());
+        us1.update(m2);
+        System.out.println(us1.list().toString());
+        //us.remove(11);
+        //System.out.println(us.findById());
+
+
+
+
+
+
 
 
 

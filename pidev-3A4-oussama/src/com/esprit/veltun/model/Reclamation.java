@@ -7,22 +7,30 @@ public class Reclamation extends BaseEntity {
     private int id_reclamation;
     private String objet;
     private String description;
-    private String etat;
+    private String type;
     private Date date_reclamation;
 
 
 
     public Reclamation() {
     }
+    public Reclamation(String objet, String description, String type,Date date_reclamation) {
+        this.objet = objet;
+        this.description = description;
+        this.type = type;
+        this.date_reclamation = date_reclamation;
+    }
 
-    public Reclamation(Integer id, String objet, String description, String etat,Date date_reclamation) {
-        this.setId(id);
+    public Reclamation(int id_reclamation, String objet, String description, String type,Date date_reclamation) {
+
         this.id_reclamation = id_reclamation;
         this.objet = objet;
         this.description = description;
-        this.etat = etat;
+        this.type = type;
         this.date_reclamation = date_reclamation;
     }
+
+
 
     public int getId_reclamation() {
         return id_reclamation;
@@ -46,12 +54,12 @@ public class Reclamation extends BaseEntity {
     public void setDescription(String description) {
         this.description = description;
     }
-    public String getEtat() {
-        return etat;
+    public String getType() {
+        return type;
     }
 
-    public void setEtat(String etat) {
-        this.etat = etat;
+    public void setType(String type) {
+        this.type = type;
     }
 
 
@@ -65,8 +73,8 @@ public class Reclamation extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Event [id=" + getId() + ",  id_reclamation=" + id_reclamation + ", objet=" + objet
-                + ", description=" + description + ", etat=" + etat + ",date_reclamation=" + date_reclamation +"]";
+        return "reclamation [  id_reclamation=" + id_reclamation + ", objet=" + objet
+                + ", description=" + description + ", type=" + type + ",date_reclamation=" + date_reclamation +"]";
     }
 
 }

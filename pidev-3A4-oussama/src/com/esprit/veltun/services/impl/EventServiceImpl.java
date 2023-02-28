@@ -1,4 +1,4 @@
-package com.esprit.veltun.services.impl;
+/*package com.esprit.veltun.services.impl;
 
 import java.util.Collection;
 
@@ -45,3 +45,4 @@ public class EventServiceImpl implements EventService {
 	}
 
 }
+*/
