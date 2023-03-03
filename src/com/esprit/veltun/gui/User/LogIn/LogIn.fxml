@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.User.LogIn.UserLogInController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.User.LogIn.UserLogInController">
    <children>
       <ImageView fx:id="tfimagelogo" fitHeight="57.0" fitWidth="58.0" layoutX="10.0" layoutY="13.0">
          <image>
@@ -19,7 +19,7 @@
       <Label layoutX="283.0" layoutY="156.0" text="Password" />
       <TextField fx:id="emailLogin" layoutX="371.0" layoutY="101.0" prefHeight="26.0" prefWidth="226.0" />
       <TextField fx:id="pwdLogin" layoutX="371.0" layoutY="151.0" prefHeight="26.0" prefWidth="226.0" />
-      <Button fx:id="forgotPwd" layoutX="305.0" layoutY="283.0" mnemonicParsing="false" onAction="#forgotPwd" prefHeight="26.0" prefWidth="250.0" text="Forgot password?" />
+      <Button fx:id="forgotPwdButton" layoutX="305.0" layoutY="283.0" mnemonicParsing="false" onAction="#forgotPwd" prefHeight="26.0" prefWidth="250.0" text="Forgot password?" />
       <Button fx:id="createAccount" layoutX="305.0" layoutY="253.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="26.0" prefWidth="250.0" text="Create account" />
    </children>
 </AnchorPane>

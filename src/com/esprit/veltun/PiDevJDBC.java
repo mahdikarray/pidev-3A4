@@ -4,6 +4,7 @@ package com.esprit.veltun;
 import com.esprit.veltun.model.*;
 import com.esprit.veltun.search.dto.*;
 import com.esprit.veltun.services.impl.*;
+import com.esprit.veltun.util.JavaMail;
 import com.esprit.veltun.util.MyConnection;
 import com.esprit.veltun.model.base.BaseEntity;
 import com.sun.xml.internal.ws.wsdl.writer.document.http.Address;
@@ -27,15 +28,24 @@ public class PiDevJDBC {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+
+        JavaMail.sendMail("alaa.rziui@gmail.com","this is another test email");
+
+
+
+
+
         //testEvent();
 
-        Connection conn= MyConnection.getInstance();
+    /*    Connection conn= MyConnection.getInstance();
         String date="2004-09-25";
         Date dn= Date.valueOf(LocalDate.parse(date));
         User u1 = new User("14507464","Rezigui","alaa",dn, "User",6596,"alaa.rezigui@esprit.tn");
         UserServiceImpl us = new UserServiceImpl();
         WalletServiceImpl ws=new WalletServiceImpl();
+*/
+
 
    //     System.out.println(us.findByCin("1326").toString());
 
@@ -53,7 +63,7 @@ public class PiDevJDBC {
         usc.setPrenom("alaa");
         System.out.println("search result");
         System.out.println(us.search(usc).toString());*/
-        Wallet w1 = new Wallet(u1,88);
+       // Wallet w1 = new Wallet(u1,88);
         //ws.save(w1);
         //ws.remove("1326");
         //System.out.println(ws.list());
