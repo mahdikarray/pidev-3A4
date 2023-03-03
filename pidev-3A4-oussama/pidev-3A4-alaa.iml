@@ -8,5 +8,14 @@
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="mysql-connector-java-5.1.23-bin" level="project" />
+<<<<<<< Updated upstream:pidev-3A4-oussama/pidev-3A4-alaa.iml
+=======
+    <orderEntry type="library" name="mysql.connector.java" level="project" />
+    <orderEntry type="library" name="jdk1.8" level="project" />
+    <orderEntry type="library" name="jfoenix" level="application" />
+    <orderEntry type="library" name="jar_files" level="project" />
+    <orderEntry type="library" name="core-3.3.0" level="project" />
+    <orderEntry type="library" name="javase-3.3.0" level="project" />
+>>>>>>> Stashed changes:pidev-3A4.iml
   </component>
 </module>

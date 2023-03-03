@@ -1,10 +1,22 @@
 package com.esprit.veltun.services.impl;
 
+<<<<<<< Updated upstream
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+=======
+import com.esprit.veltun.model.Abonnement;
+import com.esprit.veltun.search.base.dto.SearchCriteria;
+import com.esprit.veltun.search.dto.AbonnementSearchCriteria;
+import com.esprit.veltun.services.AbonnementService;
+import com.esprit.veltun.util.MyConnection;
+
+
+import javax.swing.text.html.ImageView;
+import java.sql.*;
+>>>>>>> Stashed changes
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -181,4 +193,63 @@ public class AbonnementServiceImpl implements AbonnementService {
 
         return list;
     }
+<<<<<<< Updated upstream
         }
+=======
+    public static class DiscountCodeGenerator {
+        private static String lastGeneratedCode;
+        public static String generateCode() {
+            String code = "";
+            Random random = new Random();
+
+
+            lastGeneratedCode = code; // store the generated code in the variable
+
+
+            // Generate a random 6-character code
+            for (int i = 0; i < 6; i++) {
+                int rand = random.nextInt(10);
+                code += Integer.toString(rand);
+            }
+
+            return code;
+        }
+        public static String getLastGeneratedCode() {
+            return lastGeneratedCode;
+        }
+        public static float getDiscount(String code) {
+            float discount = 0.0f;
+
+            // Check if the code starts with an even number
+            if (Character.getNumericValue(code.charAt(0)) % 2 == 0) {
+                discount = 0.2f; // 20% discount
+            } else {
+                discount = 0.1f; // 10% discount
+            }
+
+            return discount;
+        }
+    }
+    public static void updateEventPrice(int currentSubscriptionId, float newPrice) {
+        try {
+            // Create a connection to the database
+            Connection conn = MyConnection.getInstance();
+
+            // Prepare the SQL statement to update the event price
+            PreparedStatement statement = conn.prepareStatement(
+                    "UPDATE abonnement SET prix_ab = ? WHERE id_ab = ?");
+
+            // Set the parameters for the SQL statement
+            statement.setFloat(1, newPrice);
+            statement.setInt(2, currentSubscriptionId);
+
+            // Execute the SQL statement
+            statement.executeUpdate();
+
+
+        } catch (SQLException ex) {
+            System.out.println("Error updating event price: " + ex.getMessage());
+        }
+    }
+}
+>>>>>>> Stashed changes

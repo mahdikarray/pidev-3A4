@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.GUI.abonnementt.create.AbonnementCreateController">
+   <children>
+      <Button fx:id="tfaddevent" defaultButton="true" layoutX="381.0" layoutY="345.0" mnemonicParsing="false" onAction="#saveEvent" prefHeight="25.0" prefWidth="114.0" text="Enregistrer" />
+      <Button fx:id="cancelbutton" cancelButton="true" layoutX="243.0" layoutY="345.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="114.0" text="Annuler" />
+      <ImageView fitHeight="132.0" fitWidth="188.0" layoutX="-5.0" layoutY="284.0">
+         <image>
+            <Image url="http://localhost/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="73.0" layoutY="55.0" text="Type abonnement" />
+      <Label layoutX="89.0" layoutY="192.0" text="Prix abonnement" />
+      <Label layoutX="109.0" layoutY="237.0" text="Id offre" />
+      <TextField fx:id="fxType_ab" layoutX="263.0" layoutY="52.0" />
+      <TextField fx:id="fxPrixAb" layoutX="263.0" layoutY="188.0" />
+      <TextField fx:id="fxidO" layoutX="263.0" layoutY="233.0" />
+      <DatePicker fx:id="Adatedebut" layoutX="263.0" layoutY="97.0" />
+      <DatePicker fx:id="Adatefin" layoutX="263.0" layoutY="140.0" />
+      <Label layoutX="64.0" layoutY="101.0" text="Date debut d'abonnement" />
+      <Label layoutX="73.0" layoutY="144.0" text="Date fin d'abonnement" />
+
+   </children>
+</AnchorPane>
