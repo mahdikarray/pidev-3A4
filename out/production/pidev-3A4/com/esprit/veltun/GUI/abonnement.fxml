@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="pane1" prefHeight="505.0" prefWidth="698.0" style="-fx-background-color: #424242; -fx-border-color: #6babd6; -fx-border-width: 7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.GUI.AbonnementController">
+   <children>
+      <TabPane layoutX="12.0" layoutY="88.0" prefHeight="434.0" prefWidth="698.0" style="-fx-background-color: #424242;" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Ajouter">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="578.0">
+                     <children>
+                        <TextField fx:id="fxTypeab" layoutX="252.0" layoutY="71.0" />
+                        <Label layoutX="89.0" layoutY="75.0" text="Type abonnement" />
+                        <Label layoutX="85.0" layoutY="118.0" text="Duree abonnement" />
+                        <TextField fx:id="fxDureeab" layoutX="252.0" layoutY="114.0" />
+                        <Label layoutX="92.0" layoutY="164.0" text="Prix abonnement" />
+                        <TextField fx:id="fxPrixAb" layoutX="252.0" layoutY="160.0" />
+                        <Label layoutX="98.0" layoutY="203.0" text="Id offre" />
+                        <TextField fx:id="fxidO" layoutX="252.0" layoutY="199.0" />
+                        <Button fx:id="fxajouterab" layoutX="261.0" layoutY="313.0" mnemonicParsing="false" onAction="#addaB" text="Ajouter" />
+                        <TextField fx:id="fxCIN" layoutX="253.0" layoutY="246.0" />
+                        <Label layoutX="94.0" layoutY="250.0" text="Cin Utilisateur" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="modifier">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="578.0">
+                     <children>
+                        <TextField fx:id="fxIdAb2" layoutX="252.0" layoutY="27.0" />
+                        <Label layoutX="115.0" layoutY="31.0" text="ID abonnement" />
+                        <TextField fx:id="fxTypeab1" layoutX="252.0" layoutY="71.0" />
+                        <Label layoutX="101.0" layoutY="75.0" text="Type abonnement" />
+                        <Label layoutX="98.0" layoutY="118.0" text="Duree abonnement" />
+                        <TextField fx:id="fxDureeab1" layoutX="252.0" layoutY="114.0" />
+                        <Label layoutX="112.0" layoutY="164.0" text="Prix abonnement" />
+                        <TextField fx:id="fxPrixAb1" layoutX="252.0" layoutY="160.0" />
+                        <Label layoutX="157.0" layoutY="203.0" text="Id offre" />
+                        <TextField fx:id="fxidO1" layoutX="252.0" layoutY="199.0" />
+                        <Button fx:id="fxModifab" layoutX="252.0" layoutY="309.0" mnemonicParsing="false" onAction="#Modifab" text="Modifier" />
+                        <TextField fx:id="fxCIN1" layoutX="252.0" layoutY="245.0" />
+                        <Label layoutX="112.0" layoutY="249.0" text="Cin Utilisateur" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+          <Tab text="Supprimer et afficher">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="381.0" prefWidth="586.0">
+                     <children>
+                        <ListView fx:id="list" layoutX="27.0" layoutY="77.0" prefHeight="210.0" prefWidth="634.0" />
+                        <Button fx:id="fxDeleteab" layoutX="192.0" layoutY="314.0" mnemonicParsing="false" onAction="#DeleteaB" text="Supprimer" />
+                        <Label layoutX="31.0" layoutY="32.0" text="Type abonnemnt" />
+                        <Label layoutX="174.0" layoutY="32.0" text="Duree abonnement" />
+                        <Label layoutX="340.0" layoutY="32.0" text="Prix abonnemen" />
+                        <Label layoutX="486.0" layoutY="32.0" text="Id offre" />
+                        <Button fx:id="fxRecherch" layoutX="297.0" layoutY="314.0" mnemonicParsing="false" onAction="#Rechab" prefHeight="30.0" prefWidth="82.0" text="Recherche" />
+                        <Label layoutX="583.0" layoutY="32.0" text="CIN" />
+                        <TextField fx:id="titletosearch" layoutX="399.0" layoutY="316.0" prefHeight="25.0" prefWidth="195.0" promptText="Titre de recherche" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+         <effect>
+            <Blend />
+         </effect>
+      </TabPane>
+      <Button fx:id="button1" layoutX="26.0" layoutY="26.0" mnemonicParsing="false" onAction="#handlbt1" text="Offre">
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

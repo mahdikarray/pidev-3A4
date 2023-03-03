@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="380.0" style="-fx-background-color: rgba(0,0,0,1);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.GUI.stationController">
+   <children>
+      <AnchorPane layoutX="-23.0" layoutY="100.0" prefHeight="368.0" prefWidth="403.0" style="-fx-background-color: #3D4956;">
+         <children>
+            <TextField fx:id="idstationFX" layoutX="185.0" layoutY="70.0" />
+            <Label layoutX="42.0" layoutY="71.0" text="Id_station :" textFill="ALICEBLUE" />
+            <Label layoutX="42.0" layoutY="120.0" text="Nom Station : " textFill="ALICEBLUE" />
+            <TextField fx:id="nomstationFX" layoutX="185.0" layoutY="116.0" />
+            <Label layoutX="42.0" layoutY="166.0" text="Longitude:" textFill="ALICEBLUE" />
+            <TextField fx:id="longitudeFX" layoutX="185.0" layoutY="162.0" />
+            <TextField fx:id="latitudeFX" layoutX="185.0" layoutY="212.0" />
+            <Label layoutX="46.0" layoutY="216.0" text="Latitude :" textFill="ALICEBLUE" />
+            <Button fx:id="addstationFX" layoutX="148.0" layoutY="285.0" mnemonicParsing="false" onAction="#addstation" prefHeight="26.0" prefWidth="77.0" style="-fx-text-fill: #000000; -fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #eda678;" text="Add" textOverrun="WORD_ELLIPSIS" AnchorPane.leftAnchor="148.0" AnchorPane.rightAnchor="164.79999999999995">
+               <effect>
+                  <Glow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Button>
+            <Label fx:id="myLabel" layoutX="165.0" layoutY="29.0" prefHeight="18.0" prefWidth="122.0" text="Label" />
+            <Button fx:id="updatefxstation" layoutX="248.0" layoutY="285.0" mnemonicParsing="false" onAction="#updatestation" prefHeight="26.0" prefWidth="90.0" style="-fx-text-fill: #000000; -fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #eda678;" text="Update " textOverrun="WORD_ELLIPSIS">
+               <effect>
+                  <Glow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Button>
+            <Button fx:id="deletfx" layoutX="193.0" layoutY="327.0" mnemonicParsing="false" onAction="#deletstat" prefHeight="26.0" prefWidth="90.0" style="-fx-text-fill: #000000; -fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #eda678;" text="Delete" textOverrun="WORD_ELLIPSIS">
+               <effect>
+                  <Glow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="-19.0" prefHeight="113.0" prefWidth="380.0" style="-fx-background-color: #3D4956;">
+         <children>
+            <ImageView fitHeight="95.0" fitWidth="121.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="96.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage your stations ">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <TabPane layoutX="-1.0" layoutY="15.0" prefHeight="465.0" prefWidth="380.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Ajouter">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <AnchorPane prefHeight="368.0" prefWidth="403.0" style="-fx-background-color: #3D4956;">
+                                 <children>
+                                    <Label layoutX="42.0" layoutY="120.0" text="Nom Station : " textFill="ALICEBLUE" />
+                                    <TextField fx:id="nomstationFX1" layoutX="185.0" layoutY="116.0" />
+                                    <Label layoutX="42.0" layoutY="166.0" text="Longitude:" textFill="ALICEBLUE" />
+                                    <TextField fx:id="longitudeFX1" layoutX="185.0" layoutY="162.0" />
+                                    <TextField fx:id="latitudeFX1" layoutX="185.0" layoutY="212.0" />
+                                    <Label layoutX="46.0" layoutY="216.0" text="Latitude :" textFill="ALICEBLUE" />
+                                    <Button fx:id="addstationFX1" layoutX="148.0" layoutY="285.0" mnemonicParsing="false" onAction="#addstation" prefHeight="26.0" prefWidth="77.0" style="-fx-text-fill: #000000; -fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #eda678;" text="Add" textOverrun="WORD_ELLIPSIS" AnchorPane.leftAnchor="148.0" AnchorPane.rightAnchor="164.79999999999995">
+                                       <effect>
+                                          <Glow />
+                                       </effect>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="myLabel1" layoutX="165.0" layoutY="29.0" prefHeight="18.0" prefWidth="122.0" text="Label" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Modifier">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="idstationFX11" layoutX="133.0" layoutY="95.0" />
+                              <TextField fx:id="nomstationFX11" layoutX="133.0" layoutY="147.0" />
+                              <TextField fx:id="longitudeFX11" layoutX="133.0" layoutY="199.0" />
+                              <TextField fx:id="latitudeFX11" layoutX="133.0" layoutY="254.0" />
+                              <Label layoutX="25.0" layoutY="99.0" text="Id_station :" textFill="ALICEBLUE" />
+                              <Label layoutX="16.0" layoutY="151.0" text="Nom Station : " textFill="ALICEBLUE" />
+                              <Label layoutX="25.0" layoutY="203.0" text="Longitude:" textFill="ALICEBLUE" />
+                              <Label layoutX="29.0" layoutY="258.0" text="Latitude :" textFill="ALICEBLUE" />
+                              <Button fx:id="updatefxstation1" layoutX="145.0" layoutY="330.0" mnemonicParsing="false" onAction="#updatestation" prefHeight="26.0" prefWidth="90.0" style="-fx-text-fill: #000000; -fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #eda678;" text="Update " textOverrun="WORD_ELLIPSIS">
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Supprimer et afficher">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="deletfx1" layoutX="145.0" layoutY="331.0" mnemonicParsing="false" onAction="#deletstat" prefHeight="26.0" prefWidth="90.0" style="-fx-text-fill: #000000; -fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #eda678;" text="Delete" textOverrun="WORD_ELLIPSIS">
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </Button>
+                              <TextField fx:id="idstationFX12" layoutX="115.0" layoutY="290.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
