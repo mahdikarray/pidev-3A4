@@ -15,7 +15,7 @@ public class FrontUi extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("abonnementt/frontchoice/searchfront.fxml"));
-        primaryStage.setTitle("Gestion des Abonnement");
+        primaryStage.setTitle("Subscriptions");
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         primaryStage.setScene(scene);

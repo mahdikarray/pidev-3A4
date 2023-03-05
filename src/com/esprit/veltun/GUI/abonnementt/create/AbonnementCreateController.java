@@ -47,6 +47,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.Calendar;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -77,92 +78,83 @@ public class AbonnementCreateController implements Initializable {
 
     public void saveEvent(ActionEvent actionEvent) {
         String type= fxType_ab.getText();
-        //String dateDebut = String.valueOf(Adatedebut.getValue());
+
         Date dateDebut = Date.valueOf(Adatedebut.getValue());
         Date dateFin = Date.valueOf(Adatefin.getValue());
 
-       // String dure=fxDureeab.getText();
         String prix=fxPrixAb.getText();
-        String idO=fxidO.getText();
-// Set the dateFin to the updated Calendar object
-        //Date dateFin = calendar.getTime();
-      //  String cin=fxCIN.getText();
-        if (type.isEmpty() || prix.isEmpty() || idO.isEmpty()) {
+
+        if (type.isEmpty() || prix.isEmpty() ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur de saisie");
+            alert.setTitle("Problem!");
             alert.setHeaderText(null);
-            alert.setContentText("Veuillez remplir tous les champs.");
+            alert.setContentText("Enter valid type and Price");
             alert.showAndWait();
             return;
         }
 
-
-
-        if (dateFin.after(dateFin)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Veuillez saisir une date de fin valide (1 mois après la date de début)!!");
-            alert.showAndWait();
-            return;
-        }
         if (dateDebut.after(dateFin)  ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("veuillez saisir une date de fin valide!!");
+            alert.setContentText("Enter a valid date!!");
             alert.showAndWait();
             return;
         }
-        if (!type.matches("Standard") && (!type.matches("Premium"))) {
-            // Affichage d'un message d'erreur si le champ n'est pas du bon format
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Type must be either Standard or Premium.");
+        if (!type.matches("Standard") && (!type.matches("Premium") && (!type.matches("Premium\\+")))) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Type must be either Standard or Premium or Premium+");
             alert.showAndWait();
             return;
         }
         if (!prix.matches("\\d+(\\.\\d+)?")) {
-            // Affichage d'un message d'erreur si le champ n'est pas du bon format
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Le prix doit être un nombre décimal.");
+
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Price must be a decimal number.");
             alert.showAndWait();
             return;
         }
 
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to save the data?");
+        Optional<ButtonType> result = confirm.showAndWait();
 
-Abonnement a= new Abonnement();
-        //Abonnement a = new Abonnement();
-        a.setType_ab(type);
-        a.setDateDebut(dateDebut);
-        a.setDateFin(dateFin);
-       // a.setDuree(dure);
-        a.setPrix_ab(Float.parseFloat(prix));
-        a.setId_offre(Integer.parseInt(idO));
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+
+            Abonnement a= new Abonnement();
+            //Abonnement a = new Abonnement();
+            a.setType_ab(type);
+            a.setDateDebut(dateDebut);
+            a.setDateFin(dateFin);
+            // a.setDuree(dure);
+            a.setPrix_ab(Float.parseFloat(prix));
+            // a.setId_offre(Integer.parseInt(idO));
 
 
-        a = abonnementService.save(a);
+            a = abonnementService.save(a);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/details.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/details.fxml"));
 
-        try {
-            Parent root = fxmlLoader.load();
+            try {
+                Parent root = fxmlLoader.load();
 
-            EventDetailsController cont = fxmlLoader.getController();
-            cont.setAbonnement(a);
+                EventDetailsController cont = fxmlLoader.getController();
+                cont.setAbonnement(a);
 
-            fxType_ab.getScene().setRoot(root);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
-        FXMLLoader Loader = new FXMLLoader(getClass().getResource("../search/search.fxml"));
+                fxType_ab.getScene().setRoot(root);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            FXMLLoader Loader = new FXMLLoader(getClass().getResource("../search/search.fxml"));
 
-        try {
-            Parent root = Loader.load();
+            try {
+                Parent root = Loader.load();
 
-            EventDetailsController cont = fxmlLoader.getController();
-            cont.setAbonnement(a);
+                EventDetailsController cont = fxmlLoader.getController();
+                cont.setAbonnement(a);
 
-            fxType_ab.getScene().setRoot(root);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
+                fxType_ab.getScene().setRoot(root);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 
@@ -178,7 +170,7 @@ Abonnement a= new Abonnement();
                 return null; // prevent change
             }
         });
-        //tfheurefin.setTextFormatter(formatter);
+
 
     }
     public void cancel(ActionEvent actionEvent) {

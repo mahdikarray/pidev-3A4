@@ -6,6 +6,13 @@ import com.esprit.veltun.model.Abonnement;
 import com.esprit.veltun.search.dto.AbonnementSearchCriteria;
 import com.esprit.veltun.services.AbonnementService;
 import com.esprit.veltun.services.impl.AbonnementServiceImpl;
+<<<<<<< Updated upstream
+=======
+import com.esprit.veltun.search.dto.OffreSearchCriteria;
+import com.esprit.veltun.model.Offre;
+import com.esprit.veltun.services.OffreService;
+import com.esprit.veltun.services.impl.OffreServiceImpl;
+>>>>>>> Stashed changes
 import javafx.beans.property.ObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,12 +38,24 @@ public class AbonnementSearchControllerFront implements Initializable {
     public Button searchbutton;
     public Button tooffer;
     private AbonnementService abonnementService = new AbonnementServiceImpl();
+<<<<<<< Updated upstream
+=======
+    private OffreService offreService = new OffreServiceImpl();
+>>>>>>> Stashed changes
     public ListView<Abonnement> eventlistview;
     @FXML
     private HBox buttonsContainer;
     @FXML
+<<<<<<< Updated upstream
     private ScrollPane eventsScrollPane;
 
+=======
+    private VBox buttonsContainer1;
+    @FXML
+    private ScrollPane eventsScrollPane;
+    @FXML
+    private ScrollPane eventsScrollPane1;
+>>>>>>> Stashed changes
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -46,12 +65,23 @@ public class AbonnementSearchControllerFront implements Initializable {
     void runSearch() {
        // String Type_ab = titletosearch.getText();
         AbonnementSearchCriteria abonnementSearchCriteria = new AbonnementSearchCriteria();
+<<<<<<< Updated upstream
 
         Collection<Abonnement> abonnements = abonnementService.search(abonnementSearchCriteria);
 
 // Create a VBox to hold the buttons
         HBox buttonsContainer = new HBox();
         buttonsContainer.setSpacing(10);
+=======
+ OffreSearchCriteria offreSearchCriteria=new OffreSearchCriteria();
+        Collection<Abonnement> abonnements = abonnementService.search(abonnementSearchCriteria);
+        Collection<Offre> offres = offreService.search(offreSearchCriteria);
+// Create a VBox to hold the buttons
+        HBox buttonsContainer = new HBox();
+        buttonsContainer.setSpacing(10);
+        VBox buttonsContainer1 = new VBox();
+        buttonsContainer1.setSpacing(10);
+>>>>>>> Stashed changes
 
 // Create a button for each abonnement
         for (Abonnement abonnement : abonnements) {
@@ -86,7 +116,43 @@ public class AbonnementSearchControllerFront implements Initializable {
         if (eventsScrollPane != null) {
             eventsScrollPane.setContent(buttonsContainer);
         }
+<<<<<<< Updated upstream
         }
+=======
+        for (Offre offre : offres) {
+            Label label = new Label(offre.getDescription_of());
+            label.setWrapText(true);
+            label.setOnMouseClicked(event -> {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("Second.fxml"));
+                    Parent root = loader.load();
+
+                    // Get the controller for the second FXML
+                    SecondFXMLController controller = loader.getController();
+
+                    // Set the abonnement in the controller
+                    controller.setOffre(offre);
+
+                    // Show the second FXML
+            /*    Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();*/
+                    label.getScene().setRoot(root);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
+            // Add the label to the VBox
+            buttonsContainer1.getChildren().add(label);
+        }
+        if (eventsScrollPane1 != null) {
+            eventsScrollPane1.setContent(buttonsContainer1);
+        }
+
+    }
+>>>>>>> Stashed changes
 
 
 
@@ -99,7 +165,11 @@ public class AbonnementSearchControllerFront implements Initializable {
             Parent root = fxmlLoader.load();
 
             Stage thisStage = (Stage) searchbutton.getScene().getWindow();
+<<<<<<< Updated upstream
             thisStage.setTitle("Mise à jour d'un abonnement");
+=======
+            thisStage.setTitle("Subscription update successfully ");
+>>>>>>> Stashed changes
 
             com.esprit.veltun.GUI.abonnementt.frontchoice.SecondFXMLController cont = fxmlLoader.getController();
             cont.setAbonnement(abonnement);

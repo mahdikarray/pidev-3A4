@@ -24,16 +24,15 @@ public class EventDetailsController implements Initializable {
         this.fxdescription1.setText(desc);
     }
 
-    public void setFxPrix(String prix) {
-        this.fxPrix1.setText(prix);
-    }
+
 
 
 
     public void setOffre(Offre offre) {
-        setFxDescription(offre.getDescription_of());
-        setFxPrix(String.valueOf(offre.getPrix()));
+        if (offre != null) {
+            setFxDescription(offre.getDescription_of());
 
+}
     }
 
 

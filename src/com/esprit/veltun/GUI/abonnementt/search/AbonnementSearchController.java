@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AbonnementSearchController implements Initializable {
@@ -60,43 +61,72 @@ public class AbonnementSearchController implements Initializable {
     void removeEvent(ActionEvent mouseEvent) {
         Abonnement abonnement = eventlistview.getSelectionModel().getSelectedItem();
         int selectionIndex = eventlistview.getSelectionModel().getSelectedIndex();
-        abonnementService.remove(abonnement.getId_ab());
-        eventlistview.getItems().remove(selectionIndex);
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Are you sure you want to remove this subscription?");
+        alert.setContentText("Subscription Type: " + abonnement.getType_ab() + "\nSubscription Start Date: " + abonnement.getDateDebut().toString() + "\nSubscription End Date: " + abonnement.getDateFin().toString()+ "\nSubscription Price: " + abonnement.getPrix_ab());
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            abonnementService.remove(abonnement.getId_ab());
+            eventlistview.getItems().remove(selectionIndex);
+        } else {
+            // User clicked Cancel or closed the dialog
+        }
     }
 
     @FXML
     void editEvent(ActionEvent mouseEvent) {
         Abonnement abonnement = eventlistview.getSelectionModel().getSelectedItem();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../update/update.fxml"));
 
-        try {
-            Parent root = fxmlLoader.load();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Are you sure you want to update this subscription?");
+        alert.setContentText("Subscription Type: " + abonnement.getType_ab() + "\nSubscription Start Date: " + abonnement.getDateDebut().toString() + "\nSubscription End Date: " + abonnement.getDateFin().toString()+ "\nSubscription Price: " + abonnement.getPrix_ab());
 
-            Stage thisStage = (Stage) searchbutton.getScene().getWindow();
-            thisStage.setTitle("Mise à jour d'un abonnement");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../update/update.fxml"));
 
-            com.esprit.veltun.GUI.abonnementt.update.AbonnementUpdateController cont = fxmlLoader.getController();
-            cont.setAbonnement(abonnement);
+            try {
+                Parent root = fxmlLoader.load();
 
-            eventlistview.getScene().setRoot(root);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
+                Stage thisStage = (Stage) searchbutton.getScene().getWindow();
+                thisStage.setTitle("Update subscription");
+
+                com.esprit.veltun.GUI.abonnementt.update.AbonnementUpdateController cont = fxmlLoader.getController();
+                cont.setAbonnement(abonnement);
+
+                eventlistview.getScene().setRoot(root);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        } else {
+            // User clicked Cancel or closed the dialog
         }
     }
 
     @FXML
     void addEvent(ActionEvent actionEvent) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../create/create.fxml"));
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Are you sure you want to create a new subscription?");
+        alert.setContentText("Ok to create.");
 
-        Stage thisStage = (Stage) searchbutton.getScene().getWindow();
-        thisStage.setTitle("Création d'un abonnement");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../create/create.fxml"));
 
-        try {
-            Parent root = fxmlLoader.load();
-            eventlistview.getScene().setRoot(root);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+            Stage thisStage = (Stage) searchbutton.getScene().getWindow();
+            thisStage.setTitle("creation of subscription");
+
+            try {
+                Parent root = fxmlLoader.load();
+                eventlistview.getScene().setRoot(root);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }}
     }
 
     public void search(ActionEvent actionEvent) {

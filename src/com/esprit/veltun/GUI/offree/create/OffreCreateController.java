@@ -8,13 +8,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
 
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -26,41 +25,45 @@ public class OffreCreateController implements Initializable {
     public TextField fxprix;
 
     public void saveEvent(ActionEvent actionEvent) {
-        String description=fxdescription.getText();
-        String prixo=fxprix.getText();
+        String description = fxdescription.getText();
 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Are you sure you want to add this offer?");
+        alert.setContentText("Click OK to confirm.");
 
-        Offre a= new Offre();
-        //Abonnement a = new Abonnement();
-        a.setPrix(Float.parseFloat(prixo));
-        a.setDescription_of(description);
+        Optional<ButtonType> result = alert.showAndWait();
 
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            Offre a = new Offre();
+            a.setDescription_of(description);
+            a = offreService.save(a);
 
-        a = offreService.save(a);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/detailsof.fxml"));
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/detailsof.fxml"));
+            try {
+                Parent root = fxmlLoader.load();
 
-        try {
-            Parent root = fxmlLoader.load();
+                EventDetailsController cont = fxmlLoader.getController();
+                cont.setOffre(a);
 
-            EventDetailsController cont = fxmlLoader.getController();
-            cont.setOffre(a);
+                fxdescription.getScene().setRoot(root);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
 
-            fxprix.getScene().setRoot(root);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
-        FXMLLoader Loader = new FXMLLoader(getClass().getResource("../search/searchof.fxml"));
+            FXMLLoader Loader = new FXMLLoader(getClass().getResource("../search/searchof.fxml"));
 
-        try {
-            Parent root = Loader.load();
+            try {
+                Parent root = Loader.load();
 
-            EventDetailsController cont = fxmlLoader.getController();
-            cont.setOffre(a);
+                EventDetailsController cont = fxmlLoader.getController();
+                cont.setOffre(a);
 
-            fxprix.getScene().setRoot(root);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
+                fxdescription.getScene().setRoot(root);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 
@@ -76,7 +79,7 @@ public class OffreCreateController implements Initializable {
                 return null; // prevent change
             }
         });
-        //tfheurefin.setTextFormatter(formatter);
+
 
     }
     public void cancel(ActionEvent actionEvent) {
@@ -84,7 +87,7 @@ public class OffreCreateController implements Initializable {
 
         try {
             Parent root = fxmlLoader.load();
-            fxprix.getScene().setRoot(root);
+            fxdescription.getScene().setRoot(root);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

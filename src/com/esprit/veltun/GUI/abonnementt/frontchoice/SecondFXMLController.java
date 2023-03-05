@@ -2,6 +2,7 @@ package com.esprit.veltun.GUI.abonnementt.frontchoice;
 
 import com.esprit.veltun.GUI.abonnementt.view.EventDetailsController;
 import com.esprit.veltun.model.Abonnement;
+import com.esprit.veltun.model.Offre;
 import com.esprit.veltun.search.dto.AbonnementSearchCriteria;
 import com.esprit.veltun.services.AbonnementService;
 import com.esprit.veltun.services.impl.AbonnementServiceImpl;
@@ -150,6 +151,10 @@ public class SecondFXMLController implements Initializable {
     public void setData(Abonnement abonnement) {
     }
 
+    public void setOffre(Offre offre) {
+
+    }
+
 
     public static class QRCodeGenerator {
 
@@ -196,7 +201,7 @@ public class SecondFXMLController implements Initializable {
         float discountAmount = originalPrice * discountPercentage;
         float finalPrice = originalPrice - discountAmount;
 
-        String message = String.format("Voici votre code. Vous beneficiez d'une reduction de %.0f%% avec le code %s", discountPercentage*100, discountCode);
+        String message = String.format("You get a discount of %.0f%% with the code %s", discountPercentage*100, discountCode);
 
         try {
             // Generate the QR code image
@@ -219,9 +224,9 @@ public class SecondFXMLController implements Initializable {
        float price = Float.parseFloat(priceText);
        int subscriptionId = abonnement.getId_ab();
        String type = fxtype.getText();
-       if (!type.equals("Premium")) {
+       if (!type.equals("Premium+")) {
            // The discount cannot be applied if the type is not "premium"
-           Alert alert = new Alert(Alert.AlertType.ERROR, "The discount can only be applied to premium subscriptions.");
+           Alert alert = new Alert(Alert.AlertType.ERROR, "The discount can only be applied to premium+ subscriptions.");
            alert.showAndWait();
            return;
        }

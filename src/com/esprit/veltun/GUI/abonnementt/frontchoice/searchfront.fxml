@@ -6,6 +6,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<<<<<<< Updated upstream
+=======
+<?import javafx.scene.layout.VBox?>
+>>>>>>> Stashed changes
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.GUI.abonnementt.frontchoice.AbonnementSearchControllerFront">
    <children>
@@ -14,21 +18,46 @@
             <Image url="http://localhost/logo-removebg-preview.png" />
          </image>
       </ImageView>
+<<<<<<< Updated upstream
       <Label layoutX="228.0" layoutY="37.0" text="Abonnement disponible" />
       <ScrollPane fx:id="eventsScrollPane" layoutX="86.0" layoutY="77.0" prefHeight="176.0" prefWidth="460.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="174.0" prefWidth="506.0">
                <children>
                   <HBox fx:id="buttonsContainer" layoutX="2.0" layoutY="3.0" prefHeight="169.0" prefWidth="498.0" />
+=======
+      <Label layoutX="256.0" layoutY="37.0" prefHeight="18.0" prefWidth="175.0" text="Available Subscription" />
+      <ScrollPane fx:id="eventsScrollPane" layoutX="166.0" layoutY="98.0" prefHeight="86.0" prefWidth="363.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="86.0" prefWidth="477.0">
+               <children>
+                  <HBox fx:id="buttonsContainer" layoutX="2.0" layoutY="3.0" prefHeight="86.0" prefWidth="472.0" />
+>>>>>>> Stashed changes
                </children>
             </AnchorPane>
         </content>
       </ScrollPane>
       <ImageView fitHeight="118.0" fitWidth="175.0" layoutX="192.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true" />
+<<<<<<< Updated upstream
       <ImageView fitHeight="219.0" fitWidth="297.0" layoutX="205.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
+=======
+      <ImageView fitHeight="219.0" fitWidth="297.0" layoutX="-54.0" layoutY="-44.0" pickOnBounds="true" preserveRatio="true">
+>>>>>>> Stashed changes
          <image>
             <Image url="http://localhost:8088/330823425_140191562292313_5280591234399270848_n.png" />
          </image>
       </ImageView>
+<<<<<<< Updated upstream
+=======
+      <ScrollPane fx:id="eventsScrollPane1" layoutX="6.0" layoutY="205.0" prefHeight="176.0" prefWidth="584.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="166.0" prefWidth="586.0">
+               <children>
+                  <VBox fx:id="buttonsContainer1" layoutX="-1.0" prefHeight="166.0" prefWidth="584.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+>>>>>>> Stashed changes
    </children>
 </AnchorPane>

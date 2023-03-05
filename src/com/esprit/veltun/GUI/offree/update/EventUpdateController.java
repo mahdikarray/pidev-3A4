@@ -8,12 +8,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -31,40 +30,45 @@ public class EventUpdateController implements Initializable {
         this.FxDescription2.setText(desc);
     }
 
-    public void setFxPrix(String prix) {
-        this.fxPrix2.setText(prix);
-    }
+
 
 
 
     public void setOffre(Offre offre) {
         this.offre= offre;
         setFxDescription(offre.getDescription_of());
-        setFxPrix(String.valueOf(offre.getPrix()));
+
 
     }
     public void updateEvent(ActionEvent actionEvent) {
         String desc= FxDescription2.getText();
-        String prix=fxPrix2.getText();
 
-        //Abonnement a= new Abonnement();
-       // Offre offre = new Offre();
-        offre.setDescription_of(desc);
-        offre.setPrix(Float.parseFloat(prix));
+        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmation.setTitle("Confirmation");
+        confirmation.setHeaderText("Are you sure you want to update this offer?");
+        confirmation.setContentText("Click OK to confirm.");
 
-        offre = offreService.update(offre);
+        Optional<ButtonType> result = confirmation.showAndWait();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/detailsof.fxml"));
+        if (result.isPresent() && result.get() == ButtonType.OK) {
 
-        try {
-            Parent root = fxmlLoader.load();
+            offre.setDescription_of(desc);
 
-            EventDetailsController cont = fxmlLoader.getController();
-            cont.setOffre(offre);
 
-            fxPrix2.getScene().setRoot(root);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
+            offre = offreService.update(offre);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/detailsof.fxml"));
+
+            try {
+                Parent root = fxmlLoader.load();
+
+                EventDetailsController cont = fxmlLoader.getController();
+                cont.setOffre(offre);
+
+                FxDescription2.getScene().setRoot(root);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 
@@ -81,7 +85,6 @@ public class EventUpdateController implements Initializable {
             }
         });
 
-        //tfheuredebut.setTextFormatter(formatter);
     }
 
     public void cancel(ActionEvent actionEvent) {
@@ -89,40 +92,10 @@ public class EventUpdateController implements Initializable {
 
         try {
             Parent root = fxmlLoader.load();
-            fxPrix2.getScene().setRoot(root);
+            FxDescription2.getScene().setRoot(root);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
     }
-    public void gencode(ActionEvent actionEvent){
-       /* String f= Fxrs.getText();
-        //fxrs=randomstring;
-        String alphabet="ABCDEFGHIJKLMNOPQRSTUVXWZ";
-        StringBuilder sb= new StringBuilder();
-        Random random=new Random();
-        int lenght=7;
-        for(int i=0;i<lenght;i++) {
-            int index = random.nextInt(alphabet.length());
-            char randomchar = alphabet.charAt(index);
-            sb.append(randomchar);}
-            String randomstring=sb.toString();
-        System.out.println(" "+randomstring);*/
-       /* if (f == randomstring) {
 
-        double dis, amount, Prix, s;
-
-        Prix = 1000;
-
-        dis = 25;  // 25 mean 25%
-
-        System.out.println("markedprice= " + offre.getPrix());
-
-        System.out.println("discount rate=" + dis);
-
-        s = 100 - dis;
-
-        amount = (s * offre.getPrix()) / 100;
-
-        System.out.println("amount after discount=" + amount);
-    }*/}
 }
