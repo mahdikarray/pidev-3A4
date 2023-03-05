@@ -7,9 +7,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane opacity="0.99" prefHeight="400.0" prefWidth="600.0"  xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.station.view.StationDetailsController">
+<AnchorPane opacity="0.99" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.station.view.StationDetailsController">
    <children>
-      <Button fx:id="ftlistEvent" defaultButton="true" layoutX="361.0" layoutY="379.0" mnemonicParsing="false" onAction="#listStation" prefHeight="25.0" prefWidth="132.0" text="Liste des stations" />
+      <Button fx:id="ftlistEvent" defaultButton="true" layoutX="361.0" layoutY="379.0" mnemonicParsing="false" onAction="#listStation" prefHeight="25.0" prefWidth="132.0" style="-fx-background-radius: 5em;" text="List" />
       <ImageView fitHeight="126.0" fitWidth="234.0" layoutX="-25.0" layoutY="316.0">
          <image>
             <Image url="http://localhost/logo-removebg-preview.png" />

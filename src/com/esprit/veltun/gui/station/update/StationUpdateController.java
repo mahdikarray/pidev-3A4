@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
@@ -46,7 +47,7 @@ public class StationUpdateController implements Initializable {
 
     public void setStation(Station station) {
         this.station = station;
-        setFxidStation(String.valueOf(station.getid_station()));
+        //setFxidStation(String.valueOf(station.getid_station()));
         setFxnomStation(station.getnom_station());
         setFxLongitude(String.valueOf(station.getlongitude()));
         setFxLatitude(String.valueOf(station.getlatitude()));
@@ -58,6 +59,36 @@ public class StationUpdateController implements Initializable {
         String longi=fxLongitude.getText();
         String lati=fxLatitude.getText();
 
+
+
+//Les controles de saisies !!
+        if (lati.isEmpty() || longi.isEmpty() || nomS.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all the form .");
+            alert.showAndWait();
+            return;
+        }
+
+        if(!nomS.matches("[a-zA-Z]+"))  {
+            // Si le nom contient autre chose que des lettres et des espaces, afficher un message d'erreur
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill the name field with letters only .");
+            alert.showAndWait();
+            return;
+        }
+
+        if(lati.matches("[a-zA-Z]+") || longi.matches("[a-zA-Z]+"))  {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill the longitude and latitude fields with numbers only .");
+            alert.showAndWait();
+            return;
+        }
 
         Station s = new Station();
         s.setid_station(Integer.parseInt(idS));

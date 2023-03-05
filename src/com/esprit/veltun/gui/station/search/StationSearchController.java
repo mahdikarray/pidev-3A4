@@ -51,6 +51,7 @@ public class StationSearchController implements Initializable {
         }
         Collection<Station> station = stationService.search(StationSearchCriteria);
         stationlistview.getItems().setAll(station);
+
     }
 
     @FXML

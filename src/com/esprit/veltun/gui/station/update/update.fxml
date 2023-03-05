@@ -7,10 +7,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="383.0" prefWidth="600.0"  xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.station.update.StationUpdateController">
+<AnchorPane prefHeight="383.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.station.update.StationUpdateController">
    <children>
-      <Button fx:id="tfaddevent" defaultButton="true" layoutX="391.0" layoutY="358.0" mnemonicParsing="false" onAction="#updateEvent" prefHeight="25.0" prefWidth="114.0"  text="Update" />
-      <Button fx:id="cancelbutton" cancelButton="true" layoutX="249.0" layoutY="358.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="114.0"  text="Annuler" />
+      <Button fx:id="tfaddevent" defaultButton="true" layoutX="391.0" layoutY="358.0" mnemonicParsing="false" onAction="#updateEvent" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em;" text="Update" />
+      <Button fx:id="cancelbutton" cancelButton="true" layoutX="249.0" layoutY="358.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Quit" />
       <ImageView fitHeight="126.0" fitWidth="174.0" layoutX="14.0" layoutY="295.0">
          <image>
             <Image url="http://localhost/logo-removebg-preview.png" />

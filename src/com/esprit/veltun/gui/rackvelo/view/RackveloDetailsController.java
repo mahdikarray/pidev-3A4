@@ -3,9 +3,11 @@ package com.esprit.veltun.gui.rackvelo.view;
 import com.esprit.veltun.model.RackVelo;
 import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -15,8 +17,7 @@ import java.util.ResourceBundle;
 public class RackveloDetailsController implements Initializable {
     public TextField fxrefRv;
     public TextField fxidS;
-    public TextField fxCap;;
-
+    public TextField fxCap;
 
     public void setFxrefRv(String refRV) {
         this.fxrefRv.setText(refRV);
