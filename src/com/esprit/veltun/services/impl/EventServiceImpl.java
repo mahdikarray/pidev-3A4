@@ -10,11 +10,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import com.esprit.veltun.model.Adresse;
 import com.esprit.veltun.model.Event;
 import com.esprit.veltun.search.base.dto.SearchCriteria;
 import com.esprit.veltun.search.dto.EventSearchCriteria;
-import com.esprit.veltun.services.AdresseService;
 import com.esprit.veltun.services.EventService;
 import com.esprit.veltun.util.MyConnection;
 
@@ -39,11 +37,8 @@ public class EventServiceImpl implements EventService {
 			String req = "SELECT `event`.`id`, `event`.`titre`, "
 					+ "`event`.`description`, `event`.`dateDebut`, "
 					+ "`event`.`heure_debut`, `event`.`dateFin`, "
-					+ "`event`.`heure_fin`, `event`.`adresse_id`, "
-					+ "`adresse`.`rue`, `adresse`.`region`, "
-					+ "`adresse`.`longitude`, `adresse`.`latitude` "
+					+ "`event`.`heure_fin`, `event`.`adresse` "
 					+ "FROM `event` "
-					+ "LEFT JOIN `adresse` ON `adresse`.`id`= `event`.`adresse_id`"
 					+ "WHERE `event`.`id` = " + id;
 			Statement st = conn.createStatement();
 			ResultSet RS = st.executeQuery(req);
@@ -55,14 +50,7 @@ public class EventServiceImpl implements EventService {
 				event.setDateDebut(RS.getDate(4));
 				event.setHeureDebut(RS.getTime(5));
 				event.setDateFin(RS.getDate(6));
-				Adresse adresse = new Adresse();
-				adresse.setId(RS.getInt(8));
-				adresse.setRue(RS.getString(9));
-				adresse.setRegion(RS.getString(10));
-				adresse.setLongitude(RS.getDouble(11));
-				adresse.setLatitude(RS.getDouble(12));
-				event.setAdresse(adresse);
-		
+				event.setAdresse(RS.getString(7));
 				System.out.println("Event founded");
 				return event;
 			}
@@ -77,8 +65,8 @@ public class EventServiceImpl implements EventService {
 		List<Event> list = new ArrayList<>();
 		try {
 			Connection conn = MyConnection.getInstance();
-			String req = "SELECT `event`.`id`, `event`.`titre`, `event`.`description`, `event`.`dateDebut`, `event`.`heure_debut`, `event`.`dateFin`, `event`.`heure_fin`, `event`.`adresse_id`, `adresse`.`rue`, `adresse`.`region`, `adresse`.`longitude`, `adresse`.`latitude` FROM `event` "
-					+ "LEFT JOIN `adresse` ON `adresse`.`id`= `event`.`adresse_id`";
+			String req = "SELECT `event`.`id`, `event`.`titre`, `event`.`description`, `event`.`dateDebut`, `event`.`heure_debut`, `event`.`dateFin`, `event`.`heure_fin`, `event`.`adresse`  FROM `event` ";
+
 			Statement st = conn.createStatement();
 
 			ResultSet RS = st.executeQuery(req);
@@ -91,13 +79,7 @@ public class EventServiceImpl implements EventService {
 				event.setHeureDebut(RS.getTime(5));
 				event.setDateFin(RS.getDate(6));
 				event.setHeureFin(RS.getTime(7));
-				Adresse adresse = new Adresse();
-				adresse.setId(RS.getInt(8));
-				adresse.setRue(RS.getString(9));
-				adresse.setRegion(RS.getString(10));
-				adresse.setLongitude(RS.getDouble(11));
-				adresse.setLatitude(RS.getDouble(12));
-				event.setAdresse(adresse);
+				event.setAdresse(RS.getString(8));
 				list.add(event);
 			}
 		} catch (SQLException ex) {
@@ -110,11 +92,10 @@ public class EventServiceImpl implements EventService {
 	public Event save(Event event) {
 
 		try {
-			AdresseService adresseService = new AdresseServiceImpl();
-			event.setAdresse(adresseService.save(event.getAdresse()));
+
 			Connection conn = MyConnection.getInstance();
 			String req = "INSERT INTO `event`(`titre`, `description`, `dateDebut`, "
-					+ "`heure_debut`, `dateFin`, `heure_fin`, `adresse_id`)"
+					+ "`heure_debut`, `dateFin`, `heure_fin`, `adresse`)"
 					+ " VALUES (?,?,?,?,?,?,?)";
 			PreparedStatement pst = conn.prepareStatement(req,Statement.RETURN_GENERATED_KEYS);
 			pst.setString(1, event.getTitre());
@@ -123,11 +104,8 @@ public class EventServiceImpl implements EventService {
 			pst.setTime(4, event.getHeureDebut());
 			pst.setDate(5, event.getDateFin());
 			pst.setTime(6, event.getHeureFin());
-			if (event.getAdresse() != null && event.getAdresse().getId() != null) {
-				pst.setInt(7, event.getAdresse().getId());
-			} else {
-				pst.setNull(7, Types.INTEGER);
-			}
+			pst.setString(7, event.getAdresse());
+
 			pst.execute();
 			
 			ResultSet generatedKeys = pst.getGeneratedKeys();
@@ -145,7 +123,7 @@ public class EventServiceImpl implements EventService {
 	public Event update(Event event) {
 		try {
 			Connection conn = MyConnection.getInstance();
-			String req1 = "UPDATE `event` SET `titre`=?,`description`=?,`dateDebut`=?,`heure_debut`=?,`dateFin`=?,`heure_fin`=?,`adresse_id`=? WHERE `id`=?";
+			String req1 = "UPDATE `event` SET `titre`=?,`description`=?,`dateDebut`=?,`heure_debut`=?,`dateFin`=?,`heure_fin`=?,`adresse`=? WHERE `id`=?";
 
 			PreparedStatement pst = conn.prepareStatement(req1);
 			pst.setString(1, event.getTitre());
@@ -154,11 +132,8 @@ public class EventServiceImpl implements EventService {
 			pst.setTime(4, event.getHeureDebut());
 			pst.setDate(5, event.getDateFin());
 			pst.setTime(6, event.getHeureFin());
-			if (event.getAdresse() != null && event.getAdresse().getId() != null) {
-				pst.setInt(7, event.getAdresse().getId());
-			} else {
-				pst.setNull(7, Types.INTEGER);
-			}
+			pst.setString(7, event.getAdresse());
+
 
 			pst.setInt(8, event.getId());
 
@@ -194,9 +169,8 @@ public class EventServiceImpl implements EventService {
 
 			StringBuilder builder = new StringBuilder("SELECT `event`.`id`, `event`.`titre`, " +
 					"`event`.`description`, `event`.`dateDebut`, `event`.`heure_debut`, `event`.`dateFin`," +
-					" `event`.`heure_fin`, `event`.`adresse_id`, `adresse`.`rue`, `adresse`.`region`," +
-					" `adresse`.`longitude`, `adresse`.`latitude` FROM `event`"
-					+ "LEFT JOIN `adresse` ON `adresse`.`id`= `event`.`adresse_id`");
+					" `event`.`heure_fin`, `event`.`adresse` " +
+					" FROM `event`");
 			StringBuilder whereBuilder = new StringBuilder();
 
 			if (eventSearchCriteria.getId() != null) {
@@ -235,13 +209,12 @@ public class EventServiceImpl implements EventService {
 					whereBuilder.append(" WHERE dateFin=?");
 				}
 			}
-//			if (eventSearchCriteria.getAdresse() != null) {
-//				if (!whereBuilder.toString().isEmpty()) {
-//					whereBuilder.append(" AND adresse=?");
-//				} else {
-//					whereBuilder.append(" WHERE adresse=?");
-//				}
-//			}
+			if (eventSearchCriteria.getAdresse() != null) {
+				if (!whereBuilder.toString().isEmpty()) {
+					whereBuilder.append(" AND adresse=?");} else {
+					whereBuilder.append(" WHERE adresse=?");
+				}
+			}
 			
 
 			builder.append(whereBuilder);
@@ -265,10 +238,10 @@ public class EventServiceImpl implements EventService {
 				st.setDate(counter, eventSearchCriteria.getDateFin());
 				counter++;
 			}
-	//		if (eventSearchCriteria.getAdresse() != null) {
-	//		st.setAdresse(counter, eventSearchCriteria.getAdresse());
-	//	counter++;
-	//}
+			if (eventSearchCriteria.getAdresse() != null) {
+			st.setString(counter,   eventSearchCriteria.getAdresse() );
+				counter++;
+			}
 
 			ResultSet RS = st.executeQuery();
 			while (RS.next()) {
@@ -280,16 +253,8 @@ public class EventServiceImpl implements EventService {
 				event.setHeureDebut(RS.getTime(5));
 				event.setDateFin(RS.getDate(6));
 				event.setHeureFin(RS.getTime(7));
-				Integer adresseId = RS.getInt(8);
-				if (adresseId != null && adresseId>0) {
-					Adresse adresse = new Adresse();
-					adresse.setId(adresseId);
-					adresse.setRue(RS.getString(9));
-					adresse.setRegion(RS.getString(10));
-					adresse.setLongitude(RS.getDouble(11));
-					adresse.setLatitude(RS.getDouble(12));
-					event.setAdresse(adresse);
-				}
+				event.setAdresse(RS.getString(3));
+
 				list.add(event);
 			}
 		} catch (SQLException ex) {

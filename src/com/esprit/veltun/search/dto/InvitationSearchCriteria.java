@@ -5,6 +5,7 @@ import java.sql.Date;
 import com.esprit.veltun.enums.Response;
 import com.esprit.veltun.model.Event;
 import com.esprit.veltun.model.Invitation;
+import com.esprit.veltun.model.User;
 import com.esprit.veltun.search.base.dto.SearchCriteria;
 
 public class InvitationSearchCriteria extends SearchCriteria<Invitation> {

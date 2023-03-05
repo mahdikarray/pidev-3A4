@@ -23,7 +23,6 @@ public class EventDetailsController implements Initializable {
     public TextField tfheurefin;
     public Button ftlistEvent;
     public TextField tfadresserue;
-    public TextField tfadresseregion;
 
 
     public void setTextTitre(String titre) {
@@ -50,12 +49,9 @@ public class EventDetailsController implements Initializable {
         this.tfheurefin.setText(heure);
     }
 
-    public void setAdresseRegion(String aresseregion) {
-        this.tfadresseregion.setText(aresseregion);
-    }
 
-    public void setAdresseRue(String adresserue) {
-        this.tfadresserue.setText(adresserue);
+    public void setAdresse(String adresse) {
+        this.tfadresserue.setText(adresse);
     }
 
     public void setEvent(Event event) {
@@ -65,10 +61,8 @@ public class EventDetailsController implements Initializable {
         setTextDateFin(event.getDateFin().toLocalDate());
         setHeuredebut(event.getHeureDebut().toString());
         setHeureFin(event.getHeureFin().toString());
-        if (event.getAdresse() != null) {
-            setAdresseRegion(event.getAdresse().getRegion());
-            setAdresseRue(event.getAdresse().getRue());
-        }
+        setAdresse(event.getAdresse());
+
     }
 
 

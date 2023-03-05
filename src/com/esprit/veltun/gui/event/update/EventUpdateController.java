@@ -1,11 +1,8 @@
 package com.esprit.veltun.gui.event.update;
 
 import com.esprit.veltun.gui.event.view.EventDetailsController;
-import com.esprit.veltun.model.Adresse;
 import com.esprit.veltun.model.Event;
-import com.esprit.veltun.services.AdresseService;
 import com.esprit.veltun.services.EventService;
-import com.esprit.veltun.services.impl.AdresseServiceImpl;
 import com.esprit.veltun.services.impl.EventServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +25,6 @@ public class EventUpdateController implements Initializable {
     public Button cancelbutton;
     private EventService eventService = EventServiceImpl.getInstance();
 
-    private AdresseService adresseService = new AdresseServiceImpl();
     private Event event;
 
     public TextField tftitre;
@@ -64,26 +60,21 @@ public class EventUpdateController implements Initializable {
         this.tfheurefin.setText(heure);
     }
 
-    public void setAdresseRegion(String aresseregion) {
-        this.tfadresseregion.setText(aresseregion);
-    }
 
-    public void setAdresseRue(String adresserue) {
-        this.tfadresserue.setText(adresserue);
+    public void setTextAdresse(String adresse) {
+        this.tfadresserue.setText(adresse);
     }
 
     public void setEvent(Event event) {
         this.event= event;
         setTextTitre(event.getTitre());
         setTextDescription(event.getDescription());
-        setTextDateDebut(event.getDateDebut().toLocalDate());
-        setTextDateFin(event.getDateFin().toLocalDate());
-        setHeuredebut(event.getHeureDebut().toString());
-        setHeureFin(event.getHeureFin().toString());
-        if (event.getAdresse() != null) {
-            setAdresseRegion(event.getAdresse().getRegion());
-            setAdresseRue(event.getAdresse().getRue());
-        }
+        setTextDateDebut(event.getDateDebut() != null ?event.getDateDebut().toLocalDate() : null);
+        setTextDateFin(event.getDateFin() != null ? event.getDateFin().toLocalDate() : null);
+        setHeuredebut(event.getHeureDebut() != null ? event.getHeureDebut().toString():null);
+        setHeureFin(event.getHeureFin() != null ? event.getHeureFin().toString():null);
+        setTextAdresse(event.getAdresse() != null ? event.getAdresse().toString() : null);
+
     }
     public void updateEvent(ActionEvent actionEvent) {
         String titre= tftitre.getText();
@@ -92,6 +83,7 @@ public class EventUpdateController implements Initializable {
         Time heureDebut = Time.valueOf(tfheuredebut.getText());
         Date dateFin = Date.valueOf(tfdatefin.getValue());
         Time heurefin = Time.valueOf(tfheurefin.getText());
+        String adresse=tfadresserue.getText();
 
         event.setTitre(titre);
         event.setDescription(description);
@@ -99,15 +91,8 @@ public class EventUpdateController implements Initializable {
         event.setHeureDebut(heureDebut);
         event.setDateFin(dateFin);
         event.setHeureFin(heurefin);
-        Adresse adresse;
-        if (event.getAdresse() != null && event.getAdresse().getId() != null && event.getAdresse().getId()>0) {
-            adresse = event.getAdresse();
-        } else {
-            adresse = new Adresse();
-        }
-        adresse.setRue(tfadresserue.getText());
-        adresse.setRegion(tfadresseregion.getText());
-        event.setAdresse(adresse.getId() != null ? adresseService.update(adresse) : adresseService.save(adresse));
+        event.setAdresse(adresse);
+
         event = eventService.update(event);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/details.fxml"));

@@ -1,6 +1,8 @@
 package com.esprit.veltun.gui.event.search;
 
 
+import com.esprit.veltun.gui.event.jfxcalendar.model.CalendarEventManager;
+import com.esprit.veltun.gui.event.jfxcalendar.views.JFXCalendar;
 import com.esprit.veltun.gui.event.update.EventUpdateController;
 import com.esprit.veltun.gui.event.view.EventDetailsController;
 import com.esprit.veltun.gui.invitation.create.InvitationCreateController;
@@ -25,22 +27,21 @@ import java.util.ResourceBundle;
 public class EventSearchController implements Initializable {
     public TextField titletosearch;
     public Button searchbutton;
+    public Button calendar;
     private EventService eventService = EventServiceImpl.getInstance();
     public ListView<Event> eventlistview;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        eventlistview.setCellFactory(param -> {
-            return new ListCell<Event>(){
+        eventlistview.setCellFactory(param -> new ListCell<Event>(){
                 public void updateItem(Event event, boolean empty) {
                     super.updateItem(event, empty);
                     if (empty || event == null) {
                         setText(null);
                     } else {
-                        setText(event.getDateDebut() + "\t\t" + event.getDateFin() + "\t\t" + event.getTitre());
+                        setText(event.getDateDebut() + "\t\t" + event.getDateFin() + "\t\t" + event.getTitre() );
                     }
                 }
-            };
         });
         runSearch();
     }
@@ -128,5 +129,18 @@ public class EventSearchController implements Initializable {
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+    public void openCalendar(ActionEvent actionEvent) {
+        Stage thisStage = (Stage) searchbutton.getScene().getWindow();
+        thisStage.setTitle("Calendrier");
+
+        CalendarEventManager eventManager = new CalendarEventManager();
+        JFXCalendar calendar = new JFXCalendar(eventManager);
+
+        calendar.refreshCalendar();
+        eventlistview.getScene().setRoot(calendar);
+
+
     }
 }

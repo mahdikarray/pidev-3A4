@@ -1,33 +1,21 @@
 package com.esprit.veltun.gui.event.create;
 
 import com.esprit.veltun.gui.event.view.EventDetailsController;
-import com.esprit.veltun.model.Adresse;
 import com.esprit.veltun.model.Event;
 import com.esprit.veltun.services.EventService;
 import com.esprit.veltun.services.impl.EventServiceImpl;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.input.InputMethodEvent;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
 
 
-import javax.sound.midi.ControllerEventListener;
-import javax.sound.midi.ShortMessage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ResourceBundle;
-import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
 public class EventCreateController implements Initializable {
@@ -41,7 +29,6 @@ public class EventCreateController implements Initializable {
     public DatePicker tfdatefin;
     public TextField tfheurefin;
     public TextField tfadresserue;
-    public TextField tfadresseregion;
 
     public void saveEvent(ActionEvent actionEvent) {
         String titre= tftitre.getText();
@@ -50,6 +37,8 @@ public class EventCreateController implements Initializable {
         Time heureDebut = Time.valueOf(tfheuredebut.getText());
         Date dateFin = Date.valueOf(tfdatefin.getValue());
         Time heurefin = Time.valueOf(tfheurefin.getText());
+        String adresse=tfadresserue.getText();
+
         //alerte controle de saisie
         if (titre.isEmpty() || description.isEmpty() ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -79,10 +68,8 @@ public class EventCreateController implements Initializable {
 
 
         e.setHeureFin(heurefin);
-        Adresse adresse = new Adresse();
-        adresse.setRue(tfadresserue.getText());
-        adresse.setRegion(tfadresseregion.getText());
         e.setAdresse(adresse);
+
         e = eventService.save(e);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/details.fxml"));

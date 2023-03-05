@@ -14,15 +14,14 @@ public class Event extends BaseEntity {
 	private Time heureDebut;
 	private Date dateFin;
 	private Time heureFin;
-	private Adresse adresse;
-	private List<Adresse> adresses = new ArrayList<>();
-	private List<Invitation> invitations = new ArrayList<>();
+	private String adresse;
+
 
 	public Event() {
 	}
 
 	public Event(String titre, String description, Date dateDebut, Time heureDebut, Date dateFin, Time heureFin,
-			Adresse adresse, List<Adresse> adresses) {
+			String adresse) {
 		super();
 		this.titre = titre;
 		this.description = description;
@@ -31,25 +30,15 @@ public class Event extends BaseEntity {
 		this.dateFin = dateFin;
 		this.heureFin = heureFin;
 		this.adresse = adresse;
-		this.adresses = adresses;
+
 	}
 
-	public Event(String titre, String description, Date dateDebut, Time heureDebut, Date dateFin, Time heureFin,
-			Adresse adresse, List<Adresse> adresses, List<Invitation> invitations) {
-		super();
-		this.titre = titre;
-		this.description = description;
-		this.dateDebut = dateDebut;
-		this.heureDebut = heureDebut;
-		this.dateFin = dateFin;
-		this.heureFin = heureFin;
-		this.adresse = adresse;
-		this.adresses = adresses;
-		this.invitations = invitations;
-	}
+
+
+
 
 	public Event(Integer id, String titre, String description, Date dateDebut, Time heureDebut, Date dateFin,
-			Time heureFin, Adresse adresse, List<Adresse> adresses) {
+			Time heureFin,String adresse) {
 		super(id);
 		this.titre = titre;
 		this.description = description;
@@ -58,21 +47,8 @@ public class Event extends BaseEntity {
 		this.dateFin = dateFin;
 		this.heureFin = heureFin;
 		this.adresse = adresse;
-		this.adresses = adresses;
-	}
 
-	public Event(Integer id, String titre, String description, Date dateDebut, Time heureDebut, Date dateFin,
-			Time heureFin, Adresse adresse, List<Adresse> adresses, List<Invitation> invitations) {
-		super(id);
-		this.titre = titre;
-		this.description = description;
-		this.dateDebut = dateDebut;
-		this.heureDebut = heureDebut;
-		this.dateFin = dateFin;
-		this.heureFin = heureFin;
-		this.adresse = adresse;
-		this.adresses = adresses;
-		this.invitations = invitations;
+
 	}
 
 	public Time getHeureDebut() {
@@ -123,29 +99,19 @@ public class Event extends BaseEntity {
 		this.dateFin = dateFin;
 	}
 
-	public Adresse getAdresse() {
+	public String getAdresse() {
 		return adresse;
 	}
 
-	public void setAdresse(Adresse adresse) {
+	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
 
-	public List<Invitation> getInvitations() {
-		return invitations;
-	}
 
-	public void setInvitations(List<Invitation> invitations) {
-		this.invitations = invitations;
-	}
 
-	public List<Adresse> getAdresses() {
-		return adresses;
-	}
 
-	public void setAdresses(List<Adresse> adresses) {
-		this.adresses = adresses;
-	}
+
+
 
 	@Override
 	public String toString() {
@@ -153,4 +119,7 @@ public class Event extends BaseEntity {
 				+ dateDebut + ", dateFin=" + dateFin + ", adresse=" + adresse + "]";
 	}
 
+	public int getPriority() {
+		return 1;
+	}
 }

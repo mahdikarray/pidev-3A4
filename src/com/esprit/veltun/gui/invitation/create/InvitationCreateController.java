@@ -1,10 +1,13 @@
 package com.esprit.veltun.gui.invitation.create;
 
+import com.esprit.veltun.enums.Response;
 import com.esprit.veltun.gui.event.view.EventDetailsController;
-import com.esprit.veltun.model.Adresse;
+import com.esprit.veltun.gui.invitation.search.SearchInviController;
+import com.esprit.veltun.gui.invitation.view.DetaillInvitationController;
 import com.esprit.veltun.model.Event;
 import com.esprit.veltun.model.Invitation;
 import com.esprit.veltun.model.User;
+import com.esprit.veltun.search.dto.EventSearchCriteria;
 import com.esprit.veltun.search.dto.UserSearchCriteria;
 import com.esprit.veltun.services.EventService;
 import com.esprit.veltun.services.InvitationService;
@@ -26,13 +29,9 @@ import javafx.util.StringConverter;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Collection;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 public class InvitationCreateController implements Initializable {
 
@@ -60,12 +59,13 @@ public class InvitationCreateController implements Initializable {
     static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        User connectedUser = UserServiceImpl.connectedUser;
 
         invitstartdate.setValue(LocalDate.now());
         ObservableList<Event> events = FXCollections.observableArrayList();
         events.addAll(eventService.list());
 
-        selectedevent.getItems().addAll(events);
+        selectedevent.setItems(events);
 
         selectedevent.setConverter(new StringConverter<Event>() {
             @Override
@@ -191,6 +191,7 @@ public class InvitationCreateController implements Initializable {
                 }
             }
         });
+        selectedinvitant.setValue(connectedUser);
     }
 
     private void showAlertWithHeaderText() {
@@ -208,8 +209,13 @@ public class InvitationCreateController implements Initializable {
         invitation.setInvitant(selectedinvitant.getValue());
         invitation.setInvite(selectedinvite.getValue());
         invitation.setEvenement(selectedevent.getValue());
-        showAlertWithHeaderText();
+        invitation.setReponse(Response.PEUTETRE);
+        //showAlertWithHeaderText();
         return invitationService.save(invitation);
+
+
+
+
     }
 
     public void cancel(ActionEvent actionEvent) {
@@ -225,6 +231,38 @@ public class InvitationCreateController implements Initializable {
 
 
     public void addinvit(ActionEvent actionEvent) {
-        saveInvitation();
+            Invitation invitation = saveInvitation();
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/detaillInvitation.fxml"));
+
+            try {
+                Parent root = fxmlLoader.load();
+                DetaillInvitationController controller = fxmlLoader.getController();
+                controller.setEvent(invitation);
+                invitstartdate.getScene().setRoot(root);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+
+
+
+
+
+
+
+
+    }
+
+    public void list(ActionEvent actionEvent) {
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../search/searchInvi.fxml"));
+
+            try {
+                Parent root = fxmlLoader.load();
+                invitstartdate.getScene().setRoot(root);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
     }
 }

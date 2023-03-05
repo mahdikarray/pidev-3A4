@@ -1,11 +1,7 @@
 package com.esprit.veltun.services.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Types;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -43,7 +39,7 @@ public class InvitationServiceImpl implements InvitationService {
 					+ "`event`.`id`, `event`.`titre`, "
 					+ "`event`.`description`, `event`.`dateDebut`, "
 					+ "`event`.`heure_debut`, `event`.`dateFin`, "
-					+ "`event`.`heure_fin`, `event`.`adresse_id` "
+					+ "`event`.`heure_fin`, `event`.`adresse` "
 					+ "FROM `invitation` "
 					+ "LEFT JOIN `event` ON `event`.`id`= `invitation`.`evenement_id`"
 					+ "WHERE `invitation`.`id` = " + id;
@@ -96,7 +92,7 @@ public class InvitationServiceImpl implements InvitationService {
 					+ "`event`.`id`, `event`.`titre`, "
 					+ "`event`.`description`, `event`.`dateDebut`, "
 					+ "`event`.`heure_debut`, `event`.`dateFin`, "
-					+ "`event`.`heure_fin`, `event`.`adresse_id` "
+					+ "`event`.`heure_fin`, `event`.`adresse` "
 					+ "FROM `invitation` "
 					+ "LEFT JOIN `event` ON `event`.`id`= `invitation`.`evenement_id`";
 			Statement st = conn.createStatement();
@@ -237,7 +233,13 @@ public class InvitationServiceImpl implements InvitationService {
 			Connection conn = MyConnection.getInstance();
 			InvitationSearchCriteria invitationSearchCriteria = (InvitationSearchCriteria) searchCriteria;
 
-			StringBuilder builder = new StringBuilder("SELECT * FROM `invitation`");
+			StringBuilder builder = new StringBuilder("SELECT `invitation`.`id`, `invitation`.`reponse`, `invitation`.`date_invitation`," +
+					" `invitation`.`date_expiration`, `invitation`.`invitant_id`, `invitation`.`invite_id`, `invitation`.`evenement_id`, " +
+					" `invitant`.`CIN`, `invitant`.`nom`, `invitant`.`prenom`, `invitant`.`date_naiss`, `invitant`.`type`, `invitant`.`code_postal`, `invitant`.`email`, " +
+					" `invite`.`CIN`, `invite`.`nom`, `invite`.`prenom`, `invite`.`date_naiss`, `invite`.`type`, `invite`.`code_postal`, `invite`.`email` " +
+					"FROM `invitation` " +
+					"	LEFT JOIN `user` as `invitant` on  `invitant`. `CIN`=`invitation`. `invitant_id`" +
+					"	LEFT JOIN `user` as `invite` on  `invite`. `CIN`=`invitation`. `invite_id` ");
 			StringBuilder whereBuilder = new StringBuilder();
 
 			if (invitationSearchCriteria.getId() != null) {
@@ -269,20 +271,20 @@ public class InvitationServiceImpl implements InvitationService {
 					whereBuilder.append(" WHERE date_expiration=?");
 				}
 			}
-//			if (invitationSearchCriteria.getInvitant() != null) {
-//				if (!whereBuilder.toString().isEmpty()) {
-//					whereBuilder.append(" AND Invitant=?");
-//				} else {
-//					whereBuilder.append(" WHERE Invitant=?");
-//				}
-//			}
-//			if (invitationSearchCriteria.getInvité() != null) {
-//				if (!whereBuilder.toString().isEmpty()) {
-//					whereBuilder.append(" AND Invite=?");
-//				} else {
-//					whereBuilder.append(" WHERE Invite=?");
-//				}
-//			}
+			if (invitationSearchCriteria.getInvitant() != null) {
+				if (!whereBuilder.toString().isEmpty()) {
+					whereBuilder.append(" AND invitant_id =?");
+				} else {
+					whereBuilder.append(" WHERE invitant_id =?");
+				}
+			}
+			if (invitationSearchCriteria.getInvité() != null) {
+				if (!whereBuilder.toString().isEmpty()) {
+					whereBuilder.append(" AND invite_id =?");
+				} else {
+					whereBuilder.append(" WHERE invite_id =?");
+				}
+			}
 			
 			if (invitationSearchCriteria.getEvenement() != null && invitationSearchCriteria.getEvenement().getId() != null) {
 				if (!whereBuilder.toString().isEmpty()) {
@@ -312,14 +314,14 @@ public class InvitationServiceImpl implements InvitationService {
 				st.setDate(counter, invitationSearchCriteria.getDateExpiration());
 				counter++;
 			}
-//			if (invitationSearchCriteria.getInvitant() != null) {
-//				st.setInt(counter, invitationSearchCriteria.getInvitant());
-//				counter++;
-//			}
-//			if (invitationSearchCriteria.getInvité() != null) {
-//				st.setInt(counter, invitationSearchCriteria.getInvité());
-//				counter++;
-//			}
+			if (invitationSearchCriteria.getInvitant() != null) {
+				st.setString(counter, invitationSearchCriteria.getInvitant());
+				counter++;
+			}
+			if (invitationSearchCriteria.getInvité() != null) {
+				st.setString(counter, invitationSearchCriteria.getInvité());
+				counter++;
+			}
 			
 			if (invitationSearchCriteria.getEvenement() != null && invitationSearchCriteria.getEvenement().getId() != null) {
 				st.setInt(counter, invitationSearchCriteria.getEvenement().getId());
@@ -334,15 +336,27 @@ public class InvitationServiceImpl implements InvitationService {
 				invi.setDateExpiration(RS.getDate(4));
 
 				User invitant = new User();
-				invitant.setCIN(RS.getString(5));
+				invitant.setCIN(RS.getString(8));
+				invitant.setNom(RS.getString(9));
+				invitant.setPrenom(RS.getString(10));
+				invitant.setDateNaiss(RS.getDate(11));
+				invitant.setType(RS.getString(12));
+				invitant.setCodePos(RS.getInt(13));
+				invitant.setEmail(RS.getString(14));
 				invi.setInvitant(invitant);
 
 				User invite = new User();
-				invite.setCIN(RS.getString(6));
+				invite.setCIN(RS.getString(15));
+				invite.setNom(RS.getString(16));
+				invite.setPrenom(RS.getString(17));
+				invite.setDateNaiss(RS.getDate(18));
+				invite.setType(RS.getString(19));
+				invite.setCodePos(RS.getInt(20));
+				invite.setEmail(RS.getString(21));
 				invi.setInvite(invite);
 
 				Event evenement = new Event();
-				evenement.setId(RS.getInt(6));
+				evenement.setId(RS.getInt(7));
 				invi.setEvenement(evenement);
 
 				list.add(invi);
@@ -352,5 +366,33 @@ public class InvitationServiceImpl implements InvitationService {
 		}
 
 		return list;
+	}
+
+	@Override
+	public void checkExpiredInvitation() {
+		Thread runner = new Thread() {
+			@Override
+			public void run() {
+				while (true) {
+					try {
+						Thread.sleep(15000L);
+						Collection<Invitation> invitations = list();
+						System.out.println("checking expired invitations");
+						invitations.stream().filter(invit->{
+							boolean exp = invit.getDateExpiration().before(Date.valueOf(LocalDate.now()));
+							exp = exp && (invit.getReponse() == null || invit.getReponse() != Response.OUI);
+							return exp;
+						}).forEach(invit->{
+							System.out.println("This invitation has been removed");
+							remove(invit.getId());
+							System.out.println(invit);
+						});
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+		runner.start();
 	}
 }

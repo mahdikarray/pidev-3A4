@@ -2,7 +2,6 @@ package com.esprit.veltun.search.dto;
 
 import java.sql.Date;
 
-import com.esprit.veltun.model.Adresse;
 import com.esprit.veltun.model.Event;
 import com.esprit.veltun.search.base.dto.SearchCriteria;
 
@@ -11,13 +10,13 @@ public class EventSearchCriteria extends SearchCriteria<Event> {
 	private String description;
 	private Date dateDebut;
 	private Date dateFin;
-	private Adresse adresse;
+	private String adresse;
 
 	public EventSearchCriteria() {
 		super();
 	}
 	
-	public EventSearchCriteria(String titre, String description, Date dateDebut, Date dateFin, Adresse adresse) {
+	public EventSearchCriteria(String titre, String description, Date dateDebut, Date dateFin, String adresse) {
 		super();
 		this.titre = titre;
 		this.description = description;
@@ -58,11 +57,11 @@ public class EventSearchCriteria extends SearchCriteria<Event> {
 		this.dateFin = dateFin;
 	}
 
-	public Adresse getAdresse() {
+	public String getAdresse() {
 		return adresse;
 	}
 
-	public void setAdresse(Adresse adresse) {
+	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
 

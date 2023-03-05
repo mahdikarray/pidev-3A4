@@ -16,6 +16,14 @@ import com.esprit.veltun.search.dto.UserSearchCriteria;
 import com.esprit.veltun.util.MyConnection;
 
 public class UserServiceImpl implements UserService {
+	public static User connectedUser;
+
+	public UserServiceImpl() {
+		if (connectedUser == null) {
+			List<User> users = list();
+			connectedUser = users.get(users.size()/2);
+		}
+	}
 
 	@Override
 	public User save(User u) {
