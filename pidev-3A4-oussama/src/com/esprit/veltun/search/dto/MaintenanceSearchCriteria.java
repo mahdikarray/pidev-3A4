@@ -12,8 +12,8 @@ import com.esprit.veltun.model.Reclamation;
 public class MaintenanceSearchCriteria extends SearchCriteria<Maintenance> {
     private int id_demande;
     private String description;
-    private String etat;
-    private Date date_soumission;
+    private String status;
+    private Date submission_date;
 
     private int id_reclamation;
 
@@ -31,19 +31,19 @@ public class MaintenanceSearchCriteria extends SearchCriteria<Maintenance> {
     public void setDescription(String description) {
         this.description = description;
     }
-    public String getEtat() {
-        return etat;
+    public String getStatus() {
+        return status;
     }
 
-    public void setEtat(String etat) {
-        this.etat = etat;
+    public void setStatus(String status) {
+        this.status = status;
     }
-    public Date getDate_soumission() {
-        return date_soumission;
+    public Date getSubmission_date() {
+        return submission_date;
     }
 
-    public void setDate_soumission(Date date_soumission) {
-        this.date_soumission = date_soumission;
+    public void setSubmission_date(Date submission_date) {
+        this.submission_date = submission_date;
     }
 
     public int getId_reclamation() {

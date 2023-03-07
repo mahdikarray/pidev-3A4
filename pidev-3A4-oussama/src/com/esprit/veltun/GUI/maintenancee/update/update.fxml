@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="383.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.GUI.maintenancee.update.MaintenanceUpdateController">
+<AnchorPane prefHeight="383.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.GUI.maintenancee.update.MaintenanceUpdateController">
    <children>
       <Button fx:id="tfaddevent" defaultButton="true" layoutX="381.0" layoutY="345.0" mnemonicParsing="false" onAction="#updateEvent" prefHeight="25.0" prefWidth="114.0" text="Enregistrer" />
       <Button fx:id="cancelbutton" cancelButton="true" layoutX="243.0" layoutY="345.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="114.0" text="Annuler" />
@@ -18,11 +18,11 @@
          </image>
       </ImageView>
       <TextField fx:id="fxdescription" layoutX="273.0" layoutY="49.0" />
-      <TextField fx:id="fxetat" layoutX="274.0" layoutY="119.0" />
+      <TextField fx:id="fxstatus" layoutX="274.0" layoutY="119.0" />
       <Label layoutX="83.0" layoutY="53.0" text="description" />
-      <Label layoutX="112.0" layoutY="123.0" text="etat" />
-      <DatePicker fx:id="date_soumissionn" layoutX="261.0" layoutY="221.0" />
-      <Label layoutX="74.0" layoutY="233.0" text="date_soumission" />
+      <Label layoutX="112.0" layoutY="123.0" text="status" />
+      <DatePicker fx:id="submission_datee" layoutX="261.0" layoutY="221.0" />
+      <Label layoutX="74.0" layoutY="233.0" text="submission_date" />
 
    </children>
 </AnchorPane>

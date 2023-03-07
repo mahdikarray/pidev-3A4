@@ -25,11 +25,11 @@ public class ReclamationCreateController implements Initializable {
     public Button cancelbutton;
     private ReclamationService reclamationService = new ReclamationServiceImpl();
 
-    public TextField fxtype;
+    public TextField fxstatus;
     public TextField fxdescription;
     public DatePicker date_reclamation;
 
-    public TextField fxobjet;
+    public TextField fxobject;
 
     @FXML
     private Label discountedPriceLabel;
@@ -40,16 +40,16 @@ public class ReclamationCreateController implements Initializable {
 
     public void saveEvent(ActionEvent actionEvent) {
 
-        String objet= fxobjet.getText();
+        String object= fxobject.getText();
         String description= fxdescription.getText();
-        String type= fxtype.getText();
+        String status= fxstatus.getText();
     String date_reclamationn = String.valueOf(date_reclamation.getValue());
 
         Reclamation a= new Reclamation();
 
-        a.setObjet(objet);
+        a.setObject(object);
         a.setDescription(description);
-        a.setType(type);
+        a.setStatus(status);
         a.setDate_reclamation(Date.valueOf(date_reclamationn));
 
         a = reclamationService.save(a);
@@ -62,7 +62,7 @@ public class ReclamationCreateController implements Initializable {
             ReclamationDetailsController cont = fxmlLoader.getController();
             cont.setReclamation(a);
 
-            fxtype.getScene().setRoot(root);
+            fxstatus.getScene().setRoot(root);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
@@ -100,7 +100,7 @@ public class ReclamationCreateController implements Initializable {
 
         try {
             Parent root = fxmlLoader.load();
-            fxtype.getScene().setRoot(root);
+            fxstatus.getScene().setRoot(root);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

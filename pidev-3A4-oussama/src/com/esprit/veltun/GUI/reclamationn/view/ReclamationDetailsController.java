@@ -16,21 +16,21 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ReclamationDetailsController implements Initializable {
-    public TextField fxtype;
+    public TextField fxstatus;
 
-    public TextField fxobjet;
+    public TextField fxobject;
     public DatePicker date_reclamation;
 
     public TextField fxdescription;
     public Button ftlistEvent;
 
 
-    public void setFxType(String type) {
-        this.fxtype.setText(type);
+    public void setFxStatus(String status) {
+        this.fxstatus.setText(status);
     }
 
-    public void setFxObjet(String objet) {
-        this.fxobjet.setText(objet);
+    public void setFxObject(String object) {
+        this.fxobject.setText(object);
     }
 
     public void setFxDescription(String description) {
@@ -43,9 +43,9 @@ public class ReclamationDetailsController implements Initializable {
 
     public void setReclamation(Reclamation reclamation) {
 
-        setFxObjet(reclamation.getObjet());
+        setFxObject(reclamation.getObject());
         setFxDescription(reclamation.getDescription());
-        setFxType(reclamation.getType());
+        setFxStatus(reclamation.getStatus());
         setDate_reclamation(reclamation.getDate_reclamation().toLocalDate());
 
     }

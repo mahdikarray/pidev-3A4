@@ -16,23 +16,23 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class MaintenanceDetailsController implements Initializable {
-    public TextField fxetat;
+    public TextField fxstatus;
 
-    public DatePicker date_soumission;
+    public DatePicker submission_date;
 
     public TextField fxdescription;
     public Button ftlistEvent;
 
 
-    public void setFxetat(String etat) {
-        this.fxetat.setText(etat);
+    public void setFxStatus(String status) {
+        this.fxstatus.setText(status);
     }
 
     public void setFxDescription(String description) {
         this.fxdescription.setText(description);
     }
 
-    public void setDate_soumission(LocalDate date){this.date_soumission.setValue(date);}
+    public void setSubmission_datee(LocalDate date){this.submission_date.setValue(date);}
 
 
 
@@ -40,8 +40,8 @@ public class MaintenanceDetailsController implements Initializable {
 
 
         setFxDescription(maintenance.getDescription());
-        setFxetat(maintenance.getEtat());
-        setDate_soumission(maintenance.getDate_soumission().toLocalDate());
+        setFxStatus(maintenance.getStatus());
+        setSubmission_datee(maintenance.getSubmission_date().toLocalDate());
 
     }
 

@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="383.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.GUI.reclamationn.update.ReclamationUpdateController">
+<AnchorPane prefHeight="383.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.GUI.reclamationn.update.ReclamationUpdateController">
    <children>
       <Button fx:id="tfaddevent" defaultButton="true" layoutX="381.0" layoutY="345.0" mnemonicParsing="false" onAction="#updateEvent" prefHeight="25.0" prefWidth="114.0" text="Enregistrer" />
       <Button fx:id="cancelbutton" cancelButton="true" layoutX="243.0" layoutY="345.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="114.0" text="Annuler" />
@@ -17,14 +17,14 @@
             <Image url="http://localhost/logo-removebg-preview.png" />
          </image>
       </ImageView>
-      <TextField fx:id="fxobjet" layoutX="273.0" layoutY="49.0" />
+      <TextField fx:id="fxobject" layoutX="273.0" layoutY="49.0" />
       <TextField fx:id="fxdescription" layoutX="273.0" layoutY="114.0" />
-      <Label layoutX="83.0" layoutY="53.0" text="objet" />
+      <Label layoutX="83.0" layoutY="53.0" text="object" />
       <Label layoutX="57.0" layoutY="278.0" text="date_reclamation" />
       <Label layoutX="66.0" layoutY="109.0" text="description" />
       <DatePicker fx:id="date_reclamationn" layoutX="261.0" layoutY="274.0" />
-      <Label layoutX="82.0" layoutY="194.0" text="type" />
-      <TextField fx:id="fxtype" layoutX="273.0" layoutY="190.0" />
+      <Label layoutX="82.0" layoutY="194.0" text="status" />
+      <TextField fx:id="fxstatus" layoutX="273.0" layoutY="190.0" />
 
    </children>
 </AnchorPane>

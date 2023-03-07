@@ -1,8 +1,6 @@
 package com.esprit.veltun.GUI.maintenancee.create;
-
 import com.esprit.veltun.model.Maintenance;
 import com.esprit.veltun.GUI.maintenancee.view.MaintenanceDetailsController;
-
 import com.esprit.veltun.services.MaintenanceService;
 import com.esprit.veltun.services.impl.MaintenanceServiceImpl;
 import javafx.event.ActionEvent;
@@ -11,45 +9,51 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
-
 import static java.sql.Date.valueOf;
-
 public class MaintenanceCreateController implements Initializable {
     public Button cancelbutton;
     private MaintenanceService maintenanceService = new MaintenanceServiceImpl();
 
     public TextField fxdescription;
-    public DatePicker date_soumission;
+    public DatePicker submission_date;
 
-    public TextField fxetat;
-
+    public TextField fxstatus;
     @FXML
     private Label discountedPriceLabel;
     private  Label errorA;
     @FXML
     private TextField discountCodeTextField;
 
-
     public void saveEvent(ActionEvent actionEvent) {
-
-
         String description= fxdescription.getText();
-        String etat= fxetat.getText();
-        String date_soumissionn = String.valueOf(date_soumission.getValue());
+        String status= fxstatus.getText();
+        String submission_datee = String.valueOf(submission_date.getValue());
+        if (status.isEmpty() || description.isEmpty() ) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Problem!");
+            alert.setHeaderText(null);
+            alert.setContentText("Enter valid status and description");
+            alert.showAndWait();
+            return;
+        }
+
+        if (!status.matches("en cours") && (!status.matches("resolu") )) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR, "status must be either en cours or resolu ");
+            alert.showAndWait();
+            return;
+        }
+
 
         Maintenance a1= new Maintenance();
-
-
         a1.setDescription(description);
-        a1.setEtat(etat);
-        a1.setDate_soumission(Date.valueOf(date_soumissionn));
+        a1.setStatus(status);
+        a1.setSubmission_date(Date.valueOf(submission_datee));
 
         a1 = maintenanceService.save(a1);
 
@@ -61,7 +65,7 @@ public class MaintenanceCreateController implements Initializable {
             MaintenanceDetailsController cont = fxmlLoader.getController();
             cont.setMaintenance(a1);
 
-            fxetat.getScene().setRoot(root);
+            fxstatus.getScene().setRoot(root);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
@@ -99,7 +103,7 @@ public class MaintenanceCreateController implements Initializable {
 
         try {
             Parent root = fxmlLoader.load();
-            fxetat.getScene().setRoot(root);
+            fxstatus.getScene().setRoot(root);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

@@ -31,8 +31,8 @@ public class MaintenanceUpdateController implements Initializable {
 
 
 
-    public TextField fxetat;
-    public DatePicker date_soumissionn;
+    public TextField fxstatus;
+    public DatePicker submission_datee;
 
     public TextField fxdescription;
 
@@ -40,36 +40,36 @@ public class MaintenanceUpdateController implements Initializable {
 
 
 
-    public void setFxetat(String etat) {
-        this.fxetat.setText(etat);
+    public void setFxStatus(String status) {
+        this.fxstatus.setText(status);
     }
 
     public void setFxdescription(String description) {
         this.fxdescription.setText(description);
     }
 
-    public void setDate_soumissionn(LocalDate date){this.date_soumissionn.setValue(date);}
+    public void setSubmission_datee(LocalDate date){this.submission_datee.setValue(date);}
 
 
 
     public void setMaintenance(Maintenance maintenance) {
         this.maintenance= maintenance;
         setFxdescription(maintenance.getDescription());
-        setFxetat(maintenance.getEtat());
-        setDate_soumissionn(maintenance.getDate_soumission().toLocalDate());
+        setFxStatus(maintenance.getStatus());
+        setSubmission_datee(maintenance.getSubmission_date().toLocalDate());
 
 
     }
     public void updateEvent(ActionEvent actionEvent) {
         String description=fxdescription.getText();
-        String etat= fxetat.getText();
-        Date date_soumission = Date.valueOf(date_soumissionn.getValue());
+        String status= fxstatus.getText();
+        Date submission_date = Date.valueOf(submission_datee.getValue());
 
         Maintenance a1= new Maintenance();
 
         maintenance.setDescription(description);
-        maintenance.setEtat(etat);
-        maintenance.setDate_soumission(date_soumission);
+        maintenance.setStatus(status);
+        maintenance.setSubmission_date(submission_date);
 
 
 
@@ -111,7 +111,7 @@ public class MaintenanceUpdateController implements Initializable {
 
         try {
             Parent root = fxmlLoader.load();
-            fxetat.getScene().setRoot(root);
+            fxstatus.getScene().setRoot(root);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

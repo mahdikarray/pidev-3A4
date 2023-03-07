@@ -30,9 +30,9 @@ public class ReclamationServiceImpl implements ReclamationService {
                 Reclamation r = new Reclamation();
 
                 r.setId_reclamation(RS.getInt("id_reclamation"));
-                r.setObjet(RS.getString("objet"));
+                r.setObject(RS.getString("object"));
                 r.setDescription(RS.getString("description"));
-                r.setType(RS.getString("type"));
+                r.setStatus(RS.getString("status"));
                 r.setDate_reclamation(RS.getDate("date_reclamation"));
                 list.add(r);
             }
@@ -47,12 +47,12 @@ public class ReclamationServiceImpl implements ReclamationService {
 
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "INSERT INTO `reclamation`(objet, description, type,date_reclamation) VALUES (?,?,?,?)";
+            String req = "INSERT INTO `reclamation`(object, description, status,date_reclamation) VALUES (?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
            // ps.setInt(1, r.getId_reclamation());
-            ps.setString(1, r.getObjet());
+            ps.setString(1, r.getObject());
             ps.setString(2, r.getDescription());
-            ps.setString(3, r.getType());
+            ps.setString(3, r.getStatus());
             ps.setDate(4, r.getDate_reclamation());
             Integer id = ps.executeUpdate();
            r.setId(id);
@@ -68,7 +68,7 @@ public class ReclamationServiceImpl implements ReclamationService {
     public Reclamation update(Reclamation r ) {
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "UPDATE reclamation SET `objet` = '" + r.getObjet() +"', `description` = '" + r.getDescription() +"', `type` = '" + r.getType() + "', `date_reclamation` = '" + r.getDate_reclamation() +"' WHERE `id_reclamation` = " + r.getId_reclamation();
+            String req = "UPDATE reclamation SET `object` = '" + r.getObject() +"', `description` = '" + r.getDescription() +"', `status` = '" + r.getStatus() + "', `date_reclamation` = '" + r.getDate_reclamation() +"' WHERE `id_reclamation` = " + r.getId_reclamation();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("reclamation updated !");
@@ -105,9 +105,9 @@ public class ReclamationServiceImpl implements ReclamationService {
             while (RS.next()) {
                 Reclamation r = new Reclamation();
                 r.setId_reclamation(RS.getInt("id_reclamation"));
-                r.setObjet(RS.getString("objet"));
+                r.setObject(RS.getString("object"));
                 r.setDescription(RS.getString("description"));
-                r.setType(RS.getString("type"));
+                r.setStatus(RS.getString("status"));
                 r.setDate_reclamation(RS.getDate("date_reclamation"));
                 System.out.println("reclamation founded");
                 return r;
@@ -128,12 +128,12 @@ public class ReclamationServiceImpl implements ReclamationService {
             StringBuilder builder = new StringBuilder("Select * from reclamation");
             StringBuilder whereBuilder = new StringBuilder();
 
-            if (reclamationSearchCriteria.getType() != null && !reclamationSearchCriteria.getType().isEmpty()) {
+            if (reclamationSearchCriteria.getStatus() != null && !reclamationSearchCriteria.getStatus().isEmpty()) {
                 if (!whereBuilder.toString().isEmpty()) {
-                    whereBuilder.append(" AND type=?");
+                    whereBuilder.append(" AND status=?");
 
                 } else {
-                    whereBuilder.append(" WHERE type=?");
+                    whereBuilder.append(" WHERE status=?");
                 }
             }
 
@@ -151,8 +151,8 @@ public class ReclamationServiceImpl implements ReclamationService {
 
             PreparedStatement st = conn.prepareStatement(builder.toString());
             int counter = 1;
-            if (reclamationSearchCriteria.getType() != null && !reclamationSearchCriteria.getType().isEmpty()) {
-                st.setString(counter, reclamationSearchCriteria.getType());
+            if (reclamationSearchCriteria.getStatus() != null && !reclamationSearchCriteria.getStatus().isEmpty()) {
+                st.setString(counter, reclamationSearchCriteria.getStatus());
                 counter++;
             }
 
@@ -167,9 +167,9 @@ public class ReclamationServiceImpl implements ReclamationService {
 
 
                 k.setId_reclamation(RS.getInt("id_reclamation"));
-                k.setObjet(RS.getString("objet"));
+                k.setObject(RS.getString("object"));
                 k.setDescription(RS.getString("description"));
-                k.setType(RS.getString("type"));
+                k.setStatus(RS.getString("status"));
                 k.setDate_reclamation(RS.getDate("date_reclamation"));
                 list.add(k);
             }

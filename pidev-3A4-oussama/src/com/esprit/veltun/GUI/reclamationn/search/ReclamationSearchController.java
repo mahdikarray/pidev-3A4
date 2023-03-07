@@ -37,7 +37,7 @@ public class ReclamationSearchController implements Initializable {
                     if (empty || reclamation == null) {
                         setText(null);
                     } else {
-                        setText(reclamation.getObjet() + "\t\t" + "\t\t"+ reclamation.getDescription() + "\t\t" + "\t\t"+reclamation.getType() + "\t\t" +"\t\t"+ reclamation.getDate_reclamation() );
+                        setText(reclamation.getObject() + "\t\t" + "\t\t"+ reclamation.getDescription() + "\t\t" + "\t\t"+reclamation.getStatus() + "\t\t" +"\t\t"+ reclamation.getDate_reclamation() );
                     }
                 }
             };
@@ -46,10 +46,10 @@ public class ReclamationSearchController implements Initializable {
     }
 
     void runSearch() {
-        String type = titletosearch.getText();
+        String status = titletosearch.getText();
         ReclamationSearchCriteria reclamationSearchCriteria = new ReclamationSearchCriteria();
-        if (type != null && !type.isEmpty()) {
-            reclamationSearchCriteria.setType(type);
+        if (status != null && !status.isEmpty()) {
+            reclamationSearchCriteria.setStatus(status);
         }
         Collection<Reclamation> reclamations = reclamationService.search(reclamationSearchCriteria);
         eventlistview.getItems().setAll(reclamations);

@@ -11,5 +11,6 @@ public interface BaseService<T extends BaseEntity> {
 	T save(T entity);
 	T update(T entity);
 	boolean remove(Integer id);
+
 	Collection<T> search(SearchCriteria<T> searchCriteria);
 }

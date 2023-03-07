@@ -4,25 +4,18 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.GUI.reclamationn.create.ReclamationCreateController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.GUI.reclamationn.create.ReclamationCreateController">
    <children>
       <Button fx:id="tfaddevent" defaultButton="true" layoutX="381.0" layoutY="345.0" mnemonicParsing="false" onAction="#saveEvent" prefHeight="25.0" prefWidth="114.0" text="Enregistrer" />
       <Button fx:id="cancelbutton" cancelButton="true" layoutX="243.0" layoutY="345.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="114.0" text="Annuler" />
-      <ImageView fitHeight="132.0" fitWidth="188.0" layoutX="-5.0" layoutY="284.0">
-         <image>
-            <Image url="http://localhost/logo-removebg-preview.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="73.0" layoutY="55.0" text="objet" />
+      <Label layoutX="73.0" layoutY="55.0" text="object" />
       <Label layoutX="72.0" layoutY="101.0" text="description" />
-      <Label layoutX="90.0" layoutY="196.0" text="type" />
-      <TextField fx:id="fxobjet" layoutX="263.0" layoutY="52.0" />
+      <Label layoutX="90.0" layoutY="196.0" text="status" />
+      <TextField fx:id="fxobject" layoutX="263.0" layoutY="52.0" />
       <TextField fx:id="fxdescription" layoutX="263.0" layoutY="106.0" />
-      <TextField fx:id="fxtype" layoutX="263.0" layoutY="183.0" />
+      <TextField fx:id="fxstatus" layoutX="263.0" layoutY="183.0" />
       <DatePicker fx:id="date_reclamation" layoutX="257.0" layoutY="263.0" />
       <Label layoutX="69.0" layoutY="267.0" text="date_reclamation" />
 

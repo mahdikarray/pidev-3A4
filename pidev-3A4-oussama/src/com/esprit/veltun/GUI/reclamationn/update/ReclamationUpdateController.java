@@ -29,21 +29,21 @@ public class ReclamationUpdateController implements Initializable {
 
     private Reclamation reclamation;
 
-    public TextField fxtype;
+    public TextField fxstatus;
 
-    public TextField fxobjet;
+    public TextField fxobject;
     public DatePicker date_reclamationn;
 
     public TextField fxdescription;
 
 
 
-    public void setFxType(String type) {
-        this.fxtype.setText(type);
+    public void setFxStatus(String status) {
+        this.fxstatus.setText(status);
     }
 
-    public void setFxobjet(String objet) {
-        this.fxobjet.setText(objet);
+    public void setFxobject(String object) {
+        this.fxobject.setText(object);
     }
 
     public void setFxdescription(String description) {
@@ -56,24 +56,24 @@ public class ReclamationUpdateController implements Initializable {
 
     public void setReclamation(Reclamation reclamation) {
         this.reclamation= reclamation;
-        setFxobjet(reclamation.getObjet());
+        setFxobject(reclamation.getObject());
         setFxdescription(reclamation.getDescription());
-        setFxType(reclamation.getType());
+        setFxStatus(reclamation.getStatus());
         setDate_reclamationn(reclamation.getDate_reclamation().toLocalDate());
 
 
     }
     public void updateEvent(ActionEvent actionEvent) {
-        String objet=fxobjet.getText();
+        String object=fxobject.getText();
         String description=fxdescription.getText();
-        String type= fxtype.getText();
+        String status= fxstatus.getText();
         Date date_reclamation = Date.valueOf(date_reclamationn.getValue());
 
         Reclamation a= new Reclamation();
 
-        reclamation.setObjet(objet);
+        reclamation.setObject(object);
         reclamation.setDescription(description);
-        reclamation.setType(type);
+        reclamation.setStatus(status);
         reclamation.setDate_reclamation(date_reclamation);
 
 
@@ -116,7 +116,7 @@ public class ReclamationUpdateController implements Initializable {
 
         try {
             Parent root = fxmlLoader.load();
-            fxtype.getScene().setRoot(root);
+            fxstatus.getScene().setRoot(root);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

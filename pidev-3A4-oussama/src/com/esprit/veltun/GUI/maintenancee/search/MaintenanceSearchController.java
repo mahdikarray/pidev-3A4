@@ -37,7 +37,7 @@ public class MaintenanceSearchController implements Initializable {
                     if (empty || maintenance == null) {
                         setText(null);
                     } else {
-                        setText( maintenance.getDescription() + "\t\t" + "\t\t"+maintenance.getEtat() + "\t\t" +"\t\t"+ maintenance.getDate_soumission() );
+                        setText( maintenance.getDescription() + "\t\t" + "\t\t"+maintenance.getStatus() + "\t\t" +"\t\t"+ maintenance.getSubmission_date() );
                     }
                 }
             };
@@ -46,10 +46,10 @@ public class MaintenanceSearchController implements Initializable {
     }
 
     void runSearch() {
-        String etat = titletosearch.getText();
+        String status = titletosearch.getText();
         MaintenanceSearchCriteria maintenanceSearchCriteria = new MaintenanceSearchCriteria();
-        if (etat != null && !etat.isEmpty()) {
-            maintenanceSearchCriteria.setEtat(etat);
+        if (status != null && !status.isEmpty()) {
+            maintenanceSearchCriteria.setStatus(status);
         }
         Collection<Maintenance> maintenances = maintenanceService.search(maintenanceSearchCriteria);
         eventlistview.getItems().setAll(maintenances);
