@@ -16,7 +16,7 @@ public class stationUi extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("station/create/create.fxml"));
-        primaryStage.setTitle("Gestion des stations");
+        primaryStage.setTitle("Manage your stations ");
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         primaryStage.setScene(scene);

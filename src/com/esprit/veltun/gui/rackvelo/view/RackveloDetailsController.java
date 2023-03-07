@@ -19,6 +19,28 @@ public class RackveloDetailsController implements Initializable {
     public TextField fxidS;
     public TextField fxCap;
 
+    public TextField getFxrefRv() {
+        return fxrefRv;
+    }
+
+    public TextField getFxidS() {
+        return fxidS;
+    }
+
+    public void setFxidS(TextField fxidS) {
+        this.fxidS = fxidS;
+    }
+
+    public void setFxrefRv(TextField fxrefRv) {this.fxrefRv = fxrefRv;}
+
+    public TextField getFxCap() {
+        return fxCap;
+    }
+
+    public void setFxCap(TextField fxCap) {
+        this.fxCap = fxCap;
+    }
+
     public void setFxrefRv(String refRV) {
         this.fxrefRv.setText(refRV);
     }
@@ -33,6 +55,7 @@ public class RackveloDetailsController implements Initializable {
 
 
     public void setRackvelo(RackVelo rackvelo) {
+
         setFxrefRv(String.valueOf(rackvelo.getRefRack()));
         setFxCap(String.valueOf(rackvelo.getCapacite()));
         setFxidS(String.valueOf(rackvelo.getId_station()));

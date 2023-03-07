@@ -19,13 +19,17 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
+import static java.lang.Integer.parseInt;
+
 public class RackveloCreateController implements Initializable {
     public Button cancelbutton;
     private RackVeloService RackVeloService = new RackVeloImpl();
 
     public TextField fxrefRv;
     public TextField fxidS;
-    public TextField fxCap;;
+    public TextField fxCap;
+    @FXML
+    private Button buttonStation;
     @FXML
     public ChoiceBox<Integer> modeleFX  ;
     private Integer[] modele = {1,2,3} ;
@@ -67,12 +71,10 @@ public class RackveloCreateController implements Initializable {
 
 
         RackVelo rv = new RackVelo();
-        rv.setId_station(Integer.parseInt(idS));
-        rv.setRefRack(Integer.parseInt(refRV));
-        rv.setCapacite(Integer.parseInt(cap));
+        rv.setId_station(parseInt(idS));
+        rv.setRefRack(parseInt(refRV));
+        rv.setCapacite(parseInt(cap));
         rv.setModele(modeleFX.getValue());
-
-
         rv = RackVeloService.save(rv);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/details.fxml"));
@@ -135,12 +137,13 @@ public class RackveloCreateController implements Initializable {
     private Parent root ;
 
 
-    public void switchToStation(java.awt.event.ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("station/create/create.fxml")) ;
+
+
+    public void switchToStation(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../../station/create/create.fxml")) ;
         stage =(Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root) ;
         stage.setScene(scene);
         stage.show();
     }
-
 }

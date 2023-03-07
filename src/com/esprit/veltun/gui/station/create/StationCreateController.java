@@ -144,11 +144,10 @@ public class StationCreateController implements Initializable {
 
     public void openMap (ActionEvent actionEvent){
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("map.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../map/map.fxml"));
             Stage primaryStage =new Stage() ;
             primaryStage.setTitle("Find you localisation !");
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
@@ -166,7 +165,7 @@ public class StationCreateController implements Initializable {
 
 //To switch from my manage stations interface to the manage the racks interface
     public void switchToRackVelo(ActionEvent event) throws IOException {
-         root = FXMLLoader.load(getClass().getResource("rackvelo/create/create.fxml")) ;
+         root = FXMLLoader.load(getClass().getResource("../../rackvelo/create/create.fxml")) ;
         stage =(Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root) ;
         stage.setScene(scene);
