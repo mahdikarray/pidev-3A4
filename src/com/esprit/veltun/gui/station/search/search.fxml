@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.station.search.StationSearchController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3D4956; -fx-border-color: #6babd6; -fx-border-width: 7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.station.search.StationSearchController">
    <children>
       <ListView fx:id="stationlistview" layoutX="18.0" layoutY="91.0" prefHeight="262.0" prefWidth="565.0" />
       <Button fx:id="removestationbutton" layoutX="385.0" layoutY="359.0" mnemonicParsing="false" onAction="#removeStation" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Delete" />
@@ -19,6 +19,7 @@
             <Image url="http://localhost/logo-removebg-preview.png" />
          </image>
       </ImageView>
+      <Button fx:id="crudS" layoutX="29.0" layoutY="358.0" mnemonicParsing="false" onAction="#switchToRacksFromList" prefHeight="26.0" prefWidth="94.0" style="-fx-background-radius: 5em;" text="Go Back" />
    </children>
    <stylesheets>
 

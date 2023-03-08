@@ -1,4 +1,4 @@
-package com.esprit.veltun.gui;
+package com.esprit.veltun.gui.rackvelo;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,17 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
-public class webMap extends Application {
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
+public class rackveloUi extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("station/map/map.fxml"));
-        primaryStage.setTitle("Find you localisation !");
+        Parent root = FXMLLoader.load(getClass().getResource("rackvelo/create/create.fxml"));
+        primaryStage.setTitle("Manage your racks ");
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         primaryStage.setScene(scene);

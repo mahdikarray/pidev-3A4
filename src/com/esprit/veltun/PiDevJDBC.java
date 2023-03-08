@@ -492,10 +492,10 @@ public class PiDevJDBC {
 
         //CRUD STATION//
         //CREATE
-        Station s5 = new Station("Ben Arous", 8.5, 8.6);
+        //Station s20 = new Station("BlocIJK", 8.5, 8.6 ,"Ariana Ville");
         //Station s3 = new Station(7,"TUNIS-BebAlioua" , 8.3 , 8.7 );
-        StationServiceImpl sta =  new StationServiceImpl() ;
-        sta.save(s5);
+        //StationServiceImpl sta =  new StationServiceImpl() ;
+        //sta.save(s20);
 
         //READ
         //System.out.println(sta.list())  ;
@@ -517,9 +517,9 @@ public class PiDevJDBC {
 
         //CRUD RACKVELO
         //CREATE
-        //RackVelo rv2 = new RackVelo(111,50,7);
-        //RackVeloImpl rackv =  new RackVeloImpl() ;
-        //rackv.save(rv2);
+        RackVelo rv43 = new RackVelo(43,50,23,2);
+        RackVeloImpl rackv =  new RackVeloImpl() ;
+        rackv.save(rv43);
 
         //READ
         //System.out.println(rackv.list()) ;

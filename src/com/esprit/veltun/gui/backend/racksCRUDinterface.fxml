@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3D4956; -fx-border-width: 7; -fx-border-color: #6babd6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.backend.backendController">
+    <children>
+        <Button fx:id="addS" layoutX="205.0" layoutY="187.0" mnemonicParsing="false" onAction="#switchToAddR" prefHeight="26.0" prefWidth="190.0" style="-fx-background-radius: 5em;" text="Add a rack" />
+        <Label layoutX="227.0" layoutY="120.0" prefHeight="43.0" prefWidth="190.0" text="Choose your action !" textFill="WHITE">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Button fx:id="updateS" layoutX="205.0" layoutY="308.0" mnemonicParsing="false" onAction="#switchToUpdateR" prefHeight="26.0" prefWidth="190.0" style="-fx-background-radius: 5em;" text="Update an existing rack" />
+        <Button fx:id="listS" layoutX="205.0" layoutY="248.0" mnemonicParsing="false" onAction="#switchToListR" prefHeight="26.0" prefWidth="190.0" style="-fx-background-radius: 5em;" text="Show an existing rack" />
+      <Button fx:id="crudS" cancelButton="true" layoutX="62.0" layoutY="350.0" mnemonicParsing="false" onAction="#switchToHomefromCRUDRacks" prefHeight="25.0" prefWidth="103.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Go Back" />
+    </children>
+</AnchorPane>

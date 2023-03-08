@@ -39,6 +39,7 @@ public class RackVeloImpl implements RackVeloService {
                 rv.setRefRack(RS.getInt(1));
                 rv.setCapacite(RS.getInt(2));
                 rv.setId_station(RS.getInt(3));
+                rv.setModele(RS.getInt(4));
                 list.add(rv);
             }
         } catch (SQLException var8) {
@@ -51,14 +52,15 @@ public class RackVeloImpl implements RackVeloService {
     public RackVelo save(RackVelo rv) {
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "INSERT INTO `rackvelo`( `Ref_rack`,`Capacite`, `id_station`) VALUES (?,?,?)";
+            String req = "INSERT INTO `rackvelo`( `Ref_rack`,`Capacite`, `id_station`,`modele`) VALUES (?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setInt(1, rv.getRefRack());
             ps.setInt(2, rv.getCapacite());
             ps.setInt(3, rv.getId_station());
+            ps.setInt(4, rv.getModele());
             Integer id = ps.executeUpdate();
             rv.setId(id);
-            System.out.println("Rack ajouté!!!");
+            System.out.println("The rack have been added succesfully !");
         } catch (SQLException var6) {
             var6.printStackTrace();
         }
@@ -69,7 +71,7 @@ public class RackVeloImpl implements RackVeloService {
     public RackVelo update(RackVelo rv) {
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "UPDATE `rackvelo` SET `Ref_rack` ='" + rv.getRefRack() + "', `Capacite` = '" + rv.getCapacite() + "', `Id_station`=  '" + rv.getId_station() + "' WHERE `rackvelo`.`Ref_rack`= " + rv.getRefRack();
+            String req = "UPDATE `rackvelo` SET `Ref_rack` ='" + rv.getRefRack() + "', `Capacite` = '" + rv.getCapacite() + "', `Id_station`=  '" + rv.getId_station() + "', `modele`=  '" + rv.getModele() +"' WHERE `rackvelo`.`Ref_rack`= " + rv.getRefRack();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Station updated !");

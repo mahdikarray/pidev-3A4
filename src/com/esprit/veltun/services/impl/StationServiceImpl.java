@@ -41,6 +41,7 @@ public class StationServiceImpl implements StationService {
                 s.setnom_station(RS.getString(2));
                 s.setlongitude(RS.getDouble(3));
                 s.setlatitude(RS.getDouble(4));
+                s.setGouvernorat(RS.getString(5));
                 list.add(s);
             }
         } catch (SQLException var8) {
@@ -53,14 +54,15 @@ public class StationServiceImpl implements StationService {
     public Station save(Station s) {
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "INSERT INTO `station`( `Nom_station`,`Longitude`, `Latitude`) VALUES (?,?,?)";
+            String req = "INSERT INTO `station`( `Nom_station`,`Longitude`, `Latitude` , `gouvernorat`) VALUES (?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setString(1, s.getnom_station());
             ps.setDouble(2, s.getlongitude());
             ps.setDouble(3, s.getlatitude());
+            ps.setString(4,s.getGouvernorat());
             Integer id = ps.executeUpdate();
             s.setId(id);
-            System.out.println("Station ajouté!!!");
+            System.out.println("The station have been added succesfully !");
         } catch (SQLException var6) {
             var6.printStackTrace();
         }
@@ -71,7 +73,7 @@ public class StationServiceImpl implements StationService {
     public Station update(Station s) {
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "UPDATE `station` SET `Longitude` ='" + s.getlongitude() + "', `Nom_station` = '" + s.getnom_station() + "', `Latitude`=  '" + s.getlatitude() + "' WHERE `station`.`Id_station`= " + s.getid_station();
+            String req = "UPDATE `station` SET `Longitude` ='" + s.getlongitude() + "', `Nom_station` = '" + s.getnom_station() + "', `Latitude`=  '" + s.getlatitude() + "', `gouvernorat`=  '" + s.getGouvernorat() +"' WHERE `station`.`Id_station`= " + s.getid_station();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Station updated !");
@@ -119,6 +121,14 @@ public class StationServiceImpl implements StationService {
                     whereBuilder.append(" WHERE nom_station = ?");
                 }
             }
+            if (stationSearchCriteria.getGouvernorat() != null) {
+                if (!whereBuilder.toString().isEmpty()) {
+                    whereBuilder.append(" AND gouvernorat = ?");
+
+                } else {
+                    whereBuilder.append(" WHERE gouvernorat = ?");
+                }
+            }
 
             if (stationSearchCriteria.getId() != null) {
                 if (!whereBuilder.toString().isEmpty()) {
@@ -147,6 +157,10 @@ public class StationServiceImpl implements StationService {
                 st.setString(counter, stationSearchCriteria.getNom_station());
                 counter++;
             }
+            if (stationSearchCriteria.getGouvernorat() != null) {
+                st.setString(counter, stationSearchCriteria.getGouvernorat());
+                counter++;
+            }
             if (stationSearchCriteria.getId() != null) {
                 st.setInt(counter, stationSearchCriteria.getId());
                 ++counter;
@@ -160,6 +174,7 @@ public class StationServiceImpl implements StationService {
                 s.setnom_station(RS.getString(2));
                 s.setlatitude(RS.getDouble(3));
                 s.setlongitude(RS.getDouble(4));
+                s.setGouvernorat(RS.getString(5));
                 list.add(s);
             }
         } catch (SQLException var11) {

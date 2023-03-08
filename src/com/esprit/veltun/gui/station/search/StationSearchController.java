@@ -11,7 +11,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -71,7 +73,7 @@ public class StationSearchController implements Initializable {
             Parent root = fxmlLoader.load();
 
             Stage thisStage = (Stage) searchbutton.getScene().getWindow();
-            thisStage.setTitle("Mise à jour d'une station");
+            thisStage.setTitle("Update your stations");
 
             com.esprit.veltun.gui.station.update.StationUpdateController cont = fxmlLoader.getController();
             cont.setStation(station);
@@ -87,7 +89,7 @@ public class StationSearchController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../create/create.fxml"));
 
         Stage thisStage = (Stage) searchbutton.getScene().getWindow();
-        thisStage.setTitle("Création d'une station");
+        thisStage.setTitle("Add a station");
 
         try {
             Parent root = fxmlLoader.load();
@@ -101,5 +103,16 @@ public class StationSearchController implements Initializable {
         runSearch();
     }
 
+    private Stage stage ;
+    private Scene scene ;
 
+    private Parent root ;
+    public void switchToRacksFromList(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("../../backend/stationsCRUDinterface.fxml")) ;
+        stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root) ;
+        stage.setScene(scene);
+        stage.show();
+
+    }
 }

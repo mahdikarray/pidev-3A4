@@ -6,11 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class rackveloUi extends Application {
+public class backendHome extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("rackvelo/create/create.fxml"));
-        primaryStage.setTitle("Manage your racks ");
+        Parent root = FXMLLoader.load(getClass().getResource("backend/backendHome.fxml"));
+        primaryStage.setTitle("Hey Admin ");
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         primaryStage.setScene(scene);

@@ -7,12 +7,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -57,7 +56,10 @@ import java.util.regex.Pattern;
         String idS=fxidS.getText();
 
 
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to update the data?");
+        Optional<ButtonType> result = confirm.showAndWait();
 
+        if (result.isPresent() && result.get() == ButtonType.OK) {
         RackVelo rv = new RackVelo();
         rv.setRefRack(Integer.parseInt(refRV));
         rv.setId_station(Integer.parseInt(idS));
@@ -78,7 +80,7 @@ import java.util.regex.Pattern;
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
-    }
+    } }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

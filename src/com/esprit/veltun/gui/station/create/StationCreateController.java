@@ -14,11 +14,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,26 +29,32 @@ import java.util.regex.Pattern;
 import static com.sun.javafx.robot.impl.FXRobotHelper.getChildren;
 
 public class StationCreateController implements Initializable {
-    public Button cancelbutton , mapFX;
+    public Button cancelbutton, mapFX;
     private StationService StationService = new StationServiceImpl();
 
     @FXML
     public TextField fxidStation;
+    @FXML
+    public WebView mapfx;
 
-    @FXML public TextField fxnomStation;
-    @FXML  public TextField fxLongitude;
-    @FXML  public TextField fxLatitude;
+    @FXML
+    public TextField fxnomStation;
+    @FXML
+    public TextField fxLongitude;
+    @FXML
+    public TextField fxLatitude;
     @FXML
     private Button buttonRv;
-    @FXML  public ChoiceBox<String> gouv  ;
-    private String[] gouvernorat = {"Ariana Ville","Ettadhamen","Kalâat el-Andalous","La Soukra","Mnihla","Raoued","Sidi Thabet"} ;
+    @FXML
+    public ChoiceBox<String> gouv;
+    private String[] gouvernorat = {"Ariana Ville", "Ettadhamen", "Kalâat el-Andalous", "La Soukra", "Mnihla", "Raoued", "Sidi Thabet"};
 
 
     public void saveStation(ActionEvent actionEvent) {
-       // String idS= fxidStation.getText();
-        String lat= fxLatitude.getText();
-        String longi= fxLongitude.getText();
-        String nomS= fxnomStation.getText();
+        // String idS= fxidStation.getText();
+        String lat = fxLatitude.getText();
+        String longi = fxLongitude.getText();
+        String nomS = fxnomStation.getText();
 
 //Les controles de saisies !!
         if (lat.isEmpty() || longi.isEmpty() || nomS.isEmpty()) {
@@ -58,7 +66,7 @@ public class StationCreateController implements Initializable {
             return;
         }
 
-        if(!nomS.matches("[a-zA-Z]+"))  {
+        if (!nomS.matches("[a-zA-Z]+")) {
             // Si le nom contient autre chose que des lettres et des espaces, afficher un message d'erreur
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -68,7 +76,7 @@ public class StationCreateController implements Initializable {
             return;
         }
 
-        if(lat.matches("[a-zA-Z]+") || longi.matches("[a-zA-Z]+"))  {
+        if (lat.matches("[a-zA-Z]+") || longi.matches("[a-zA-Z]+")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
@@ -76,8 +84,10 @@ public class StationCreateController implements Initializable {
             alert.showAndWait();
             return;
         }
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to save the data?");
+        Optional<ButtonType> result = confirm.showAndWait();
 
-
+        if (result.isPresent() && result.get() == ButtonType.OK) {
 
         Station s = new Station();
         s.setnom_station(nomS);
@@ -111,6 +121,7 @@ public class StationCreateController implements Initializable {
         }
     }
 
+}
     private void getChoice(ChoiceBox<String> choiceBox) {
         String gouvernorat = choiceBox.getValue() ;
     }
@@ -171,5 +182,13 @@ public class StationCreateController implements Initializable {
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public void switchToRacksFromAdd(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("../../backend/stationsCRUDinterface.fxml")) ;
+        stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root) ;
+        stage.setScene(scene);
+        stage.show();
     }
 }

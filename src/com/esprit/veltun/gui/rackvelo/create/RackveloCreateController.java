@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -35,9 +36,9 @@ public class RackveloCreateController implements Initializable {
     private Integer[] modele = {1,2,3} ;
 
     public void saveRackvelo(ActionEvent actionEvent) {
-        String idS= fxidS.getText();
-        String refRV=fxrefRv.getText();
-        String cap =fxCap.getText();
+        String idS = fxidS.getText();
+        String refRV = fxrefRv.getText();
+        String cap = fxCap.getText();
 
 
 //Les controles de saisies !!
@@ -60,7 +61,7 @@ public class RackveloCreateController implements Initializable {
             return;
         }*/
 
-        if(cap.matches("[a-zA-Z]+") || refRV.matches("[a-zA-Z]+") || idS.matches("[a-zA-Z]+"))  {
+        if (cap.matches("[a-zA-Z]+") || refRV.matches("[a-zA-Z]+") || idS.matches("[a-zA-Z]+")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
@@ -68,43 +69,46 @@ public class RackveloCreateController implements Initializable {
             alert.showAndWait();
             return;
         }
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to save the data?");
+        Optional<ButtonType> result = confirm.showAndWait();
 
+        if (result.isPresent() && result.get() == ButtonType.OK) {
 
-        RackVelo rv = new RackVelo();
-        rv.setId_station(parseInt(idS));
-        rv.setRefRack(parseInt(refRV));
-        rv.setCapacite(parseInt(cap));
-        rv.setModele(modeleFX.getValue());
-        rv = RackVeloService.save(rv);
+            RackVelo rv = new RackVelo();
+            rv.setId_station(parseInt(idS));
+            rv.setRefRack(parseInt(refRV));
+            rv.setCapacite(parseInt(cap));
+            rv.setModele(modeleFX.getValue());
+            rv = RackVeloService.save(rv);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/details.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/details.fxml"));
 
-        try {
-            Parent root = fxmlLoader.load();
+            try {
+                Parent root = fxmlLoader.load();
 
-            RackveloDetailsController cont = fxmlLoader.getController();
-            cont.setRackvelo(rv);
+                RackveloDetailsController cont = fxmlLoader.getController();
+                cont.setRackvelo(rv);
 
-            fxrefRv.getScene().setRoot(root);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
+                fxrefRv.getScene().setRoot(root);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            FXMLLoader Loader = new FXMLLoader(getClass().getResource("../search/search.fxml"));
+
+            try {
+                Parent root = Loader.load();
+
+                RackveloDetailsController cont = fxmlLoader.getController();
+                cont.setRackvelo(rv);
+
+                fxrefRv.getScene().setRoot(root);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        }}
+        private void getChoice (ChoiceBox < Integer > choiceBox) {
+            Integer modeleFX = choiceBox.getValue();
         }
-        FXMLLoader Loader = new FXMLLoader(getClass().getResource("../search/search.fxml"));
-
-        try {
-            Parent root = Loader.load();
-
-            RackveloDetailsController cont = fxmlLoader.getController();
-            cont.setRackvelo(rv);
-
-            fxrefRv.getScene().setRoot(root);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
-    }
-    private void getChoice(ChoiceBox<Integer> choiceBox) {
-        Integer modeleFX = choiceBox.getValue() ;
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -141,6 +145,14 @@ public class RackveloCreateController implements Initializable {
 
     public void switchToStation(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../../station/create/create.fxml")) ;
+        stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root) ;
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToCRUDRacks(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("../../backend/racksCRUDinterface.fxml")) ;
         stage =(Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root) ;
         stage.setScene(scene);
