@@ -7,11 +7,11 @@
 
 
 
-
 package com.esprit.veltun.gui;
 
 import com.esprit.veltun.gui.event.jfxcalendar.model.CalendarEvent;
 import com.esprit.veltun.gui.event.jfxcalendar.model.CalendarEventManager;
+import com.esprit.veltun.gui.event.jfxcalendar.model.Reminder;
 import com.esprit.veltun.gui.event.jfxcalendar.views.JFXCalendar;
 import com.esprit.veltun.services.InvitationService;
 import com.esprit.veltun.services.UserService;
@@ -19,17 +19,24 @@ import com.esprit.veltun.services.impl.InvitationServiceImpl;
 import com.esprit.veltun.services.impl.SendMail;
 import com.esprit.veltun.services.impl.UserServiceImpl;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.controlsfx.control.Notifications;
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class eventUi extends Application {
+
 
     public static void main(String[] args) {
         UserService userService = new UserServiceImpl();
@@ -38,11 +45,10 @@ public class eventUi extends Application {
         invitationService.checkExpiredInvitation();
         System.out.println(UserServiceImpl.connectedUser);
         launch(args);
-
     }
-/*
+
     @Override
-    public void start(Stage primaryStage) throws Exception {
+ /*   public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("event/search/search.fxml"));
         primaryStage.setTitle("Gestion des évenements");
         primaryStage.setResizable(false);
@@ -52,7 +58,7 @@ public class eventUi extends Application {
 
         primaryStage.show();
     }
-    public void start(Stage primaryStage) throws Exception {
+   /* public void start(Stage primaryStage) throws Exception {
 
 
         Request request;
@@ -89,8 +95,8 @@ public class eventUi extends Application {
 
         primaryStage.show();
 
-    }
-/*
+    }*/
+
     public void start(Stage primaryStage) throws Exception {
         CalendarEventManager eventManager = new CalendarEventManager();
         JFXCalendar calendar = new JFXCalendar(eventManager);
@@ -134,13 +140,9 @@ public class eventUi extends Application {
 
         primaryStage.show();
 
+    }
 
-
-
-
-    }*/
-
-    public void start(Stage primaryStage) throws Exception {
+    /*public void start(Stage primaryStage) throws Exception {
         CalendarEventManager eventManager = new CalendarEventManager();
         JFXCalendar calendar = new JFXCalendar(eventManager);
 
@@ -161,5 +163,5 @@ public class eventUi extends Application {
 
 
 
-    }
+    }*/
 }

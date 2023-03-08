@@ -1,8 +1,6 @@
 package com.esprit.veltun.gui.event.jfxcalendar.model;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.YearMonth;
+import java.time.*;
 
 import com.esprit.veltun.gui.event.jfxcalendar.validation.DataValidator;
 
@@ -103,7 +101,11 @@ public class CalendarEvent {
 		this.yearlyDate = yearlyDate;
 	}
 
-	public int getType() {
+    public CalendarEvent() {
+
+    }
+
+    public int getType() {
 		return type;
 	}
 
@@ -230,4 +232,5 @@ public class CalendarEvent {
 	public boolean isCompleted() {
 		return isCompleted == 1 ? true : false;
 	}
+
 }

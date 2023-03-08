@@ -28,6 +28,9 @@ public class EventSearchController implements Initializable {
     public TextField titletosearch;
     public Button searchbutton;
     public Button calendar;
+    public Button addneweventbutton;
+    public Button editeventbutton;
+    public Button removeeventbutton;
     private EventService eventService = EventServiceImpl.getInstance();
     public ListView<Event> eventlistview;
 
