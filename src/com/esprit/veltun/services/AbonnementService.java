@@ -5,4 +5,9 @@ import com.esprit.veltun.services.base.BaseService;
 
 public interface AbonnementService extends BaseService<Abonnement> {
 
+<<<<<<< Updated upstream
 }
+=======
+}
+
+>>>>>>> Stashed changes

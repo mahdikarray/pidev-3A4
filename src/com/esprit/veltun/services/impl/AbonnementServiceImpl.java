@@ -29,7 +29,7 @@ public class AbonnementServiceImpl implements AbonnementService {
                 ab.setType_ab(RS.getString("Type_ab"));
                 ab.setDuree(RS.getInt("Duree"));
                 ab.setPrix_ab(RS.getFloat("Prix_ab"));
-                ab.setId_offre(RS.getInt(1));
+              //  ab.setId_offre(RS.getInt(1));
                 ab.setId_ab(RS.getInt(1));
 
                 System.out.println("abonnement founded");
@@ -56,7 +56,7 @@ public class AbonnementServiceImpl implements AbonnementService {
                 a.setType_ab(RS.getString("Type_ab"));
                 a.setDuree(RS.getInt("Duree"));
                 a.setPrix_ab(RS.getFloat("Prix_ab"));
-                a.setId_offre(RS.getInt(1));
+              //  a.setId_offre(RS.getInt(1));
                 a.setId_ab(RS.getInt(1));
                 list.add(a);
             }
@@ -76,12 +76,19 @@ public class AbonnementServiceImpl implements AbonnementService {
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setInt(1, a.getId_ab());
             ps.setString(1, a.getType_ab());
+<<<<<<< Updated upstream
             ps.setInt(2, a.getDuree());
             ps.setFloat(3, a.getPrix_ab());
             ps.setInt(4, a.getId_offre());
 
 
 
+=======
+            ps.setDate(2, a.getDateDebut());
+            ps.setDate(3, a.getDateFin());
+            ps.setFloat(4, a.getPrix_ab());
+           ps.setInt(5, a.getId_offre());
+>>>>>>> Stashed changes
             Integer id = ps.executeUpdate();
             a.setId(id);
             System.out.println("abonnement ajouté!!!");
@@ -95,8 +102,13 @@ public class AbonnementServiceImpl implements AbonnementService {
     @Override
     public Abonnement update(Abonnement a) {
         try {
+<<<<<<< Updated upstream
             Connection conn = MyConnection.getInstance();
             String req = "UPDATE abonnement SET Type_ab = '" + a.getType_ab() +"', Duree = '" + a.getDuree() +"', Prix_ab = '" + a.getPrix_ab() + "', Id_offre = '" + a.getId_offre() +"' WHERE abonnement.Id_ab = " + a.getId_ab();
+=======
+           Connection conn = MyConnection.getInstance();
+            String req = "UPDATE abonnement SET Type_ab = '" + a.getType_ab() + "', date_debut = '" + a.getDateDebut() +"', date_fin = '" + a.getDateFin() + "', Prix_ab = '" + a.getPrix_ab() + "' WHERE abonnement.Id_ab = " + a.getId_ab();
+>>>>>>> Stashed changes
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("abonnement updated !");
@@ -170,9 +182,17 @@ public class AbonnementServiceImpl implements AbonnementService {
 
                 v.setType_ab(RS.getString(2));
                 v.setId_ab(RS.getInt(1));
+<<<<<<< Updated upstream
                 v.setDuree(RS.getInt(3));
                 v.setPrix_ab(RS.getFloat(4));
                 v.setId_offre(RS.getInt(5));
+=======
+                //v.setDuree(RS.getString(3));
+                v.setDateDebut(RS.getDate(3));
+                v.setDateFin(RS.getDate(4));
+                v.setPrix_ab(RS.getFloat(5));
+                //v.setId_offre(RS.getInt(6));
+>>>>>>> Stashed changes
                 list.add(v);
             }
         } catch (SQLException ex) {
