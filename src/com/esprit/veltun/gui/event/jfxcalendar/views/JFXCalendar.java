@@ -9,6 +9,7 @@ import com.esprit.veltun.gui.event.update.EventUpdateController;
 import com.esprit.veltun.gui.event.weather.WeatherData;
 import com.esprit.veltun.gui.event.weather.WeatherService;
 import com.esprit.veltun.model.Event;
+import com.esprit.veltun.services.impl.UserServiceImpl;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 
@@ -311,7 +312,7 @@ public class JFXCalendar extends StackPane {
 		this.currentView = displayMode;
 		if (displayMode == DAY) {
 			mainPane.setCenter(calendarDayView);
-			calendarDayView.setAddButtonEnable(false);
+			calendarDayView.setAddButtonEnable(!"ADMIN".equals(UserServiceImpl.connectedUser.getType()));
 			calendarDayView.refreshCalendar(selectedDate);
 		} else if (displayMode == WEEK) {
 			mainPane.setCenter(calendarWeekView);

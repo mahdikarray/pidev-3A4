@@ -10,6 +10,7 @@ import com.esprit.veltun.model.Event;
 import com.esprit.veltun.search.dto.EventSearchCriteria;
 import com.esprit.veltun.services.EventService;
 import com.esprit.veltun.services.impl.EventServiceImpl;
+import com.esprit.veltun.services.impl.UserServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +37,12 @@ public class EventSearchController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        if (!"ADMIN".equals(UserServiceImpl.connectedUser.getType())) {//if not admin
+            addneweventbutton.setVisible(false);
+            editeventbutton.setVisible(false);
+            removeeventbutton.setVisible(false);
+        }
         eventlistview.setCellFactory(param -> new ListCell<Event>(){
                 public void updateItem(Event event, boolean empty) {
                     super.updateItem(event, empty);
