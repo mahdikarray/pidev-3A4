@@ -8,10 +8,18 @@ public class Maintenance extends BaseEntity {
     private String description;
     private String status;
     private Date submission_date;
+    private int rating ;
+
 
     private int id_reclamation;
 
     public Maintenance() {
+    }
+    public Maintenance(String description, String status,Date submission_date,int rating) {
+        this.description = description;
+        this.status = status;
+        this.submission_date = submission_date;
+        this.rating =rating;
     }
     public Maintenance(String description, String status,Date submission_date) {
         this.description = description;
@@ -33,6 +41,13 @@ public class Maintenance extends BaseEntity {
 
     public void setId_demande(int id_demande) {
         this.id_demande = id_demande;
+    }
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public String getDescription() {
@@ -68,7 +83,7 @@ public class Maintenance extends BaseEntity {
     @Override
     public String toString() {
         return "maintenance [ id_demande=" + id_demande + ", description=" + description
-                + ", status=" + status + ", submission_date=" + submission_date + ",  id_reclamation=" + id_reclamation + "]";
+                + ", status=" + status + ", submission_date=" + submission_date + ",  id_reclamation=" + id_reclamation + ", rating=" + rating +"]";
     }
 
 

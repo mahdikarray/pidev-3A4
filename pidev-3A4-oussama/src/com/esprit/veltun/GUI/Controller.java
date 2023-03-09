@@ -1,4 +1,7 @@
 package com.esprit.veltun.GUI;
+import com.esprit.veltun.model.Maintenance;
+import com.esprit.veltun.model.Reclamation;
+import com.esprit.veltun.services.impl.MaintenanceServiceImpl;
 import javafx.event.ActionEvent;
 import org.controlsfx.control.Rating;
 import javafx.beans.value.ChangeListener;
@@ -23,6 +26,11 @@ public class Controller implements Initializable {
             public void changed(ObservableValue<? extends Number> ov,Number old , Number newT){
 
                 msg.setText("Rating:" +newT);
+                System.out.println(newT);
+                MaintenanceServiceImpl.rating=newT;
+                MaintenanceServiceImpl rsi= new MaintenanceServiceImpl();
+                rsi.updateRating(rsi.findById(6));
+
             }
 
 

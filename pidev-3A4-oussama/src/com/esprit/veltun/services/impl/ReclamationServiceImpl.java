@@ -17,6 +17,7 @@ import com.esprit.veltun.util.MyConnection;
 
 public class ReclamationServiceImpl implements ReclamationService {
 
+
     @Override
     public List<Reclamation> list() {
         List<Reclamation> list = new ArrayList<>();
@@ -53,6 +54,7 @@ public class ReclamationServiceImpl implements ReclamationService {
             ps.setString(2, r.getDescription());
             ps.setString(3, r.getStatus());
             ps.setDate(4, r.getDate_reclamation());
+//            ps.setDouble(5, (Double) ReclamationServiceImpl.rating);
             Integer id = ps.executeUpdate();
            r.setId(id);
             System.out.println("reclamation ajouté!!!");
@@ -76,6 +78,22 @@ public class ReclamationServiceImpl implements ReclamationService {
         }
         return null;
     }
+
+    /*public Reclamation updateRating(Reclamation r ) {
+        try {
+            Connection conn = MyConnection.getInstance();
+            String req = "UPDATE reclamation SET `rating` = '" +ReclamationServiceImpl.rating +"' WHERE `id_reclamation` = " + r.getId_reclamation();
+            Statement st = conn.createStatement();
+            st.executeUpdate(req);
+            System.out.println("reclamation updated !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+*/
+
+
 
     @Override
     public boolean remove(Integer id) {

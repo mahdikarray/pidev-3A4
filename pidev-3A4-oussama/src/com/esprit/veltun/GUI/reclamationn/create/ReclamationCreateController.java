@@ -1,8 +1,6 @@
 package com.esprit.veltun.GUI.reclamationn.create;
-
 import com.esprit.veltun.model.Reclamation;
 import com.esprit.veltun.GUI.reclamationn.view.ReclamationDetailsController;
-
 import com.esprit.veltun.services.ReclamationService;
 import com.esprit.veltun.services.impl.ReclamationServiceImpl;
 import javafx.event.ActionEvent;
@@ -11,8 +9,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -23,6 +19,7 @@ import java.util.regex.Pattern;
 public class ReclamationCreateController implements Initializable {
     public Button cancelbutton;
     private ReclamationService reclamationService = new ReclamationServiceImpl();
+    public Button ratting;
 
     public TextField fxstatus;
     public TextField fxdescription;
@@ -130,5 +127,14 @@ public class ReclamationCreateController implements Initializable {
             throw new RuntimeException(ex);
         }
     }
+    public void ra(ActionEvent actionEvent) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../Scene.fxml"));
 
+        try {
+            Parent root = fxmlLoader.load();
+            fxstatus.getScene().setRoot(root);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 }

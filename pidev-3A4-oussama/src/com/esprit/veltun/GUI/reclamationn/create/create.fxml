@@ -18,6 +18,7 @@
       <TextField fx:id="fxstatus" layoutX="144.0" layoutY="192.0" />
       <DatePicker fx:id="date_reclamation" layoutX="144.0" layoutY="263.0" />
       <Label layoutX="40.0" layoutY="267.0" text="date_reclamation" />
+      <Button fx:id="ratting" layoutX="462.0" layoutY="31.0" mnemonicParsing="false" onAction="#ra" text="Button" />
 
    </children>
 </AnchorPane>

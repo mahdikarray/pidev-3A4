@@ -10,11 +10,12 @@ public class Reclamation extends BaseEntity {
     private String status;
     private Date date_reclamation;
 
-
+    private int rating ;
 
 
     public Reclamation() {
     }
+
     public Reclamation(String object, String description, String status,Date date_reclamation) {
         this.object = object;
         this.description = description;
@@ -40,6 +41,7 @@ public class Reclamation extends BaseEntity {
     public void setId_reclamation(int id_reclamation) {
         this.id_reclamation = id_reclamation;
     }
+
 
     public String getObject() {
         return object;

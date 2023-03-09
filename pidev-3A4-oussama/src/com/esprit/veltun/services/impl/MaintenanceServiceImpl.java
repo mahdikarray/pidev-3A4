@@ -10,13 +10,14 @@ import java.util.Collection;
 import java.util.List;
 
 import com.esprit.veltun.model.Maintenance;
+import com.esprit.veltun.model.Reclamation;
 import com.esprit.veltun.services.MaintenanceService;
 import com.esprit.veltun.search.base.dto.SearchCriteria;
 import com.esprit.veltun.search.dto.MaintenanceSearchCriteria;
 import com.esprit.veltun.util.MyConnection;
 
 public class MaintenanceServiceImpl implements MaintenanceService {
-
+    public static Number rating;
     @Override
     public List<Maintenance> list() {
         List<Maintenance> list = new ArrayList<>();
@@ -76,6 +77,19 @@ public class MaintenanceServiceImpl implements MaintenanceService {
         return null;
     }
 
+    public Maintenance  updateRating(Maintenance m  ) {
+        try {
+            Connection conn = MyConnection.getInstance();
+            String req = "UPDATE maintenance SET `rating` = '" +MaintenanceServiceImpl.rating +"' WHERE `id_demande` = " + m.getId_demande();
+            Statement st = conn.createStatement();
+            st.executeUpdate(req);
+            System.out.println("ajout un review");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+
     @Override
     public boolean remove(Integer id) {
         try {
@@ -97,7 +111,7 @@ public class MaintenanceServiceImpl implements MaintenanceService {
     public Maintenance findById(Integer id) {
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "SELECT * FROM `maintenance` WHERE id_demande = " + id +" ORDER BY  Submission_date DESC " ;
+            String req = "SELECT * FROM `maintenance` WHERE id_demande = " + id  ;
             Statement st = conn.createStatement();
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
