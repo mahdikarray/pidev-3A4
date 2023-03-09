@@ -32,7 +32,10 @@ public class OffreSearchController implements Initializable {
     public TextField titletosearch;
     public Label fxrs;
     public Button searchbutton;
+<<<<<<< HEAD
     public Button aS;
+=======
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
     private OffreService offreService = new OffreServiceImpl();
     public ListView<Offre> eventlistview;
 
@@ -147,6 +150,7 @@ public class OffreSearchController implements Initializable {
         runSearch();
     }
 
+<<<<<<< HEAD
     @FXML
     void R(ActionEvent actionEvent) {
         Offre offre = eventlistview.getSelectionModel().getSelectedItem();
@@ -172,4 +176,7 @@ public class OffreSearchController implements Initializable {
                 throw new RuntimeException(ex);
             }}
     }
+=======
+
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
 }

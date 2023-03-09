@@ -6,17 +6,37 @@ import com.esprit.veltun.model.Adresse;
 import com.esprit.veltun.services.AbonnementService;
 import com.esprit.veltun.services.impl.AbonnementServiceImpl;
 //import com.google.zxing.common.ByteMatrix;
+<<<<<<< HEAD
 import com.esprit.veltun.services.impl.OffreServiceImpl;
+=======
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+<<<<<<< HEAD
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+=======
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+//import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
 
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -28,10 +48,21 @@ import java.util.Base64;
 
 import javax.imageio.ImageIO;
 
+<<<<<<< HEAD
 
 import java.io.IOException;
 import java.net.URL;
 
+=======
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import java.io.IOException;
+import java.net.URL;
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.Optional;
@@ -64,6 +95,7 @@ public class AbonnementCreateController implements Initializable {
 
 
     public void saveEvent(ActionEvent actionEvent) {
+<<<<<<< HEAD
         String type = fxType_ab.getText();
 
         Date dateDebut = new Date(System.currentTimeMillis());
@@ -84,6 +116,16 @@ public class AbonnementCreateController implements Initializable {
         String prix = fxPrixAb.getText();
 
         if (type.isEmpty() || prix.isEmpty()) {
+=======
+        String type= fxType_ab.getText();
+
+        Date dateDebut = Date.valueOf(Adatedebut.getValue());
+        Date dateFin = Date.valueOf(Adatefin.getValue());
+
+        String prix=fxPrixAb.getText();
+
+        if (type.isEmpty() || prix.isEmpty() ) {
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Problem!");
             alert.setHeaderText(null);
@@ -92,7 +134,11 @@ public class AbonnementCreateController implements Initializable {
             return;
         }
 
+<<<<<<< HEAD
         if (dateDebut.after(dateFin)) {
+=======
+        if (dateDebut.after(dateFin)  ) {
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
@@ -100,14 +146,24 @@ public class AbonnementCreateController implements Initializable {
             alert.showAndWait();
             return;
         }
+<<<<<<< HEAD
 
         if (!type.matches("Standard") && (!type.matches("Premium") && (!type.matches("Premium\\+")))) {
+=======
+        if (!type.matches("Standard") && (!type.matches("Premium") && (!type.matches("Premium\\+")))) {
+
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
             Alert alert = new Alert(Alert.AlertType.ERROR, "Type must be either Standard or Premium or Premium+");
             alert.showAndWait();
             return;
         }
+<<<<<<< HEAD
 
         if (!prix.matches("\\d+(\\.\\d+)?")) {
+=======
+        if (!prix.matches("\\d+(\\.\\d+)?")) {
+
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
             Alert alert = new Alert(Alert.AlertType.ERROR, "Price must be a decimal number.");
             alert.showAndWait();
             return;
@@ -118,12 +174,24 @@ public class AbonnementCreateController implements Initializable {
 
         if (result.isPresent() && result.get() == ButtonType.OK) {
 
+<<<<<<< HEAD
             Abonnement a = new Abonnement();
             a.setType_ab(type);
             a.setDateDebut(dateDebut);
             a.setDateFin(dateFin);
             a.setPrix_ab(Float.parseFloat(prix));
             a.setId_offre(OffreServiceImpl.l);
+=======
+            Abonnement a= new Abonnement();
+            //Abonnement a = new Abonnement();
+            a.setType_ab(type);
+            a.setDateDebut(dateDebut);
+            a.setDateFin(dateFin);
+            // a.setDuree(dure);
+            a.setPrix_ab(Float.parseFloat(prix));
+            // a.setId_offre(Integer.parseInt(idO));
+
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
 
             a = abonnementService.save(a);
 
@@ -139,7 +207,10 @@ public class AbonnementCreateController implements Initializable {
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
             FXMLLoader Loader = new FXMLLoader(getClass().getResource("../search/search.fxml"));
 
             try {

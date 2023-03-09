@@ -6,13 +6,17 @@ import com.esprit.veltun.model.Abonnement;
 import com.esprit.veltun.search.dto.AbonnementSearchCriteria;
 import com.esprit.veltun.services.AbonnementService;
 import com.esprit.veltun.services.impl.AbonnementServiceImpl;
+<<<<<<< HEAD
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import javafx.animation.Timeline;
+=======
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+<<<<<<< HEAD
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
@@ -27,27 +31,43 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+=======
+import javafx.scene.Parent;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
+import javafx.stage.Stage;
+
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
 import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.ResourceBundle;
+<<<<<<< HEAD
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
+=======
+
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
 public class AbonnementSearchController implements Initializable {
     public TextField titletosearch;
     public Button searchbutton;
     public Button tooffer;
     private AbonnementService abonnementService = new AbonnementServiceImpl();
     public ListView<Abonnement> eventlistview;
+<<<<<<< HEAD
     private Timeline timeline;
     @FXML
     private Button downloadButton;
     @FXML
     WebView map;
+=======
+
+
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         eventlistview.setCellFactory(param -> {
@@ -62,6 +82,7 @@ public class AbonnementSearchController implements Initializable {
                 }
             };
         });
+<<<<<<< HEAD
 
         runSearch();
 
@@ -110,6 +131,11 @@ public class AbonnementSearchController implements Initializable {
             e.printStackTrace();
         }
     }
+=======
+        runSearch();
+
+    }
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
 
     void runSearch() {
         String Type_ab = titletosearch.getText();

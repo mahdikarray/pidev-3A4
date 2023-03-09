@@ -20,7 +20,10 @@
             <Image url="http://localhost/logo-removebg-preview.png" />
          </image>
       </ImageView>
+<<<<<<< HEAD
       <Button fx:id="aS" layoutX="41.0" layoutY="359.0" mnemonicParsing="false" onAction="#R" text="Add it to a subscription" />
+=======
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
    </children>
 
 </AnchorPane>

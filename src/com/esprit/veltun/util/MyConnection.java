@@ -12,6 +12,12 @@ import java.sql.*;
  * @author Asus
  */
 public class MyConnection {
+<<<<<<< Updated upstream
+=======
+    
+    private static Connection instance;
+    private String url = "jdbc:mysql://localhost/veltun";
+>>>>>>> Stashed changes
 
 	private static Connection instance;
 	private String url = "jdbc:mysql://localhost/veltun";

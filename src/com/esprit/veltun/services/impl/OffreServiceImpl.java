@@ -18,6 +18,7 @@ import com.esprit.veltun.util.MyConnection;
 public class OffreServiceImpl implements OffreService {
 <<<<<<< Updated upstream
 
+<<<<<<< Updated upstream
 	@Override
 	public Offre findById(Integer id) {
 		try {
@@ -30,10 +31,13 @@ public class OffreServiceImpl implements OffreService {
 				s.setPrix(RS.getFloat("Prix"));
 				s.setId_offre(RS.getInt(1));
 =======
+<<<<<<< HEAD
     public static int l;
     public OffreServiceImpl() {
     }
 
+=======
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
     public Offre findById(Integer id) {
         try {
             Connection conn = MyConnection.getInstance();

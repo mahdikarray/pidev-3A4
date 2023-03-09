@@ -6,10 +6,19 @@ import com.esprit.veltun.model.Abonnement;
 import com.esprit.veltun.search.dto.AbonnementSearchCriteria;
 import com.esprit.veltun.services.AbonnementService;
 import com.esprit.veltun.services.impl.AbonnementServiceImpl;
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
 import com.esprit.veltun.search.dto.OffreSearchCriteria;
 import com.esprit.veltun.model.Offre;
 import com.esprit.veltun.services.OffreService;
 import com.esprit.veltun.services.impl.OffreServiceImpl;
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
 import javafx.beans.property.ObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,16 +44,34 @@ public class AbonnementSearchControllerFront implements Initializable {
     public Button searchbutton;
     public Button tooffer;
     private AbonnementService abonnementService = new AbonnementServiceImpl();
+<<<<<<< HEAD
     private OffreService offreService = new OffreServiceImpl();
+=======
+<<<<<<< Updated upstream
+=======
+    private OffreService offreService = new OffreServiceImpl();
+>>>>>>> Stashed changes
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
     public ListView<Abonnement> eventlistview;
     @FXML
     private HBox buttonsContainer;
     @FXML
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+    private ScrollPane eventsScrollPane;
+
+=======
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
     private VBox buttonsContainer1;
     @FXML
     private ScrollPane eventsScrollPane;
     @FXML
     private ScrollPane eventsScrollPane1;
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,6 +81,17 @@ public class AbonnementSearchControllerFront implements Initializable {
     void runSearch() {
        // String Type_ab = titletosearch.getText();
         AbonnementSearchCriteria abonnementSearchCriteria = new AbonnementSearchCriteria();
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+
+        Collection<Abonnement> abonnements = abonnementService.search(abonnementSearchCriteria);
+
+// Create a VBox to hold the buttons
+        HBox buttonsContainer = new HBox();
+        buttonsContainer.setSpacing(10);
+=======
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
  OffreSearchCriteria offreSearchCriteria=new OffreSearchCriteria();
         Collection<Abonnement> abonnements = abonnementService.search(abonnementSearchCriteria);
         Collection<Offre> offres = offreService.search(offreSearchCriteria);
@@ -62,6 +100,10 @@ public class AbonnementSearchControllerFront implements Initializable {
         buttonsContainer.setSpacing(10);
         VBox buttonsContainer1 = new VBox();
         buttonsContainer1.setSpacing(10);
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
 
 // Create a button for each abonnement
         for (Abonnement abonnement : abonnements) {
@@ -96,6 +138,12 @@ public class AbonnementSearchControllerFront implements Initializable {
         if (eventsScrollPane != null) {
             eventsScrollPane.setContent(buttonsContainer);
         }
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+        }
+=======
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
         for (Offre offre : offres) {
             Label label = new Label(offre.getDescription_of());
             label.setWrapText(true);
@@ -129,6 +177,10 @@ public class AbonnementSearchControllerFront implements Initializable {
         }
 
     }
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
 
 
 
@@ -141,7 +193,15 @@ public class AbonnementSearchControllerFront implements Initializable {
             Parent root = fxmlLoader.load();
 
             Stage thisStage = (Stage) searchbutton.getScene().getWindow();
+<<<<<<< HEAD
             thisStage.setTitle("Subscription update successfully ");
+=======
+<<<<<<< Updated upstream
+            thisStage.setTitle("Mise à jour d'un abonnement");
+=======
+            thisStage.setTitle("Subscription update successfully ");
+>>>>>>> Stashed changes
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
 
             com.esprit.veltun.GUI.abonnementt.frontchoice.SecondFXMLController cont = fxmlLoader.getController();
             cont.setAbonnement(abonnement);

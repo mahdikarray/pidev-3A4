@@ -6,7 +6,10 @@ import com.esprit.veltun.model.Offre;
 import com.esprit.veltun.search.dto.AbonnementSearchCriteria;
 import com.esprit.veltun.services.AbonnementService;
 import com.esprit.veltun.services.impl.AbonnementServiceImpl;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 63d3b7b43f9286d0ef9f6e147e0afbee11949b26
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
