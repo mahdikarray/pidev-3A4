@@ -49,7 +49,6 @@ public class ReclamationServiceImpl implements ReclamationService {
             Connection conn = MyConnection.getInstance();
             String req = "INSERT INTO `reclamation`(object, description, status,date_reclamation) VALUES (?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
-           // ps.setInt(1, r.getId_reclamation());
             ps.setString(1, r.getObject());
             ps.setString(2, r.getDescription());
             ps.setString(3, r.getStatus());

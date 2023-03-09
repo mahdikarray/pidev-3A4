@@ -13,5 +13,6 @@
       <Button fx:id="addneweventbutton" defaultButton="true" layoutX="287.0" layoutY="359.0" mnemonicParsing="false" onAction="#addEvent" prefHeight="25.0" prefWidth="80.0" text="Add " />
       <TextField fx:id="titletosearch" layoutX="300.0" layoutY="56.0" prefHeight="25.0" prefWidth="195.0" promptText="Titre de recherche" />
       <Button fx:id="searchbutton" layoutX="501.0" layoutY="56.0" mnemonicParsing="false" onAction="#search" opacity="0.62" text="Rechercher" />
+      <Button fx:id="tributton" layoutX="74.0" layoutY="56.0" mnemonicParsing="false" onAction="#tri" prefHeight="25.0" prefWidth="54.0" text="tri" />
    </children>
 </AnchorPane>

@@ -2,6 +2,7 @@ package com.esprit.veltun.GUI.reclamationn.search;
 
 
 //import com.esprit.veltun.gui.invitation.create.InvitationCreateController;
+import com.esprit.veltun.model.Maintenance;
 import com.esprit.veltun.model.Reclamation;
 
 import com.esprit.veltun.search.dto.ReclamationSearchCriteria;
@@ -19,11 +20,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class ReclamationSearchController implements Initializable {
     public TextField titletosearch;
     public Button searchbutton;
+    public Button tributton;
     private ReclamationService reclamationService = new ReclamationServiceImpl();
     public ListView<Reclamation> eventlistview;
 
@@ -102,5 +105,11 @@ public class ReclamationSearchController implements Initializable {
         runSearch();
     }
 
-
+    void runtri() {
+        eventlistview.getItems().sort(Comparator.comparing(Reclamation::getDate_reclamation));
+    }
+    public void tri(ActionEvent actionEvent) {
+        runtri();
+    }
 }
+

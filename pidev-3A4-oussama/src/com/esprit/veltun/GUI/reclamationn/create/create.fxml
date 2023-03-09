@@ -12,12 +12,12 @@
       <Button fx:id="cancelbutton" cancelButton="true" layoutX="243.0" layoutY="345.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="114.0" text="Annuler" />
       <Label layoutX="73.0" layoutY="55.0" text="object" />
       <Label layoutX="72.0" layoutY="101.0" text="description" />
-      <Label layoutX="90.0" layoutY="196.0" text="status" />
-      <TextField fx:id="fxobject" layoutX="263.0" layoutY="52.0" />
-      <TextField fx:id="fxdescription" layoutX="263.0" layoutY="106.0" />
-      <TextField fx:id="fxstatus" layoutX="263.0" layoutY="183.0" />
-      <DatePicker fx:id="date_reclamation" layoutX="257.0" layoutY="263.0" />
-      <Label layoutX="69.0" layoutY="267.0" text="date_reclamation" />
+      <Label layoutX="69.0" layoutY="196.0" text="status" />
+      <TextField fx:id="fxobject" layoutX="122.0" layoutY="43.0" />
+      <TextField fx:id="fxdescription" layoutX="144.0" layoutY="106.0" />
+      <TextField fx:id="fxstatus" layoutX="144.0" layoutY="192.0" />
+      <DatePicker fx:id="date_reclamation" layoutX="144.0" layoutY="263.0" />
+      <Label layoutX="40.0" layoutY="267.0" text="date_reclamation" />
 
    </children>
 </AnchorPane>

@@ -33,7 +33,7 @@ public class PiDevJDBC {
         Date dn1= Date.valueOf(LocalDate.parse(date1));
         Date dn= Date.valueOf(LocalDate.parse(date));
 
-    Reclamation r1 = new Reclamation( 3,"reclamation1","reclamation probleme1","non declare",dn);
+    /*Reclamation r1 = new Reclamation( 3,"reclamation1","reclamation probleme1","non declare",dn);
        ReclamationServiceImpl us = new ReclamationServiceImpl();
         us.save(r1);
         Reclamation r2 = new Reclamation( 3,"reclamation2","reclamation probleme2","declare",dn1);
@@ -63,7 +63,7 @@ public class PiDevJDBC {
 
 
 
-
+*/
     }
 
 }

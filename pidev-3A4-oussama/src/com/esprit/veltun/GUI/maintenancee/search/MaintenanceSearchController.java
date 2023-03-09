@@ -19,11 +19,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class MaintenanceSearchController implements Initializable {
     public TextField titletosearch;
     public Button searchbutton;
+    public Button tributton;
     private MaintenanceService maintenanceService = new MaintenanceServiceImpl();
     public ListView<Maintenance> eventlistview;
 
@@ -101,6 +103,10 @@ public class MaintenanceSearchController implements Initializable {
     public void search(ActionEvent actionEvent) {
         runSearch();
     }
-
-
+    void runtri() {
+        eventlistview.getItems().sort(Comparator.comparing(Maintenance::getSubmission_date));
+    }
+    public void tri(ActionEvent actionEvent) {
+        runtri();
+    }
 }

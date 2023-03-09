@@ -23,7 +23,7 @@ public class MaintenanceServiceImpl implements MaintenanceService {
         try {
             Connection conn = MyConnection.getInstance();
             Statement ste;
-            String req = "Select * from maintenance";
+            String req = "Select * from maintenance ";
             Statement st = conn.createStatement();
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
@@ -97,7 +97,7 @@ public class MaintenanceServiceImpl implements MaintenanceService {
     public Maintenance findById(Integer id) {
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "SELECT * FROM `maintenance` WHERE id_demande = " + id;
+            String req = "SELECT * FROM `maintenance` WHERE id_demande = " + id +" ORDER BY  Submission_date DESC " ;
             Statement st = conn.createStatement();
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {

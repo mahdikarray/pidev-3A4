@@ -19,7 +19,6 @@ import java.sql.Date;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
-import static java.sql.Date.valueOf;
 
 public class ReclamationCreateController implements Initializable {
     public Button cancelbutton;
@@ -44,6 +43,33 @@ public class ReclamationCreateController implements Initializable {
         String description= fxdescription.getText();
         String status= fxstatus.getText();
     String date_reclamationn = String.valueOf(date_reclamation.getValue());
+
+
+        if (description.length() < 10 || description.length() > 200 ) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Problem!");
+            alert.setHeaderText(null);
+            alert.setContentText("La description doit avoir entre 10 et 200 caractères");
+            alert.showAndWait();
+            return;
+        }
+        if (object.length() < 10 || object.length() > 100 ) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Problem!");
+            alert.setHeaderText(null);
+            alert.setContentText("L'objet doit avoir entre 10 et 200 caractères");
+            alert.showAndWait();
+            return;
+        }
+
+        if (!status.matches("en cours") && (!status.matches("resolu") )) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR, "status must be either en cours or resolu ");
+            alert.showAndWait();
+            return;
+        }
+
+
 
         Reclamation a= new Reclamation();
 
@@ -92,7 +118,6 @@ public class ReclamationCreateController implements Initializable {
                 return null; // prevent change
             }
         });
-        //tfheurefin.setTextFormatter(formatter);
 
     }
     public void cancel(ActionEvent actionEvent) {

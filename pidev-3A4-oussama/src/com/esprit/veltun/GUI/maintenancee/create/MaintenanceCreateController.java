@@ -33,11 +33,11 @@ public class MaintenanceCreateController implements Initializable {
         String description= fxdescription.getText();
         String status= fxstatus.getText();
         String submission_datee = String.valueOf(submission_date.getValue());
-        if (status.isEmpty() || description.isEmpty() ) {
+        if (description.length() < 10 || description.length() > 200 ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Problem!");
             alert.setHeaderText(null);
-            alert.setContentText("Enter valid status and description");
+            alert.setContentText("La description doit avoir entre 10 et 200 caractères");
             alert.showAndWait();
             return;
         }
@@ -48,6 +48,7 @@ public class MaintenanceCreateController implements Initializable {
             alert.showAndWait();
             return;
         }
+
 
 
         Maintenance a1= new Maintenance();

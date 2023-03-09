@@ -49,6 +49,8 @@ public class MaintenanceDetailsController implements Initializable {
     public void listEvent(ActionEvent actionEvent) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../search/search.fxml"));
         try {
+
+
             Parent root = fxmlLoader.load();
             ftlistEvent.getScene().setRoot(root);
         } catch (IOException e) {
