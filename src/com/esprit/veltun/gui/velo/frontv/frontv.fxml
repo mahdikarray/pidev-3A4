@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.velo.frontv.FrontController">
+   <children>
+      <ImageView fitHeight="98.0" fitWidth="156.0">
+         <image>
+            <Image url="http://localhost:8088/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Circle fill="#6babd6" layoutX="758.0" layoutY="534.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line endX="529.3999633789062" endY="-3.0517578125E-5" focusTraversable="true" layoutX="144.0" layoutY="466.0" startX="-25.000015258789062" startY="-3.0517578125E-5" stroke="#6babd6" strokeLineCap="ROUND" strokeWidth="5.0" />
+      <Circle fill="#424242" layoutX="31.0" layoutY="534.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
+      <ListView fx:id="velolistvie" layoutX="28.0" layoutY="101.0" prefHeight="293.0" prefWidth="744.0" />
+   </children>
+</AnchorPane>
