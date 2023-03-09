@@ -5,21 +5,45 @@ package com.esprit.veltun.search.dto;
 import com.esprit.veltun.model.Abonnement;
 import com.esprit.veltun.search.base.dto.SearchCriteria;
 
+import java.util.Date;
+
 public class AbonnementSearchCriteria extends SearchCriteria<Abonnement> {
     private int Id_ab;
     private float Prix_ab;
     private String Type_ab;
     private int Id_offre;
-    private int Duree;
+    private String Duree;
+
+    public Date getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    private Date dateDebut;
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
+    }
+
+    private Date dateFin;
+
+
+
 
     public AbonnementSearchCriteria() {
     }
-
-    public int getDuree() {
+    public String getDuree() {
         return this.Duree;
     }
 
-    public void setDuree(int Duree) {
+    public void setDuree(String Duree) {
         this.Duree = Duree;
     }
 
@@ -56,6 +80,6 @@ public class AbonnementSearchCriteria extends SearchCriteria<Abonnement> {
     }
 
     public String toString() {
-        return "abonnement{Id_ab=" + this.Id_ab + ", Type_ab=" + this.Type_ab + ", Duree=" + this.Duree + ", Prix_ab=" + this.Prix_ab + '}';
+        return "abonnement{Id_ab=" + this.Id_ab + ", Type_ab=" + this.Type_ab + ", date_debut=" + this.dateDebut + ", date_fin=" + this.dateFin + ", Prix_ab=" + this.Prix_ab + '}';
     }
 }

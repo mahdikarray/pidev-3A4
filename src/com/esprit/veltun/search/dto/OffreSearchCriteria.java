@@ -5,9 +5,22 @@
 
 package com.esprit.veltun.search.dto;
 
-public abstract class OffreSearchCriteria {
+import com.esprit.veltun.model.Offre;
+import com.esprit.veltun.search.base.dto.SearchCriteria;
+
+public class OffreSearchCriteria extends SearchCriteria<Offre> {
     private int Id_offre;
     private float Prix;
+
+    public String getDescription_of() {
+        return description_of;
+    }
+
+    public void setDescription_of(String description_of) {
+        this.description_of = description_of;
+    }
+
+    private String description_of;
 
     public OffreSearchCriteria() {
     }
@@ -29,6 +42,6 @@ public abstract class OffreSearchCriteria {
     }
 
     public String toString() {
-        return "offre{Id_offre=" + this.Id_offre + ", Prix=" + this.Prix + '}';
+        return "offre{Id_offre=" + this.Id_offre + ", Prix=" + this.Prix +", description_of=" + this.description_of + '}';
     }
 }

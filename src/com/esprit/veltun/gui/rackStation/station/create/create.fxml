@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #3D4956; -fx-border-color: #6babd6; -fx-border-width: 7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.rackStation.station.create.StationCreateController">
+   <children>
+      <Button fx:id="tfaddevent" defaultButton="true" layoutX="474.0" layoutY="345.0" mnemonicParsing="false" onAction="#saveStation" prefHeight="26.0" prefWidth="93.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em;" text="Save" />
+      <Label layoutX="276.0" layoutY="135.0" text="Nom station :" textFill="WHITE" />
+      <Label layoutX="76.0" layoutY="144.0" />
+      <Label layoutX="282.0" layoutY="179.0" text="Longitude :" textFill="WHITE" />
+      <Label layoutX="275.0" layoutY="228.0" text="Latitude :" textFill="WHITE" />
+      <TextField fx:id="fxnomStation" layoutX="393.0" layoutY="131.0" />
+      <TextField fx:id="fxLongitude" layoutX="393.0" layoutY="175.0" />
+      <TextField fx:id="fxLatitude" layoutX="393.0" layoutY="224.0" />
+      <Label layoutX="276.0" layoutY="276.0" text="Gouvernorat :" textFill="WHITE" />
+      <ChoiceBox fx:id="gouv" layoutX="392.0" layoutY="272.0" prefHeight="26.0" prefWidth="168.0" />
+      <Label layoutX="326.0" layoutY="93.0" prefHeight="18.0" prefWidth="198.0" text="Create a new station ! " textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" />
+      <Button fx:id="crudS" layoutX="76.0" layoutY="345.0" mnemonicParsing="false" onAction="#switchToRacksFromAdd" prefHeight="26.0" prefWidth="94.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Go Back" />
+      <Button fx:id="mapFX" layoutX="393.0" layoutY="31.0" mnemonicParsing="false" onAction="#openMap" prefHeight="26.0" prefWidth="168.0" style="-fx-background-radius: 5em;" text="Find your location" />
+   
+
+
+
+   </children>
+</AnchorPane>

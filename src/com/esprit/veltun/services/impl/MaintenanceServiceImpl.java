@@ -10,35 +10,30 @@ import java.util.Collection;
 import java.util.List;
 
 import com.esprit.veltun.model.Maintenance;
-import com.esprit.veltun.model.Reclamation;
-import com.esprit.veltun.search.dto.MaintenanceSearchCriteria;
 import com.esprit.veltun.services.MaintenanceService;
-import com.esprit.veltun.services.ReclamationService;
 import com.esprit.veltun.search.base.dto.SearchCriteria;
-import com.esprit.veltun.search.dto.ReclamationSearchCriteria;
+import com.esprit.veltun.search.dto.MaintenanceSearchCriteria;
 import com.esprit.veltun.util.MyConnection;
 
 public class MaintenanceServiceImpl implements MaintenanceService {
 
     @Override
-    public Collection<Maintenance> list() {
-
+    public List<Maintenance> list() {
         List<Maintenance> list = new ArrayList<>();
         try {
             Connection conn = MyConnection.getInstance();
             Statement ste;
             String req = "Select * from maintenance";
             Statement st = conn.createStatement();
-
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
                 Maintenance m = new Maintenance();
-                m.setDescription(RS.getString("description"));
-                m.setEtat(RS.getString("etat"));
-                m.setDate_soumission(RS.getDate("date_soumission"));
-                m.setId_reclamation(RS.getInt(1));
-                m.setId_demande(RS.getInt(1));
 
+                m.setId_demande(RS.getInt("id_demande"));
+                m.setDescription(RS.getString("description"));
+                m.setStatus(RS.getString("status"));
+                m.setSubmission_date(RS.getDate("submission_date"));
+                // m.setId_demande(RS.getInt("id_reclamation"));
                 list.add(m);
             }
         } catch (SQLException ex) {
@@ -46,38 +41,32 @@ public class MaintenanceServiceImpl implements MaintenanceService {
         }
 
         return list;
-
     }
-
     @Override
     public Maintenance save(Maintenance m) {
+
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "INSERT INTO `maintenance` ( description,etat,date_soumission,Id_reclamation) VALUES (?,?,?,?)";
+            String req = "INSERT INTO `maintenance`( description, status,submission_date) VALUES (?,?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
-            ps.setInt(1, m.getId_demande());
             ps.setString(1, m.getDescription());
-            ps.setString(2, m.getEtat());
-            ps.setDate(3, m.getDate_soumission());
-            ps.setInt(4, m.getId_reclamation());
-
-
-
+            ps.setString(2, m.getStatus());
+            ps.setDate(3, m.getSubmission_date());
             Integer id = ps.executeUpdate();
             m.setId(id);
-            System.out.println("maintenance ajouté!!!");
+            System.out.println("Maintenance ajouté!!!");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return m;
-
     }
 
     @Override
-    public Maintenance update(Maintenance m) {
+
+    public Maintenance update(Maintenance m ) {
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "UPDATE maintenance SET description = '" + m.getDescription() +"', etat = '" + m.getEtat() +"', date_soumission = '" + m.getDate_soumission() + "', id_reclamation = '" + m.getId_reclamation() +"' WHERE maintenance.Id_demande = " + m.getId_demande();
+            String req = "UPDATE maintenance SET  `description` = '" + m.getDescription() +"', `status` = '" + m.getStatus() + "', `submission_date` = '" + m.getSubmission_date() +"' WHERE `id_demande` = " + m.getId_demande();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Maintenance updated !");
@@ -94,7 +83,7 @@ public class MaintenanceServiceImpl implements MaintenanceService {
             String req = "DELETE FROM `maintenance` WHERE id_demande = " + id;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
-            System.out.println("maintenance deleted !");
+            System.out.println("Maintenance deleted !");
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -114,10 +103,10 @@ public class MaintenanceServiceImpl implements MaintenanceService {
             while (RS.next()) {
                 Maintenance m = new Maintenance();
                 m.setId_demande(RS.getInt("id_demande"));
+
                 m.setDescription(RS.getString("description"));
-                m.setEtat(RS.getString("etat"));
-                m.setDate_soumission(RS.getDate("date_soumission"));
-                m.setId_reclamation(RS.getInt("id_reclamation"));
+                m.setStatus(RS.getString("status"));
+                m.setSubmission_date(RS.getDate("submission_date"));
                 System.out.println("Maintenance founded");
                 return m;
             }
@@ -126,7 +115,6 @@ public class MaintenanceServiceImpl implements MaintenanceService {
         }
         return null;
     }
-
 
     @Override
     public Collection<Maintenance> search(SearchCriteria<Maintenance> searchCriteria) {
@@ -138,12 +126,12 @@ public class MaintenanceServiceImpl implements MaintenanceService {
             StringBuilder builder = new StringBuilder("Select * from maintenance");
             StringBuilder whereBuilder = new StringBuilder();
 
-            if (maintenanceSearchCriteria.getEtat() != null && !maintenanceSearchCriteria.getEtat().isEmpty()) {
+            if (maintenanceSearchCriteria.getStatus() != null && !maintenanceSearchCriteria.getStatus().isEmpty()) {
                 if (!whereBuilder.toString().isEmpty()) {
-                    whereBuilder.append(" AND etat=?");
+                    whereBuilder.append(" AND status=?");
 
                 } else {
-                    whereBuilder.append(" WHERE etat=?");
+                    whereBuilder.append(" WHERE status=?");
                 }
             }
 
@@ -161,8 +149,8 @@ public class MaintenanceServiceImpl implements MaintenanceService {
 
             PreparedStatement st = conn.prepareStatement(builder.toString());
             int counter = 1;
-            if (maintenanceSearchCriteria.getEtat() != null && !maintenanceSearchCriteria.getEtat().isEmpty()) {
-                st.setString(counter, maintenanceSearchCriteria.getEtat());
+            if (maintenanceSearchCriteria.getStatus() != null && !maintenanceSearchCriteria.getStatus().isEmpty()) {
+                st.setString(counter, maintenanceSearchCriteria.getStatus());
                 counter++;
             }
 
@@ -173,14 +161,14 @@ public class MaintenanceServiceImpl implements MaintenanceService {
             }
             ResultSet RS = st.executeQuery();
             while (RS.next()) {
+                Maintenance k1 = new Maintenance();
 
-                Maintenance m = new Maintenance();
-                m.setId_demande(RS.getInt("id_demande"));
-                m.setDescription(RS.getString("description"));
-                m.setEtat(RS.getString("etat"));
-                m.setDate_soumission(RS.getDate("date_soumission"));
-                m.setId_reclamation(RS.getInt("id_reclamation"));
-                list.add(m);
+
+                k1.setId_demande(RS.getInt("id_demande"));
+                k1.setDescription(RS.getString("description"));
+                k1.setStatus(RS.getString("status"));
+                k1.setSubmission_date(RS.getDate("submission_date"));
+                list.add(k1);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -192,4 +180,3 @@ public class MaintenanceServiceImpl implements MaintenanceService {
 
 
 }
-

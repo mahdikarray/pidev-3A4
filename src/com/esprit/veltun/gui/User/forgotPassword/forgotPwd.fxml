@@ -6,16 +6,24 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.User.forgotPassword.ForgotPwd">
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.User.forgotPassword.ForgotPwd">
    <children>
-      <ImageView fx:id="tfimagelogo" fitHeight="57.0" fitWidth="58.0" layoutX="20.0" layoutY="23.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="482.0" layoutX="372.0" layoutY="20.0" stroke="#4a91a5" strokeLineCap="ROUND" strokeType="INSIDE" width="364.0" />
+      <Label layoutX="435.0" layoutY="225.0" prefHeight="18.0" prefWidth="48.0" text="Email :" textFill="#193742" />
+      <TextField fx:id="emailUser" layoutX="512.0" layoutY="221.0" prefHeight="26.0" prefWidth="181.0" style="-fx-background-radius: 5em;" />
+      <Button fx:id="forgotPwdButton" layoutX="476.0" layoutY="267.0" mnemonicParsing="false" onAction="#confirmPwd" prefHeight="26.0" prefWidth="155.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Confirm" textFill="WHITE" />
+      <ImageView fx:id="tfimagelogo" fitHeight="516.0" fitWidth="410.0" layoutY="3.0">
          <image>
             <Image url="http://localhost/logo-removebg-preview.png" />
          </image>
       </ImageView>
-      <Label layoutX="197.0" layoutY="115.0" prefHeight="18.0" prefWidth="48.0" text="Email" />
-      <TextField fx:id="emailUser" layoutX="304.0" layoutY="111.0" prefHeight="26.0" prefWidth="226.0" />
-      <Button fx:id="forgotPwdButton" layoutX="315.0" layoutY="293.0" mnemonicParsing="false" onAction="#confirmPwd" prefHeight="26.0" prefWidth="250.0" text="confirm" />
+      <Label layoutX="496.0" layoutY="131.0" text="Send password mail " textFill="#193742">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

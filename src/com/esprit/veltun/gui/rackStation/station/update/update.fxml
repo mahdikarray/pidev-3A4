@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #3D4956; -fx-border-width: 7; -fx-border-color: #6babd6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.rackStation.station.update.StationUpdateController">
+   <children>
+      <Button fx:id="tfaddevent" defaultButton="true" layoutX="434.0" layoutY="332.0" mnemonicParsing="false" onAction="#updateEvent" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em;" text="Update" />
+      <Button fx:id="crudS" cancelButton="true" layoutX="50.0" layoutY="332.0" mnemonicParsing="false" onAction="#switchToRacksFromUpdate" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Go Back" />
+      <TextField fx:id="fxnomStation" layoutX="374.0" layoutY="170.0" />
+      <TextField fx:id="fxLongitude" layoutX="374.0" layoutY="223.0" />
+      <TextField fx:id="fxLatitude" layoutX="374.0" layoutY="273.0" />
+      <Label layoutX="264.0" layoutY="174.0" text="Station's name :" textFill="WHITE" />
+      <Label layoutX="264.0" layoutY="227.0" text="New longitude :" textFill="WHITE" />
+      <Label layoutX="263.0" layoutY="277.0" text="New latitude :" textFill="WHITE" />
+
+   </children>
+</AnchorPane>

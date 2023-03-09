@@ -5,22 +5,29 @@ import com.esprit.veltun.model.base.BaseEntity;
 
 public class Reclamation extends BaseEntity {
     private int id_reclamation;
-    private String objet;
+    private String object;
     private String description;
-    private String etat;
+    private String status;
     private Date date_reclamation;
+
 
 
 
     public Reclamation() {
     }
+    public Reclamation(String object, String description, String status,Date date_reclamation) {
+        this.object = object;
+        this.description = description;
+        this.status = status;
+        this.date_reclamation = date_reclamation;
+    }
 
-    public Reclamation(int id_reclamation, String objet, String description, String etat,Date date_reclamation) {
+    public Reclamation(int id_reclamation, String object, String description, String status,Date date_reclamation) {
 
         this.id_reclamation = id_reclamation;
-        this.objet = objet;
+        this.object = object;
         this.description = description;
-        this.etat = etat;
+        this.status = status;
         this.date_reclamation = date_reclamation;
     }
 
@@ -34,12 +41,12 @@ public class Reclamation extends BaseEntity {
         this.id_reclamation = id_reclamation;
     }
 
-    public String getObjet() {
-        return objet;
+    public String getObject() {
+        return object;
     }
 
-    public void setObjet(String objet) {
-        this.objet = objet;
+    public void setObject(String object) {
+        this.object = object;
     }
     public String getDescription() {
         return description;
@@ -48,12 +55,13 @@ public class Reclamation extends BaseEntity {
     public void setDescription(String description) {
         this.description = description;
     }
-    public String getEtat() {
-        return etat;
+
+    public String getStatus() {
+        return status;
     }
 
-    public void setEtat(String etat) {
-        this.etat = etat;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 
@@ -67,10 +75,8 @@ public class Reclamation extends BaseEntity {
 
     @Override
     public String toString() {
-        return "reclamation [  id_reclamation=" + id_reclamation + ", objet=" + objet
-                + ", description=" + description + ", etat=" + etat + ",date_reclamation=" + date_reclamation +"]";
+        return "reclamation [  id_reclamation=" + id_reclamation + ", object=" + object
+                + ", description=" + description + ", status=" + status + ",date_reclamation=" + date_reclamation +"]";
     }
 
 }
-
-

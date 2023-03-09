@@ -14,7 +14,6 @@ public class JavaMail {
         properties.put("mail.smtp.starttls.enable","true");
         properties.put("mail.smtp.host","smtp.gmail.com");
         properties.put("mail.smtp.port","587");
-
         String myEmailAccount = "veltun2023@gmail.com";
         String password = "mlmticvztafwoqaj";
 

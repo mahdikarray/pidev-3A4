@@ -20,11 +20,6 @@ public class WalletDetailsController implements Initializable {
     public Button ftlistEvent;
     Connection conn= MyConnection.getInstance();
 
-    
-    
-    
-    
-
     public void setCinTF(String cin) {
         this.cinTF.setText(cin);
     }

@@ -10,6 +10,7 @@ public class UserSearchCriteria extends SearchCriteria<User> {
 	private String role;
 	private String email;
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}

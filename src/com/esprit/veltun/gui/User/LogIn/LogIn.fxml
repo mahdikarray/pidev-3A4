@@ -6,20 +6,28 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.User.LogIn.UserLogInController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.User.LogIn.UserLogInController">
    <children>
-      <ImageView fx:id="tfimagelogo" fitHeight="57.0" fitWidth="58.0" layoutX="10.0" layoutY="13.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="482.0" layoutX="375.0" layoutY="9.0" stroke="#4a91a5" strokeLineCap="ROUND" strokeType="INSIDE" width="364.0" />
+      <Button fx:id="loginButton" layoutX="445.0" layoutY="275.0" mnemonicParsing="false" onAction="#logIn" prefHeight="26.0" prefWidth="250.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Log in" textFill="WHITE" />
+      <Label layoutX="445.0" layoutY="152.0" prefHeight="18.0" prefWidth="48.0" text="Email :" textFill="#193742" />
+      <Label layoutX="445.0" layoutY="213.0" text="Password :" textFill="#193742" />
+      <TextField fx:id="emailLogin" layoutX="509.0" layoutY="148.0" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 5em;" />
+      <TextField fx:id="pwdLogin" layoutX="509.0" layoutY="209.0" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 5em;" />
+      <Button fx:id="forgotPwdButton" layoutX="445.0" layoutY="367.0" mnemonicParsing="false" onAction="#forgotPwd" prefHeight="26.0" prefWidth="250.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Forgot password?" textFill="WHITE" />
+      <Button fx:id="createAccount" layoutX="445.0" layoutY="319.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="26.0" prefWidth="250.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Create account" textFill="WHITE" />
+      <ImageView fx:id="tfimagelogo" fitHeight="516.0" fitWidth="410.0" layoutX="-35.0" layoutY="-5.0">
          <image>
             <Image url="http://localhost/logo-removebg-preview.png" />
          </image>
       </ImageView>
-      <Button fx:id="loginButton" layoutX="305.0" layoutY="223.0" mnemonicParsing="false" onAction="#logIn" prefHeight="26.0" prefWidth="250.0" text="Log in" />
-      <Label layoutX="284.0" layoutY="105.0" prefHeight="18.0" prefWidth="48.0" text="Email" />
-      <Label layoutX="283.0" layoutY="156.0" text="Password" />
-      <TextField fx:id="emailLogin" layoutX="371.0" layoutY="101.0" prefHeight="26.0" prefWidth="226.0" />
-      <TextField fx:id="pwdLogin" layoutX="371.0" layoutY="151.0" prefHeight="26.0" prefWidth="226.0" />
-      <Button fx:id="forgotPwdButton" layoutX="305.0" layoutY="283.0" mnemonicParsing="false" onAction="#forgotPwd" prefHeight="26.0" prefWidth="250.0" text="Forgot password?" />
-      <Button fx:id="createAccount" layoutX="305.0" layoutY="253.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="26.0" prefWidth="250.0" text="Create account" />
+      <Label layoutX="498.0" layoutY="78.0" prefHeight="28.0" prefWidth="143.0" text="Welcome user !">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane opacity="0.99" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.abonnement.view.EventDetailsController">
+   <children>
+      <Button fx:id="ftlistEvent" defaultButton="true" layoutX="292.0" layoutY="346.0" mnemonicParsing="false" onAction="#listEvent" prefHeight="26.0" prefWidth="221.0" text="List of Subscriptions" />
+      <ImageView fitHeight="126.0" fitWidth="234.0" layoutX="-25.0" layoutY="316.0">
+         <image>
+            <Image url="http://localhost/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="fxTypeabb" layoutX="273.0" layoutY="62.0" />
+      <TextField fx:id="fxPrixAbb" layoutX="273.0" layoutY="198.0" />
+      <Label layoutX="83.0" layoutY="65.0" text="Type of Subscription" />
+      <Label layoutX="86.0" layoutY="202.0" text="Price of Subscription" />
+      <DatePicker fx:id="AbbdateDebut" layoutX="273.0" layoutY="110.0" />
+      <DatePicker fx:id="AbbdateFin" layoutX="273.0" layoutY="153.0" />
+      <Label layoutX="83.0" layoutY="114.0" text="subscription start date" />
+      <Label layoutX="83.0" layoutY="157.0" text="subscription Expiration date" />
+   </children>
+</AnchorPane>

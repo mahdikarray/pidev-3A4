@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane opacity="0.99" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #3D4956; -fx-border-width: 7; -fx-border-color: #6babd6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.rackStation.rackvelo.view.RackveloDetailsController">
+   <children>
+      <Button fx:id="ftlistRV" defaultButton="true" layoutX="428.0" layoutY="366.0" mnemonicParsing="false" onAction="#listRackvelo" prefHeight="25.0" prefWidth="132.0" style="-fx-background-radius: 5em;" text="List" />
+      <ImageView fitHeight="126.0" fitWidth="234.0" layoutX="-25.0" layoutY="316.0">
+         <image>
+            <Image url="http://localhost/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="fxrefRV" layoutX="410.0" layoutY="178.0" />
+      <TextField fx:id="fxCap" layoutX="410.0" layoutY="228.0" />
+      <TextField fx:id="fxidS" layoutX="410.0" layoutY="285.0" />
+      <Label layoutX="307.0" layoutY="182.0" text="Reference :" textFill="WHITE" />
+      <Label layoutX="311.0" layoutY="232.0" text="Capacity :" textFill="WHITE" />
+      <Label layoutX="307.0" layoutY="289.0" text="Station :" textFill="WHITE" />
+      <Button fx:id="crudR" layoutX="45.0" layoutY="366.0" mnemonicParsing="false" onAction="#switchToCRUDRacks" prefHeight="26.0" prefWidth="94.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Go Back" />
+   </children>
+</AnchorPane>

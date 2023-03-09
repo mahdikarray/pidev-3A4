@@ -6,19 +6,24 @@ import com.esprit.veltun.model.base.BaseEntity;
 public class Maintenance extends BaseEntity {
     private int id_demande;
     private String description;
-    private String etat;
-    private Date date_soumission;
+    private String status;
+    private Date submission_date;
 
     private int id_reclamation;
 
     public Maintenance() {
     }
+    public Maintenance(String description, String status,Date submission_date) {
+        this.description = description;
+        this.status = status;
+        this.submission_date = submission_date;
+    }
 
-    public Maintenance(int id_demande ,String description, String etat,Date date_soumission,int id_reclamation) {
+    public Maintenance(int id_demande ,String description, String status,Date submission_date,int id_reclamation) {
         this.id_demande = id_demande;
         this.description = description;
-        this.etat = etat;
-        this.date_soumission = date_soumission;
+        this.status = status;
+        this.submission_date = submission_date;
         this.id_reclamation= id_reclamation;
     }
 
@@ -37,19 +42,19 @@ public class Maintenance extends BaseEntity {
     public void setDescription(String description) {
         this.description = description;
     }
-    public String getEtat() {
-        return etat;
+    public String getStatus() {
+        return status;
     }
 
-    public void setEtat(String etat) {
-        this.etat = etat;
+    public void setStatus(String status) {
+        this.status = status;
     }
-    public Date getDate_soumission() {
-        return date_soumission;
+    public Date getSubmission_date() {
+        return submission_date;
     }
 
-    public void setDate_soumission(Date date_soumission) {
-        this.date_soumission = date_soumission;
+    public void setSubmission_date(Date submission_date) {
+        this.submission_date = submission_date;
     }
 
     public int getId_reclamation() {
@@ -63,7 +68,7 @@ public class Maintenance extends BaseEntity {
     @Override
     public String toString() {
         return "maintenance [ id_demande=" + id_demande + ", description=" + description
-                + ", etat=" + etat + ", date_soumission=" + date_soumission + ",  id_reclamation=" + id_reclamation + "]";
+                + ", status=" + status + ", submission_date=" + submission_date + ",  id_reclamation=" + id_reclamation + "]";
     }
 
 

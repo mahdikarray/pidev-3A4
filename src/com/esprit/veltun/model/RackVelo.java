@@ -4,10 +4,21 @@ package com.esprit.veltun.model;
 
 import com.esprit.veltun.model.base.BaseEntity;
 
+
+
 public class RackVelo extends BaseEntity {
     private int refRack;
     private int capacite;
     private int id_station;
+    private int modele ;
+
+    public int getModele() {
+        return modele;
+    }
+
+    public void setModele(int modele) {
+        this.modele = modele;
+    }
 
     public int getRefRack() {
         return this.refRack;
@@ -35,17 +46,22 @@ public class RackVelo extends BaseEntity {
 
     public RackVelo() {
     }
-
+    public RackVelo(int refRack, int capacite, int id_station, int modele) {
+        this.refRack = refRack;
+        this.capacite = capacite;
+        this.id_station = id_station;
+        this.modele =modele ;
+    }
     public RackVelo(int refRack, int capacite, int id_station) {
         this.refRack = refRack;
         this.capacite = capacite;
         this.id_station = id_station;
     }
-
-    public String toString() {
-        return "RackVelo [refRack=" + this.refRack + ", capacite=" + this.capacite + ", id_station=" + this.id_station + "]";
-    }
     public RackVelo(int refRack) {
         this.refRack = refRack;
+    }
+
+    public String toString() {
+        return "RackVelo [refRack=" + this.refRack + ", capacite=" + this.capacite + ", id_station=" + this.id_station + ", modele=" + this.modele +"]";
     }
 }

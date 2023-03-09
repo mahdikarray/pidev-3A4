@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane opacity="0.99" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.offre.view.EventDetailsController">
+   <children>
+      <Button fx:id="ftlistEvent" defaultButton="true" layoutX="381.0" layoutY="346.0" mnemonicParsing="false" onAction="#listEvent" prefHeight="25.0" prefWidth="132.0" text="List of offers" />
+      <ImageView fitHeight="126.0" fitWidth="234.0" layoutX="-25.0" layoutY="316.0">
+         <image>
+            <Image url="http://localhost/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="126.0" layoutY="101.0" prefHeight="35.0" prefWidth="80.0" text="Description" textFill="#4fb5f8" />
+      <TextField fx:id="fxdescription1" layoutX="206.0" layoutY="106.0" prefHeight="25.0" prefWidth="271.0" promptText="Description de l offre" />
+   </children>
+</AnchorPane>

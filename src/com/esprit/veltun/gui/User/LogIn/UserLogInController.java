@@ -67,13 +67,10 @@ public class UserLogInController {
             alert.setHeaderText(null);
             alert.setContentText("reenter your coordinations");
             alert.showAndWait();
-
-
-
-
         }
         else
         {
+            UserServiceImpl.connectedUser=u;
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Welcome");
             alert.setHeaderText(null);
@@ -86,7 +83,7 @@ public class UserLogInController {
                 Parent root = fxmlLoader.load();
 
                 UserDetailsController cont = fxmlLoader.getController();
-                cont.setUser (u);
+                cont.setUser(u);
                 loginButton.getScene().setRoot(root);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);

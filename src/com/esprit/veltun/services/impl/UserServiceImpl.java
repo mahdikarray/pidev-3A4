@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 import com.esprit.veltun.model.User;
 import com.esprit.veltun.services.UserService;
@@ -16,6 +17,14 @@ import com.esprit.veltun.search.dto.UserSearchCriteria;
 import com.esprit.veltun.util.MyConnection;
 
 public class UserServiceImpl implements UserService {
+	public static User connectedUser;
+
+	public UserServiceImpl() {
+		if (connectedUser == null) {
+			List<User> users = list();
+			connectedUser = users.get(users.size()/2);
+		}
+	}
 
 	@Override
 	public User save(User u) {
@@ -61,6 +70,33 @@ public class UserServiceImpl implements UserService {
 		}
 		return u;
 	}
+
+	public User updateUserAbonnement(User u) {
+		try {
+			Connection conn = MyConnection.getInstance();
+			Statement ste;
+
+			String req = "UPDATE `user` SET `id_ab` = '" + AbonnementServiceImpl.chosenAbonnement.getId_ab()+" 'WHERE `user`.`CIN` LIKE " + u.getCIN();
+			Statement st = conn.createStatement();
+			st.executeUpdate(req);
+			System.out.println("user updated !");
+
+			String req1 = "UPDATE `wallet` SET `account` = account-" + AbonnementServiceImpl.chosenAbonnement.getPrix_ab() + " WHERE `wallet`.`cin` LIKE " + u.getCIN();
+			Statement st1 = conn.createStatement();
+			st.executeUpdate(req1);
+			System.out.println("Wallet updated !");
+
+
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return u;
+	}
+
+
+
+
 
 	@Override
 	public boolean remove(Integer id) {
@@ -204,6 +240,7 @@ public class UserServiceImpl implements UserService {
 					whereBuilder.append(" WHERE prenom = ?");
 				}
 			}
+
 			builder.append(whereBuilder);
 
 

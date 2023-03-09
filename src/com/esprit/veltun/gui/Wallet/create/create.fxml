@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="AnchorUser" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #424242; -fx-border-color: #6babd6; -fx-border-width: 7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.Wallet.create.WalletCreateController">
+<AnchorPane fx:id="AnchorUser" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.Wallet.create.WalletCreateController">
    <children>
       <Button fx:id="AddUser" defaultButton="true" layoutX="381.0" layoutY="345.0" mnemonicParsing="false" onAction="#saveWallet" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #6babd6;" text="Enregistrer" />
       <Label layoutX="89.0" layoutY="35.0" text="CIN" textFill="#4fb5f8" />

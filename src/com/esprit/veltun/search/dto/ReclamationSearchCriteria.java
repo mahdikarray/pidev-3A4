@@ -7,9 +7,9 @@ import java.sql.Date;
 
 public class ReclamationSearchCriteria extends SearchCriteria<Reclamation> {
     private int id_reclamation;
-    private String objet;
+    private String object;
     private String description;
-    private String etat;
+    private String status;
     private Date date_reclamation;
 
     public int getId_reclamation() {
@@ -20,12 +20,12 @@ public class ReclamationSearchCriteria extends SearchCriteria<Reclamation> {
         this.id_reclamation = id_reclamation;
     }
 
-    public String getObjet() {
-        return objet;
+    public String getObject() {
+        return object;
     }
 
-    public void setObjet(String objet) {
-        this.objet = objet;
+    public void setObject(String object) {
+        this.object = object;
     }
     public String getDescription() {
         return description;
@@ -34,12 +34,12 @@ public class ReclamationSearchCriteria extends SearchCriteria<Reclamation> {
     public void setDescription(String description) {
         this.description = description;
     }
-    public String getEtat() {
-        return etat;
+    public String getStatus() {
+        return status;
     }
 
-    public void setEtat(String etat) {
-        this.etat = etat;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 

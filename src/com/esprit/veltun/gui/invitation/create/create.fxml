@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #424242; -fx-border-color: #6babd6; -fx-border-width: 7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.invitation.create.InvitationCreateController">
+   <children>
+      <Button fx:id="tfaddinvit" defaultButton="true" layoutX="381.0" layoutY="345.0" mnemonicParsing="false" onAction="#addinvit" prefHeight="25.0" prefWidth="114.0" text="Send" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+      <Label layoutX="89.0" layoutY="56.0" text="Invitation date" textFill="#4fb5f8" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="50.0" />
+      <Label layoutX="89.0" layoutY="96.0" text="Expiration date" textFill="#4fb5f8" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="100.0" />
+      <Label layoutX="89.0" layoutY="136.0" text="User inviting" textFill="#4fb5f8" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="150.0" />
+      <Label layoutX="89.0" layoutY="176.0" text="User guest" textFill="#4fb5f8" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="200.0" />
+      <Label layoutX="87.0" layoutY="216.0" text="Event" textFill="#4fb5f8" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="250.0" />
+      <DatePicker fx:id="invitstartdate" layoutX="242.0" layoutY="52.0" prefHeight="25.0" prefWidth="271.0" promptText="Date of sending invitation" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="50.0" />
+      <DatePicker fx:id="invitexpirationdate" layoutX="242.0" layoutY="92.0" prefHeight="25.0" prefWidth="271.0" promptText="Invitation expiration date" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="100.0" />
+      <Button fx:id="cancelbutton" cancelButton="true" layoutX="243.0" layoutY="345.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="114.0"  text="Cancel" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="140.0" />
+      <ComboBox fx:id="selectedinvitant" layoutX="242.0" layoutY="132.0" prefHeight="25.0" prefWidth="271.0" promptText="The user sending the invitation" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="150.0" />
+      <ComboBox fx:id="selectedinvite" layoutX="242.0" layoutY="172.0" prefHeight="25.0" prefWidth="271.0" promptText="The user who receives the invitation" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="200.0" />
+      <ComboBox fx:id="selectedevent" layoutX="242.0" layoutY="212.0" prefHeight="25.0" prefWidth="271.0" promptText="Event" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="250.0" />
+      <ImageView fitHeight="150.0" fitWidth="174.0" layoutY="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <image>
+            <Image url="http://localhost/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="listinvitation" cancelButton="true" layoutX="123.0" layoutY="345.0" mnemonicParsing="false" onAction="#list" prefHeight="25.0" prefWidth="114.0" text="Invitation list" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="260.0" />
+
+   </children>
+</AnchorPane>
