@@ -33,6 +33,8 @@ public class UserSearchController implements Initializable {
     public Button toBikes;
     public Button toEvent;
     public Button toReclamation;
+    public Button toMaintenance;
+    public Button toFour;
     Connection conn= MyConnection.getInstance();
     public ListView<User> userListView;
     @Override
@@ -201,5 +203,29 @@ public class UserSearchController implements Initializable {
         {
             System.out.println(ex);
         }
+    }
+
+    public void toMaintenance(ActionEvent actionEvent) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../maintenancee/search/search.fxml"));
+        try {
+            Parent root = fxmlLoader.load();
+            toMaintenance.getScene().setRoot(root);
+        } catch (IOException ex)
+        {
+            System.out.println(ex);
+        }
+
+    }
+
+    public void toFour(ActionEvent actionEvent) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../fournisseur/search/search.fxml"));
+        try {
+            Parent root = fxmlLoader.load();
+            toFour.getScene().setRoot(root);
+        } catch (IOException ex)
+        {
+            System.out.println(ex);
+        }
+
     }
 }

@@ -24,6 +24,6 @@
       </ImageView>
       <Button fx:id="inviterbutton" defaultButton="true" layoutX="378.0" layoutY="436.0" mnemonicParsing="false" onAction="#inviter" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Invite" textFill="WHITE" AnchorPane.bottomAnchor="38.39999999999998" AnchorPane.rightAnchor="292.0" />
       <Button fx:id="calendar" layoutX="332.0" layoutY="36.0" mnemonicParsing="false" onAction="#openCalendar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Calendar" textFill="WHITE" AnchorPane.rightAnchor="331.6" />
-      <Button fx:id="toHome" defaultButton="true" layoutX="290.0" layoutY="436.0" mnemonicParsing="false" onAction="#inviter" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Home" textFill="WHITE" AnchorPane.bottomAnchor="38.39999999999998" AnchorPane.rightAnchor="380.0" />
+      <Button fx:id="toHome" defaultButton="true" layoutX="290.0" layoutY="436.0" mnemonicParsing="false" onAction="#toHome" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Home" textFill="WHITE" AnchorPane.bottomAnchor="38.39999999999998" AnchorPane.rightAnchor="380.0" />
    </children>
 </AnchorPane>

@@ -1,5 +1,7 @@
 package com.esprit.veltun.gui;
 
+import com.esprit.veltun.services.InvitationService;
+import com.esprit.veltun.services.impl.InvitationServiceImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

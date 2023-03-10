@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.abonnement.frontchoice.AbonnementSearchControllerFront">
    <children>
-      <ImageView fx:id="tfimagelogo" fitHeight="86.0" fitWidth="152.0" layoutY="3.0">
+      <ImageView fx:id="tfimagelogo" fitHeight="176.0" fitWidth="190.0" layoutY="3.0">
          <image>
             <Image url="http://localhost/logo-removebg-preview.png" />
          </image>
@@ -31,7 +31,7 @@
         </content>
       </ScrollPane>
       <ImageView fitHeight="118.0" fitWidth="175.0" layoutX="192.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="219.0" fitWidth="297.0" layoutX="-54.0" layoutY="-44.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="261.0" fitWidth="286.0" layoutX="-54.0" layoutY="-44.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="http://localhost:8088/330823425_140191562292313_5280591234399270848_n.png" />
          </image>
@@ -45,7 +45,6 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <Button mnemonicParsing="false" text="Button" />
       <Button fx:id="toHome" layoutX="615.0" layoutY="415.0" mnemonicParsing="false" onAction="#toHome" text="Home" />
    </children>
 </AnchorPane>

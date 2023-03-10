@@ -75,6 +75,24 @@ public class VeloCreateController implements Initializable {
             alert.showAndWait();
             return;
         }
+        if (!libellev.matches("[a-zA-Z]+")) {
+            // Si le nom contient autre chose que des lettres et des espaces, afficher un message d'erreur
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill the field with letters only .");
+            alert.showAndWait();
+            return;
+        }
+        if (!couleurv.matches("[a-zA-Z]+")) {
+            // Si le nom contient autre chose que des lettres et des espaces, afficher un message d'erreur
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill the color field with letters only .");
+            alert.showAndWait();
+            return;
+        }
 
         Velo velo = new Velo();
         velo.setLibelle(libellev);

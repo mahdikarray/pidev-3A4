@@ -14,5 +14,6 @@
       <TextField fx:id="titletosearch" layoutX="471.0" layoutY="31.0" prefHeight="25.0" prefWidth="195.0" promptText="Titre de recherche" />
       <Button fx:id="searchbutton" layoutX="672.0" layoutY="31.0" mnemonicParsing="false" onAction="#search" opacity="0.62" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Search" textFill="WHITE" />
       <Button fx:id="tributton" layoutX="295.0" layoutY="30.0" mnemonicParsing="false" onAction="#tri" prefHeight="26.0" prefWidth="67.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Sort" textFill="WHITE" />
+      <Button fx:id="toHome" defaultButton="true" layoutX="355.0" layoutY="440.0" mnemonicParsing="false" onAction="#toHome" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Home" textFill="WHITE" />
    </children>
 </AnchorPane>

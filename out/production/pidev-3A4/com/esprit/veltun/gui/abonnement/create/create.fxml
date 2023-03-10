@@ -14,7 +14,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="489.0" layoutX="375.0" layoutY="8.0" stroke="#4a91a5" strokeLineCap="ROUND" strokeType="INSIDE" width="364.0" />
       <Button fx:id="tfaddevent" defaultButton="true" layoutX="599.0" layoutY="345.0" mnemonicParsing="false" onAction="#saveEvent" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Add" textFill="WHITE" />
       <Button fx:id="cancelbutton" cancelButton="true" layoutX="465.0" layoutY="345.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Cancel" textFill="WHITE" />
-      <ImageView fitHeight="132.0" fitWidth="130.0" layoutY="371.0">
+      <ImageView fitHeight="445.0" fitWidth="425.0" layoutX="-31.0" layoutY="50.0">
          <image>
             <Image url="http://localhost/logo-removebg-preview.png" />
          </image>

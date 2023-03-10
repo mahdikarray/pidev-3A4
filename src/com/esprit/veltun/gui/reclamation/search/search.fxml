@@ -8,11 +8,12 @@
 <AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #4a91a5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.reclamation.search.ReclamationSearchController">
    <children>
       <ListView fx:id="eventlistview" layoutX="287.0" layoutY="69.0" prefHeight="344.0" prefWidth="434.0" />
-      <Button fx:id="removeeventbutton" layoutX="541.0" layoutY="425.0" mnemonicParsing="false" onAction="#removeEvent" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Cancel" textFill="WHITE" />
+      <Button fx:id="removeeventbutton" layoutX="541.0" layoutY="425.0" mnemonicParsing="false" onAction="#removeEvent" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Delete" textFill="WHITE" />
       <Button fx:id="editeventbutton" defaultButton="true" layoutX="641.0" layoutY="425.0" mnemonicParsing="false" onAction="#editEvent" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Modify" textFill="WHITE" />
       <Button fx:id="addneweventbutton" defaultButton="true" layoutX="443.0" layoutY="425.0" mnemonicParsing="false" onAction="#addEvent" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Add " textFill="WHITE" />
       <TextField fx:id="titletosearch" layoutX="452.0" layoutY="30.0" prefHeight="25.0" prefWidth="195.0" promptText="Titre de recherche" />
       <Button fx:id="searchbutton" layoutX="653.0" layoutY="30.0" mnemonicParsing="false" onAction="#search" opacity="0.62" prefHeight="26.0" prefWidth="69.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Search" textFill="WHITE" />
       <Button fx:id="tributton" layoutX="287.0" layoutY="30.0" mnemonicParsing="false" onAction="#tri" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Sort" textFill="WHITE" />
+      <Button fx:id="toHome" defaultButton="true" layoutX="357.0" layoutY="425.0" mnemonicParsing="false" onAction="#toHome" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Home" textFill="WHITE" />
    </children>
 </AnchorPane>

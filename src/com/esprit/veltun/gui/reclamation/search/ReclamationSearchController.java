@@ -25,6 +25,7 @@ public class ReclamationSearchController implements Initializable {
     public TextField titletosearch;
     public Button searchbutton;
     public Button tributton;
+    public Button toHome;
     private ReclamationService reclamationService = new ReclamationServiceImpl();
     public ListView<Reclamation> eventlistview;
 
@@ -108,6 +109,20 @@ public class ReclamationSearchController implements Initializable {
     }
     public void tri(ActionEvent actionEvent) {
         runtri();
+    }
+
+    public void toHome(ActionEvent actionEvent) {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../user/search/search.fxml"));
+        try {
+            Parent root = fxmlLoader.load();
+            toHome.getScene().setRoot(root);
+        } catch (IOException ex)
+        {
+            System.out.println(ex);
+        }
+
+
     }
 }
 

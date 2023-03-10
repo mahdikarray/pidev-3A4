@@ -31,6 +31,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.Base64;
 import java.util.Collection;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -262,8 +263,23 @@ public class SecondFXMLController implements Initializable {
 
 
     public void pickSub(ActionEvent actionEvent) {
-        UserServiceImpl usi = new UserServiceImpl();
-        usi.updateUserAbonnement(UserServiceImpl.connectedUser);
+
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to save the data?");
+        Optional<ButtonType> result = confirm.showAndWait();
+
+        if(result.isPresent() && result.get() == ButtonType.OK)
+        {UserServiceImpl usi = new UserServiceImpl();
+            User u= usi.updateUserAbonnement(UserServiceImpl.connectedUser);
+            System.out.println(u);
+            if(u==null)
+            {
+                Alert confirmE = new Alert(Alert.AlertType.ERROR, "You don not have enough money in your wallet to get this subscription");
+                Optional<ButtonType> resultE = confirmE.showAndWait();
+            }
+
+        }
+
+
     }
 
 }

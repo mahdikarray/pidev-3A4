@@ -32,6 +32,7 @@ public class FournisseurSearchController implements Initializable {
     public TextField titletosearch;
     public Button searchbutton;
     public Button editeventbutton;
+    public Button toHome;
     private FournisseurService fournisseurService = new FournisseurServiceImpl();
     public ListView<Fournisseur> fournisseurlistview;
 
@@ -129,5 +130,20 @@ public class FournisseurSearchController implements Initializable {
                 .position(Pos.BOTTOM_RIGHT);
 
         notificationBuilder.showInformation();
+    }
+
+    public void toHome(ActionEvent actionEvent) {
+
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../User/search/search.fxml"));
+        try {
+            Parent root = fxmlLoader.load();
+            toHome.getScene().setRoot(root);
+        } catch (IOException ex)
+        {
+            System.out.println(ex);
+        }
+
+
     }
 }

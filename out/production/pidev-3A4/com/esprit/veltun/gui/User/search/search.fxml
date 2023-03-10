@@ -33,6 +33,8 @@
             <Button fx:id="toStations" mnemonicParsing="false" onAction="#toStations" prefHeight="26.0" prefWidth="284.0" style="-fx-background-radius: 5em; -fx-background-color: #193742; -fx-line-spacing: 5;" text="Stations" textFill="WHITE" />
             <Button fx:id="toBikes" mnemonicParsing="false" onAction="#toBikes" prefHeight="26.0" prefWidth="284.0" style="-fx-background-radius: 5em; -fx-background-color: #193742; -fx-line-spacing: 5;" text="Bikes" textFill="WHITE" />
             <Button fx:id="toReclamation" mnemonicParsing="false" onAction="#toReclamation" prefHeight="26.0" prefWidth="284.0" style="-fx-background-radius: 5em; -fx-background-color: #193742; -fx-line-spacing: 5;" text="Reviews" textFill="WHITE" />
+            <Button fx:id="toMaintenance" mnemonicParsing="false" onAction="#toMaintenance" prefHeight="26.0" prefWidth="284.0" style="-fx-background-radius: 5em; -fx-background-color: #193742; -fx-line-spacing: 5;" text="Maintenance" textFill="WHITE" />
+            <Button fx:id="toFour" mnemonicParsing="false" onAction="#toFour" prefHeight="26.0" prefWidth="284.0" style="-fx-background-radius: 5em; -fx-background-color: #193742; -fx-line-spacing: 5;" text="Suppliers" textFill="WHITE" />
          </children>
       </VBox>
    </children>

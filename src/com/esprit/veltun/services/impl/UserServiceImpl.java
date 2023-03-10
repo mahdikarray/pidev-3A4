@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 import com.esprit.veltun.model.User;
+import com.esprit.veltun.model.Wallet;
 import com.esprit.veltun.services.UserService;
 import com.esprit.veltun.search.base.dto.SearchCriteria;
 import com.esprit.veltun.search.dto.UserSearchCriteria;
@@ -66,7 +67,19 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public User updateUserAbonnement(User u) {
+
 		try {
+
+			Wallet w = new Wallet();
+			WalletServiceImpl wsi = new WalletServiceImpl();
+			w=wsi.findByCin(u.getCIN());
+
+			if (AbonnementServiceImpl.chosenAbonnement.getPrix_ab()>w.getAccount())
+			{
+				return null;
+			}
+
+
 			Connection conn = MyConnection.getInstance();
 			Statement ste;
 
