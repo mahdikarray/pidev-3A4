@@ -16,6 +16,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class StationServiceImpl implements StationService {
+
+    public static Station selectedStation;
+
+
     public StationServiceImpl() {
     }
 
@@ -70,7 +74,8 @@ public class StationServiceImpl implements StationService {
     public Station update(Station s) {
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "UPDATE `station` SET `Longitude` ='" + s.getlongitude() + "', `Nom_station` = '" + s.getnom_station() + "', `Latitude`=  '" + s.getlatitude() + "', `gouvernorat`=  '" + s.getGouvernorat() +"' WHERE `station`.`Id_station`= " + s.getid_station();
+            String req = "UPDATE `station` SET `Longitude` ='" + s.getlongitude() + "', `Nom_station` = '" + s.getnom_station() + "', `Latitude`=  '" + s.getlatitude() + "' '" + "' WHERE `station`.`Id_station`= " + s.getid_station();
+
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Station updated !");
@@ -179,5 +184,10 @@ public class StationServiceImpl implements StationService {
         }
 
         return list;
+    }
+
+    @Override
+    public String veloDominante() {
+        return null;
     }
 }

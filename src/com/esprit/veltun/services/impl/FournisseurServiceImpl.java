@@ -10,11 +10,8 @@ import com.esprit.veltun.search.base.dto.SearchCriteria;
 import com.esprit.veltun.search.dto.FournisseurSearchCriteria;
 import com.esprit.veltun.services.FournisseurService;
 import com.esprit.veltun.util.MyConnection;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -101,7 +98,7 @@ public class FournisseurServiceImpl implements FournisseurService {
                 f.setId(RS.getInt(1));
                 f.setNom(RS.getString("nomf"));
                 f.setRegion(RS.getString(3));
-              //  System.out.println("fournisseur founded");
+                System.out.println("fournisseur founded");
                 return f;
             }
         } catch (SQLException var7) {
@@ -175,5 +172,10 @@ public class FournisseurServiceImpl implements FournisseurService {
         }
 
         return list;
+    }
+
+    @Override
+    public String veloDominante() {
+        return null;
     }
 }

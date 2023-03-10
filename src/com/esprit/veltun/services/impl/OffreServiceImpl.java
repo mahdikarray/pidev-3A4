@@ -165,5 +165,10 @@ public class OffreServiceImpl implements OffreService {
         return list;
     }
 
+    @Override
+    public String veloDominante() {
+        return null;
     }
+
+}
 

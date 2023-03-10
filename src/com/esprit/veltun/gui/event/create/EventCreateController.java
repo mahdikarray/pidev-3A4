@@ -1,6 +1,5 @@
 package com.esprit.veltun.gui.event.create;
 
-import com.esprit.veltun.gui.event.jfxcalendar.model.CalendarEvent;
 import com.esprit.veltun.gui.event.view.EventDetailsController;
 import com.esprit.veltun.model.Event;
 import com.esprit.veltun.services.EventService;
@@ -16,8 +15,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.Time;
-import java.time.LocalDateTime;
-import java.time.Month;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 

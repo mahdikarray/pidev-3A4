@@ -1,14 +1,11 @@
 package com.esprit.veltun.gui.event.jfxcalendar.views;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 
-import com.esprit.veltun.gui.event.update.EventUpdateController;
 import com.esprit.veltun.gui.event.weather.WeatherData;
 import com.esprit.veltun.gui.event.weather.WeatherService;
-import com.esprit.veltun.model.Event;
+import com.esprit.veltun.services.impl.UserServiceImpl;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 
@@ -26,8 +23,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -311,7 +306,7 @@ public class JFXCalendar extends StackPane {
 		this.currentView = displayMode;
 		if (displayMode == DAY) {
 			mainPane.setCenter(calendarDayView);
-			calendarDayView.setAddButtonEnable(false);
+			calendarDayView.setAddButtonEnable(UserServiceImpl.connectedUser!=null /*|| !"ADMIN".equals(UserServiceImpl.connectedUser.getType())*/);
 			calendarDayView.refreshCalendar(selectedDate);
 		} else if (displayMode == WEEK) {
 			mainPane.setCenter(calendarWeekView);

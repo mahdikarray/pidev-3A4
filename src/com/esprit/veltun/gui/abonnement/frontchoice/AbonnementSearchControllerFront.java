@@ -3,6 +3,7 @@ package com.esprit.veltun.gui.abonnement.frontchoice;
 
 //import com.esprit.veltun.gui.invitation.create.InvitationCreateController;
 
+import com.esprit.veltun.gui.User.view.UserDetailsController;
 import com.esprit.veltun.model.Abonnement;
 import com.esprit.veltun.model.Offre;
 import com.esprit.veltun.search.dto.AbonnementSearchCriteria;
@@ -11,6 +12,7 @@ import com.esprit.veltun.services.AbonnementService;
 import com.esprit.veltun.services.OffreService;
 import com.esprit.veltun.services.impl.AbonnementServiceImpl;
 import com.esprit.veltun.services.impl.OffreServiceImpl;
+import com.esprit.veltun.services.impl.UserServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,12 +26,16 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.ResourceBundle;
+
+import static com.esprit.veltun.services.impl.UserServiceImpl.connectedUser;
 
 public class AbonnementSearchControllerFront implements Initializable {
     public TextField titletosearch;
     public Button searchbutton;
     public Button tooffer;
+    public Button toHome;
     private AbonnementService abonnementService = new AbonnementServiceImpl();
     private OffreService offreService = new OffreServiceImpl();
     public ListView<Abonnement> eventlistview;
@@ -130,6 +136,36 @@ public class AbonnementSearchControllerFront implements Initializable {
     }
 
 
+    public void toHome(ActionEvent actionEvent) {
+
+        if(UserServiceImpl.connectedUser==null || Objects.equals(connectedUser.getType(), "admin"))
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../User/search/search.fxml"));
+            try {
+                Parent root = fxmlLoader.load();
+                toHome.getScene().setRoot(root);
+            } catch (IOException ex)
+            {
+                System.out.println(ex);
+            }
+        }
+        else
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../User/view/details.fxml"));
+            try {
+
+                Parent root = fxmlLoader.load();
+                toHome.getScene().setRoot(root);
+                UserDetailsController cont = fxmlLoader.getController();
+                cont.setUser(UserServiceImpl.connectedUser);
+            } catch (IOException ex)
+            {
+                System.out.println(ex);
+            }
+        }
 
 
+
+    }
 }
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.maintenancee.update.MaintenanceUpdateController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="484.0" layoutX="377.0" layoutY="8.0" stroke="#4a91a5" strokeLineCap="ROUND" strokeType="INSIDE" width="364.0" />
+      <Button fx:id="tfaddevent" defaultButton="true" layoutX="579.0" layoutY="345.0" mnemonicParsing="false" onAction="#updateEvent" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Save" textFill="WHITE" />
+      <Button fx:id="cancelbutton" cancelButton="true" layoutX="441.0" layoutY="345.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Cancel" textFill="WHITE" />
+      <ImageView fitHeight="126.0" fitWidth="174.0" layoutX="14.0" layoutY="295.0">
+         <image>
+            <Image url="http://localhost/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="fxdescription" layoutX="552.0" layoutY="170.0" style="-fx-background-radius: 5em;" />
+      <TextField fx:id="fxstatus" layoutX="552.0" layoutY="221.0" style="-fx-background-radius: 5em;" />
+      <Label layoutX="441.0" layoutY="174.0" text="Description :" textFill="#193742" />
+      <Label layoutX="441.0" layoutY="225.0" text="Status :" textFill="#193742" />
+      <DatePicker fx:id="submission_datee" layoutX="552.0" layoutY="282.0" style="-fx-background-radius: 5em;" />
+      <Label layoutX="441.0" layoutY="286.0" text="Submission date :" textFill="#193742" />
+
+   </children>
+</AnchorPane>

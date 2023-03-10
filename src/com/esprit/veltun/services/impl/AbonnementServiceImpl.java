@@ -185,6 +185,12 @@ public class AbonnementServiceImpl implements AbonnementService {
 
         return list;
     }
+
+    @Override
+    public String veloDominante() {
+        return null;
+    }
+
     public static class DiscountCodeGenerator {
         private static String lastGeneratedCode;
         public static String generateCode() {

@@ -272,14 +272,14 @@ public class InvitationServiceImpl implements InvitationService {
 			}
 			if (invitationSearchCriteria.getInvitant() != null) {
 				if (!whereBuilder.toString().isEmpty()) {
-					whereBuilder.append(" AND invitant_id =?");
+					whereBuilder.append(" OR invitant_id =?");
 				} else {
 					whereBuilder.append(" WHERE invitant_id =?");
 				}
 			}
 			if (invitationSearchCriteria.getInvité() != null) {
 				if (!whereBuilder.toString().isEmpty()) {
-					whereBuilder.append(" AND invite_id =?");
+					whereBuilder.append(" OR invite_id =?");
 				} else {
 					whereBuilder.append(" WHERE invite_id =?");
 				}
@@ -292,6 +292,7 @@ public class InvitationServiceImpl implements InvitationService {
 					whereBuilder.append(" WHERE evenement_id=?");
 				}
 			}
+
 			builder.append(whereBuilder);
 
 			PreparedStatement st = conn.prepareStatement(builder.toString());
@@ -365,6 +366,11 @@ public class InvitationServiceImpl implements InvitationService {
 		}
 
 		return list;
+	}
+
+	@Override
+	public String veloDominante() {
+		return null;
 	}
 
 	@Override

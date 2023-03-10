@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.velo.create.VeloCreateController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="490.0" layoutX="375.0" layoutY="6.0" stroke="#4a91a5" strokeLineCap="ROUND" strokeType="INSIDE" width="370.0" />
+      <Button fx:id="tfaddvelo" defaultButton="true" layoutX="569.0" layoutY="382.0" mnemonicParsing="false" onAction="#saveVelo" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Save" textFill="WHITE" />
+      <Label layoutX="399.0" layoutY="119.0" text="Brand :" textFill="#193742" />
+      <Label layoutX="399.0" layoutY="159.0" text="Size :" textFill="#193742" />
+      <TextField fx:id="tflibelle" layoutX="515.0" layoutY="115.0" prefHeight="26.0" prefWidth="200.0" promptText="bike brand" style="-fx-background-radius: 5em;" />
+      <TextField fx:id="tftaille" layoutX="515.0" layoutY="155.0" prefHeight="26.0" prefWidth="200.0" promptText="bike size" style="-fx-background-radius: 5em;" />
+      <Button fx:id="selectImageButton" layoutX="600.0" layoutY="292.0" mnemonicParsing="false" onAction="#selectImage" prefHeight="26.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Select Image" textFill="WHITE" />
+      <ImageView fitHeight="132.0" fitWidth="188.0" layoutX="-5.0" layoutY="284.0">
+         <image>
+            <Image url="http://localhost/" />
+         </image>
+      </ImageView>
+
+      <Button fx:id="cancelbutton" cancelButton="true" layoutX="431.0" layoutY="382.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Cancel" textFill="WHITE" />
+      <ImageView fitHeight="132.0" fitWidth="188.0" layoutX="-5.0" layoutY="284.0">
+         <image>
+            <Image url="http://localhost/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="-17.0" layoutY="271.0">
+         <image>
+            <Image url="http://localhost:8088/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="400.0" layoutY="204.0" text="Color :" textFill="#193742" />
+      <TextField fx:id="tfcouleur" layoutX="515.0" layoutY="200.0" prefHeight="26.0" prefWidth="200.0" promptText="bike color" style="-fx-background-radius: 5em;" />
+      <Label layoutX="399.0" layoutY="248.0" text="Supplier :" textFill="#193742" />
+      <TextField fx:id="tffournisseur" layoutX="515.0" layoutY="244.0" prefHeight="26.0" prefWidth="200.0" promptText="supplier" style="-fx-background-radius: 5em;" />
+   </children>
+</AnchorPane>

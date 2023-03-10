@@ -18,6 +18,7 @@ public class StationDetailsController implements Initializable {
     public TextField fxLongitude;
     public TextField fxLatitude;
 
+    private Station station;
 
     public void setFxidStation(String idS) {
         this.fxidStation.setText(idS);
@@ -36,7 +37,8 @@ public class StationDetailsController implements Initializable {
 
 
     public void setStation(Station station) {
-        setFxidStation(String.valueOf(station.getid_station()));
+        this.station=station;
+//        setFxidStation(String.valueOf(station.getid_station()));
         setFxnomStation(station.getnom_station());
         setFxLongitude(String.valueOf(station.getlongitude()));
        setFxLatitude(String.valueOf(station.getlatitude()));

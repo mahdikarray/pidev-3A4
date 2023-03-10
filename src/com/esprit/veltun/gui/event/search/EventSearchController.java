@@ -7,9 +7,11 @@ import com.esprit.veltun.gui.event.update.EventUpdateController;
 import com.esprit.veltun.gui.event.view.EventDetailsController;
 import com.esprit.veltun.gui.invitation.create.InvitationCreateController;
 import com.esprit.veltun.model.Event;
+import com.esprit.veltun.model.User;
 import com.esprit.veltun.search.dto.EventSearchCriteria;
 import com.esprit.veltun.services.EventService;
 import com.esprit.veltun.services.impl.EventServiceImpl;
+import com.esprit.veltun.services.impl.UserServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,11 +33,20 @@ public class EventSearchController implements Initializable {
     public Button addneweventbutton;
     public Button editeventbutton;
     public Button removeeventbutton;
+    public Button toHome;
     private EventService eventService = EventServiceImpl.getInstance();
     public ListView<Event> eventlistview;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        if (UserServiceImpl.connectedUser!=null/*||!"ADMIN".equals(UserServiceImpl.connectedUser.getType())*/) {//if not admin
+            addneweventbutton.setVisible(false);
+            editeventbutton.setVisible(false);
+            removeeventbutton.setVisible(false);
+        }
+
+
         eventlistview.setCellFactory(param -> new ListCell<Event>(){
                 public void updateItem(Event event, boolean empty) {
                     super.updateItem(event, empty);
@@ -136,7 +147,7 @@ public class EventSearchController implements Initializable {
 
     public void openCalendar(ActionEvent actionEvent) {
         Stage thisStage = (Stage) searchbutton.getScene().getWindow();
-        thisStage.setTitle("Calendrier");
+        thisStage.setTitle("Calendar");
 
         CalendarEventManager eventManager = new CalendarEventManager();
         JFXCalendar calendar = new JFXCalendar(eventManager);
@@ -145,5 +156,18 @@ public class EventSearchController implements Initializable {
         eventlistview.getScene().setRoot(calendar);
 
 
+    }
+
+    public void toHome(ActionEvent actionEvent) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../User/search/search.fxml"));
+        Event event = eventlistview.getSelectionModel().getSelectedItem();
+
+        Stage thisStage = (Stage) toHome.getScene().getWindow();
+        try {
+            Parent root = fxmlLoader.load();
+            toHome.getScene().setRoot(root);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }

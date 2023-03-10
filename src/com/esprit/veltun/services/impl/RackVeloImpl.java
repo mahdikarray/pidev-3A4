@@ -96,4 +96,9 @@ public class RackVeloImpl implements RackVeloService {
     public Collection<RackVelo> search(SearchCriteria<RackVelo> searchCriteria) {
         return null;
     }
+
+    @Override
+    public String veloDominante() {
+        return null;
+    }
 }

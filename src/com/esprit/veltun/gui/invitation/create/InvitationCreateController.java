@@ -1,13 +1,10 @@
 package com.esprit.veltun.gui.invitation.create;
 
 import com.esprit.veltun.enums.Response;
-import com.esprit.veltun.gui.event.view.EventDetailsController;
-import com.esprit.veltun.gui.invitation.search.SearchInviController;
 import com.esprit.veltun.gui.invitation.view.DetaillInvitationController;
 import com.esprit.veltun.model.Event;
 import com.esprit.veltun.model.Invitation;
 import com.esprit.veltun.model.User;
-import com.esprit.veltun.search.dto.EventSearchCriteria;
 import com.esprit.veltun.search.dto.UserSearchCriteria;
 import com.esprit.veltun.services.EventService;
 import com.esprit.veltun.services.InvitationService;

@@ -2,6 +2,7 @@ package com.esprit.veltun.gui.event.jfxcalendar.views;
 
 import java.io.IOException;
 
+import com.esprit.veltun.services.impl.UserServiceImpl;
 import org.controlsfx.glyphfont.FontAwesome;
 
 import com.jfoenix.controls.JFXButton;
@@ -141,7 +142,11 @@ public class EventPane extends VBox {
 
 		HBox topBox = new HBox();
 		topBox.setSpacing(10);
-		topBox.getChildren().addAll(topPane, emptyPane, buttonPane);
+		if (UserServiceImpl.connectedUser==null/*||!"ADMIN".equals(UserServiceImpl.connectedUser.getType()) || !"admin".equals(UserServiceImpl.connectedUser.getType())*/) {//if not admin
+			topBox.getChildren().addAll(topPane, emptyPane);
+		} else {
+			topBox.getChildren().addAll(topPane, emptyPane, buttonPane);
+		}
 
 		getChildren().addAll(topBox, titleLabel, messageLabel);
 

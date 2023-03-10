@@ -219,4 +219,9 @@ public class AdresseServiceImpl implements AdresseService {
 
         return list;
     }
+
+    @Override
+    public String veloDominante() {
+        return null;
+    }
 }

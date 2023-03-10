@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class backendController implements Initializable {
+    public Button toHome;
     @FXML
     Button manageStationsButton , manageRacksButton ;
 
@@ -90,7 +91,7 @@ public class backendController implements Initializable {
     }
 
     public void switchToListR(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("../rackvelo/view/details.fxml")) ;
+        root = FXMLLoader.load(getClass().getResource("../rackvelo/search/search.fxml")) ;
         stage =(Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root) ;
         stage.setScene(scene);
@@ -118,6 +119,18 @@ public class backendController implements Initializable {
 
 
     public void goToStatistics(ActionEvent event) {
+    }
+
+    public void toHome(ActionEvent actionEvent) {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../User/search/search.fxml"));
+        try {
+            Parent root = fxmlLoader.load();
+            toHome.getScene().setRoot(root);
+        } catch (IOException ex)
+        {
+            System.out.println(ex);
+        }
 
     }
 }

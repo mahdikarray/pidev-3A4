@@ -57,7 +57,7 @@ public class StationUpdateController implements Initializable {
 
     }
     public void updateEvent(ActionEvent actionEvent) {
-        String idS= fxidStation.getText();
+       // String idS= fxidStation.getText();
         String nomS=fxnomStation.getText();
         String longi=fxLongitude.getText();
         String lati=fxLatitude.getText();
@@ -94,12 +94,12 @@ public class StationUpdateController implements Initializable {
         }
 
         Station s = new Station();
-        s.setid_station(Integer.parseInt(idS));
-        s.setnom_station(nomS);
-        s.setlongitude(Double.parseDouble(longi));
-        s.setlatitude(Double.parseDouble(lati));
+        //s.setid_station(Integer.parseInt(idS));
+        StationServiceImpl.selectedStation.setnom_station(nomS);
+        StationServiceImpl.selectedStation.setlongitude(Double.parseDouble(longi));
+        StationServiceImpl.selectedStation.setlatitude(Double.parseDouble(lati));
 
-        station = stationService.update(station);
+        StationServiceImpl.selectedStation=stationService.update(StationServiceImpl.selectedStation);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/details.fxml"));
 
@@ -108,6 +108,7 @@ public class StationUpdateController implements Initializable {
 
             com.esprit.veltun.gui.rackStation.station.view.StationDetailsController cont = fxmlLoader.getController();
             cont.setStation(station);
+
 
             fxnomStation.getScene().setRoot(root);
         } catch (IOException ex) {

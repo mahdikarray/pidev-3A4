@@ -1,29 +1,25 @@
 package com.esprit.veltun.services.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import com.esprit.veltun.model.Maintenance;
+import com.esprit.veltun.search.base.dto.SearchCriteria;
+import com.esprit.veltun.search.dto.MaintenanceSearchCriteria;
+import com.esprit.veltun.services.MaintenanceService;
+import com.esprit.veltun.util.MyConnection;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import com.esprit.veltun.model.Maintenance;
-import com.esprit.veltun.services.MaintenanceService;
-import com.esprit.veltun.search.base.dto.SearchCriteria;
-import com.esprit.veltun.search.dto.MaintenanceSearchCriteria;
-import com.esprit.veltun.util.MyConnection;
-
 public class MaintenanceServiceImpl implements MaintenanceService {
-
+    public static Number rating;
     @Override
     public List<Maintenance> list() {
         List<Maintenance> list = new ArrayList<>();
         try {
             Connection conn = MyConnection.getInstance();
             Statement ste;
-            String req = "Select * from maintenance";
+            String req = "Select * from maintenance ";
             Statement st = conn.createStatement();
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
@@ -32,8 +28,8 @@ public class MaintenanceServiceImpl implements MaintenanceService {
                 m.setId_demande(RS.getInt("id_demande"));
                 m.setDescription(RS.getString("description"));
                 m.setStatus(RS.getString("status"));
-                m.setSubmission_date(RS.getDate("submission_date"));
-                // m.setId_demande(RS.getInt("id_reclamation"));
+               m.setSubmission_date(RS.getDate("submission_date"));
+               // m.setId_demande(RS.getInt("id_reclamation"));
                 list.add(m);
             }
         } catch (SQLException ex) {
@@ -76,6 +72,19 @@ public class MaintenanceServiceImpl implements MaintenanceService {
         return null;
     }
 
+    public Maintenance  updateRating(Maintenance m  ) {
+        try {
+            Connection conn = MyConnection.getInstance();
+            String req = "UPDATE maintenance SET `rating` = '" +MaintenanceServiceImpl.rating +"' WHERE `id_demande` = " + m.getId_demande();
+            Statement st = conn.createStatement();
+            st.executeUpdate(req);
+            System.out.println("ajout un review");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+
     @Override
     public boolean remove(Integer id) {
         try {
@@ -97,7 +106,7 @@ public class MaintenanceServiceImpl implements MaintenanceService {
     public Maintenance findById(Integer id) {
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "SELECT * FROM `maintenance` WHERE id_demande = " + id;
+            String req = "SELECT * FROM `maintenance` WHERE id_demande = " + id  ;
             Statement st = conn.createStatement();
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
@@ -177,6 +186,10 @@ public class MaintenanceServiceImpl implements MaintenanceService {
         return list;
     }
 
+    @Override
+    public String veloDominante() {
+        return null;
+    }
 
 
 }

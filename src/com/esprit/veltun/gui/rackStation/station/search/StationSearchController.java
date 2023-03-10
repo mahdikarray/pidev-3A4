@@ -67,6 +67,7 @@ public class StationSearchController implements Initializable {
     @FXML
     void editStation(ActionEvent mouseEvent) {
         Station station = stationlistview.getSelectionModel().getSelectedItem();
+        StationServiceImpl.selectedStation=station;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../update/update.fxml"));
 
         try {

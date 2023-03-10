@@ -2,17 +2,19 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #3D4956; -fx-border-width: 7; -fx-border-color: #6babd6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.rackStation.backend.backendController">
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.rackStation.backend.backendController">
     <children>
-        <Button fx:id="addS" layoutX="205.0" layoutY="187.0" mnemonicParsing="false" onAction="#switchToAddR" prefHeight="26.0" prefWidth="190.0" style="-fx-background-radius: 5em;" text="Add a rack" />
-        <Label layoutX="227.0" layoutY="120.0" prefHeight="43.0" prefWidth="190.0" text="Choose your action !" textFill="WHITE">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="483.0" layoutX="375.0" layoutY="9.0" stroke="#4a91a5" strokeLineCap="ROUND" strokeType="INSIDE" width="367.0" />
+        <Button fx:id="addS" layoutX="476.0" layoutY="264.0" mnemonicParsing="false" onAction="#switchToAddR" prefHeight="26.0" prefWidth="190.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Add a rack" textFill="WHITE" />
+        <Label layoutX="487.0" layoutY="193.0" prefHeight="43.0" prefWidth="190.0" text="Choose your action !" textFill="#193742">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-        <Button fx:id="updateS" layoutX="205.0" layoutY="308.0" mnemonicParsing="false" onAction="#switchToUpdateR" prefHeight="26.0" prefWidth="190.0" style="-fx-background-radius: 5em;" text="Update an existing rack" />
-        <Button fx:id="listS" layoutX="205.0" layoutY="248.0" mnemonicParsing="false" onAction="#switchToListR" prefHeight="26.0" prefWidth="190.0" style="-fx-background-radius: 5em;" text="Show an existing rack" />
-      <Button fx:id="crudS" cancelButton="true" layoutX="62.0" layoutY="350.0" mnemonicParsing="false" onAction="#switchToHomefromCRUDRacks" prefHeight="25.0" prefWidth="103.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Go Back" />
+        <Button fx:id="updateS" layoutX="476.0" layoutY="344.0" mnemonicParsing="false" onAction="#switchToUpdateR" prefHeight="26.0" prefWidth="190.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Update an existing rack" textFill="WHITE" />
+        <Button fx:id="listS" layoutX="476.0" layoutY="303.0" mnemonicParsing="false" onAction="#switchToListR" prefHeight="26.0" prefWidth="190.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Show an existing rack" textFill="WHITE" />
+        <Button fx:id="crudS" cancelButton="true" layoutX="384.0" layoutY="452.0" mnemonicParsing="false" onAction="#switchToHomefromCRUDRacks" prefHeight="25.0" prefWidth="103.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Go Back" />
     </children>
 </AnchorPane>

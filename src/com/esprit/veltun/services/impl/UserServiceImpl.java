@@ -19,12 +19,6 @@ import com.esprit.veltun.util.MyConnection;
 public class UserServiceImpl implements UserService {
 	public static User connectedUser;
 
-	public UserServiceImpl() {
-		if (connectedUser == null) {
-			List<User> users = list();
-			connectedUser = users.get(users.size()/2);
-		}
-	}
 
 	@Override
 	public User save(User u) {
@@ -286,6 +280,11 @@ public class UserServiceImpl implements UserService {
 		}
 
 		return list;
+	}
+
+	@Override
+	public String veloDominante() {
+		return null;
 	}
 
 	@Override

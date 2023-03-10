@@ -25,6 +25,7 @@ public class DetaillInvitationController  implements Initializable {
     public TextField ftevenement;
     public Button ftbuttonlistinvi;
     static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+    public Button toHome;
 
 
     public void setDateInvitation(LocalDate date) {
@@ -73,4 +74,6 @@ public class DetaillInvitationController  implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
 }
+

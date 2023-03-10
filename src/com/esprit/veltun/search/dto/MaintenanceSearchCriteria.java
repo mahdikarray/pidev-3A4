@@ -2,11 +2,8 @@ package com.esprit.veltun.search.dto;
 
 import com.esprit.veltun.model.Maintenance;
 import com.esprit.veltun.search.base.dto.SearchCriteria;
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
-import com.esprit.veltun.model.Reclamation;
 
+import java.sql.Date;
 
 
 public class MaintenanceSearchCriteria extends SearchCriteria<Maintenance> {

@@ -259,4 +259,9 @@ public class EventServiceImpl implements EventService {
 		return list;
 	}
 
+	@Override
+	public String veloDominante() {
+		return null;
+	}
+
 }

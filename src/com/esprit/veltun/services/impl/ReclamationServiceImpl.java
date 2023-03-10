@@ -1,21 +1,20 @@
 package com.esprit.veltun.services.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import com.esprit.veltun.model.Reclamation;
+import com.esprit.veltun.search.base.dto.SearchCriteria;
+import com.esprit.veltun.search.dto.ReclamationSearchCriteria;
+import com.esprit.veltun.services.ReclamationService;
+import com.esprit.veltun.util.MyConnection;
+
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import com.esprit.veltun.model.Reclamation;
-import com.esprit.veltun.services.ReclamationService;
-import com.esprit.veltun.search.base.dto.SearchCriteria;
-import com.esprit.veltun.search.dto.ReclamationSearchCriteria;
-import com.esprit.veltun.util.MyConnection;
-
 public class ReclamationServiceImpl implements ReclamationService {
+
 
     @Override
     public List<Reclamation> list() {
@@ -44,18 +43,19 @@ public class ReclamationServiceImpl implements ReclamationService {
     }
     @Override
     public Reclamation save(Reclamation r) {
-
         try {
             Connection conn = MyConnection.getInstance();
-            String req = "INSERT INTO `reclamation`(object, description, status,date_reclamation) VALUES (?,?,?,?)";
+            String req = "INSERT INTO `reclamation`(object, description, status,CIN) VALUES (?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
-            // ps.setInt(1, r.getId_reclamation());
             ps.setString(1, r.getObject());
             ps.setString(2, r.getDescription());
-            ps.setString(3, r.getStatus());
-            ps.setDate(4, r.getDate_reclamation());
+            ps.setString(3, "en cours");
+            ps.setString(4, UserServiceImpl.connectedUser.getCIN());
+
+
+//            ps.setDouble(5, (Double) ReclamationServiceImpl.rating);
             Integer id = ps.executeUpdate();
-            r.setId(id);
+           r.setId(id);
             System.out.println("reclamation ajouté!!!");
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -77,6 +77,22 @@ public class ReclamationServiceImpl implements ReclamationService {
         }
         return null;
     }
+
+    /*public Reclamation updateRating(Reclamation r ) {
+        try {
+            Connection conn = MyConnection.getInstance();
+            String req = "UPDATE reclamation SET `rating` = '" +ReclamationServiceImpl.rating +"' WHERE `id_reclamation` = " + r.getId_reclamation();
+            Statement st = conn.createStatement();
+            st.executeUpdate(req);
+            System.out.println("reclamation updated !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+*/
+
+
 
     @Override
     public boolean remove(Integer id) {
@@ -145,6 +161,7 @@ public class ReclamationServiceImpl implements ReclamationService {
                     whereBuilder.append(" WHERE id_reclamation=?");
                 }
             }
+
             builder.append(whereBuilder);
 
 
@@ -180,6 +197,10 @@ public class ReclamationServiceImpl implements ReclamationService {
         return list;
     }
 
+    @Override
+    public String veloDominante() {
+        return null;
+    }
 
 
 }

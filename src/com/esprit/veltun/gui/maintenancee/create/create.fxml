@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.maintenancee.create.MaintenanceCreateController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="487.0" layoutX="377.0" layoutY="8.0" stroke="#4a91a5" strokeLineCap="ROUND" strokeType="INSIDE" width="364.0" />
+      <Button fx:id="tfaddevent" defaultButton="true" layoutX="598.0" layoutY="345.0" mnemonicParsing="false" onAction="#saveEvent" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Save" textFill="WHITE" />
+      <Button fx:id="cancelbutton" cancelButton="true" layoutX="426.0" layoutY="345.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Cancel" textFill="WHITE" />
+      <Label layoutX="417.0" layoutY="159.0" text="Description :" textFill="#193742" />
+      <TextField fx:id="fxdescription" layoutX="523.0" layoutY="155.0" prefHeight="26.0" prefWidth="168.0" style="-fx-background-radius: 5em;" />
+      <DatePicker fx:id="submission_date" layoutX="523.0" layoutY="275.0" prefHeight="26.0" prefWidth="190.0" style="-fx-background-radius: 5em;" />
+      <Label layoutX="417.0" layoutY="279.0" text="Submission date :" textFill="#193742" />
+      <Label fx:id="codeLabel" layoutX="417.0" layoutY="219.0" text="Status :" textFill="#193742" />
+      <TextField fx:id="fxstatus" layoutX="523.0" layoutY="215.0" prefHeight="26.0" prefWidth="168.0" style="-fx-background-radius: 5em;" />
+
+   </children>
+</AnchorPane>

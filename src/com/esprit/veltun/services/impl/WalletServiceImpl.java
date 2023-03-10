@@ -143,6 +143,11 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
+    public String veloDominante() {
+        return null;
+    }
+
+    @Override
     public boolean remove(String cin) {
 
         try {
@@ -156,5 +161,35 @@ public class WalletServiceImpl implements WalletService {
             System.out.println(ex.getMessage());
             return false;
         }    }
+
+    public Wallet findByCin(String cin) {
+        Wallet w=new Wallet();
+        try {
+            UserServiceImpl usi= new UserServiceImpl();
+            Connection conn=MyConnection.getInstance();
+            String req = "SELECT * FROM `wallet` WHERE cin LIKE " + cin;
+            Statement st= conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                w.setIdWallet(RS.getInt(1));
+                w.setOwner(usi.findByCin(cin));
+                w.setAccount(RS.getInt(3));
+            }
+
+            return w;
+        }
+        catch (SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+
+
+
+
+
+
+
+
 
 }

@@ -7,25 +7,27 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #424242; -fx-border-color: #6babd6; -fx-border-width: 7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.event.create.EventCreateController">
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.event.create.EventCreateController">
    <children>
-      <Button fx:id="tfaddevent" defaultButton="true" layoutX="381.0" layoutY="345.0" mnemonicParsing="false" onAction="#saveEvent" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #6babd6;" text="Save" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="80.0" />
-      <Label layoutX="89.0" layoutY="35.0" text="Title" textFill="#4fb5f8" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="20.0" />
-      <Label layoutX="89.0" layoutY="75.0" text="Description" textFill="#4fb5f8" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="60.0" />
-      <Label layoutX="89.0" layoutY="115.0" text="Start date" textFill="#4fb5f8" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="100.0" />
-      <Label layoutX="89.0" layoutY="155.0" text="Start hour" textFill="#4fb5f8" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="140.0" />
-      <Label layoutX="89.0" layoutY="195.0" text="End date" textFill="#4fb5f8" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="180.0" />
-      <Label layoutX="89.0" layoutY="235.0" text="End hour" textFill="#4fb5f8" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="220.0" />
-      <Label layoutX="94.0" layoutY="275.0" text="Address" textFill="#4fb5f8" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="260.0" />
-      <TextField fx:id="tftitre" layoutX="242.0" layoutY="31.0" prefHeight="25.0" prefWidth="271.0" promptText="Event title" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="20.0" />
-      <TextField fx:id="tfdescription" layoutX="242.0" layoutY="71.0" prefHeight="25.0" prefWidth="271.0" promptText="Event description" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="60.0" />
-      <TextField fx:id="tfheuredebut" layoutX="242.0" layoutY="151.0" prefHeight="25.0" prefWidth="271.0" promptText="Event start hour " AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="140.0" />
-      <TextField fx:id="tfheurefin" layoutX="242.0" layoutY="231.0" prefHeight="25.0" prefWidth="271.0" promptText="Event end hour " AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="220.0" />
-      <DatePicker fx:id="tfdatedebut" layoutX="242.0" layoutY="111.0" prefHeight="25.0" prefWidth="271.0" promptText="Event start date" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="100.0" />
-      <DatePicker fx:id="tfdatefin" layoutX="242.0" layoutY="191.0" prefHeight="25.0" prefWidth="271.0" promptText="Event end date" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="180.0" />
-      <TextField fx:id="tfadresserue" layoutX="242.0" layoutY="271.0" prefHeight="25.0" prefWidth="161.0" promptText="Address" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="260.0" />
-      <Button fx:id="cancelbutton" cancelButton="true" layoutX="243.0" layoutY="345.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #6babd6;" text="Cancel" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="480.0" layoutX="337.0" layoutY="12.0" stroke="#4a91a5" strokeLineCap="ROUND" strokeType="INSIDE" width="401.0" />
+      <Button fx:id="tfaddevent" defaultButton="true" layoutX="563.0" layoutY="388.0" mnemonicParsing="false" onAction="#saveEvent" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Save" textFill="WHITE" AnchorPane.bottomAnchor="86.39999999999998" AnchorPane.rightAnchor="72.60000000000002" />
+      <Label layoutX="375.0" layoutY="83.0" text="Title :" textFill="#193742" AnchorPane.leftAnchor="375.0" AnchorPane.topAnchor="83.0" />
+      <Label layoutX="375.0" layoutY="123.0" text="Description :" textFill="#193742" AnchorPane.leftAnchor="375.0" AnchorPane.topAnchor="123.0" />
+      <Label layoutX="375.0" layoutY="163.0" text="Start date :" textFill="#193742" AnchorPane.leftAnchor="375.0" AnchorPane.topAnchor="163.0" />
+      <Label layoutX="376.0" layoutY="203.0" text="Start hour :" textFill="#193742" AnchorPane.leftAnchor="376.0" AnchorPane.topAnchor="203.0" />
+      <Label layoutX="375.0" layoutY="243.0" text="End date :" textFill="#193742" AnchorPane.leftAnchor="375.0" AnchorPane.topAnchor="243.0" />
+      <Label layoutX="375.0" layoutY="283.0" text="End hour :" textFill="#193742" AnchorPane.leftAnchor="375.0" AnchorPane.topAnchor="283.0" />
+      <Label layoutX="375.0" layoutY="323.0" text="Address :" textFill="#193742" AnchorPane.leftAnchor="375.0" AnchorPane.topAnchor="323.0" />
+      <TextField fx:id="tftitre" layoutX="515.0" layoutY="83.0" prefHeight="26.0" prefWidth="188.0" promptText="Event title" style="-fx-background-radius: 5em;" AnchorPane.leftAnchor="515.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="83.0" />
+      <TextField fx:id="tfdescription" layoutX="515.0" layoutY="123.0" prefHeight="26.0" prefWidth="188.0" promptText="Event description" style="-fx-background-radius: 5em;" AnchorPane.leftAnchor="515.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="123.0" />
+      <TextField fx:id="tfheuredebut" layoutX="515.0" layoutY="203.0" prefHeight="26.0" prefWidth="188.0" promptText="Event start hour " style="-fx-background-radius: 5em;" AnchorPane.leftAnchor="515.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="203.0" />
+      <TextField fx:id="tfheurefin" layoutX="515.0" layoutY="283.0" prefHeight="26.0" prefWidth="188.0" promptText="Event end hour " style="-fx-background-radius: 5em;" AnchorPane.leftAnchor="515.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="283.0" />
+      <DatePicker fx:id="tfdatedebut" layoutX="515.0" layoutY="163.0" prefHeight="26.0" prefWidth="188.0" promptText="Event start date" style="-fx-background-radius: 5em;" AnchorPane.leftAnchor="515.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="163.0" />
+      <DatePicker fx:id="tfdatefin" layoutX="515.0" layoutY="243.0" prefHeight="26.0" prefWidth="188.0" promptText="Event end date" style="-fx-background-radius: 5em;" AnchorPane.leftAnchor="515.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="243.0" />
+      <TextField fx:id="tfadresserue" layoutX="515.0" layoutY="323.0" prefHeight="26.0" prefWidth="188.0" promptText="Address" style="-fx-background-radius: 5em;" AnchorPane.leftAnchor="515.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="323.0" />
+      <Button fx:id="cancelbutton" cancelButton="true" layoutX="424.0" layoutY="388.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Cancel" textFill="WHITE" AnchorPane.bottomAnchor="86.39999999999998" AnchorPane.rightAnchor="211.60000000000002" />
       <ImageView fitHeight="132.0" fitWidth="188.0" layoutX="-5.0" layoutY="284.0" AnchorPane.leftAnchor="0.0">
          <image>
             <Image url="http://localhost/logo-removebg-preview.png" />

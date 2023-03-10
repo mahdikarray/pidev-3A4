@@ -10,7 +10,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -27,11 +29,11 @@ public class RackveloSearchController implements Initializable {
     public Button searchbutton;
 
     private RackVeloImpl rackService = new RackVeloImpl() ;
-    public ListView<RackVelo> rackVeloListView;
+    public ListView<RackVelo> rackvelolistview;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        rackVeloListView.setCellFactory(param -> new ListCell<RackVelo>(){
+        rackvelolistview.setCellFactory(param -> new ListCell<RackVelo>(){
             public void updateItem(RackVelo rackVelo, boolean empty) {
                 super.updateItem(rackVelo, empty);
                 if (empty || rackVelo == null) {
@@ -45,26 +47,26 @@ public class RackveloSearchController implements Initializable {
     }
 
     void runSearch() {
-        String id_station = titletosearch.getText();
-        RackveloSearchCriteria rackveloSearchCriteria = new RackveloSearchCriteria();
-        if (id_station != null && !id_station.isEmpty()) {
-            rackveloSearchCriteria.setRefRack(Integer.parseInt(id_station));
+        String refRack = titletosearch.getText();
+        RackveloSearchCriteria RackveloSearchCriteria = new RackveloSearchCriteria();
+        if (refRack != null && !refRack.isEmpty()) {
+            RackveloSearchCriteria.setRefRack(Integer.parseInt(refRack));
         }
-        Collection<RackVelo> rackvelo = rackService.list();
-        rackVeloListView.getItems().setAll(rackvelo);
+        Collection<RackVelo> rackvelo = rackService.search(RackveloSearchCriteria);
+        rackvelolistview.getItems().setAll(rackvelo);
     }
 
     @FXML
     void removeRackvelo(ActionEvent mouseEvent) {
-        RackVelo rackvelo = rackVeloListView.getSelectionModel().getSelectedItem();
-        int selectionIndex = rackVeloListView.getSelectionModel().getSelectedIndex();
+        RackVelo rackvelo = rackvelolistview.getSelectionModel().getSelectedItem();
+        int selectionIndex = rackvelolistview.getSelectionModel().getSelectedIndex();
         rackService.remove(rackvelo.getRefRack());
-        rackVeloListView.getItems().remove(selectionIndex);
+        rackvelolistview.getItems().remove(selectionIndex);
     }
 
     @FXML
     void editRackvelo(ActionEvent mouseEvent) {
-        RackVelo rackvelo = rackVeloListView.getSelectionModel().getSelectedItem();
+        RackVelo rackvelo = rackvelolistview.getSelectionModel().getSelectedItem();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../update/update.fxml"));
 
         try {
@@ -76,7 +78,7 @@ public class RackveloSearchController implements Initializable {
             com.esprit.veltun.gui.rackStation.rackvelo.view.RackveloDetailsController cont = fxmlLoader.getController();
             cont.setRackvelo(rackvelo);
 
-            rackVeloListView.getScene().setRoot(root);
+            rackvelolistview.getScene().setRoot(root);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
@@ -91,15 +93,25 @@ public class RackveloSearchController implements Initializable {
 
         try {
             Parent root = fxmlLoader.load();
-            rackVeloListView.getScene().setRoot(root);
+            rackvelolistview.getScene().setRoot(root);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
     }
 
     public void search(ActionEvent actionEvent) {
-        //runSearch();
+        runSearch();
     }
+    private Stage stage ;
+    private Scene scene ;
 
+    private Parent root;
 
+    public void switchToRacksFromList(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("../../backend/racksCRUDinterface.fxml")) ;
+        stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root) ;
+        stage.setScene(scene);
+        stage.show();
+    }
 }

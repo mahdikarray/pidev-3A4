@@ -4,19 +4,19 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #3D4956; -fx-border-color: #6babd6; -fx-border-width: 7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.rackStation.station.search.StationSearchController">
+<AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #4a91a5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.rackStation.station.search.StationSearchController">
    <children>
-      <ListView fx:id="stationlistview" layoutX="18.0" layoutY="91.0" prefHeight="262.0" prefWidth="565.0" />
-      <Button fx:id="removestationbutton" layoutX="385.0" layoutY="359.0" mnemonicParsing="false" onAction="#removeStation" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Delete" />
-      <Button fx:id="editstationbutton" defaultButton="true" layoutX="485.0" layoutY="359.0" mnemonicParsing="false" onAction="#editStation" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em;" text="Update" />
-      <TextField fx:id="titletosearch" layoutX="300.0" layoutY="56.0" prefHeight="25.0" prefWidth="195.0" promptText="Insert station name" />
-      <Button fx:id="searchbutton" layoutX="501.0" layoutY="56.0" mnemonicParsing="false" onAction="#search" opacity="0.62" prefHeight="26.0" prefWidth="80.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em;" text="Search" />
+      <ListView fx:id="stationlistview" layoutX="301.0" layoutY="72.0" prefHeight="344.0" prefWidth="434.0" />
+      <Button fx:id="removestationbutton" layoutX="551.0" layoutY="424.0" mnemonicParsing="false" onAction="#removeStation" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Delete" />
+      <Button fx:id="editstationbutton" defaultButton="true" layoutX="651.0" layoutY="424.0" mnemonicParsing="false" onAction="#editStation" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #193742; -fx-background-radius: 5em;" text="Update" textFill="WHITE" />
+      <TextField fx:id="titletosearch" layoutX="450.0" layoutY="33.0" prefHeight="25.0" prefWidth="195.0" promptText="Insert station name" />
+      <Button fx:id="searchbutton" layoutX="651.0" layoutY="33.0" mnemonicParsing="false" onAction="#search" opacity="0.62" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #193742; -fx-background-radius: 5em;" text="Search" textFill="WHITE" />
       <ImageView fx:id="tfimagelogo" fitHeight="86.0" fitWidth="152.0" layoutY="3.0">
          <image>
             <Image url="http://localhost/logo-removebg-preview.png" />
          </image>
       </ImageView>
-      <Button fx:id="crudS" layoutX="29.0" layoutY="358.0" mnemonicParsing="false" onAction="#switchToRacksFromList" prefHeight="26.0" prefWidth="94.0" style="-fx-background-radius: 5em;" text="Go Back" />
+      <Button fx:id="crudS" layoutX="301.0" layoutY="423.0" mnemonicParsing="false" onAction="#switchToRacksFromList" prefHeight="26.0" prefWidth="94.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Go Back" />
    </children>
    <stylesheets>
 
