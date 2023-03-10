@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.rackStation.rackvelo.update.RackveloUpdateController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="481.0" layoutX="375.0" layoutY="10.0" stroke="#4a91a5" strokeLineCap="ROUND" strokeType="INSIDE" width="364.0" />
+        <Button fx:id="tfaddevent" defaultButton="true" layoutX="512.0" layoutY="339.0" mnemonicParsing="false" onAction="#updateRV" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Update" textFill="WHITE" />
+        <Button fx:id="crudS" cancelButton="true" layoutX="386.0" layoutY="452.0" mnemonicParsing="false" onAction="#switchToRacksFromUpdate" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Go Back" />
+        <TextField fx:id="fxrefRv" layoutX="537.0" layoutY="189.0" />
+        <TextField fx:id="fxCapacity" layoutX="537.0" layoutY="287.0" />
+        <Label layoutX="427.0" layoutY="193.0" text="Rack reference :" textFill="#193742" />
+        <Label layoutX="427.0" layoutY="246.0" text="Station's ID :" textFill="#193742" />
+      <TextField fx:id="fxidS" layoutX="537.0" layoutY="237.0" />
+      <Label layoutX="427.0" layoutY="291.0" text="New capacity :" textFill="#193742" />
+
+    </children>
+</AnchorPane>

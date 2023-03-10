@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<AnchorPane opacity="0.99" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.fournisseur.view.FournisseurDetailsController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="485.0" layoutX="375.0" layoutY="8.0" stroke="#4a91a5" strokeLineCap="ROUND" strokeType="INSIDE" width="369.0" />
+      <Button fx:id="tflistFourniseur" defaultButton="true" layoutX="474.0" layoutY="365.0" mnemonicParsing="false" onAction="#listFourniseur" prefHeight="26.0" prefWidth="169.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="List of providers" textFill="WHITE" />
+      <Label layoutX="416.0" layoutY="239.0" text="Name :" textFill="#193742" />
+      <Label layoutX="416.0" layoutY="282.0" text="Region :" textFill="#193742" />
+      <TextField fx:id="ftnom" editable="false" layoutX="501.0" layoutY="235.0" prefHeight="26.0" prefWidth="200.0" promptText="provider name" style="-fx-background-radius: 5em;" />
+      <TextField fx:id="ftregion" editable="false" layoutX="501.0" layoutY="278.0" prefHeight="26.0" prefWidth="200.0" promptText="Description de l'évenement" style="-fx-background-radius: 5em;" text="provider region" />
+      <ImageView fitHeight="126.0" fitWidth="234.0" layoutX="-25.0" layoutY="316.0">
+         <image>
+            <Image url="http://localhost/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="500.0" fitWidth="369.0" layoutX="7.0" layoutY="-5.0">
+         <image>
+            <Image url="http://localhost:8088/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

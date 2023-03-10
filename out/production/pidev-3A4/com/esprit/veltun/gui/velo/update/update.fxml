@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.velo.update.VeloUpdateController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="486.0" layoutX="375.0" layoutY="7.0" stroke="#4a91a5" strokeLineCap="ROUND" strokeType="INSIDE" width="369.0" />
+      <Button fx:id="tfaddevent" defaultButton="true" layoutX="571.0" layoutY="332.0" mnemonicParsing="false" onAction="#updateVelo" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Save" textFill="WHITE" />
+      <Label layoutX="419.0" layoutY="144.0" text="Brand :" textFill="#193742" />
+      <Label layoutX="419.0" layoutY="186.0" text="Size :" textFill="#193742" />
+      <TextField fx:id="tflibelle" layoutX="507.0" layoutY="140.0" prefHeight="26.0" prefWidth="200.0" promptText="bike brand" style="-fx-background-radius: 5em;" />
+      <TextField fx:id="tftaille" layoutX="507.0" layoutY="182.0" prefHeight="26.0" prefWidth="200.0" promptText="bike size" style="-fx-background-radius: 5em;" />
+      <Button fx:id="cancelbutton" cancelButton="true" layoutX="433.0" layoutY="332.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Cancel" />
+      <ImageView fitHeight="126.0" fitWidth="174.0" layoutX="14.0" layoutY="295.0">
+         <image>
+            <Image url="http://localhost/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="16.0" layoutY="227.0">
+         <image>
+            <Image url="http://localhost:8088/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="420.0" layoutY="224.0" text="Color :" textFill="#193742" />
+      <TextField fx:id="tfcouleur" layoutX="507.0" layoutY="220.0" prefHeight="26.0" prefWidth="200.0" promptText="bike color" style="-fx-background-radius: 5em;" />
+      <Label layoutX="421.0" layoutY="263.0" text="Supplier :" textFill="#193742" />
+      <TextField fx:id="tffournisseur" layoutX="507.0" layoutY="259.0" prefHeight="26.0" prefWidth="200.0" promptText="supplier" style="-fx-background-radius: 5em;" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.rackStation.rackvelo.create.RackveloCreateController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="480.0" layoutX="375.0" layoutY="15.0" stroke="#4a91a5" strokeLineCap="ROUND" strokeType="INSIDE" width="364.0" />
+      <Button fx:id="tfaddrackvelo" defaultButton="true" layoutX="500.0" layoutY="358.0" mnemonicParsing="false" onAction="#saveRackvelo" prefHeight="25.0" prefWidth="114.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Add" textFill="WHITE" />
+      <Label layoutX="442.0" layoutY="246.0" text="Capacity :" textFill="#193742" />
+      <Label layoutX="446.0" layoutY="204.0" text="Station :" textFill="#193742" />
+      <Label layoutX="448.0" layoutY="161.0" text="Reference :" textFill="#193742" />
+      <TextField fx:id="fxrefRv" layoutX="524.0" layoutY="157.0" style="-fx-background-radius: 5em;" />
+      <TextField fx:id="fxidS" layoutX="524.0" layoutY="200.0" style="-fx-background-radius: 5em;" />
+      <TextField fx:id="fxCap" layoutX="524.0" layoutY="242.0" style="-fx-background-radius: 5em;" />
+      <Label layoutX="448.0" layoutY="294.0" text="Model :" textFill="#193742" />
+      <ChoiceBox fx:id="modeleFX" layoutX="524.0" layoutY="290.0" prefWidth="150.0" style="-fx-background-radius: 5em;" />
+      <Button fx:id="crudR" layoutX="383.0" layoutY="452.0" mnemonicParsing="false" onAction="#switchToCRUDRacks" prefHeight="26.0" prefWidth="94.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Go Back" />
+   </children>
+</AnchorPane>

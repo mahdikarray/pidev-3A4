@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.User.update.UserUpdateController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="482.0" layoutX="375.0" layoutY="22.0" stroke="#4a91a5" strokeLineCap="ROUND" strokeType="INSIDE" width="364.0" />
+      <Button fx:id="addUser" defaultButton="true" layoutX="612.0" layoutY="413.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #193742; -fx-background-radius: 5em;" text="Update" textFill="WHITE" />
+      <Label layoutX="401.0" layoutY="74.0" text="CIN" textFill="#193742" />
+      <Label layoutX="402.0" layoutY="127.0" text="Name :" textFill="#193742" />
+      <Label layoutX="401.0" layoutY="154.0" text="Surname :" textFill="#193742" />
+      <Label layoutX="401.0" layoutY="194.0" text="Email :" textFill="#193742" />
+      <Label layoutX="401.0" layoutY="234.0" text="Birth Date : " textFill="#193742" />
+      <Label layoutX="401.0" layoutY="287.0" text="Postal code :" textFill="#193742" />
+      <TextField fx:id="cinTF" layoutX="481.0" layoutY="83.0" prefHeight="26.0" prefWidth="231.0" promptText="cin" style="-fx-background-radius: 5em;" />
+      <TextField fx:id="nomTF" layoutX="481.0" layoutY="123.0" prefHeight="26.0" prefWidth="231.0" promptText="votre nom" style="-fx-background-radius: 5em;" />
+      <TextField fx:id="emailTF" layoutX="481.0" layoutY="203.0" prefHeight="26.0" prefWidth="231.0" promptText="votre adresse email" style="-fx-background-radius: 5em;" />
+      <TextField fx:id="codePostalTF" layoutX="481.0" layoutY="283.0" prefHeight="26.0" prefWidth="231.0" promptText="Votre code postal" style="-fx-background-radius: 5em;" />
+      <DatePicker fx:id="dateTF" layoutX="481.0" layoutY="243.0" prefHeight="26.0" prefWidth="231.0" promptText="Date de naissance" style="-fx-background-radius: 5em;" />
+      <Button fx:id="cancelbutton1" cancelButton="true" layoutX="463.0" layoutY="413.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #193742; -fx-background-radius: 5em;" text="Retour" textFill="WHITE" />
+      <TextField fx:id="prenomTF" layoutX="481.0" layoutY="163.0" prefHeight="26.0" prefWidth="231.0" promptText="Votre prenom" style="-fx-background-radius: 5em;" />
+      <TextField fx:id="passwordTF" layoutX="482.0" layoutY="324.0" prefHeight="26.0" prefWidth="231.0" style="-fx-background-radius: 5em;" />
+      <Label layoutX="401.0" layoutY="328.0" prefHeight="18.0" prefWidth="64.0" text="Password :" />
+      <ImageView fx:id="tfimagelogo" fitHeight="516.0" fitWidth="410.0" layoutX="-25.0" layoutY="5.0">
+         <image>
+            <Image url="http://localhost/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+
+   </children>
+</AnchorPane>

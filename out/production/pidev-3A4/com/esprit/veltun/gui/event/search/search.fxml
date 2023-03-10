@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.event.search.EventSearchController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="500.0" layoutX="265.0" layoutY="1.0" stroke="WHITE" strokeType="INSIDE" width="483.0" />
+      <ListView fx:id="eventlistview" layoutX="290.0" layoutY="77.0" prefHeight="350.0" prefWidth="433.0" AnchorPane.bottomAnchor="73.0" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="77.0" />
+      <Button fx:id="removeeventbutton" layoutX="559.0" layoutY="436.0" mnemonicParsing="false" onAction="#removeEvent" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="38.39999999999998" AnchorPane.rightAnchor="111.0" />
+      <Button fx:id="editeventbutton" defaultButton="true" layoutX="644.0" layoutY="436.0" mnemonicParsing="false" onAction="#editEvent" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Update" textFill="WHITE" AnchorPane.bottomAnchor="38.39999999999998" AnchorPane.rightAnchor="26.0" />
+      <Button fx:id="addneweventbutton" defaultButton="true" layoutX="467.0" layoutY="436.0" mnemonicParsing="false" onAction="#addEvent" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Add Event" textFill="WHITE" AnchorPane.bottomAnchor="38.39999999999998" AnchorPane.rightAnchor="203.0" />
+      <TextField fx:id="titletosearch" layoutX="461.0" layoutY="37.0" prefHeight="25.0" prefWidth="195.0" promptText="Event title " AnchorPane.rightAnchor="93.79999999999995" AnchorPane.topAnchor="37.0" />
+      <Button fx:id="searchbutton" layoutX="672.0" layoutY="37.0" mnemonicParsing="false" onAction="#search" opacity="0.62" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Search" textFill="WHITE" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="37.0" />
+      <ImageView fx:id="tfimagelogo" fitHeight="293.0" fitWidth="293.0" layoutY="95.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="95.0">
+         <image>
+            <Image url="http://localhost/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="inviterbutton" defaultButton="true" layoutX="378.0" layoutY="436.0" mnemonicParsing="false" onAction="#inviter" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Invite" textFill="WHITE" AnchorPane.bottomAnchor="38.39999999999998" AnchorPane.rightAnchor="292.0" />
+      <Button fx:id="calendar" layoutX="332.0" layoutY="36.0" mnemonicParsing="false" onAction="#openCalendar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Calendar" textFill="WHITE" AnchorPane.rightAnchor="331.6" />
+      <Button fx:id="toHome" defaultButton="true" layoutX="290.0" layoutY="436.0" mnemonicParsing="false" onAction="#inviter" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Home" textFill="WHITE" AnchorPane.bottomAnchor="38.39999999999998" AnchorPane.rightAnchor="380.0" />
+   </children>
+</AnchorPane>

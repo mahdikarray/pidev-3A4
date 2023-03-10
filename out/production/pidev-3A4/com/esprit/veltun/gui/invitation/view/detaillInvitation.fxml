@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.invitation.view.DetaillInvitationController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="480.0" layoutX="353.0" layoutY="13.0" stroke="#4a91a5" strokeLineCap="ROUND" strokeType="INSIDE" width="392.0" />
+      <Label fx:id="ftdi" layoutX="394.0" layoutY="147.0" text="Invitation date :" textFill="#193742" AnchorPane.leftAnchor="394.0" AnchorPane.topAnchor="147.0" />
+      <Label fx:id="ftde" layoutX="396.0" layoutY="187.0" text="Experation date :" textFill="#193742" AnchorPane.leftAnchor="396.0" AnchorPane.topAnchor="187.0" />
+      <Label fx:id="ftin" layoutX="401.0" layoutY="232.0" text="Inviting :" textFill="#193742" AnchorPane.leftAnchor="401.0" AnchorPane.topAnchor="232.0" />
+      <Label fx:id="ftinvite" layoutX="399.0" layoutY="273.0" text="Guest :" textFill="#193742" AnchorPane.leftAnchor="399.0" AnchorPane.topAnchor="273.0" />
+      <Label fx:id="ftevent" layoutX="395.0" layoutY="318.0" text="Event title :" textFill="#193742" AnchorPane.leftAnchor="395.0" AnchorPane.topAnchor="318.0" />
+      <TextField fx:id="ftdateinvi" editable="false" layoutX="522.0" layoutY="143.0" prefHeight="26.0" prefWidth="194.0" style="-fx-background-radius: 5em;" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="143.0" />
+      <TextField fx:id="ftdateex" editable="false" layoutX="522.0" layoutY="183.0" prefHeight="26.0" prefWidth="194.0" style="-fx-background-radius: 5em;" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="183.0" />
+      <TextField fx:id="ftinvitant" editable="false" layoutX="522.0" layoutY="228.0" prefHeight="26.0" prefWidth="194.0" style="-fx-background-radius: 5em;" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="228.0" />
+      <TextField fx:id="ftinvitéé" editable="false" layoutX="522.0" layoutY="269.0" prefHeight="26.0" prefWidth="194.0" style="-fx-background-radius: 5em;" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="269.0" />
+      <TextField fx:id="ftevenement" editable="false" layoutX="522.0" layoutY="314.0" prefHeight="26.0" prefWidth="194.0" style="-fx-background-radius: 5em;" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="314.0" />
+      <Button fx:id="ftbuttonlistinvi" layoutX="424.0" layoutY="389.0" mnemonicParsing="false" onAction="#List" prefHeight="25.0" prefWidth="124.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Invitation list" textFill="WHITE" AnchorPane.bottomAnchor="85.39999999999998" AnchorPane.leftAnchor="424.0" AnchorPane.rightAnchor="52.0" />
+   </children>
+</AnchorPane>

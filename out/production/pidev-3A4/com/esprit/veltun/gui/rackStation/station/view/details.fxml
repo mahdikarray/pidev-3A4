@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<AnchorPane opacity="0.99" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.rackStation.station.view.StationDetailsController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="487.0" layoutX="375.0" layoutY="8.0" stroke="#4a91a5" strokeLineCap="ROUND" strokeType="INSIDE" width="364.0" />
+      <Button fx:id="ftlistEvent" defaultButton="true" layoutX="491.0" layoutY="335.0" mnemonicParsing="false" onAction="#listStation" prefHeight="25.0" prefWidth="132.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="List" textFill="WHITE" />
+      <ImageView fitHeight="126.0" fitWidth="234.0" layoutX="-25.0" layoutY="316.0">
+         <image>
+            <Image url="http://localhost/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="fxnomStation" layoutX="534.0" layoutY="250.0" style="-fx-background-radius: 5em;" />
+      <Label layoutX="430.0" layoutY="254.0" text="Station's name :" textFill="#193742" />
+   </children>
+</AnchorPane>

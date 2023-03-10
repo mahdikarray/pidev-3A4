@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #4a91a5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.rackStation.rackvelo.search.RackveloSearchController">
+   <children>
+      <ListView fx:id="rackvelolistview" layoutX="301.0" layoutY="78.0" prefHeight="344.0" prefWidth="434.0" />
+      <Button fx:id="editstationbutton" defaultButton="true" layoutX="661.0" layoutY="434.0" mnemonicParsing="false" onAction="#editRackvelo" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #193742; -fx-background-radius: 5em;" text="Update" textFill="WHITE" />
+      <Button fx:id="removestationbutton" layoutX="561.0" layoutY="434.0" mnemonicParsing="false" onAction="#removeRackvelo" prefHeight="25.0" prefWidth="80.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Delete" />
+      <Button fx:id="crudS" layoutX="311.0" layoutY="433.0" mnemonicParsing="false" onAction="#switchToRacksFromList" prefHeight="26.0" prefWidth="94.0" style="-fx-background-radius: 5em; -fx-background-color: #FF6347;" text="Go Back" />
+      <Button fx:id="searchbutton" layoutX="661.0" layoutY="43.0" mnemonicParsing="false" onAction="#search" opacity="0.62" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #193742; -fx-background-radius: 5em;" text="Search" textFill="WHITE" />
+      <TextField fx:id="titletosearch" layoutX="460.0" layoutY="43.0" prefHeight="25.0" prefWidth="195.0" promptText="Insert rack reference" />
+   </children>
+</AnchorPane>

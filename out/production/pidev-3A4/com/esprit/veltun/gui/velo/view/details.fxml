@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<AnchorPane opacity="0.99" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.velo.view.VeloDetailsController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="480.0" layoutX="375.0" layoutY="11.0" stroke="#4a91a5" strokeLineCap="ROUND" strokeType="INSIDE" width="370.0" />
+      <Button fx:id="tflistVelo" defaultButton="true" layoutX="486.0" layoutY="343.0" mnemonicParsing="false" onAction="#listVelo" prefHeight="25.0" prefWidth="132.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Bike list" textFill="WHITE" />
+      <Label layoutX="405.0" layoutY="149.0" text="Brand :" textFill="#193742" />
+      <Label layoutX="406.0" layoutY="193.0" text="Size :" textFill="#193742" />
+      <TextField fx:id="ftlibelle" editable="false" layoutX="521.0" layoutY="145.0" prefHeight="26.0" prefWidth="194.0" promptText="bike brand" style="-fx-background-radius: 5em;" />
+      <TextField fx:id="fttaille" editable="false" layoutX="521.0" layoutY="189.0" prefHeight="26.0" prefWidth="194.0" promptText="bike size" style="-fx-background-radius: 5em;" />
+      <ImageView fitHeight="126.0" fitWidth="234.0" layoutX="-25.0" layoutY="316.0">
+         <image>
+            <Image url="http://localhost/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="503.0" fitWidth="380.0" layoutX="-3.0">
+         <image>
+            <Image url="http://localhost:8088/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="406.0" layoutY="237.0" text="Color :" textFill="#193742" />
+      <TextField fx:id="ftcouleur" editable="false" layoutX="521.0" layoutY="233.0" prefHeight="26.0" prefWidth="194.0" promptText="bike color" style="-fx-background-radius: 5em;" />
+      <Label layoutX="406.0" layoutY="281.0" text="Supplier :" textFill="#193742" />
+      <TextField fx:id="ftfournisseur" layoutX="521.0" layoutY="276.0" prefHeight="26.0" prefWidth="194.0" promptText="supplier" style="-fx-background-radius: 5em;" />
+   </children>
+</AnchorPane>

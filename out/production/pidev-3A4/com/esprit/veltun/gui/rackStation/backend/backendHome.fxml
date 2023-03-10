@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.veltun.gui.rackStation.backend.backendController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a91a5" height="480.0" layoutX="375.0" layoutY="11.0" stroke="#4a91a5" strokeLineCap="ROUND" strokeType="INSIDE" width="364.0" />
+      <Label layoutX="408.0" layoutY="157.0" prefHeight="43.0" prefWidth="298.0" text="Hey Admin ! You can manage your stations " textFill="#193742">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="manageStationsButton" layoutX="462.0" layoutY="258.0" mnemonicParsing="false" onAction="#switchToStations" prefHeight="26.0" prefWidth="190.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Manage your stations" textFill="WHITE" />
+      <Button fx:id="manageRacksButton" layoutX="462.0" layoutY="306.0" mnemonicParsing="false" onAction="#switchToRacks" prefHeight="26.0" prefWidth="190.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Manage your bike racks" textFill="WHITE" />
+      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="153.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="153.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="statB" layoutX="461.0" layoutY="355.0" mnemonicParsing="false" onAction="#goToStatistics" prefHeight="26.0" prefWidth="190.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Check the latest statistics " textFill="WHITE" />
+      <Label layoutX="506.0" layoutY="200.0" text="&amp; racks here !" textFill="#193742">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="toHome" layoutX="462.0" layoutY="404.0" mnemonicParsing="false" onAction="#toHome" prefHeight="26.0" prefWidth="190.0" style="-fx-background-radius: 5em; -fx-background-color: #193742;" text="Home" textFill="WHITE" />
+   </children>
+</AnchorPane>
