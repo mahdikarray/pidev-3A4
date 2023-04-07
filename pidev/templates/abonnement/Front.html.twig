@@ -1,0 +1,59 @@
+{% extends 'basefront.html.twig' %}
+
+{% block title %}Subscription {% endblock %}
+
+{% block body %}
+    <h1>Subscription</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Subscription type</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in 0..abonnements|length-1 %}
+        {% if i % 3 == 0 %}
+        <tr>
+            {% endif %}
+
+            <td>
+                <form method="get" action="{{ path('app_abonnement_frontshow', {'idAb': abonnements[i].idAb}) }}">
+                    <button type="submit" class="btn btn-link">{{ abonnements[i].typeAb }}</button>
+                </form>
+            </td>
+
+            {% if i % 3 == 2 or i == abonnements|length-1 %}
+        </tr>
+        {% endif %}
+        {% else %}
+        <tr>
+            <td colspan="3">no records found</td>
+        </tr>
+{% endfor %}
+        </tbody>
+    </table>
+    <table class="table">
+        <thead>
+        <tr>
+
+            <th>Description Offer</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for offre in offres %}
+            <tr>
+              
+                <td>{{ offre.descriptionOf }}</td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock %}

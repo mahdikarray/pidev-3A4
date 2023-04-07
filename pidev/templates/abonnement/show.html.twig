@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Abonnement{% endblock %}
+
+{% block body %}
+    <h1>Abonnement</h1>
+
+    <table class="table">
+        <tbody>
+
+            <tr>
+                <th>Subscription Type</th>
+                <td>{{ abonnement.typeAb }}</td>
+            </tr>
+            <tr>
+                <th>Debut date</th>
+                <td>{{ abonnement.dateDebut ? abonnement.dateDebut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Expiration Date</th>
+                <td>{{ abonnement.dateFin ? abonnement.dateFin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Subscription Price</th>
+                <td>{{ abonnement.prixAb }}</td>
+            </tr>
+            <tr>
+                <th>Offre id</th>
+                <td>{{ abonnement.idOffre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <a href="{{ path('app_abonnement_edit', {'idAb': abonnement.idAb}) }}">modify</a>
+    {{ include('abonnement/_delete_form.html.twig') }}
+    <a href="{{ path('app_abonnement_index') }}">back to list</a>
+
+
+{% endblock %}
