@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Maintenance index{% endblock %}
+
+{% block body %}
+    <h1>Maintenance index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdDemande</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>SubmissionDate</th>
+                <th>Rating</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for maintenance in maintenances %}
+            <tr>
+                <td>{{ maintenance.idDemande }}</td>
+                <td>{{ maintenance.description }}</td>
+                <td>{{ maintenance.status }}</td>
+                <td>{{ maintenance.submissionDate ? maintenance.submissionDate|date('Y-m-d') : '' }}</td>
+                <td>{{ maintenance.rating }}</td>
+                <td>
+                    <a href="{{ path('app_maintenance_show', {'idDemande': maintenance.idDemande}) }}">show</a>
+                    <a href="{{ path('app_maintenance_edit', {'idDemande': maintenance.idDemande}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_maintenance_new') }}">Create new</a>
+{% endblock %}
